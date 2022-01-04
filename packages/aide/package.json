@@ -1,0 +1,20 @@
+{
+    "name": "@ti-platform/aide",
+    "version": "0.0.0",
+    "main": "./dist/index.cjs.js",
+    "module": "./dist/index.es.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "vite build",
+        "watch": "vite build --mode development --watch"
+    },
+    "devDependencies": {
+        "@ti-platform/aide-build-tools": "workspace:*",
+        "@types/node": "16.11.12",
+        "eslint": "8.4.1",
+        "prettier": "2.5.1",
+        "typescript": "4.5.2",
+        "vite": "2.6.14",
+        "vite-plugin-dts": "0.9.6"
+    }
+}

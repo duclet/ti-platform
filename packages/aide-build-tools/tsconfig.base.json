@@ -1,0 +1,21 @@
+{
+    "extends": "@tsconfig/recommended/tsconfig.json",
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "allowUnreachableCode": false,
+        "experimentalDecorators": true,
+        "isolatedModules": true,
+        "lib": ["ESNext", "DOM"],
+        "listEmittedFiles": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "noImplicitAny": false,
+        "outDir": "dist",
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "target": "ESNext",
+        "useDefineForClassFields": true
+    },
+    "exclude": ["node_modules"]
+}
