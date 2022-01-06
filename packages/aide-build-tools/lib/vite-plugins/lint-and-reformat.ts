@@ -28,6 +28,7 @@ function runEslint(params: RunEsLintPrettierParams) {
             ...(params.extensions ?? []).map((extension) => `--ext ${extension}`),
             ...(params.dirs ?? []),
             ...(params.files ?? []),
+            ' 2>&1',
         ].join(' ')
     );
 }

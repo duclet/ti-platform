@@ -1,9 +1,13 @@
 {
     "name": "@ti-platform/aide-build-tools",
     "version": "0.0.0",
-    "main": "./dist/index.cjs.js",
-    "module": "./dist/index.es.js",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
+    "files": [
+        "dist/",
+        "lib/"
+    ],
     "scripts": {
         "build": "vite build",
         "watch": "vite build --mode development --watch"
@@ -23,6 +27,7 @@
         "eslint-plugin-vue": "8.2.0",
         "postcss": "8.4.5",
         "prettier": "2.5.1",
+        "rollup": "2.63.0",
         "ts-debounce": "4.0.0",
         "typescript": "4.5.2",
         "vite": "2.6.14"
