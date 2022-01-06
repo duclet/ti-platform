@@ -1,0 +1,17 @@
+{
+  "name": "@ti-platform/aide-build-tools",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@ti-platform/aide-build-tools_v0.1.0",
+      "date": "Thu, 06 Jan 2022 16:28:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Initial addition of shared configurations for ESLint, Prettier, TypeScript, and Vite"
+          }
+        ]
+      }
+    }
+  ]
+}
