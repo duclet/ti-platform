@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "0.3.0",
+      "tag": "@ti-platform/aide-build-tools_v0.3.0",
+      "date": "Fri, 07 Jan 2022 16:14:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add bash scripts to help run some rush commands"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.0",
       "tag": "@ti-platform/aide-build-tools_v0.2.0",
       "date": "Fri, 07 Jan 2022 14:59:03 GMT",

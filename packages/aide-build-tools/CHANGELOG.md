@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Fri, 07 Jan 2022 14:59:03 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jan 2022 16:14:19 GMT and should not be manually modified.
+
+## 0.3.0
+Fri, 07 Jan 2022 16:14:19 GMT
+
+### Minor changes
+
+- Add bash scripts to help run some rush commands
 
 ## 0.2.0
 Fri, 07 Jan 2022 14:59:03 GMT
