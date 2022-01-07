@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Add ability to load NPM_AUTH_TOKEN from local .env file first",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-build-tools"
+}

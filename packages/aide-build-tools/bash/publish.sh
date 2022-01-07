@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
+localEnvFile="$(pwd)/.env"
+
+if [[ -f "$localEnvFile" ]]; then
+    # shellcheck source=./env
+    source "$localEnvFile"
+fi
+
 if [[ "$NPM_AUTH_TOKEN" == "" && -f ~/.npmrc ]]; then
     NPM_AUTH_TOKEN=$(sed -E 's/\/\/npm-registry.letriduc.net\/:_authToken="(.+)"/\1/' < ~/.npmrc)
 fi
 
 echo -n "Specify the NPM auth token (current: $NPM_AUTH_TOKEN): "
-read confirmAuthToken
+read -r confirmAuthToken
 if [[ "$confirmAuthToken" != "" ]]; then
     NPM_AUTH_TOKEN=$confirmAuthToken
 fi
