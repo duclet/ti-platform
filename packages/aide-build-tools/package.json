@@ -6,7 +6,8 @@
     "types": "./dist/index.d.ts",
     "files": [
         "dist/",
-        "lib/"
+        "lib/",
+        "tsconfig.base.json"
     ],
     "scripts": {
         "build": "vite build",
