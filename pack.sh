@@ -1,3 +1,1 @@
-#!/usr/bin/env bash
-
-rush publish --pack --include-all --publish
+packages/aide-build-tools/bash/pack.sh

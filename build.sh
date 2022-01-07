@@ -1,4 +1,1 @@
-#!/usr/bin/env bash
-
-export FORCE_COLOR=1
-rush build -v $@
+packages/aide-build-tools/bash/build.sh
