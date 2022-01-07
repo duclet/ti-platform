@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@ti-platform/aide-build-tools_v0.2.0",
+      "date": "Fri, 07 Jan 2022 14:59:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add scripts to help with some Rush commands and make sure @ti-platform/aide-build-tools contains all the necessary exported files"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@ti-platform/aide-build-tools_v0.1.0",
       "date": "Thu, 06 Jan 2022 16:28:40 GMT",
