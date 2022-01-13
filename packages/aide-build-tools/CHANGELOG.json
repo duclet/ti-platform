@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "0.5.0",
+      "tag": "@ti-platform/aide-build-tools_v0.5.0",
+      "date": "Thu, 13 Jan 2022 01:26:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extract some functions to their own file and export it"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@ti-platform/aide-build-tools_v0.4.0",
       "date": "Fri, 07 Jan 2022 20:29:38 GMT",
