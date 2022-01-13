@@ -1,10 +1,12 @@
 import { Linter } from 'eslint';
 
+import { spawnCommand } from './cli';
 import { getHtmlConfigs } from './eslint/html-configs';
 import { getCjsConfigs, getJsConfigs } from './eslint/javascript-configs';
 import { getJsonConfigs } from './eslint/json-configs';
 import { getTsConfigs } from './eslint/typescript-configs';
 import { getVueConfigs } from './eslint/vue-configs';
+import { RunEsLintPrettierParams } from './misc';
 
 type EslintConfigsParams = {
     baseDir: string;
@@ -55,4 +57,16 @@ export function generateEslintConfigs(configs: EslintConfigsParams) {
             configs.enable?.includes('vue') ? vueConfigs : null,
         ].filter((config) => config !== null),
     };
+}
+
+export function runEslint(params: RunEsLintPrettierParams) {
+    return spawnCommand(
+        [
+            'DEBUG=eslint:cli-engine ./node_modules/.bin/eslint --fix',
+            ...(params.extensions ?? []).map((extension) => `--ext ${extension}`),
+            ...(params.dirs ?? []),
+            ...(params.files ?? []),
+            ' 2>&1',
+        ].join(' ')
+    );
 }

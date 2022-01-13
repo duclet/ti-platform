@@ -1,52 +1,10 @@
-import { spawnSync } from 'child_process';
 import { debounce } from 'ts-debounce';
 import { Plugin } from 'vite';
 
-type RunEsLintPrettierParams = {
-    dirs?: Array<string>;
-    extensions?: Array<string>;
-    files?: Array<string>;
-};
-
-function spawnCommand(command: string) {
-    console.log(command);
-    const result = spawnSync(command, { env: process.env, shell: true, stdio: 'inherit' });
-
-    if (result.status === 0) {
-        console.log('Done.\n');
-    } else {
-        console.log('Execution failed.\n');
-    }
-
-    return result;
-}
-
-function runEslint(params: RunEsLintPrettierParams) {
-    return spawnCommand(
-        [
-            'DEBUG=eslint:cli-engine ./node_modules/.bin/eslint --fix',
-            ...(params.extensions ?? []).map((extension) => `--ext ${extension}`),
-            ...(params.dirs ?? []),
-            ...(params.files ?? []),
-            ' 2>&1',
-        ].join(' ')
-    );
-}
-
-function runPrettier(params: RunEsLintPrettierParams) {
-    const dirExtensionPatterns =
-        params.dirs?.length && params.extensions?.length
-            ? params.dirs.flatMap((dir) => params.extensions!.map((extension) => `"${dir}/**/*${extension}"`))
-            : params.dirs?.length && !params.extensions
-            ? params.dirs
-            : params.extensions?.length && !params.dirs
-            ? params.extensions.map((extension) => `"./*${extension}"`)
-            : [];
-
-    return spawnCommand(
-        ['./node_modules/.bin/prettier --write', ...dirExtensionPatterns, ...(params.files ?? [])].join(' ')
-    );
-}
+import { spawnCommand } from '../cli';
+import { runEslint } from '../eslint';
+import { GENERAL_FILES } from '../misc';
+import { runPrettier } from '../prettier';
 
 function runVerifyTs() {
     return spawnCommand('./node_modules/.bin/tsc --noEmit --listFiles | grep -v node_modules');
@@ -96,14 +54,6 @@ function createWatchHandler({ verifyTs, verifyVueTs }: { verifyTs?: boolean; ver
         }, 1000),
     };
 }
-
-export const GENERAL_FILES = [
-    './.eslintrc.cjs',
-    './package.json',
-    './prettier.config.cjs',
-    './tsconfig.json',
-    './vite.config.ts',
-];
 
 export function lintAndReformat(
     dirs: Array<string>,

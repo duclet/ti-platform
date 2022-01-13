@@ -11,7 +11,7 @@ export function getLibraryFilename(format: ModuleFormat) {
 }
 
 export function isLibraryExternalDep(source: string) {
-    return !(source.startsWith('./') || source.startsWith('/'));
+    return !(source.startsWith('./') || source.startsWith('../') || source.startsWith('/'));
 }
 
 export function generateViteConfigs() {

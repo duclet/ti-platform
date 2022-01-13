@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Extract some functions to their own file and export it",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-build-tools"
+}
