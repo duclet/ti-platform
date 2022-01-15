@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide-cli",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "bin": {
         "run-eslint": "./dist/run-eslint.js",
         "run-linter": "./dist/run-linter.js",
