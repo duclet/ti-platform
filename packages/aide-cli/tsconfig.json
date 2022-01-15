@@ -1,0 +1,9 @@
+{
+    "extends": "@ti-platform/aide-build-tools/tsconfig.base.json",
+    "include": ["./src/**/*.ts"],
+    "compilerOptions": {
+        "module": "CommonJS",
+        "outDir": "dist",
+        "sourceMap": false
+    }
+}

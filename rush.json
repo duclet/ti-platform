@@ -458,14 +458,19 @@
     //   "reviewCategory": "tools"
     // }
     {
+      "packageName": "@ti-platform/aide",
+      "projectFolder": "packages/aide",
+      "shouldPublish":  true
+    },
+    {
       "packageName": "@ti-platform/aide-build-tools",
       "projectFolder": "packages/aide-build-tools",
       "shouldPublish":  true,
     },
     {
-      "packageName": "@ti-platform/aide",
-      "projectFolder": "packages/aide",
-      "shouldPublish":  true
+      "packageName": "@ti-platform/aide-cli",
+      "projectFolder": "packages/aide-cli",
+      "shouldPublish":  true,
     },
     {
       "packageName": "@ti-platform/aide-vue",

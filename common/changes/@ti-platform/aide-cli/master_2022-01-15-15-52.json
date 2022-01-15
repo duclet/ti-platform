@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-cli",
+      "comment": "Adding scripts to run some linters",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-cli"
+}
