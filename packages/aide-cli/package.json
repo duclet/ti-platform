@@ -14,8 +14,8 @@
         "lintArgs": "-d ./src -e .ts -g"
     },
     "scripts": {
-        "build": "pnpm run-linter && tsc",
-        "dev": "concurrently -n Linter,TypeScript -c 'yellow.bold,cyan.bold' 'pnpm run-linter -- -w' 'tsc -w --pretty'",
+        "build": "rm -rf ./dist && pnpm run-linter && tsc",
+        "dev": "rm -rf ./dist && tsc --incremental && pnpm run-linter -- -w -c 'tsc --incremental'",
         "run-eslint": "node -r esbuild-register ./src/run-eslint.ts $npm_package_config_lintArgs",
         "run-linter": "node -r esbuild-register ./src/run-linter.ts $npm_package_config_lintArgs",
         "run-prettier": "node -r esbuild-register ./src/run-prettier.ts $npm_package_config_lintArgs"

@@ -1,4 +1,4 @@
-import { GENERAL_FILES, runEslint, runPrettier } from '@ti-platform/aide-build-tools';
+import { GENERAL_FILES, runEslint, runPrettier, spawnCommand } from '@ti-platform/aide-build-tools';
 import chokidar from 'chokidar';
 import { cli } from 'cleye';
 import { existsSync } from 'fs';
@@ -37,6 +37,12 @@ export function getArgv(commandName: string) {
                 description: 'Enable watch mode',
                 type: Boolean,
                 default: false,
+            },
+
+            command: {
+                alias: 'c',
+                description: 'Optional list of commands to run after linting is complete when in watch mode',
+                type: [String],
             },
         },
     });
@@ -82,7 +88,6 @@ export function runLinter(name: string, linter: typeof runEslint | typeof runPre
 
     if (argv.flags.watch) {
         const watcher = chokidar.watch(getWatchPatterns(argv.flags.dir, argv.flags.extension, files), {
-            // awaitWriteFinish: true,
             cwd: cwd(),
             ignoreInitial: true,
         });
@@ -107,6 +112,10 @@ export function runLinter(name: string, linter: typeof runEslint | typeof runPre
 
                 if ('addDir' === eventName) {
                     linter({ dirs: [`./${path}`], extensions: argv.flags.extension });
+                }
+
+                if (argv.flags.command) {
+                    argv.flags.command.forEach(spawnCommand);
                 }
 
                 setTimeout(() => {
