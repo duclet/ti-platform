@@ -24,4 +24,4 @@ fi
 
 
 export NPM_AUTH_TOKEN=$NPM_AUTH_TOKEN
-rush publish -a -p -b master
+./build.sh && rush publish -a -p -b master

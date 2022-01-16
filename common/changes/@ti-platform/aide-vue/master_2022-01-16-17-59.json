@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Fix package.json script",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}

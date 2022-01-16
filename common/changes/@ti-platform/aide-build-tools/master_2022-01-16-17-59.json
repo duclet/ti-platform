@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Build before publishing",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-build-tools"
+}

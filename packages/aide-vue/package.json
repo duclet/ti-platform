@@ -13,7 +13,7 @@
     "scripts": {
         "build": "rm -rf ./dist && pnpm run-linter -- -k && tsc -d",
         "dev": "rm -rf ./dist && pnpm run-linter -- -k -w -c 'tsc --incremental'",
-        "run-linter": "run-linter.js $npm_package_config_linterArgs"
+        "run-linter": "run-linter $npm_package_config_linterArgs"
     },
     "dependencies": {
         "@ti-platform/aide": "workspace:*",
