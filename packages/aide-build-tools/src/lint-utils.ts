@@ -48,6 +48,12 @@ function getArgv(commandName: string) {
                 type: Boolean,
                 default: false,
             },
+            watchOnly: {
+                alias: 's',
+                description: 'Skip the initial linting and only watch files',
+                type: Boolean,
+                default: false,
+            },
 
             command: {
                 alias: 'c',
@@ -94,13 +100,15 @@ export function runLinter(name: string, linter: typeof runEslint | typeof runPre
         });
     }
 
-    const result = lintAllFiles();
-    if (argv.flags.killOnError && result.status !== 0) {
-        exit(1);
-    }
+    if (!argv.flags.watchOnly) {
+        const result = lintAllFiles();
+        if (argv.flags.killOnError && result.status !== 0) {
+            exit(1);
+        }
 
-    if (argv.flags.command) {
-        argv.flags.command.forEach(spawnCommand);
+        if (argv.flags.command) {
+            argv.flags.command.forEach(spawnCommand);
+        }
     }
 
     if (argv.flags.watch) {
