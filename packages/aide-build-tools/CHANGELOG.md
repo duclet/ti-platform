@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Sun, 16 Jan 2022 18:00:35 GMT and should not be manually modified.
+This log was last generated on Sun, 16 Jan 2022 18:29:48 GMT and should not be manually modified.
+
+## 0.7.0
+Sun, 16 Jan 2022 18:29:48 GMT
+
+### Minor changes
+
+- Add ability to skip linting and go straight to watch mode
 
 ## 0.6.2
 Sun, 16 Jan 2022 18:00:35 GMT

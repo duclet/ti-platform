@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "0.7.0",
+      "tag": "@ti-platform/aide-build-tools_v0.7.0",
+      "date": "Sun, 16 Jan 2022 18:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add ability to skip linting and go straight to watch mode"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.2",
       "tag": "@ti-platform/aide-build-tools_v0.6.2",
       "date": "Sun, 16 Jan 2022 18:00:35 GMT",
