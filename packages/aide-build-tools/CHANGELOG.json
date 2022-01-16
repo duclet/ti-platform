@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "0.6.0",
+      "tag": "@ti-platform/aide-build-tools_v0.6.0",
+      "date": "Sun, 16 Jan 2022 14:12:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add binaries for linting"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.0",
       "tag": "@ti-platform/aide-build-tools_v0.5.0",
       "date": "Thu, 13 Jan 2022 01:26:40 GMT",

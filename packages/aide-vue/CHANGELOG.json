@@ -2,6 +2,26 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "0.1.5",
+      "tag": "@ti-platform/aide-vue_v0.1.5",
+      "date": "Sun, 16 Jan 2022 14:12:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Build directly with tsc compiler"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `0.1.5`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `0.6.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.4",
       "tag": "@ti-platform/aide-vue_v0.1.4",
       "date": "Thu, 13 Jan 2022 01:26:40 GMT",
