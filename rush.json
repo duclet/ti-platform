@@ -313,13 +313,15 @@
      * The list of shell commands to run before the Rush installation starts
      */
     "preRushInstall": [
-      // "common/scripts/pre-rush-install.js"
+       "packages/aide-build-tools/create-empty-binaries.sh"
     ],
 
     /**
      * The list of shell commands to run after the Rush installation finishes
      */
-    "postRushInstall": [],
+    "postRushInstall": [
+        "cd packages/aide-build-tools && pnpm build"
+    ],
 
     /**
      * The list of shell commands to run before the Rush build command starts

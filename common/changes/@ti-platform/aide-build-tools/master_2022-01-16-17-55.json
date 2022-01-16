@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Another try at correctly distributing binaries",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-build-tools"
+}

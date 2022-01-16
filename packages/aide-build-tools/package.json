@@ -3,14 +3,15 @@
     "version": "0.6.1",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "directories": {
-        "bin": "bin/"
+    "bin": {
+        "run-eslint": "./dist/bin/run-eslint.js",
+        "run-linter": "./dist/bin/run-linter.js",
+        "run-prettier": "./dist/bin/run-prettier.js"
     },
     "files": [
         "bash/",
         "dist/",
         "src/",
-        "bin/*.js",
         "tsconfig.base.json"
     ],
     "config": {
