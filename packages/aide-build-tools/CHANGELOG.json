@@ -2,6 +2,21 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "0.6.2",
+      "tag": "@ti-platform/aide-build-tools_v0.6.2",
+      "date": "Sun, 16 Jan 2022 18:00:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Another try at correctly distributing binaries"
+          },
+          {
+            "comment": "Build before publishing"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.1",
       "tag": "@ti-platform/aide-build-tools_v0.6.1",
       "date": "Sun, 16 Jan 2022 15:01:33 GMT",
