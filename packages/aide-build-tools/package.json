@@ -8,17 +8,17 @@
     },
     "files": [
         "bash/",
-        "bin/",
         "dist/",
         "src/",
+        "bin/*.js",
         "tsconfig.base.json"
     ],
     "config": {
         "linterArgs": "-d ./src -e .ts -g"
     },
     "scripts": {
-        "build": "rm -rf ./dist && pnpm run-linter -- -k && tsc -d && rm ./dist/bin/*.d.ts",
-        "dev": "rm -rf ./dist && pnpm run-linter -- -k -w -c 'tsc --incremental' -c 'rm ./dist/bin/*.d.ts'",
+        "build": "rm -rf ./dist && pnpm run-linter -- -k && tsc -d",
+        "dev": "rm -rf ./dist && pnpm run-linter -- -k -w -c 'tsc --incremental'",
         "run-linter": "node -r esbuild-register src/bin/run-linter.ts $npm_package_config_linterArgs"
     },
     "dependencies": {
