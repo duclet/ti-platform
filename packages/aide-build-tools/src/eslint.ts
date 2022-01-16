@@ -1,12 +1,12 @@
 import { Linter } from 'eslint';
 
-import { spawnCommand } from './cli';
 import { getHtmlConfigs } from './eslint/html-configs';
 import { getCjsConfigs, getJsConfigs } from './eslint/javascript-configs';
 import { getJsonConfigs } from './eslint/json-configs';
 import { getTsConfigs } from './eslint/typescript-configs';
 import { getVueConfigs } from './eslint/vue-configs';
 import { RunEsLintPrettierParams } from './misc';
+import { spawnCommand } from './spawn';
 
 type EslintConfigsParams = {
     baseDir: string;

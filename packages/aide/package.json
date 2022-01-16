@@ -1,16 +1,19 @@
 {
     "name": "@ti-platform/aide",
     "version": "0.1.4",
-    "main": "./dist/index.cjs",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [
         "dist/",
         "src/"
     ],
+    "config": {
+        "linterArgs": "-d ./src -e .ts -g"
+    },
     "scripts": {
-        "build": "vite build",
-        "watch": "vite build --mode development --watch"
+        "build": "rm -rf ./dist && pnpm run-linter -- -k && tsc -d",
+        "dev": "rm -rf ./dist && pnpm run-linter -- -k -w -c 'tsc --incremental'",
+        "run-linter": "run-linter.js $npm_package_config_linterArgs"
     },
     "devDependencies": {
         "@ti-platform/aide-build-tools": "workspace:*",

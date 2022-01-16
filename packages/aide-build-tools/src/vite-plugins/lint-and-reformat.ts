@@ -1,10 +1,10 @@
 import { debounce } from 'ts-debounce';
 import { Plugin } from 'vite';
 
-import { spawnCommand } from '../cli';
 import { runEslint } from '../eslint';
 import { GENERAL_FILES } from '../misc';
 import { runPrettier } from '../prettier';
+import { spawnCommand } from '../spawn';
 
 function runVerifyTs() {
     return spawnCommand('./node_modules/.bin/tsc --noEmit --listFiles | grep -v node_modules');

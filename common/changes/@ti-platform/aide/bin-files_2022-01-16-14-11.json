@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Build directly with tsc compiler",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}

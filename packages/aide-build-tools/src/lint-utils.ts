@@ -1,11 +1,15 @@
-import { GENERAL_FILES, runEslint, runPrettier, spawnCommand } from '@ti-platform/aide-build-tools';
 import chokidar from 'chokidar';
 import { cli } from 'cleye';
 import { existsSync } from 'fs';
 import { join } from 'path';
-import { cwd } from 'process';
+import { cwd, exit } from 'process';
 
-export function getArgv(commandName: string) {
+import { runEslint } from './eslint';
+import { GENERAL_FILES } from './misc';
+import { runPrettier } from './prettier';
+import { spawnCommand } from './spawn';
+
+function getArgv(commandName: string) {
     return cli({
         name: commandName,
         flags: {
@@ -32,6 +36,12 @@ export function getArgv(commandName: string) {
                 type: Boolean,
                 default: false,
             },
+            killOnError: {
+                alias: 'k',
+                description: 'Kill the process when a linter fails rather than continuing on initial run',
+                type: Boolean,
+                default: false,
+            },
             watch: {
                 alias: 'w',
                 description: 'Enable watch mode',
@@ -41,14 +51,14 @@ export function getArgv(commandName: string) {
 
             command: {
                 alias: 'c',
-                description: 'Optional list of commands to run after linting is complete when in watch mode',
+                description: 'Optional list of commands to run after linting is complete',
                 type: [String],
             },
         },
     });
 }
 
-export function getExtraFiles(includeExtraFiles: boolean) {
+function getExtraFiles(includeExtraFiles: boolean) {
     const extraFiles: Array<string> = [];
     if (includeExtraFiles) {
         const workingDir = cwd();
@@ -58,7 +68,7 @@ export function getExtraFiles(includeExtraFiles: boolean) {
     return extraFiles;
 }
 
-export function getWatchPatterns(dirs: Array<string>, extensions: Array<string>, files: Array<string>) {
+function getWatchPatterns(dirs: Array<string>, extensions: Array<string>, files: Array<string>) {
     const dirExtensionPatterns =
         dirs.length && extensions.length
             ? dirs.flatMap((dir) => extensions.map((extension) => `${dir}/**/*${extension}`))
@@ -77,14 +87,21 @@ export function runLinter(name: string, linter: typeof runEslint | typeof runPre
     const files = [...argv.flags.file, ...getExtraFiles(argv.flags.includeGeneralFiles)];
 
     function lintAllFiles() {
-        linter({
+        return linter({
             files,
             dirs: argv.flags.dir,
             extensions: argv.flags.extension,
         });
     }
 
-    lintAllFiles();
+    const result = lintAllFiles();
+    if (argv.flags.killOnError && result.status !== 0) {
+        exit(1);
+    }
+
+    if (argv.flags.command) {
+        argv.flags.command.forEach(spawnCommand);
+    }
 
     if (argv.flags.watch) {
         const watcher = chokidar.watch(getWatchPatterns(argv.flags.dir, argv.flags.extension, files), {

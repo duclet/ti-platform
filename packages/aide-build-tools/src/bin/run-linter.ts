@@ -1,6 +1,6 @@
-import { runEslint, runPrettier } from '@ti-platform/aide-build-tools';
-
-import { runLinter } from './lint-utils';
+import { runEslint } from '../eslint';
+import { runLinter } from '../lint-utils';
+import { runPrettier } from '../prettier';
 
 runLinter('run-linter', (args) => {
     const eslint = runEslint(args);

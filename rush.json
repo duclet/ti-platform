@@ -62,7 +62,7 @@
      * The default value is false to avoid legacy compatibility issues.
      * It is strongly recommended to set strictPeerDependencies=true.
      */
-    // "strictPeerDependencies": true,
+     "strictPeerDependencies": true,
 
     /**
      * Configures the strategy used to select versions during installation.
@@ -465,11 +465,6 @@
     {
       "packageName": "@ti-platform/aide-build-tools",
       "projectFolder": "packages/aide-build-tools",
-      "shouldPublish":  true,
-    },
-    {
-      "packageName": "@ti-platform/aide-cli",
-      "projectFolder": "packages/aide-cli",
       "shouldPublish":  true,
     },
     {

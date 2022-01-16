@@ -1,4 +1,7 @@
 {
     "extends": "@ti-platform/aide-build-tools/tsconfig.base.json",
-    "include": ["./*.ts", "./src/**/*.ts"]
+    "include": ["./src/**/*.ts"],
+    "compilerOptions": {
+        "outDir": "dist"
+    }
 }

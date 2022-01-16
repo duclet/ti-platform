@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Add binaries for linting",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-build-tools"
+}

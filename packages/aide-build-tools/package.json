@@ -1,18 +1,25 @@
 {
     "name": "@ti-platform/aide-build-tools",
     "version": "0.5.0",
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
+    "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
+    "directories": {
+        "bin": "bin/"
+    },
     "files": [
         "bash/",
+        "bin/",
         "dist/",
-        "lib/",
+        "src/",
         "tsconfig.base.json"
     ],
+    "config": {
+        "linterArgs": "-d ./src -e .ts -g"
+    },
     "scripts": {
-        "build": "vite build",
-        "watch": "vite build --mode development --watch"
+        "build": "rm -rf ./dist && pnpm run-linter -- -k && tsc -d && rm ./dist/bin/*.d.ts",
+        "dev": "rm -rf ./dist && pnpm run-linter -- -k -w -c 'tsc --incremental' -c 'rm ./dist/bin/*.d.ts'",
+        "run-linter": "node -r esbuild-register src/bin/run-linter.ts $npm_package_config_linterArgs"
     },
     "dependencies": {
         "@html-eslint/eslint-plugin": "0.13.0",
@@ -20,6 +27,8 @@
         "@tsconfig/recommended": "1.0.1",
         "@typescript-eslint/eslint-plugin": "5.6.0",
         "@typescript-eslint/parser": "5.6.0",
+        "chokidar": "3.5.2",
+        "cleye": "1.0.1",
         "eslint": "8.4.1",
         "eslint-config-prettier": "8.3.0",
         "eslint-import-resolver-typescript": "2.5.0",

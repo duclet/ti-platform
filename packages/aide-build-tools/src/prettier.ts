@@ -1,7 +1,7 @@
 import { Config } from 'prettier';
 
-import { spawnCommand } from './cli';
 import { RunEsLintPrettierParams } from './misc';
+import { spawnCommand } from './spawn';
 
 export function generatePrettierConfigs(): Config {
     return {
