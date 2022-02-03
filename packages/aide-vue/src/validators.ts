@@ -1,7 +1,6 @@
-import { Nullable } from '@ti-platform/aide';
 import { Ref } from 'vue';
 
-type ValueTypes = Nullable<string | number | Array<string> | Array<number>>;
+type ValueTypes = string | number | Array<string> | Array<number>;
 
 const DEFAULT_REQUIRED_INVALID_MESSAGE = 'Requires non-empty value';
 const DEFAULT_UNIQUE_INVALID_MESSAGE = 'Value already used';

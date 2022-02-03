@@ -1,5 +1,5 @@
-import {computed, ComputedRef, Ref} from 'vue';
-import {$ref} from 'vue/macros'
+import { computed, ComputedRef, Ref } from 'vue';
+import { $ref } from 'vue/macros';
 
 type ElementOrComponentWithEl = HTMLElement | { $el: HTMLElement };
 type RecomputableRef<T> = ComputedRef<T> & { recompute: () => void };
