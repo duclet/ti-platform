@@ -12,13 +12,16 @@
         "bash/",
         "dist/",
         "src/",
-        "tsconfig.base.json"
+        "tsconfig.base.json",
+        "CHANGELOG.md",
+        "README.md"
     ],
     "config": {
         "linterArgs": "-d ./src -e .ts -g"
     },
     "scripts": {
         "build": "rm -rf ./dist && pnpm run-linter -- -k && tsc -d",
+        "build-docs": "typedoc --out docs --hideBreadcrumbs ./src/index.ts && cp docs/modules.md README.md && rm -rf ./docs",
         "dev": "rm -rf ./dist && pnpm run-linter -- -k -w -c 'tsc --incremental'",
         "run-linter": "node -r esbuild-register src/bin/run-linter.ts $npm_package_config_linterArgs"
     },
@@ -50,6 +53,8 @@
         "@types/node": "17.0.10",
         "@types/prettier": "2.4.3",
         "esbuild": "0.14.11",
-        "esbuild-register": "3.3.2"
+        "esbuild-register": "3.3.2",
+        "typedoc": "0.22.11",
+        "typedoc-plugin-markdown": "3.11.12"
     }
 }

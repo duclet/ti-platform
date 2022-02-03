@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Add documentation",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}
