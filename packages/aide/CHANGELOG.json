@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@ti-platform/aide_v0.2.0",
+      "date": "Thu, 03 Feb 2022 18:17:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add method to get first element of array"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.9",
       "tag": "@ti-platform/aide_v0.1.9",
       "date": "Tue, 18 Jan 2022 21:27:24 GMT",
