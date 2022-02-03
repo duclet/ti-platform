@@ -7,10 +7,6 @@ if [[ -f "$localEnvFile" ]]; then
     source "$localEnvFile"
 fi
 
-if [[ "$NPM_AUTH_TOKEN" == "" && -f ~/.npmrc ]]; then
-    NPM_AUTH_TOKEN=$(sed -E 's/\/\/npm-registry.letriduc.net\/:_authToken="(.+)"/\1/' < ~/.npmrc)
-fi
-
 echo -n "Specify the NPM auth token (current: $NPM_AUTH_TOKEN): "
 read -r confirmAuthToken
 if [[ "$confirmAuthToken" != "" ]]; then
