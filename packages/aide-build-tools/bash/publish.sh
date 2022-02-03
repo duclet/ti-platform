@@ -18,6 +18,13 @@ if [[ "$NPM_AUTH_TOKEN" == "" ]]; then
     exit 1
 fi
 
+echo -n "Publish as restricted packages? [y/n] (y): "
+read -r accessLevel
+if [[ "$accessLevel" != "n" ]]; then
+    accessLevel="restricted"
+else
+    accessLevel="public"
+fi
 
 export NPM_AUTH_TOKEN=$NPM_AUTH_TOKEN
-./build.sh && rush publish -a -p -b master
+./build.sh && rush publish -a -p -b master --set-access-level "$accessLevel"
