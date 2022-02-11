@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-vue
 
-This log was last generated on Thu, 03 Feb 2022 19:05:11 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Feb 2022 20:26:17 GMT and should not be manually modified.
+
+## 0.2.3
+Fri, 11 Feb 2022 20:26:17 GMT
+
+### Patches
+
+- Update code to not use Vue macros
 
 ## 0.2.2
 Thu, 03 Feb 2022 19:05:11 GMT

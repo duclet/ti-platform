@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "0.2.3",
+      "tag": "@ti-platform/aide_v0.2.3",
+      "date": "Fri, 11 Feb 2022 20:26:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add methods toMap and ensureType"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@ti-platform/aide_v0.2.2",
       "date": "Thu, 03 Feb 2022 19:05:11 GMT",
