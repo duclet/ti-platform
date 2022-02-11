@@ -1,5 +1,4 @@
-import { computed, ComputedRef, Ref } from 'vue';
-import { $ref } from 'vue/macros';
+import { computed, ComputedRef, Ref, ref } from 'vue';
 
 type ElementOrComponentWithEl = HTMLElement | { $el: HTMLElement };
 type RecomputableRef<T> = ComputedRef<T> & { recompute: () => void };
@@ -15,10 +14,10 @@ type HeightCalcResult = RecomputableRef<string>;
  *  The list of elements or components with a singular root element whose height we will subtract from.
  */
 export function useHeightCalc(baseHeight: string, elements: Array<Ref<ElementOrComponentWithEl>>) {
-    let counter = $ref(1);
+    const counter = ref(1);
     const model = computed(() => {
         // This check here is purely cosmetic to allow force updating
-        if (counter < 1) {
+        if (counter.value < 1) {
             return '';
         }
 
@@ -40,7 +39,7 @@ export function useHeightCalc(baseHeight: string, elements: Array<Ref<ElementOrC
         return `calc(${heights.join(' - ')})`;
     });
 
-    (model as HeightCalcResult).recompute = () => counter++;
+    (model as HeightCalcResult).recompute = () => counter.value++;
 
     return model as HeightCalcResult;
 }

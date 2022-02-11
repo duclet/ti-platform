@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Update code to not use Vue macros",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}
