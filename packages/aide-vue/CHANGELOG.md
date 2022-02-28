@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-vue
 
-This log was last generated on Fri, 11 Feb 2022 20:26:17 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Feb 2022 20:13:03 GMT and should not be manually modified.
+
+## 0.2.4
+Mon, 28 Feb 2022 20:13:03 GMT
+
+### Patches
+
+- Update dependencies versions
 
 ## 0.2.3
 Fri, 11 Feb 2022 20:26:17 GMT

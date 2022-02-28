@@ -2,6 +2,26 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "0.2.4",
+      "tag": "@ti-platform/aide-vue_v0.2.4",
+      "date": "Mon, 28 Feb 2022 20:13:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update dependencies versions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `0.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `0.7.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.3",
       "tag": "@ti-platform/aide-vue_v0.2.3",
       "date": "Fri, 11 Feb 2022 20:26:17 GMT",

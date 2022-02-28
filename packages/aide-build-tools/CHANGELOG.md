@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Thu, 03 Feb 2022 19:05:11 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Feb 2022 20:13:03 GMT and should not be manually modified.
+
+## 0.7.4
+Mon, 28 Feb 2022 20:13:03 GMT
+
+### Patches
+
+- Update dependencies versions
 
 ## 0.7.3
 Thu, 03 Feb 2022 19:05:11 GMT
