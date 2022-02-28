@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-quasar",
+      "comment": "Initial addition with components TimelineStepper and WizardStep",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-quasar"
+}

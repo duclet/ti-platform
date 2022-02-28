@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Add type to override properties of object that should be readonly",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}

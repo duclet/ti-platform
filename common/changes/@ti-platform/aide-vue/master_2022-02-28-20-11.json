@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Update dependencies versions",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}

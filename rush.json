@@ -474,5 +474,10 @@
       "projectFolder": "packages/aide-vue",
       "shouldPublish":  true
     },
+    {
+      "packageName": "@ti-platform/aide-quasar",
+      "projectFolder": "packages/aide-quasar",
+      "shouldPublish":  true
+    },
   ]
 }
