@@ -28,7 +28,7 @@ export type WizardStep = {
 };
 
 export type WizardStepStatePublic = Omit<
-    MarkReadonly<WizardStepStateInternal, 'isDone' | 'isFromLaterStep'>,
+    MarkReadonly<WizardStepStateInternal, 'isDone' | 'stepIndex'>,
     'backButtonHandler' | 'continueButtonHandler'
 >;
 

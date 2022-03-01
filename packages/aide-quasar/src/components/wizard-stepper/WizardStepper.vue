@@ -101,16 +101,17 @@
 
     const quasar = useQuasar();
 
+    const currentStep = ref(first(props.steps)!);
+    const isBackButtonEnabled = ref(true);
+    const latestViewedStepIndex = ref(0);
+
     const stateMap = ref(
         toMap<WizardStepName, WizardStep, WizardStepStatePublic>(
             props.steps,
             (item) => item.name,
-            () => new WizardStepStateInternal()
+            (item, key, index) => new WizardStepStateInternal(index, () => latestViewedStepIndex.value)
         )
     );
-
-    const currentStep = ref(first(props.steps)!);
-    const isBackButtonEnabled = ref(true);
 
     const currentStepState = computed(() => stateMap.value[currentStep.value.name] as WizardStepStateInternal);
     const isContinueButtonEnabled = computed(() => currentStepState.value.isContinueButtonEnabled);
@@ -176,6 +177,9 @@
         }
 
         currentStep.value = getNextStep();
+        if (currentStepState.value.stepIndex > latestViewedStepIndex.value) {
+            latestViewedStepIndex.value = currentStepState.value.stepIndex;
+        }
     }
 
     onBeforeRouteLeave(
