@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-quasar
 
-This log was last generated on Tue, 03 May 2022 16:22:27 GMT and should not be manually modified.
+This log was last generated on Tue, 03 May 2022 18:29:13 GMT and should not be manually modified.
+
+## 1.0.1
+Tue, 03 May 2022 18:29:13 GMT
+
+### Patches
+
+- Fixing bug with properly supporting the back button for WizardStepper component
 
 ## 1.0.0
 Tue, 03 May 2022 16:22:27 GMT

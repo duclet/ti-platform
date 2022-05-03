@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-quasar",
   "entries": [
     {
+      "version": "1.0.1",
+      "tag": "@ti-platform/aide-quasar_v1.0.1",
+      "date": "Tue, 03 May 2022 18:29:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing bug with properly supporting the back button for WizardStepper component"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.0",
       "tag": "@ti-platform/aide-quasar_v1.0.0",
       "date": "Tue, 03 May 2022 16:22:27 GMT",
