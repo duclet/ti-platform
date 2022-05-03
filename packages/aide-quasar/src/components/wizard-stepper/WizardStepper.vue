@@ -17,6 +17,7 @@
                     :back-button-handler="onBackClick"
                     :continue-button-handler="onContinueClick"
                     :is-back-button-enabled="isBackButtonEnabled"
+                    :is-back-button-supported="isBackButtonSupported"
                     :is-continue-button-enabled="isContinueButtonEnabled"
                     :is-processing="isProcessing"
                 />
@@ -25,6 +26,7 @@
                     :back-button-handler="onBackClick"
                     :continue-button-handler="onContinueClick"
                     :is-back-button-enabled="isBackButtonEnabled"
+                    :is-back-button-supported="isBackButtonSupported"
                     :is-continue-button-enabled="isContinueButtonEnabled"
                     :is-processing="isProcessing"
                 >
@@ -38,7 +40,7 @@
                     />
                     <transition name="q-transition--fade">
                         <q-btn
-                            v-if="isBackButtonEnabled && !isFirstStep"
+                            v-if="isBackButtonSupported && !isFirstStep"
                             :class="backButtonClass"
                             :color="backButtonColor"
                             :disable="!isBackButtonEnabled || isProcessing"
@@ -53,6 +55,7 @@
                     :back-button-handler="onBackClick"
                     :continue-button-handler="onContinueClick"
                     :is-back-button-enabled="isBackButtonEnabled"
+                    :is-back-button-supported="isBackButtonSupported"
                     :is-continue-button-enabled="isContinueButtonEnabled"
                     :is-processing="isProcessing"
                 />

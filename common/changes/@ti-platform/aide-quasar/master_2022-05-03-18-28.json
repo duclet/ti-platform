@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-quasar",
+      "comment": "Fixing bug with properly supporting the back button for WizardStepper component",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-quasar"
+}
