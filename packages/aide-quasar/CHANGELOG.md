@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-quasar
 
-This log was last generated on Tue, 01 Mar 2022 20:10:41 GMT and should not be manually modified.
+This log was last generated on Tue, 03 May 2022 16:22:27 GMT and should not be manually modified.
+
+## 1.0.0
+Tue, 03 May 2022 16:22:27 GMT
+
+### Breaking changes
+
+- Remove wrapper element from WizardStepper
 
 ## 0.2.0
 Tue, 01 Mar 2022 20:10:41 GMT
