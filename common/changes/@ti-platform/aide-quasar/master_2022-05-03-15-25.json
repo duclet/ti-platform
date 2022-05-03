@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-quasar",
+      "comment": "Remove wrapper element from WizardStepper",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ti-platform/aide-quasar"
+}

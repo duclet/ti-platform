@@ -1,66 +1,64 @@
 <template>
-    <div>
-        <q-stepper :model-value="currentStep.name">
-            <q-step
-                v-for="step in steps"
-                :key="step.name"
-                :done="stateMap[step.name].isDone"
-                :name="step.name"
-                :title="step.title"
-            >
-                <component :is="step.component" v-model="stateMap[step.name]" />
-            </q-step>
-            <template #navigation>
-                <q-separator class="q-mb-lg" />
-                <q-stepper-navigation>
-                    <slot
-                        name="pre-navigation"
-                        :back-button-handler="onBackClick"
-                        :continue-button-handler="onContinueClick"
-                        :is-back-button-enabled="isBackButtonEnabled"
-                        :is-continue-button-enabled="isContinueButtonEnabled"
-                        :is-processing="isProcessing"
+    <q-stepper :model-value="currentStep.name">
+        <q-step
+            v-for="step in steps"
+            :key="step.name"
+            :done="stateMap[step.name].isDone"
+            :name="step.name"
+            :title="step.title"
+        >
+            <component :is="step.component" v-model="stateMap[step.name]" />
+        </q-step>
+        <template #navigation>
+            <q-separator class="q-mb-lg" />
+            <q-stepper-navigation>
+                <slot
+                    name="pre-navigation"
+                    :back-button-handler="onBackClick"
+                    :continue-button-handler="onContinueClick"
+                    :is-back-button-enabled="isBackButtonEnabled"
+                    :is-continue-button-enabled="isContinueButtonEnabled"
+                    :is-processing="isProcessing"
+                />
+                <slot
+                    name="navigation"
+                    :back-button-handler="onBackClick"
+                    :continue-button-handler="onContinueClick"
+                    :is-back-button-enabled="isBackButtonEnabled"
+                    :is-continue-button-enabled="isContinueButtonEnabled"
+                    :is-processing="isProcessing"
+                >
+                    <q-btn
+                        :class="continueButtonClass"
+                        :color="continueButtonColor"
+                        :disable="!isContinueButtonEnabled"
+                        :loading="isProcessing"
+                        label="Continue"
+                        @click="onContinueClick"
                     />
-                    <slot
-                        name="navigation"
-                        :back-button-handler="onBackClick"
-                        :continue-button-handler="onContinueClick"
-                        :is-back-button-enabled="isBackButtonEnabled"
-                        :is-continue-button-enabled="isContinueButtonEnabled"
-                        :is-processing="isProcessing"
-                    >
+                    <transition name="q-transition--fade">
                         <q-btn
-                            :class="continueButtonClass"
-                            :color="continueButtonColor"
-                            :disable="!isContinueButtonEnabled"
-                            :loading="isProcessing"
-                            label="Continue"
-                            @click="onContinueClick"
+                            v-if="isBackButtonEnabled && !isFirstStep"
+                            :class="backButtonClass"
+                            :color="backButtonColor"
+                            :disable="!isBackButtonEnabled || isProcessing"
+                            label="Back"
+                            flat
+                            @click="onBackClick"
                         />
-                        <transition name="q-transition--fade">
-                            <q-btn
-                                v-if="isBackButtonEnabled && !isFirstStep"
-                                :class="backButtonClass"
-                                :color="backButtonColor"
-                                :disable="!isBackButtonEnabled || isProcessing"
-                                label="Back"
-                                flat
-                                @click="onBackClick"
-                            />
-                        </transition>
-                    </slot>
-                    <slot
-                        name="post-navigation"
-                        :back-button-handler="onBackClick"
-                        :continue-button-handler="onContinueClick"
-                        :is-back-button-enabled="isBackButtonEnabled"
-                        :is-continue-button-enabled="isContinueButtonEnabled"
-                        :is-processing="isProcessing"
-                    />
-                </q-stepper-navigation>
-            </template>
-        </q-stepper>
-    </div>
+                    </transition>
+                </slot>
+                <slot
+                    name="post-navigation"
+                    :back-button-handler="onBackClick"
+                    :continue-button-handler="onContinueClick"
+                    :is-back-button-enabled="isBackButtonEnabled"
+                    :is-continue-button-enabled="isContinueButtonEnabled"
+                    :is-processing="isProcessing"
+                />
+            </q-stepper-navigation>
+        </template>
+    </q-stepper>
 </template>
 
 <script setup lang="ts">
