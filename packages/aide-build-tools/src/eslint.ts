@@ -8,7 +8,7 @@ import { getVueConfigs } from './eslint/vue-configs';
 import { RunEsLintPrettierParams } from './misc';
 import { spawnCommand } from './spawn';
 
-type EslintConfigsParams = {
+export type EslintConfigsParams = {
     baseDir: string;
     enable?: Array<'cjs' | 'html' | 'js' | 'json' | 'ts' | 'vue'>;
     configureCjs?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;

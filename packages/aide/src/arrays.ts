@@ -1,4 +1,7 @@
-type AnyArray<V> = Array<V> | ReadonlyArray<V>;
+/**
+ * Type matching against both a writable array and a readonly array.
+ */
+export type AnyArray<V> = Array<V> | ReadonlyArray<V>;
 
 /**
  * This function is primarily here to help with stricter typing. When Typescript allows for partial inference of

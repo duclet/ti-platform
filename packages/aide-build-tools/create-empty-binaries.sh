@@ -9,3 +9,4 @@ mkdir -p $BASE_DIR/dist/bin
 touch $BASE_DIR/dist/bin/run-eslint.js
 touch $BASE_DIR/dist/bin/run-linter.js
 touch $BASE_DIR/dist/bin/run-prettier.js
+touch $BASE_DIR/dist/bin/run-typedoc.js

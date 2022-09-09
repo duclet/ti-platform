@@ -6,7 +6,8 @@
     "bin": {
         "run-eslint": "./dist/bin/run-eslint.js",
         "run-linter": "./dist/bin/run-linter.js",
-        "run-prettier": "./dist/bin/run-prettier.js"
+        "run-prettier": "./dist/bin/run-prettier.js",
+        "run-typedoc": "./dist/bin/run-typedoc.js"
     },
     "files": [
         "bash/",
@@ -21,40 +22,40 @@
     },
     "scripts": {
         "build": "rm -rf ./dist && pnpm run-linter -- -k && tsc -d",
-        "build-docs": "typedoc --out docs --hideBreadcrumbs ./src/index.ts && cp docs/modules.md README.md && rm -rf ./docs",
+        "build-docs": "node -r esbuild-register src/bin/run-typedoc.ts",
         "dev": "rm -rf ./dist && pnpm run-linter -- -k -w -c 'tsc --incremental'",
         "run-linter": "node -r esbuild-register src/bin/run-linter.ts $npm_package_config_linterArgs"
     },
     "dependencies": {
-        "@html-eslint/eslint-plugin": "^0.13.1",
-        "@html-eslint/parser": "^0.13.1",
-        "@tsconfig/recommended": "^1.0.1",
-        "@typescript-eslint/eslint-plugin": "^5.10.0",
-        "@typescript-eslint/parser": "^5.10.0",
-        "chokidar": "^3.5.3",
-        "cleye": "^1.0.1",
-        "eslint": "^8.7.0",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-import-resolver-typescript": "^2.5.0",
-        "eslint-plugin-import": "^2.25.4",
+        "@html-eslint/eslint-plugin": "^0.13.2",
+        "@html-eslint/parser": "^0.13.2",
+        "@tsconfig/recommended": "^1.0.0",
+        "@typescript-eslint/eslint-plugin": "^5.36.0",
+        "@typescript-eslint/parser": "^5.36.0",
+        "chokidar": "^3.5.0",
+        "cleye": "^1.2.0",
+        "eslint": "^8.23.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-import-resolver-typescript": "^3.5.0",
+        "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-json": "^3.1.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
-        "eslint-plugin-vue": "^8.3.0",
-        "postcss": "^8.4.5",
-        "prettier": "^2.5.1",
-        "rollup": "^2.64.0",
+        "eslint-plugin-vue": "^9.4.0",
+        "postcss": "^8.4.16",
+        "prettier": "^2.7.0",
+        "rollup": "^2.79.0",
         "ts-debounce": "^4.0.0",
-        "typescript": "^4.5.4",
-        "vite": "^2.7.12",
-        "vite-plugin-dts": "^0.9.9"
+        "typescript": "^4.8.0",
+        "vite": "^3.0.0",
+        "vite-plugin-dts": "^1.4.0"
     },
     "devDependencies": {
-        "@types/eslint": "^8.2.2",
-        "@types/node": "^17.0.10",
-        "@types/prettier": "^2.4.3",
-        "esbuild": "^0.14.11",
-        "esbuild-register": "^3.3.2",
-        "typedoc": "^0.22.11",
-        "typedoc-plugin-markdown": "^3.11.12"
+        "@types/eslint": "^8.4.0",
+        "@types/node": "^16.0.0",
+        "@types/prettier": "^2.7.0",
+        "esbuild": "^0.15.6",
+        "esbuild-register": "^3.3.0",
+        "typedoc": "^0.23.13",
+        "typedoc-plugin-markdown": "^3.13.0"
     }
 }

@@ -1,6 +1,6 @@
 import { Ref } from 'vue';
 
-type ValueTypes = string | number | Array<string> | Array<number>;
+export type ValueTypes = string | number | Array<string> | Array<number>;
 
 const DEFAULT_REQUIRED_INVALID_MESSAGE = 'Requires non-empty value';
 const DEFAULT_UNIQUE_INVALID_MESSAGE = 'Value already used';

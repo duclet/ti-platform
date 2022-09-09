@@ -1,19 +1,74 @@
 # @ti-platform/aide-vue
 
-## Table of contents
+This package contains utility functions that can be used with Vue to enhance the development of Vue components.
+
+## API Docs
+
+### Type Aliases
+
+- [ElementOrComponentWithEl](README.md#elementorcomponentwithel)
+- [HeightCalcResult](README.md#heightcalcresult)
+- [RecomputableRef](README.md#recomputableref)
+- [ValueTypes](README.md#valuetypes)
 
 ### Functions
 
-- [isRequiredField](modules.md#isrequiredfield)
-- [isRequiredFieldWhen](modules.md#isrequiredfieldwhen)
-- [isUniqueField](modules.md#isuniquefield)
-- [useHeightCalc](modules.md#useheightcalc)
+- [isRequiredField](README.md#isrequiredfield)
+- [isRequiredFieldWhen](README.md#isrequiredfieldwhen)
+- [isUniqueField](README.md#isuniquefield)
+- [useHeightCalc](README.md#useheightcalc)
+
+## Type Aliases
+
+### ElementOrComponentWithEl
+
+Ƭ **ElementOrComponentWithEl**: `HTMLElement` \| { `$el`: `HTMLElement`  }
+
+#### Defined in
+
+dom.ts:3
+
+___
+
+### HeightCalcResult
+
+Ƭ **HeightCalcResult**: [`RecomputableRef`](README.md#recomputableref)<`string`\>
+
+#### Defined in
+
+dom.ts:5
+
+___
+
+### RecomputableRef
+
+Ƭ **RecomputableRef**<`T`\>: `ComputedRef`<`T`\> & { `recompute`: () => `void`  }
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Defined in
+
+dom.ts:4
+
+___
+
+### ValueTypes
+
+Ƭ **ValueTypes**: `string` \| `number` \| `string`[] \| `number`[]
+
+#### Defined in
+
+validators.ts:3
 
 ## Functions
 
 ### isRequiredField
 
-▸ **isRequiredField**(`invalidMessage?`): (`value`: `ValueTypes`) => `string` \| ``true``
+▸ **isRequiredField**(`invalidMessage?`): (`value`: [`ValueTypes`](README.md#valuetypes)) => `string` \| ``true``
 
 Given a field, make sure it is not empty. If it is, return a proper error message. This validator is meant to be used
 with QForm.
@@ -34,7 +89,7 @@ with QForm.
 
 | Name | Type |
 | :------ | :------ |
-| `value` | `ValueTypes` |
+| `value` | [`ValueTypes`](README.md#valuetypes) |
 
 ##### Returns
 
@@ -48,7 +103,7 @@ ___
 
 ### isRequiredFieldWhen
 
-▸ **isRequiredFieldWhen**(`when`, `invalidMessage?`): (`value`: `ValueTypes`) => `string` \| ``true``
+▸ **isRequiredFieldWhen**(`when`, `invalidMessage?`): (`value`: [`ValueTypes`](README.md#valuetypes)) => `string` \| ``true``
 
 Returns a function that before checking to see if a required field is filled out, validate against some other
 condition.
@@ -70,7 +125,7 @@ condition.
 
 | Name | Type |
 | :------ | :------ |
-| `value` | `ValueTypes` |
+| `value` | [`ValueTypes`](README.md#valuetypes) |
 
 ##### Returns
 
@@ -119,7 +174,7 @@ ___
 
 ### useHeightCalc
 
-▸ **useHeightCalc**(`baseHeight`, `elements`): `HeightCalcResult`
+▸ **useHeightCalc**(`baseHeight`, `elements`): [`HeightCalcResult`](README.md#heightcalcresult)
 
 In cases where we have an element where any of the height CSS styles is using the "calc" function, we may want to
 subtract from a base height the current height of some elements, this function allows for that.
@@ -129,12 +184,12 @@ subtract from a base height the current height of some elements, this function a
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `baseHeight` | `string` | The base height to essentially subtract from. Ex: 90vh, 800px, 100% |
-| `elements` | `Ref`<`ElementOrComponentWithEl`\>[] | The list of elements or components with a singular root element whose height we will subtract from. |
+| `elements` | `Ref`<[`ElementOrComponentWithEl`](README.md#elementorcomponentwithel)\>[] | The list of elements or components with a singular root element whose height we will subtract from. |
 
 #### Returns
 
-`HeightCalcResult`
+[`HeightCalcResult`](README.md#heightcalcresult)
 
 #### Defined in
 
-dom.ts:17
+dom.ts:16

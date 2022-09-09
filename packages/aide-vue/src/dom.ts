@@ -1,8 +1,8 @@
 import { computed, ComputedRef, Ref, ref } from 'vue';
 
-type ElementOrComponentWithEl = HTMLElement | { $el: HTMLElement };
-type RecomputableRef<T> = ComputedRef<T> & { recompute: () => void };
-type HeightCalcResult = RecomputableRef<string>;
+export type ElementOrComponentWithEl = HTMLElement | { $el: HTMLElement };
+export type RecomputableRef<T> = ComputedRef<T> & { recompute: () => void };
+export type HeightCalcResult = RecomputableRef<string>;
 
 /**
  * In cases where we have an element where any of the height CSS styles is using the "calc" function, we may want to

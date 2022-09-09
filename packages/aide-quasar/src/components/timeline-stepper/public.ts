@@ -13,7 +13,7 @@ export type TimelineStepName = string;
  *  Task to run when the step starts.
  * @property body
  *  The content for the body of the timeline step. Note that for more complex bodies, you can leave this undefined and
- *  use the slot instead. The slot name will be following the pattern "{TimelineStep.name}--body". It will also be given
+ *  use the slot instead. The slot name will be following the pattern "[TimelineStep.name]--body". It will also be given
  *  the following props:
  *      - status: The current status of the step.
  * @property subtitle

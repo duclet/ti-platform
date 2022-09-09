@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Exporting more types and updating dependencies.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}

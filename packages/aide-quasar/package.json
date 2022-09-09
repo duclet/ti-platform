@@ -11,26 +11,29 @@
     ],
     "scripts": {
         "build": "rm -rf ./dist && vite build",
+        "build-docs": "run-typedoc",
         "dev": "rm -rf ./dist && vite build --watch"
     },
     "dependencies": {
-        "@s-libs/micro-dash": "^13.1.0",
+        "@s-libs/micro-dash": "^14.1.0",
         "@ti-platform/aide": "workspace:*",
         "@ti-platform/aide-vue": "workspace:*",
-        "@vueuse/core": "^7.6.2",
-        "quasar": "^2.4.11",
-        "vue": "^3.2.27",
-        "vue-router": "^4.0.12"
+        "@vueuse/core": "^9.1.0",
+        "quasar": "^2.7.0",
+        "vue": "^3.2.0",
+        "vue-router": "^4.0.0"
     },
     "devDependencies": {
-        "@quasar/vite-plugin": "^1.0.4",
+        "@quasar/vite-plugin": "^1.1.0",
         "@ti-platform/aide-build-tools": "workspace:*",
-        "@types/node": "^17.0.10",
-        "@vitejs/plugin-vue": "^2.0.1",
-        "eslint": "^8.7.0",
-        "prettier": "^2.5.1",
-        "typescript": "^4.5.4",
-        "vite": "^2.7.12",
-        "vue-tsc": "^0.30.5"
+        "@types/node": "^16.0.0",
+        "@vitejs/plugin-vue": "^3.0.0",
+        "eslint": "^8.23.0",
+        "prettier": "^2.7.0",
+        "typedoc": "^0.23.13",
+        "typedoc-plugin-markdown": "^3.13.0",
+        "typescript": "^4.8.0",
+        "vite": "^3.0.0",
+        "vue-tsc": "^0.40.5"
     }
 }
