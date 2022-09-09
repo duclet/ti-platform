@@ -2,6 +2,29 @@
   "name": "@ti-platform/aide-quasar",
   "entries": [
     {
+      "version": "1.0.2",
+      "tag": "@ti-platform/aide-quasar_v1.0.2",
+      "date": "Fri, 09 Sep 2022 19:08:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dependencies version updates."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `0.3.1`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `0.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `0.8.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.1",
       "tag": "@ti-platform/aide-quasar_v1.0.1",
       "date": "Tue, 03 May 2022 18:29:13 GMT",

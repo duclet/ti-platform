@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide-build-tools",
-    "version": "0.7.4",
+    "version": "0.8.0",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "bin": {

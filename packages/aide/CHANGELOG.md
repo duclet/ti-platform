@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide
 
-This log was last generated on Mon, 28 Feb 2022 20:13:03 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Sep 2022 19:08:12 GMT and should not be manually modified.
+
+## 0.3.1
+Fri, 09 Sep 2022 19:08:12 GMT
+
+### Patches
+
+- Updating documentation and exporting more types.
 
 ## 0.3.0
 Mon, 28 Feb 2022 20:13:03 GMT

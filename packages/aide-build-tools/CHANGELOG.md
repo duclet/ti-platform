@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Mon, 28 Feb 2022 20:13:03 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Sep 2022 19:08:12 GMT and should not be manually modified.
+
+## 0.8.0
+Fri, 09 Sep 2022 19:08:12 GMT
+
+### Minor changes
+
+- Adding new tool to generate API documentation and adding it to README file.
 
 ## 0.7.4
 Mon, 28 Feb 2022 20:13:03 GMT
