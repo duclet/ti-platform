@@ -1,0 +1,25 @@
+{
+  "name": "@ti-platform/aide-vueuse",
+  "entries": [
+    {
+      "version": "0.0.2",
+      "tag": "@ti-platform/aide-vueuse_v0.0.2",
+      "date": "Wed, 19 Oct 2022 18:53:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving useHeightCalc from @ti-platform/vue to here; Adding ability to poll for data"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `0.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `0.9.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

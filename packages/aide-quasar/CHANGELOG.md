@@ -1,6 +1,11 @@
 # Change Log - @ti-platform/aide-quasar
 
-This log was last generated on Fri, 09 Sep 2022 19:08:12 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Oct 2022 18:53:48 GMT and should not be manually modified.
+
+## 1.0.3
+Wed, 19 Oct 2022 18:53:48 GMT
+
+_Version update only_
 
 ## 1.0.2
 Fri, 09 Sep 2022 19:08:12 GMT

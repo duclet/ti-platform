@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide
 
-This log was last generated on Fri, 09 Sep 2022 19:08:12 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Oct 2022 18:53:48 GMT and should not be manually modified.
+
+## 0.4.0
+Wed, 19 Oct 2022 18:53:48 GMT
+
+### Minor changes
+
+- Adding ability to use as both a ComnmonJS and ESModule library; Adding function to get first defined value
 
 ## 0.3.1
 Fri, 09 Sep 2022 19:08:12 GMT

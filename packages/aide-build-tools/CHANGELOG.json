@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "0.9.0",
+      "tag": "@ti-platform/aide-build-tools_v0.9.0",
+      "date": "Wed, 19 Oct 2022 18:53:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "When linting, filters out non-existent files if they are given"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.8.0",
       "tag": "@ti-platform/aide-build-tools_v0.8.0",
       "date": "Fri, 09 Sep 2022 19:08:12 GMT",

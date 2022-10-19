@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-vue
 
-This log was last generated on Fri, 09 Sep 2022 19:08:12 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Oct 2022 18:53:48 GMT and should not be manually modified.
+
+## 1.0.0
+Wed, 19 Oct 2022 18:53:48 GMT
+
+### Breaking changes
+
+- Removing useHeightCalc as it is moved to @ti-platform/aide-vueuse
 
 ## 0.3.0
 Fri, 09 Sep 2022 19:08:12 GMT

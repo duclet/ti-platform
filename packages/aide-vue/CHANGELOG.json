@@ -2,6 +2,26 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "1.0.0",
+      "tag": "@ti-platform/aide-vue_v1.0.0",
+      "date": "Wed, 19 Oct 2022 18:53:48 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Removing useHeightCalc as it is moved to @ti-platform/aide-vueuse"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `0.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `0.9.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.0",
       "tag": "@ti-platform/aide-vue_v0.3.0",
       "date": "Fri, 09 Sep 2022 19:08:12 GMT",
