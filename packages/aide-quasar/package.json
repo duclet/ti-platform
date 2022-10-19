@@ -11,7 +11,7 @@
         "README.md"
     ],
     "scripts": {
-        "build:docs": "run-typedoc",
+        "build:docs": "run-typedoc 2>&1",
         "build:src": "vite build",
         "clean": "rm -rf ./dist",
         "prod": "pnpm clean && pnpm build:src && pnpm build:docs",
