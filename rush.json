@@ -475,6 +475,11 @@
       "shouldPublish":  true
     },
     {
+      "packageName": "@ti-platform/aide-vueuse",
+      "projectFolder": "packages/aide-vueuse",
+      "shouldPublish":  true
+    },
+    {
       "packageName": "@ti-platform/aide-quasar",
       "projectFolder": "packages/aide-quasar",
       "shouldPublish":  true

@@ -1,6 +1,6 @@
 import { Config } from 'prettier';
 
-import { RunEsLintPrettierParams } from './misc';
+import { keepOnlyExistentPaths, RunEsLintPrettierParams } from './misc';
 import { spawnCommand } from './spawn';
 
 export function generatePrettierConfigs(): Config {
@@ -23,12 +23,16 @@ export function runPrettier(params: RunEsLintPrettierParams) {
         params.dirs?.length && params.extensions?.length
             ? params.dirs.flatMap((dir) => params.extensions!.map((extension) => `"${dir}/**/*${extension}"`))
             : params.dirs?.length && !params.extensions
-            ? params.dirs
+            ? keepOnlyExistentPaths(params.dirs)
             : params.extensions?.length && !params.dirs
             ? params.extensions.map((extension) => `"./*${extension}"`)
             : [];
 
     return spawnCommand(
-        ['./node_modules/.bin/prettier --write', ...dirExtensionPatterns, ...(params.files ?? [])].join(' ')
+        [
+            './node_modules/.bin/prettier --write',
+            ...dirExtensionPatterns,
+            ...keepOnlyExistentPaths(params.files ?? []),
+        ].join(' ')
     );
 }

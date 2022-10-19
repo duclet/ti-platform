@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vueuse",
+      "comment": "Moving useHeightCalc from @ti-platform/vue to here; Adding ability to poll for data",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vueuse"
+}

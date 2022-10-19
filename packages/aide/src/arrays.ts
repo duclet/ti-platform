@@ -14,7 +14,7 @@ export type AnyArray<V> = Array<V> | ReadonlyArray<V>;
  *      { name: 'two', displayName: 'TWO' },
  *  ] as const); // <- The "as const" allows for better type restrictions as below
  *
- *  tyoe Name = typeof list[number]['name'];    // == "one" | "two" vs string if not using this
+ *  type Name = typeof list[number]['name'];    // == "one" | "two" vs string if not using this
  */
 export function ensureType<V>() {
     return <T extends V>(list: ReadonlyArray<T>) => {
@@ -30,6 +30,25 @@ export function ensureType<V>() {
  */
 export function first<V>(list: AnyArray<V>) {
     return list.find(() => true);
+}
+
+/**
+ * Given a list of function, execute each until there is a function that does not return undefined. You should have at
+ * least one of the function return something to prevent problems.
+ *
+ * @param list
+ *  The list of functions to execute.
+ * @return
+ *  The return value of the first function to not return an undefined value.
+ */
+export function firstDefined<V>(list: AnyArray<() => V | undefined>) {
+    let result: V = null as V;
+    list.some((item) => {
+        result = item() as V;
+        return result !== undefined;
+    });
+
+    return result;
 }
 
 /**

@@ -14,6 +14,7 @@ Docs for more information.
 
 - [ensureType](README.md#ensuretype)
 - [first](README.md#first)
+- [firstDefined](README.md#firstdefined)
 - [keepOnlyDefined](README.md#keeponlydefined)
 - [toMap](README.md#tomap)
 
@@ -72,7 +73,7 @@ type MyItem = { name: string, displayName: string };
      { name: 'two', displayName: 'TWO' },
  ] as const); // <- The "as const" allows for better type restrictions as below
 
- tyoe Name = typeof list[number]['name'];    // == "one" | "two" vs string if not using this
+ type Name = typeof list[number]['name'];    // == "one" | "two" vs string if not using this
 ```
 
 #### Type parameters
@@ -137,6 +138,37 @@ arrays.ts:31
 
 ___
 
+### firstDefined
+
+▸ **firstDefined**<`V`\>(`list`): `V`
+
+Given a list of function, execute each until there is a function that does not return undefined. You should have at
+least one of the function return something to prevent problems.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `V` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `list` | [`AnyArray`](README.md#anyarray)<() => `undefined` \| `V`\> | The list of functions to execute. |
+
+#### Returns
+
+`V`
+
+The return value of the first function to not return an undefined value.
+
+#### Defined in
+
+arrays.ts:44
+
+___
+
 ### keepOnlyDefined
 
 ▸ **keepOnlyDefined**<`V`\>(`list`): `V`[]
@@ -161,7 +193,7 @@ Given a list of items, remove null and undefined from the list.
 
 #### Defined in
 
-arrays.ts:41
+arrays.ts:60
 
 ___
 
@@ -193,4 +225,4 @@ Given a list, convert it to a map where the key will be provided using the given
 
 #### Defined in
 
-arrays.ts:55
+arrays.ts:74

@@ -1,7 +1,8 @@
 {
     "name": "@ti-platform/aide",
     "version": "0.3.1",
-    "module": "./dist/index.js",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
     "files": [
         "dist/",
@@ -9,23 +10,24 @@
         "CHANGELOG.md",
         "README.md"
     ],
-    "config": {
-        "linterArgs": "-d ./src -e .ts -g"
-    },
     "scripts": {
-        "build": "rm -rf ./dist && pnpm run-linter -- -k && tsc -d",
-        "build-docs": "run-typedoc",
-        "dev": "rm -rf ./dist && pnpm run-linter -- -k -w -c 'tsc --incremental'",
-        "run-linter": "run-linter $npm_package_config_linterArgs"
+        "build:docs": "run-typedoc",
+        "build:src": "tsup",
+        "clean": "rm -rf ./dist",
+        "lint": "run-linter -d ./src -e .ts -g -k -c 'pnpm tsc --noEmit'",
+        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify && pnpm build:docs",
+        "dev": "pnpm clean && pnpm lint -w -c 'pnpm build:src'",
+        "build": "pnpm prod"
     },
     "devDependencies": {
         "@ti-platform/aide-build-tools": "workspace:*",
         "@types/node": "^16.0.0",
-        "eslint": "^8.23.0",
+        "eslint": "^8.25.0",
         "prettier": "^2.7.0",
+        "tsup": "^6.2.3",
         "typedoc": "^0.23.13",
         "typedoc-plugin-markdown": "^3.13.0",
         "typescript": "^4.8.0",
-        "vite": "^3.0.0"
+        "vite": "^3.1.0"
     }
 }

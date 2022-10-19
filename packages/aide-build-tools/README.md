@@ -23,6 +23,7 @@ to the API Docs below for the types, variables, and functions that are exposed.
 - [generateViteConfigs](README.md#generateviteconfigs)
 - [getLibraryFilename](README.md#getlibraryfilename)
 - [isLibraryExternalDep](README.md#islibraryexternaldep)
+- [keepOnlyExistentPaths](README.md#keeponlyexistentpaths)
 - [lintAndReformat](README.md#lintandreformat)
 - [runEslint](README.md#runeslint)
 - [runPrettier](README.md#runprettier)
@@ -67,7 +68,7 @@ ___
 
 #### Defined in
 
-misc.ts:1
+misc.ts:5
 
 ## Variables
 
@@ -77,7 +78,7 @@ misc.ts:1
 
 #### Defined in
 
-misc.ts:7
+misc.ts:11
 
 ## Functions
 
@@ -221,6 +222,26 @@ ___
 #### Defined in
 
 vite.ts:13
+
+___
+
+### keepOnlyExistentPaths
+
+▸ **keepOnlyExistentPaths**(`paths`): `string`[]
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `paths` | `string`[] |
+
+#### Returns
+
+`string`[]
+
+#### Defined in
+
+misc.ts:20
 
 ___
 

@@ -1,7 +1,5 @@
 import chokidar from 'chokidar';
 import { cli } from 'cleye';
-import { existsSync } from 'fs';
-import { join } from 'path';
 import { cwd, exit } from 'process';
 
 import { runEslint } from './eslint';
@@ -64,16 +62,6 @@ function getArgv(commandName: string) {
     });
 }
 
-function getExtraFiles(includeExtraFiles: boolean) {
-    const extraFiles: Array<string> = [];
-    if (includeExtraFiles) {
-        const workingDir = cwd();
-        GENERAL_FILES.filter((file) => existsSync(join(workingDir, file))).forEach((file) => extraFiles.push(file));
-    }
-
-    return extraFiles;
-}
-
 function getWatchPatterns(dirs: Array<string>, extensions: Array<string>, files: Array<string>) {
     const dirExtensionPatterns =
         dirs.length && extensions.length
@@ -90,7 +78,7 @@ function getWatchPatterns(dirs: Array<string>, extensions: Array<string>, files:
 export function runLinter(name: string, linter: typeof runEslint | typeof runPrettier) {
     const argv = getArgv(name);
 
-    const files = [...argv.flags.file, ...getExtraFiles(argv.flags.includeGeneralFiles)];
+    const files = [...argv.flags.file, ...(argv.flags.includeGeneralFiles ? GENERAL_FILES : [])];
 
     function lintAllFiles() {
         return linter({

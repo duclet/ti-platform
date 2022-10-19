@@ -1,8 +1,9 @@
 {
     "extends": "./tsconfig.base.json",
-    "include": ["./src/**/*.ts"],
+    "include": ["./*.ts", "./src/**/*.ts"],
     "compilerOptions": {
         "module": "CommonJS",
-        "outDir": "dist"
+        "outDir": "dist",
+        "target": "ES2018"
     }
 }

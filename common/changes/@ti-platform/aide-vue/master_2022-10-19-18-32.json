@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Removing useHeightCalc as it is moved to @ti-platform/aide-vueuse",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}
