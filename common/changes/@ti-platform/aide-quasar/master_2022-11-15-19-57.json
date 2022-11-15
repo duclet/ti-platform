@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-quasar",
+      "comment": "Adding the MultiProgressIndicator component; Standardize the TimelineStepper and WizardStepper component public API and usage; Adding much needed documentation",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ti-platform/aide-quasar"
+}
