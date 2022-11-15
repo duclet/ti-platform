@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-quasar
 
-This log was last generated on Wed, 19 Oct 2022 18:53:48 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Nov 2022 19:59:59 GMT and should not be manually modified.
+
+## 2.0.0
+Tue, 15 Nov 2022 19:59:59 GMT
+
+### Breaking changes
+
+- Adding the MultiProgressIndicator component; Standardize the TimelineStepper and WizardStepper component public API and usage; Adding much needed documentation
 
 ## 1.0.3
 Wed, 19 Oct 2022 18:53:48 GMT

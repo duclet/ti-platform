@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Wed, 19 Oct 2022 18:53:48 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Nov 2022 19:59:59 GMT and should not be manually modified.
+
+## 0.10.0
+Tue, 15 Nov 2022 19:59:59 GMT
+
+### Minor changes
+
+- Change run-typedoc binary to allow parameterized input and support for generating Vue's components
 
 ## 0.9.0
 Wed, 19 Oct 2022 18:53:48 GMT

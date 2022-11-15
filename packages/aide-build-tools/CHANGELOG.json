@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "0.10.0",
+      "tag": "@ti-platform/aide-build-tools_v0.10.0",
+      "date": "Tue, 15 Nov 2022 19:59:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Change run-typedoc binary to allow parameterized input and support for generating Vue's components"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.9.0",
       "tag": "@ti-platform/aide-build-tools_v0.9.0",
       "date": "Wed, 19 Oct 2022 18:53:48 GMT",

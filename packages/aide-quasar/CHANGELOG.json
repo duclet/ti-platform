@@ -2,6 +2,29 @@
   "name": "@ti-platform/aide-quasar",
   "entries": [
     {
+      "version": "2.0.0",
+      "tag": "@ti-platform/aide-quasar_v2.0.0",
+      "date": "Tue, 15 Nov 2022 19:59:59 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Adding the MultiProgressIndicator component; Standardize the TimelineStepper and WizardStepper component public API and usage; Adding much needed documentation"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `0.4.1`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `1.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `0.10.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.3",
       "tag": "@ti-platform/aide-quasar_v1.0.3",
       "date": "Wed, 19 Oct 2022 18:53:48 GMT",
