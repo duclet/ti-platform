@@ -1,24 +1,43 @@
-import { ensureType, toMap } from '@ti-platform/aide';
+import { TimelineStepColorSupplier, TimelineStepIconSupplier, TimelineStepStatus, TimelineStepStatuses } from './api';
 
-export type TimelineStepStatus = {
-    name: string;
-    isCompletedStep: boolean;
-};
-
-const AllTimelineStepStatuses = ensureType<TimelineStepStatus>()([
-    { name: 'FAILED', isCompletedStep: true },
-    { name: 'IN_PROGRESS', isCompletedStep: false },
-    { name: 'NOT_STARTED', isCompletedStep: false },
-    { name: 'SKIPPED', isCompletedStep: true },
-    { name: 'SUCCEED', isCompletedStep: true },
-] as const);
-
-export const TimelineStepStatuses = toMap(
-    AllTimelineStepStatuses,
-    (item) => item.name,
-    (item) => item
-);
-
-export class TimelineStepStateInternal {
+/**
+ * Tracking the state of a step.
+ */
+export class TimelineStepState {
+    /**
+     * The current status for the step.
+     */
     public status: TimelineStepStatus = TimelineStepStatuses.NOT_STARTED;
 }
+
+export const getTimelineStepColorByStatus: TimelineStepColorSupplier = (status: TimelineStepStatus) => {
+    switch (status.name) {
+        case TimelineStepStatuses.SUCCEED.name:
+            return 'positive';
+        case TimelineStepStatuses.FAILED.name:
+            return 'negative';
+        case TimelineStepStatuses.IN_PROGRESS.name:
+            return 'warning';
+        case TimelineStepStatuses.SKIPPED.name:
+            return 'grey-12';
+        case 'not-started':
+        default:
+            return 'primary';
+    }
+};
+
+export const getTimelineStepIconByStatus: TimelineStepIconSupplier = (status: TimelineStepStatus) => {
+    switch (status.name) {
+        case TimelineStepStatuses.SUCCEED.name:
+            return 'done_all';
+        case TimelineStepStatuses.FAILED.name:
+            return 'new_releases';
+        case TimelineStepStatuses.IN_PROGRESS.name:
+            return 'hourglass_top';
+        case TimelineStepStatuses.SKIPPED.name:
+            return 'hourglass_disabled';
+        case TimelineStepStatuses.NOT_STARTED.name:
+        default:
+            return undefined;
+    }
+};

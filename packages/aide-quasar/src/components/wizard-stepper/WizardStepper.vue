@@ -1,17 +1,26 @@
 <template>
-    <q-stepper :model-value="currentStep.name">
-        <q-step
+    <QStepper :model-value="currentStep.name">
+        <QStep
             v-for="step in steps"
             :key="step.name"
-            :done="stateMap[step.name].isDone"
+            :done="asState(step.name).isDone"
             :name="step.name"
             :title="step.title"
         >
-            <component :is="step.component" v-model="stateMap[step.name]" />
-        </q-step>
+            <component :is="step.component" :model-value="asState(step.name).asWizardStepState()" />
+        </QStep>
         <template #navigation>
-            <q-separator class="q-mb-lg" />
-            <q-stepper-navigation>
+            <QSeparator class="q-mb-lg" />
+            <QStepperNavigation>
+                <!--
+                @slot Slot for rendering the content before the navigational buttons.
+                    @binding {Function} back-button-handler Executing function will navigate back to the previous step.
+                    @binding {Function} continue-button-handler Executing function will navigate to the next step.
+                    @binding {boolean} is-back-button-enabled True if the back button should be enabled.
+                    @binding {boolean} is-back-button-supported True if the back button is supported.
+                    @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                    @binding {boolean} is-processing True if the step is currently processing or doing work.
+                -->
                 <slot
                     name="pre-navigation"
                     :back-button-handler="onBackClick"
@@ -21,6 +30,15 @@
                     :is-continue-button-enabled="isContinueButtonEnabled"
                     :is-processing="isProcessing"
                 />
+                <!--
+                @slot Slot for rendering the content of the navigational buttons.
+                    @binding {Function} back-button-handler Executing function will navigate back to the previous step.
+                    @binding {Function} continue-button-handler Executing function will navigate to the next step.
+                    @binding {boolean} is-back-button-enabled True if the back button should be enabled.
+                    @binding {boolean} is-back-button-supported True if the back button is supported.
+                    @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                    @binding {boolean} is-processing True if the step is currently processing or doing work.
+                -->
                 <slot
                     name="navigation"
                     :back-button-handler="onBackClick"
@@ -30,7 +48,7 @@
                     :is-continue-button-enabled="isContinueButtonEnabled"
                     :is-processing="isProcessing"
                 >
-                    <q-btn
+                    <QBtn
                         :class="continueButtonClass"
                         :color="continueButtonColor"
                         :disable="!isContinueButtonEnabled"
@@ -39,7 +57,7 @@
                         @click="onContinueClick"
                     />
                     <transition name="q-transition--fade">
-                        <q-btn
+                        <QBtn
                             v-if="isBackButtonSupported && !isFirstStep"
                             :class="backButtonClass"
                             :color="backButtonColor"
@@ -50,6 +68,15 @@
                         />
                     </transition>
                 </slot>
+                <!--
+                @slot Slot for rendering the content after the navigational buttons.
+                    @binding {Function} back-button-handler Executing function will navigate back to the previous step.
+                    @binding {Function} continue-button-handler Executing function will navigate to the next step.
+                    @binding {boolean} is-back-button-enabled True if the back button should be enabled.
+                    @binding {boolean} is-back-button-supported True if the back button is supported.
+                    @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                    @binding {boolean} is-processing True if the step is currently processing or doing work.
+                -->
                 <slot
                     name="post-navigation"
                     :back-button-handler="onBackClick"
@@ -59,33 +86,73 @@
                     :is-continue-button-enabled="isContinueButtonEnabled"
                     :is-processing="isProcessing"
                 />
-            </q-stepper-navigation>
+            </QStepperNavigation>
         </template>
-    </q-stepper>
+    </QStepper>
 </template>
 
 <script setup lang="ts">
+    /*@component
+    Essentially a wrapper component ovr the QStepper component with enhancements to make management of the buttons and
+    certain user interactions easier.
+    */
     import { last } from '@s-libs/micro-dash';
     import { first, toMap } from '@ti-platform/aide';
-    import { useQuasar } from 'quasar';
-    import { QBtn, QSeparator, QStep, QStepper, QStepperNavigation } from 'quasar';
-    import { computed, onMounted, ref } from 'vue';
+    import { QBtn, QSeparator, QStep, QStepper, QStepperNavigation, useQuasar } from 'quasar';
+    import { computed, onMounted, onUnmounted, ref } from 'vue';
     import { onBeforeRouteLeave } from 'vue-router';
 
-    import { WizardStepStateInternal } from './internal';
-    import { WizardStep, WizardStepName, WizardStepStatePublic } from './public';
+    import { WizardStep, WizardStepName } from './api';
+    import { WizardStepStateInstance } from './internal';
 
     const props = withDefaults(
         defineProps<{
+            /**
+             * The list of steps in the wizard.
+             */
             steps: Array<WizardStep>;
 
+            /**
+             * The CSS class name for the back button.
+             */
             backButtonClass?: string;
+
+            /**
+             * The color to use for the back button.
+             */
             backButtonColor?: string;
+
+            /**
+             * The CSS class name for the dialog that shows when the user tries to leave before completing all the
+             * steps.
+             */
             beforeLeaveDialogClass?: string;
+
+            /**
+             * The CSS class name for the button in the dialog that shows when the user tries to leave before completing
+             * all the steps.
+             */
             beforeLeaveDialogButtonClass?: string;
+
+            /**
+             * The color for the button in the dialog that shows when the user tries to leave before completing all the
+             * steps.
+             */
             beforeLeaveDialogButtonColor?: string;
+
+            /**
+             * The CSS class name for the continue button.
+             */
             continueButtonClass?: string;
+
+            /**
+             * The color for the continue button.
+             */
             continueButtonColor?: string;
+
+            /**
+             * True to enable showing of the back button, false otherwise.
+             */
             isBackButtonSupported?: boolean;
         }>(),
         {
@@ -107,14 +174,18 @@
     const latestViewedStepIndex = ref(0);
 
     const stateMap = ref(
-        toMap<WizardStepName, WizardStep, WizardStepStatePublic>(
+        toMap<WizardStepName, WizardStep, WizardStepStateInstance>(
             props.steps,
             (item) => item.name,
-            (item, key, index) => new WizardStepStateInternal(index, () => latestViewedStepIndex.value)
+            (item, key, index) => new WizardStepStateInstance(index, () => latestViewedStepIndex.value)
         )
     );
 
-    const currentStepState = computed(() => stateMap.value[currentStep.value.name] as WizardStepStateInternal);
+    function asState(stepName: WizardStepName) {
+        return stateMap.value[stepName];
+    }
+
+    const currentStepState = computed(() => asState(currentStep.value.name));
     const isContinueButtonEnabled = computed(() => currentStepState.value.isContinueButtonEnabled);
     const isFirstStep = computed(() => currentStep.value.name === first(props.steps)!.name);
     const isLastStep = computed(() => currentStep.value.name === last(props.steps).name);
@@ -216,6 +287,10 @@
 
     onMounted(() => {
         window.addEventListener('beforeunload', onBeforeUnload);
+    });
+
+    onUnmounted(() => {
+        window.removeEventListener('beforeunload', onBeforeUnload);
     });
 </script>
 
