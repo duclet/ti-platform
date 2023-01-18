@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-env
 
-This log was last generated on Wed, 18 Jan 2023 16:30:54 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jan 2023 16:49:02 GMT and should not be manually modified.
+
+## 0.1.2
+Wed, 18 Jan 2023 16:49:02 GMT
+
+### Patches
+
+- Read contents of file for parsing
 
 ## 0.1.1
 Wed, 18 Jan 2023 16:30:54 GMT
