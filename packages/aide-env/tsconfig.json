@@ -1,0 +1,8 @@
+{
+    "extends": "@ti-platform/aide-build-tools/tsconfig.base.json",
+    "include": ["./*.ts", "./src/**/*.ts"],
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "ES2018"
+    }
+}

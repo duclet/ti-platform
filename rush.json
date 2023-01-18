@@ -465,6 +465,11 @@
       "shouldPublish":  true
     },
     {
+      "packageName": "@ti-platform/aide-env",
+      "projectFolder": "packages/aide-env",
+      "shouldPublish":  true
+    },
+    {
       "packageName": "@ti-platform/aide-build-tools",
       "projectFolder": "packages/aide-build-tools",
       "shouldPublish":  true,

@@ -90,6 +90,31 @@ importers:
       typedoc: 0.23.16_typescript@4.8.4
       typedoc-plugin-markdown: 3.13.6_typedoc@0.23.16
 
+  ../../packages/aide-env:
+    specifiers:
+      '@ti-platform/aide-build-tools': workspace:*
+      '@types/node': ^16.0.0
+      dotenv: ^16.0.0
+      dotenv-expand: ^10.0.0
+      eslint: ^8.25.0
+      prettier: ^2.7.0
+      tsup: ^6.2.3
+      typedoc: ^0.23.13
+      typedoc-plugin-markdown: ^3.13.0
+      typescript: ^4.8.0
+    dependencies:
+      dotenv: 16.0.3
+      dotenv-expand: 10.0.0
+    devDependencies:
+      '@ti-platform/aide-build-tools': link:../aide-build-tools
+      '@types/node': 16.11.65
+      eslint: 8.25.0
+      prettier: 2.7.1
+      tsup: 6.2.3_typescript@4.8.4
+      typedoc: 0.23.16_typescript@4.8.4
+      typedoc-plugin-markdown: 3.13.6_typedoc@0.23.16
+      typescript: 4.8.4
+
   ../../packages/aide-quasar:
     specifiers:
       '@quasar/vite-plugin': ^1.1.0
@@ -1069,6 +1094,16 @@ packages:
   /doctypes/1.1.0:
     resolution: {integrity: sha512-LLBi6pEqS6Do3EKQ3J0NqHWV5hhb78Pi8vvESYwyOy2c31ZEZVdtitdzsQsKb7878PEERhzUk0ftqGhG6Mz+pQ==}
     dev: true
+
+  /dotenv-expand/10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /enhanced-resolve/5.10.0:
     resolution: {integrity: sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==}
