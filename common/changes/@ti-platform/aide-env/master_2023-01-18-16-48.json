@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-env",
+      "comment": "Read contents of file for parsing",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-env"
+}

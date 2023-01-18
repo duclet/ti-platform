@@ -1,6 +1,6 @@
 import { parse } from 'dotenv';
 import { expand } from 'dotenv-expand';
-import { accessSync, constants } from 'fs';
+import { accessSync, constants, readFileSync } from 'fs';
 import { resolve } from 'path';
 import { cwd, env } from 'process';
 
@@ -20,6 +20,6 @@ export function loadEnv(filesOrder = ['.env', '.env.{NODE_ENV}', '.env.local']) 
                     return false;
                 }
             })
-            .reduce((parsed, path) => Object.assign(parsed, parse(path)), {}),
+            .reduce((parsed, path) => Object.assign(parsed, parse(readFileSync(path))), {}),
     });
 }
