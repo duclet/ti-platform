@@ -1,0 +1,17 @@
+{
+  "name": "@ti-platform/aide-env",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@ti-platform/aide-env_v0.1.0",
+      "date": "Wed, 18 Jan 2023 16:16:55 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Initial commit to add function for loading the environment variables."
+          }
+        ]
+      }
+    }
+  ]
+}
