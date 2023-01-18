@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-env",
+      "comment": "Defaulting to development and properly checking for file exists.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-env"
+}
