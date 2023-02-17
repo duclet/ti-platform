@@ -1,6 +1,9 @@
 import { WizardStepState } from './api';
 
-export class WizardStepStateInstance implements WizardStepState {
+/**
+ * Backing implementation of a {@link WizardStepState}.
+ */
+export class WizardStepStateImpl implements WizardStepState {
     public isContinueButtonEnabled = false;
     public isDone = false;
     public isProcessing = false;

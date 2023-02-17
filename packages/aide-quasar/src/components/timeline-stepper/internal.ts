@@ -10,6 +10,12 @@ export class TimelineStepState {
     public status: TimelineStepStatus = TimelineStepStatuses.NOT_STARTED;
 }
 
+/**
+ * Default {@link TimelineStepColorSupplier} to use when not given by user of component.
+ *
+ * @param status
+ *  The current status of the step.
+ */
 export const getTimelineStepColorByStatus: TimelineStepColorSupplier = (status: TimelineStepStatus) => {
     switch (status.name) {
         case TimelineStepStatuses.SUCCEED.name:
@@ -26,6 +32,12 @@ export const getTimelineStepColorByStatus: TimelineStepColorSupplier = (status: 
     }
 };
 
+/**
+ * Default {@link TimelineStepIconSupplier} to use when not given by user of component.
+ *
+ * @param status
+ *  The current status of the step.
+ */
 export const getTimelineStepIconByStatus: TimelineStepIconSupplier = (status: TimelineStepStatus) => {
     switch (status.name) {
         case TimelineStepStatuses.SUCCEED.name:

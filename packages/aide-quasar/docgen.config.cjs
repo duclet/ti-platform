@@ -20,26 +20,18 @@ module.exports = {
         ]
     },
     templates: {
-        component: (renderedUsage, doc) => {
-            const { displayName, props, description } = doc;
+        props: (props) => {
             return `
-# ${displayName}
-${description}
-
 ## Props
 | Prop name     | Description | Type      | Default     |
 | ------------- | ----------- | --------- | ----------- |
 ${props.map(prop => '|' + [
     prop.name,
     prop.description.replaceAll('\n', ' '),
-    '`' + prop.type.name + (!!prop.type.elements?.length ? `<${prop.type.elements[0].name}>` : '') + '`',
+    '`' + prop.type.name + (!!prop.type.elements?.length ? `&lt;${prop.type.elements[0].name}&gt;` : '') + '`',
     prop.defaultValue?.value ?? '',
 ].join(' | ') + '|').join('\n')}
-
-${renderedUsage.methods}
-${renderedUsage.events}
-${renderedUsage.slots}
-`;
+            `;
         }
     }
 };

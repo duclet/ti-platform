@@ -6,46 +6,51 @@ This package exposes new components based off Vue and Quasar.
 
 ### MultiProgressIndicator
 
-This component display a progress indicator for each of the given task while it is executing and when it is
-completed, either show the error message if there are any or show the success message if it was successful.
+> This component displays a progress indicator for each specified task during its execution, and will either display
+> an error message if any errors occur, or a success message if the task is completed successfully.
 
 #### Props
 
-| Prop name | Description                                                                   | Type                           | Default |
-| --------- | ----------------------------------------------------------------------------- | ------------------------------ | ------- |
-| tasks     | The list of ProgressIndicatorTask we are showing the progress indicators for. | `Array<ProgressIndicatorTask>` |         |
+| Prop name | Description                                                                   | Type                                 | Default |
+| --------- | ----------------------------------------------------------------------------- | ------------------------------------ | ------- |
+| tasks     | The list of ProgressIndicatorTask we are showing the progress indicators for. | `Array&lt;ProgressIndicatorTask&gt;` |         |
 
 #### Events
 
-| Event name | Properties                                                                                                                                                                                       | Description                             |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------- |
-| complete   | **success** `Array<string>` - An array with the key of the tasks that completed without errors.<br/>**failure** `Array<string>` - An array with the key of the tasks that completed with errors. | Triggered when all tasks are completed. |
+| Event name | Properties                                                                                                                                                                                                   | Description                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------- |
+| complete   | **success** `Array&lt;string&gt;` - An array with the key of the tasks that completed without errors.<br/>**failure** `Array&lt;string&gt;` - An array with the key of the tasks that completed with errors. | Triggered when all tasks are completed. |
 
 #### Slots
 
 | Name                                  | Description                                                                          | Bindings                                               |
 | ------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| `${asTask(scope).key}--description`   | Slot to display the description for a specific task.                                 | <br/>**task** `Task` - The task this is rendering for. |
+| description                           | Default slot for displaying the description for all the tasks.                       | **task** `Task` - The task this is rendering for.      |
 | `${asTask(scope).key}--in-progress`   | Slot to display the progress indicator for a specific task.                          | <br/>**task** `Task` - The task this is rendering for. |
 | in-progress                           | Default slot for displaying the progress indicator for all the tasks.                | **task** `Task` - The task this is rendering for.      |
 | `${asTask(scope).key}--error-message` | Slot to display the error message, assuming there was an error, for a specific task. | <br/>**task** `Task` - The task this is rendering for. |
 | error-message                         | Slot to display the error message, assuming there was an error, for all the tasks.   | **task** `Task` - The task this is rendering for.      |
 | `${asTask(scope).key}--success`       | Slot to display when the task completes successfully for a specific task.            | <br/>**task** `Task` - The task this is rendering for. |
 | success                               | Slot to display when the task completes successfully for all the tasks.              | **task** `Task` - The task this is rendering for.      |
+
+---
 ### TimelineStepper
 
-This component allows you to execute certain tasks and display the current progress and results in a timeline like
-UI.
+> This component enables users to perform certain tasks and view the current progress and results in a timeline-style
+> user interface.
 
 #### Props
 
-| Prop name                     | Description                                                                                                                                                                | Type                        | Default |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------- |
-| initialSteps                  | The list of steps the initially and automatically execute.                                                                                                                 | `Array<TimelineStepName>`   |         |
-| steps                         | The list of all the TimelineStep.                                                                                                                                          | `Array<TimelineStep>`       |         |
-| isHiddenWhenFullyCompleted    | If true, this component will automatically hide itself after a configured delay. Defaults to false.                                                                        | `boolean`                   |         |
-| fullyCompletedHiddenTimeoutMs | If isHiddenWhenFullyCompleted is true, then this configures the number of milliseconds to wait after all the tasks are completed to hide this component. Defaults to 1000. | `number`                    |         |
-| colorSupplier                 | If given, function to use to get the color for a step. If not given, this component has its own internal mapping that it will use based on the current status of the step. | `TimelineStepColorSupplier` |         |
-| iconSupplier                  | If given, function to use to get the icon for a step. If not given, this component has its own internal mapping that it will use based on the current status of the step.  | `TimelineStepIconSupplier`  |         |
+| Prop name                     | Description                                                                                                                                                                | Type                            | Default                            |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------------------------------- |
+| initialSteps                  | The list of steps the initially and automatically execute.                                                                                                                 | `Array&lt;TimelineStepName&gt;` |                                    |
+| steps                         | The list of all the TimelineStep.                                                                                                                                          | `Array&lt;TimelineStep&gt;`     |                                    |
+| fullyCompletedHiddenTimeoutMs | If isHiddenWhenFullyCompleted is true, then this configures the number of milliseconds to wait after all the tasks are completed to hide this component. Defaults to 1000. | `number`                        | 1000                               |
+| isHiddenWhenFullyCompleted    | If true, this component will automatically hide itself after a configured delay. Defaults to false.                                                                        | `boolean`                       | false                              |
+| isInitiallyHidden             | If true, each steps default is to be initially hidden rather than visible. This value is used as the fallback value when the same property is not set in the step itself.  | `boolean`                       | false                              |
+| colorSupplier                 | If given, function to use to get the color for a step. If not given, this component has its own internal mapping that it will use based on the current status of the step. | `TimelineStepColorSupplier`     | () => getTimelineStepColorByStatus |
+| iconSupplier                  | If given, function to use to get the icon for a step. If not given, this component has its own internal mapping that it will use based on the current status of the step.  | `TimelineStepIconSupplier`      | () => getTimelineStepIconByStatus  |
 
 #### Events
 
@@ -60,32 +65,46 @@ UI.
 | `${step.name}--body` | Slot for displaying the body for an individual step.                  | <br/>**step** `TimelineStep` - The timeline step this is for.<br/>**status** `TimelineStepStatus` - The current status of the step. |
 | body                 | Slot for displaying the body for all steps.                           | **step** `TimelineStep` - The timeline step this is for.<br/>**status** `TimelineStepStatus` - The current status of the step.      |
 | fully-completed      | Slot for displaying content after all steps has been fully completed. |                                                                                                                                     |
+
+---
 ### WizardStepper
 
-Essentially a wrapper component ovr the QStepper component with enhancements to make management of the buttons and
-certain user interactions easier.
+> This is a wrapper component over the QStepper component with enhancements to make managing buttons and certain user
+> interactions easier.
 
 #### Props
 
-| Prop name                    | Description                                                                                                              | Type                | Default              |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------- | -------------------- |
-| steps                        | The list of steps in the wizard.                                                                                         | `Array<WizardStep>` |                      |
-| backButtonClass              | The CSS class name for the back button.                                                                                  | `string`            | ''                   |
-| backButtonColor              | The color to use for the back button.                                                                                    | `string`            | 'primary'            |
-| beforeLeaveDialogClass       | The CSS class name for the dialog that shows when the user tries to leave before completing all the steps.               | `string`            | 'bg-warning text-h6' |
-| beforeLeaveDialogButtonClass | The CSS class name for the button in the dialog that shows when the user tries to leave before completing all the steps. | `string`            | ''                   |
-| beforeLeaveDialogButtonColor | The color for the button in the dialog that shows when the user tries to leave before completing all the steps.          | `string`            | 'primary'            |
-| continueButtonClass          | The CSS class name for the continue button.                                                                              | `string`            | ''                   |
-| continueButtonColor          | The color for the continue button.                                                                                       | `string`            | 'primary'            |
-| isBackButtonSupported        | True to enable showing of the back button, false otherwise.                                                              | `boolean`           | false                |
+| Prop name                    | Description                                                                                                              | Type                      | Default              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------- | -------------------- |
+| steps                        | The list of steps in the wizard.                                                                                         | `Array&lt;WizardStep&gt;` |                      |
+| backButtonClass              | The CSS class name for the back button.                                                                                  | `string`                  | ''                   |
+| backButtonColor              | The color to use for the back button.                                                                                    | `string`                  | 'primary'            |
+| backButtonText               | The text for the back button.                                                                                            | `string`                  | 'Back'               |
+| beforeLeaveDialogClass       | The CSS class name for the dialog that shows when the user tries to leave before completing all the steps.               | `string`                  | 'bg-warning text-h6' |
+| beforeLeaveDialogButtonClass | The CSS class name for the button in the dialog that shows when the user tries to leave before completing all the steps. | `string`                  | ''                   |
+| beforeLeaveDialogButtonColor | The color for the button in the dialog that shows when the user tries to leave before completing all the steps.          | `string`                  | 'primary'            |
+| continueButtonClass          | The CSS class name for the continue button.                                                                              | `string`                  | ''                   |
+| continueButtonColor          | The color for the continue button.                                                                                       | `string`                  | 'primary'            |
+| continueButtonText           | The text for the continue button.                                                                                        | `string`                  | 'Continue'           |
+| doneButtonClass              | The CSS class name for the done button.                                                                                  | `string`                  | ''                   |
+| doneButtonColor              | The color for the done button.                                                                                           | `string`                  | 'positive'           |
+| doneButtonIcon               | The icon for the done button.                                                                                            | `string`                  | 'done_all'           |
+| doneButtonText               | The text for the done button.                                                                                            | `string`                  | 'Done'               |
+| isBackButtonSupported        | True to enable showing of the back button, false otherwise.                                                              | `boolean`                 | false                |
+| isBackButtonVisibleWhenDone  | Assuming that the back buton is supported, should it be visible when all the steps are completed?                        | `boolean`                 | false                |
 
 #### Slots
 
-| Name            | Description                                                     | Bindings                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| --------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| pre-navigation  | Slot for rendering the content before the navigational buttons. | **back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work. |
-| navigation      | Slot for rendering the content of the navigational buttons.     | **back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work. |
-| post-navigation | Slot for rendering the content after the navigational buttons.  | **back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work. |
+| Name                                   | Description                                                                         | Bindings                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| -------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `${currentStep.name}--pre-navigation`  | Slot for rendering the content before the navigational buttons for a specific step. | <br/>**back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-done** `boolean` - True if we are on the last step and it is completed.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work. |
+| pre-navigation                         | Slot for rendering the content before the navigational buttons.                     | **back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-done** `boolean` - True if we are on the last step and it is completed.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work.      |
+| `${currentStep.name}--navigation`      | Slot for rendering the content of the navigational buttons for a specific step.     | <br/>**back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-done** `boolean` - True if we are on the last step and it is completed.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work. |
+| navigation                             | Slot for rendering the content of the navigational buttons.                         | **back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-done** `boolean` - True if we are on the last step and it is completed.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work.      |
+| `${currentStep.name}--post-navigation` | Slot for rendering the content after the navigational buttons for a specific step.  | <br/>**back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-done** `boolean` - True if we are on the last step and it is completed.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work. |
+| post-navigation                        | Slot for rendering the content after the navigational buttons.                      | **back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-done** `boolean` - True if we are on the last step and it is completed.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work.      |
+
+---
 
 ## API Docs
 
@@ -113,6 +132,7 @@ certain user interactions easier.
 
 - [createTimelineStepTaskResult](README.md#createtimelinesteptaskresult)
 - [createWizardStep](README.md#createwizardstep)
+- [isSameTimelineStepStatus](README.md#issametimelinestepstatus)
 
 ## Type Aliases
 
@@ -122,35 +142,18 @@ certain user interactions easier.
 
 Information for a task to show in the MultiProgressIndicator component.
 
-**`Property`**
-
-Unique identifier for the task.
-
-**`Property`**
-
-A description for what progress we are waiting for.
-
-**`Property`**
-
-True to show a progress bar, indicating that it is in progress or false other.
-
-**`Property`**
-
-When no longer in progress, error message to show. If value is null, it assumes that task was completed
- successfully.
-
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `description` | `string` |
-| `errorMessage?` | `string` |
-| `isInProgress` | `boolean` |
-| `key` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `description` | `string` | A description for what progress we are waiting for. |
+| `errorMessage?` | `string` | When no longer in progress, error message to show. If value is null, it assumes that task was completed successfully. |
+| `isInProgress` | `boolean` | True to show a progress bar, indicating that it is in progress or false other. |
+| `key` | `string` | Unique identifier for the task. |
 
 #### Defined in
 
-components/multi-progress-indicator/api.ts:14
+components/multi-progress-indicator/api.ts:4
 
 ___
 
@@ -158,37 +161,21 @@ ___
 
 Ƭ **TimelineStep**: `Object`
 
-**`Property`**
-
-Unique name for the step.
-
-**`Property`**
-
-Task to run when the step starts.
-
-**`Property`**
-
-The content for the body of the timeline step. Note that for more complex bodies, you can leave this undefined and
- use the slot instead. The slot name will be following the pattern "[TimelineStep.name]--body". It will also be given
- the following props:
-     - status: The current status of the step.
-
-**`Property`**
-
-The subtitle for the step.
+Representing a step in the timeline.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `body?` | `string` |
-| `name` | [`TimelineStepName`](README.md#timelinestepname) |
-| `subtitle` | `string` |
-| `task` | (`step`: [`TimelineStep`](README.md#timelinestep)) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `body?` | `string` | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined` and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also be given the following props:  - status: The current status of the step. |
+| `isInitiallyHidden?` | `boolean` | Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it initially or to false to keep it visible. |
+| `name` | [`TimelineStepName`](README.md#timelinestepname) | Unique name for the step. |
+| `subtitle` | `string` | The subtitle for the step. |
+| `task` | (`step`: [`TimelineStep`](README.md#timelinestep)) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)\> | Task to run when the step starts. |
 
 #### Defined in
 
-components/timeline-stepper/api.ts:21
+components/timeline-stepper/api.ts:12
 
 ___
 
@@ -216,7 +203,7 @@ The color for the step.
 
 #### Defined in
 
-components/timeline-stepper/api.ts:62
+components/timeline-stepper/api.ts:89
 
 ___
 
@@ -244,7 +231,7 @@ The icon for the step or undefined if it should not use any icon.
 
 #### Defined in
 
-components/timeline-stepper/api.ts:72
+components/timeline-stepper/api.ts:99
 
 ___
 
@@ -264,24 +251,18 @@ ___
 
 Ƭ **TimelineStepStatus**: `Object`
 
-**`Property`**
-
-The name of the status.
-
-**`Property`**
-
-True if the step is considered to be a completed step, false otherwise.
+Represents the status of a step.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `isCompletedStep` | `boolean` |
-| `name` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `isCompletedStep` | `boolean` | True if the step is considered to be a completed step, false otherwise. |
+| `name` | `string` | The name of the status. |
 
 #### Defined in
 
-components/timeline-stepper/api.ts:49
+components/timeline-stepper/api.ts:69
 
 ___
 
@@ -289,29 +270,19 @@ ___
 
 Ƭ **TimelineStepTaskResult**: `Object`
 
-**`Property`**
-
-True to mark the step as having failed.
-
-**`Property`**
-
-List of timelineSteps to execute next.
-
-**`Property`**
-
-List of timelineSteps to skip.
+Represents the result of executing a step and what is expected to happen next.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `failed` | `boolean` |
-| `nextSteps` | [`TimelineStepName`](README.md#timelinestepname)[] |
-| `skipSteps` | [`TimelineStepName`](README.md#timelinestepname)[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `failed` | `boolean` | True to mark the step as having failed. |
+| `nextSteps` | [`TimelineStepName`](README.md#timelinestepname)[] | List of timelineSteps to execute next. |
+| `skipSteps` | [`TimelineStepName`](README.md#timelinestepname)[] | List of timelineSteps to skip. |
 
 #### Defined in
 
-components/timeline-stepper/api.ts:37
+components/timeline-stepper/api.ts:49
 
 ___
 
@@ -319,40 +290,21 @@ ___
 
 Ƭ **WizardStep**: `Object`
 
-**`Property`**
-
-The component that will be used to render the step. It will be given as is modelValue a [WizardStepState](interfaces/WizardStepState.md).
-
-**`Property`**
-
-The unique name for the step.
-
-**`Property`**
-
-The title for the step.
-
-**`Property`**
-
-If true, then if the user tries to navigate while the current step is this, a confirmation dialog will be shown to
- ask if the user really want that or not. If the step is done however, it will not be asked.
-
-**`Property`**
-
-If given, this message will be shown to the user in the dialog when the user tries to navigate away.
+Represents a step in the wizard.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `beforeLeaveConfirmationMessage?` | `string` |
-| `component` | `Component` |
-| `isBeforeLeaveConfirmationEnabled` | `boolean` |
-| `name` | [`WizardStepName`](README.md#wizardstepname) |
-| `title` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `beforeLeaveConfirmationMessage?` | `string` | If given, this message will be shown to the user in the dialog when the user tries to navigate away. |
+| `component` | `Component` | The component that will be used to render the step. It will be given as is modelValue a [WizardStepState](interfaces/WizardStepState.md). |
+| `isBeforeLeaveConfirmationEnabled` | `boolean` | If true, then if the user tries to navigate while the current step is this, a confirmation dialog will be shown to ask if the user really want that or not. If the step is done however, it will not be asked. |
+| `name` | [`WizardStepName`](README.md#wizardstepname) | The unique name for the step. |
+| `title` | `string` | The title for the step. |
 
 #### Defined in
 
-components/wizard-stepper/api.ts:21
+components/wizard-stepper/api.ts:12
 
 ___
 
@@ -376,7 +328,7 @@ Map of [TimelineStepStatus](README.md#timelinestepstatus)'s name to its definiti
 
 #### Defined in
 
-components/timeline-stepper/api.ts:77
+components/timeline-stepper/api.ts:104
 
 ## Functions
 
@@ -398,13 +350,15 @@ Create the result for the execution of a task.
 
 #### Defined in
 
-components/timeline-stepper/api.ts:100
+components/timeline-stepper/api.ts:119
 
 ___
 
 ### createWizardStep
 
 ▸ **createWizardStep**(`name`, `title`, `component`, `opts?`): [`WizardStep`](README.md#wizardstep)
+
+Create a step for the wizard.
 
 #### Parameters
 
@@ -421,4 +375,27 @@ ___
 
 #### Defined in
 
-components/wizard-stepper/api.ts:74
+components/wizard-stepper/api.ts:86
+
+___
+
+### isSameTimelineStepStatus
+
+▸ **isSameTimelineStepStatus**(`status1`, `status2`): `boolean`
+
+Determine if the two [TimelineStepStatus](README.md#timelinestepstatus) is the same.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `status1` | [`TimelineStepStatus`](README.md#timelinestepstatus) | The first status to check. |
+| `status2` | [`TimelineStepStatus`](README.md#timelinestepstatus) | The second status to check. |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+components/timeline-stepper/api.ts:139

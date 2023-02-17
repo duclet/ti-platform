@@ -1,2 +1,2 @@
 export * from './api';
-export { default as WizardStepperComponent } from './WizardStepper.vue';
+export { default as WizardStepper, default as WizardStepperComponent } from './WizardStepper.vue';

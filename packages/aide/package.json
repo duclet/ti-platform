@@ -1,8 +1,9 @@
 {
     "name": "@ti-platform/aide",
     "version": "0.4.1",
-    "main": "./dist/index.js",
-    "module": "./dist/index.mjs",
+    "type": "module",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [
         "dist/",
@@ -13,9 +14,10 @@
     "scripts": {
         "build:docs": "run-typedoc",
         "build:src": "tsup",
+        "build:renameDist": "sed -i 's/\\(require(.\\+\\).js/\\1.cjs/g' dist/*.cjs",
         "clean": "rm -rf ./dist",
         "lint": "run-linter -d ./src -e .ts -g -k -c 'pnpm tsc --noEmit'",
-        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify 2>&1 && pnpm build:docs",
+        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify 2>&1 && pnpm build:renameDist && pnpm build:docs",
         "dev": "pnpm clean && pnpm lint -w -c 'pnpm build:src'",
         "build": "pnpm prod"
     },

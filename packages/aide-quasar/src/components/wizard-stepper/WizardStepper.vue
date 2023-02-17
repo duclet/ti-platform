@@ -13,79 +13,160 @@
             <QSeparator class="q-mb-lg" />
             <QStepperNavigation>
                 <!--
-                @slot Slot for rendering the content before the navigational buttons.
+                @slot Slot for rendering the content before the navigational buttons for a specific step.
                     @binding {Function} back-button-handler Executing function will navigate back to the previous step.
                     @binding {Function} continue-button-handler Executing function will navigate to the next step.
                     @binding {boolean} is-back-button-enabled True if the back button should be enabled.
                     @binding {boolean} is-back-button-supported True if the back button is supported.
                     @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                    @binding {boolean} is-done True if we are on the last step and it is completed.
                     @binding {boolean} is-processing True if the step is currently processing or doing work.
                 -->
                 <slot
-                    name="pre-navigation"
+                    :name="`${currentStep.name}--pre-navigation`"
                     :back-button-handler="onBackClick"
                     :continue-button-handler="onContinueClick"
                     :is-back-button-enabled="isBackButtonEnabled"
                     :is-back-button-supported="isBackButtonSupported"
                     :is-continue-button-enabled="isContinueButtonEnabled"
-                    :is-processing="isProcessing"
-                />
-                <!--
-                @slot Slot for rendering the content of the navigational buttons.
-                    @binding {Function} back-button-handler Executing function will navigate back to the previous step.
-                    @binding {Function} continue-button-handler Executing function will navigate to the next step.
-                    @binding {boolean} is-back-button-enabled True if the back button should be enabled.
-                    @binding {boolean} is-back-button-supported True if the back button is supported.
-                    @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
-                    @binding {boolean} is-processing True if the step is currently processing or doing work.
-                -->
-                <slot
-                    name="navigation"
-                    :back-button-handler="onBackClick"
-                    :continue-button-handler="onContinueClick"
-                    :is-back-button-enabled="isBackButtonEnabled"
-                    :is-back-button-supported="isBackButtonSupported"
-                    :is-continue-button-enabled="isContinueButtonEnabled"
+                    :is-done="isDone"
                     :is-processing="isProcessing"
                 >
-                    <QBtn
-                        :class="continueButtonClass"
-                        :color="continueButtonColor"
-                        :disable="!isContinueButtonEnabled"
-                        :loading="isProcessing"
-                        label="Continue"
-                        @click="onContinueClick"
+                    <!--
+                    @slot Slot for rendering the content before the navigational buttons.
+                        @binding {Function} back-button-handler Executing function will navigate back to the previous step.
+                        @binding {Function} continue-button-handler Executing function will navigate to the next step.
+                        @binding {boolean} is-back-button-enabled True if the back button should be enabled.
+                        @binding {boolean} is-back-button-supported True if the back button is supported.
+                        @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                        @binding {boolean} is-done True if we are on the last step and it is completed.
+                        @binding {boolean} is-processing True if the step is currently processing or doing work.
+                    -->
+                    <slot
+                        name="pre-navigation"
+                        :back-button-handler="onBackClick"
+                        :continue-button-handler="onContinueClick"
+                        :is-back-button-enabled="isBackButtonEnabled"
+                        :is-back-button-supported="isBackButtonSupported"
+                        :is-continue-button-enabled="isContinueButtonEnabled"
+                        :is-done="isDone"
+                        :is-processing="isProcessing"
                     />
-                    <transition name="q-transition--fade">
-                        <QBtn
-                            v-if="isBackButtonSupported && !isFirstStep"
-                            :class="backButtonClass"
-                            :color="backButtonColor"
-                            :disable="!isBackButtonEnabled || isProcessing"
-                            label="Back"
-                            flat
-                            @click="onBackClick"
-                        />
-                    </transition>
                 </slot>
                 <!--
-                @slot Slot for rendering the content after the navigational buttons.
+                @slot Slot for rendering the content of the navigational buttons for a specific step.
                     @binding {Function} back-button-handler Executing function will navigate back to the previous step.
                     @binding {Function} continue-button-handler Executing function will navigate to the next step.
                     @binding {boolean} is-back-button-enabled True if the back button should be enabled.
                     @binding {boolean} is-back-button-supported True if the back button is supported.
                     @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                    @binding {boolean} is-done True if we are on the last step and it is completed.
                     @binding {boolean} is-processing True if the step is currently processing or doing work.
                 -->
                 <slot
-                    name="post-navigation"
+                    :name="`${currentStep.name}--navigation`"
                     :back-button-handler="onBackClick"
                     :continue-button-handler="onContinueClick"
                     :is-back-button-enabled="isBackButtonEnabled"
                     :is-back-button-supported="isBackButtonSupported"
                     :is-continue-button-enabled="isContinueButtonEnabled"
+                    :is-done="isDone"
                     :is-processing="isProcessing"
-                />
+                >
+                    <!--
+                    @slot Slot for rendering the content of the navigational buttons.
+                        @binding {Function} back-button-handler Executing function will navigate back to the previous step.
+                        @binding {Function} continue-button-handler Executing function will navigate to the next step.
+                        @binding {boolean} is-back-button-enabled True if the back button should be enabled.
+                        @binding {boolean} is-back-button-supported True if the back button is supported.
+                        @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                        @binding {boolean} is-done True if we are on the last step and it is completed.
+                        @binding {boolean} is-processing True if the step is currently processing or doing work.
+                    -->
+                    <slot
+                        name="navigation"
+                        :back-button-handler="onBackClick"
+                        :continue-button-handler="onContinueClick"
+                        :is-back-button-enabled="isBackButtonEnabled"
+                        :is-back-button-supported="isBackButtonSupported"
+                        :is-continue-button-enabled="isContinueButtonEnabled"
+                        :is-done="isDone"
+                        :is-processing="isProcessing"
+                    >
+                        <transition-group name="q-transition--fade">
+                            <QBtn
+                                v-if="!isDone"
+                                :class="continueButtonClass"
+                                :color="continueButtonColor"
+                                :disable="!isContinueButtonEnabled"
+                                :label="continueButtonText"
+                                :loading="isProcessing"
+                                @click="onContinueClick"
+                            />
+                            <QBtn
+                                v-if="isDone"
+                                :class="doneButtonClass"
+                                :color="doneButtonColor"
+                                :icon="doneButtonIcon"
+                                :label="doneButtonText"
+                            />
+                            <QBtn
+                                v-if="
+                                    isBackButtonSupported &&
+                                    !isFirstStep &&
+                                    (!isDone || (isDone && isBackButtonVisibleWhenDone))
+                                "
+                                :class="backButtonClass"
+                                :color="backButtonColor"
+                                :disable="!isBackButtonEnabled || isProcessing"
+                                :label="backButtonText"
+                                flat
+                                @click="onBackClick"
+                            />
+                        </transition-group>
+                    </slot>
+                </slot>
+                <!--
+                @slot Slot for rendering the content after the navigational buttons for a specific step.
+                    @binding {Function} back-button-handler Executing function will navigate back to the previous step.
+                    @binding {Function} continue-button-handler Executing function will navigate to the next step.
+                    @binding {boolean} is-back-button-enabled True if the back button should be enabled.
+                    @binding {boolean} is-back-button-supported True if the back button is supported.
+                    @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                    @binding {boolean} is-done True if we are on the last step and it is completed.
+                    @binding {boolean} is-processing True if the step is currently processing or doing work.
+                -->
+                <slot
+                    :name="`${currentStep.name}--post-navigation`"
+                    :back-button-handler="onBackClick"
+                    :continue-button-handler="onContinueClick"
+                    :is-back-button-enabled="isBackButtonEnabled"
+                    :is-back-button-supported="isBackButtonSupported"
+                    :is-continue-button-enabled="isContinueButtonEnabled"
+                    :is-done="isDone"
+                    :is-processing="isProcessing"
+                >
+                    <!--
+                    @slot Slot for rendering the content after the navigational buttons.
+                        @binding {Function} back-button-handler Executing function will navigate back to the previous step.
+                        @binding {Function} continue-button-handler Executing function will navigate to the next step.
+                        @binding {boolean} is-back-button-enabled True if the back button should be enabled.
+                        @binding {boolean} is-back-button-supported True if the back button is supported.
+                        @binding {boolean} is-continue-button-enabled True if continue button should be enabled.
+                        @binding {boolean} is-done True if we are on the last step and it is completed.
+                        @binding {boolean} is-processing True if the step is currently processing or doing work.
+                    -->
+                    <slot
+                        name="post-navigation"
+                        :back-button-handler="onBackClick"
+                        :continue-button-handler="onContinueClick"
+                        :is-back-button-enabled="isBackButtonEnabled"
+                        :is-back-button-supported="isBackButtonSupported"
+                        :is-continue-button-enabled="isContinueButtonEnabled"
+                        :is-done="isDone"
+                        :is-processing="isProcessing"
+                    />
+                </slot>
             </QStepperNavigation>
         </template>
     </QStepper>
@@ -93,17 +174,18 @@
 
 <script setup lang="ts">
     /*@component
-    Essentially a wrapper component ovr the QStepper component with enhancements to make management of the buttons and
-    certain user interactions easier.
+    This is a wrapper component over the QStepper component with enhancements to make managing buttons and certain user
+    interactions easier.
     */
     import { last } from '@s-libs/micro-dash';
     import { first, toMap } from '@ti-platform/aide';
+    import { isDef } from '@vueuse/core';
     import { QBtn, QSeparator, QStep, QStepper, QStepperNavigation, useQuasar } from 'quasar';
-    import { computed, onMounted, onUnmounted, ref } from 'vue';
-    import { onBeforeRouteLeave } from 'vue-router';
+    import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
+    import { matchedRouteKey, onBeforeRouteLeave } from 'vue-router';
 
     import { WizardStep, WizardStepName } from './api';
-    import { WizardStepStateInstance } from './internal';
+    import { WizardStepStateImpl } from './internal';
 
     const props = withDefaults(
         defineProps<{
@@ -121,6 +203,11 @@
              * The color to use for the back button.
              */
             backButtonColor?: string;
+
+            /**
+             * The text for the back button.
+             */
+            backButtonText?: string;
 
             /**
              * The CSS class name for the dialog that shows when the user tries to leave before completing all the
@@ -151,19 +238,56 @@
             continueButtonColor?: string;
 
             /**
+             * The text for the continue button.
+             */
+            continueButtonText?: string;
+
+            /**
+             * The CSS class name for the done button.
+             */
+            doneButtonClass?: string;
+
+            /**
+             * The color for the done button.
+             */
+            doneButtonColor?: string;
+
+            /**
+             * The icon for the done button.
+             */
+            doneButtonIcon?: string;
+
+            /**
+             * The text for the done button.
+             */
+            doneButtonText?: string;
+
+            /**
              * True to enable showing of the back button, false otherwise.
              */
             isBackButtonSupported?: boolean;
+
+            /**
+             * Assuming that the back buton is supported, should it be visible when all the steps are completed?
+             */
+            isBackButtonVisibleWhenDone?: boolean;
         }>(),
         {
             backButtonClass: '',
             backButtonColor: 'primary',
+            backButtonText: 'Back',
             beforeLeaveDialogClass: 'bg-warning text-h6',
             beforeLeaveDialogButtonClass: '',
             beforeLeaveDialogButtonColor: 'primary',
             continueButtonClass: '',
             continueButtonColor: 'primary',
+            continueButtonText: 'Continue',
+            doneButtonClass: '',
+            doneButtonColor: 'positive',
+            doneButtonIcon: 'done_all',
+            doneButtonText: 'Done',
             isBackButtonSupported: false,
+            isBackButtonVisibleWhenDone: false,
         }
     );
 
@@ -174,10 +298,10 @@
     const latestViewedStepIndex = ref(0);
 
     const stateMap = ref(
-        toMap<WizardStepName, WizardStep, WizardStepStateInstance>(
+        toMap<WizardStepName, WizardStep, WizardStepStateImpl>(
             props.steps,
             (item) => item.name,
-            (item, key, index) => new WizardStepStateInstance(index, () => latestViewedStepIndex.value)
+            (item, key, index) => new WizardStepStateImpl(index, () => latestViewedStepIndex.value)
         )
     );
 
@@ -190,6 +314,7 @@
     const isFirstStep = computed(() => currentStep.value.name === first(props.steps)!.name);
     const isLastStep = computed(() => currentStep.value.name === last(props.steps).name);
     const isProcessing = computed(() => currentStepState.value.isProcessing);
+    const isDone = computed(() => isLastStep.value && currentStepState.value.isDone);
     const isShowingLeaveDialog = computed(
         () => currentStep.value.isBeforeLeaveConfirmationEnabled && !currentStepState.value.isDone
     );
@@ -254,36 +379,40 @@
         }
     }
 
-    onBeforeRouteLeave(
-        () =>
-            new Promise((resolve) => {
-                function navigateAway() {
-                    window.removeEventListener('beforeunload', onBeforeUnload);
-                    resolve(true);
-                }
+    // Check to use if whatever is calling this component is done within the context of vue-router and if not, don't
+    // bother to add this hook
+    if (isDef(inject(matchedRouteKey, undefined))) {
+        onBeforeRouteLeave(
+            () =>
+                new Promise((resolve) => {
+                    function navigateAway() {
+                        window.removeEventListener('beforeunload', onBeforeUnload);
+                        resolve(true);
+                    }
 
-                if (!isShowingLeaveDialog.value) {
-                    navigateAway();
-                    return;
-                }
+                    if (!isShowingLeaveDialog.value) {
+                        navigateAway();
+                        return;
+                    }
 
-                quasar
-                    .dialog({
-                        class: props.beforeLeaveDialogClass,
-                        message:
-                            currentStep.value.beforeLeaveConfirmationMessage ??
-                            'Processing is not completed, navigate away?',
-                        cancel: true,
-                        ok: {
-                            label: 'Yes',
-                            class: props.beforeLeaveDialogButtonClass,
-                            color: props.beforeLeaveDialogButtonColor,
-                        },
-                    })
-                    .onOk(navigateAway)
-                    .onCancel(() => resolve(false));
-            })
-    );
+                    quasar
+                        .dialog({
+                            class: props.beforeLeaveDialogClass,
+                            message:
+                                currentStep.value.beforeLeaveConfirmationMessage ??
+                                'Processing is not completed, navigate away?',
+                            cancel: true,
+                            ok: {
+                                label: 'Yes',
+                                class: props.beforeLeaveDialogButtonClass,
+                                color: props.beforeLeaveDialogButtonColor,
+                            },
+                        })
+                        .onOk(navigateAway)
+                        .onCancel(() => resolve(false));
+                })
+        );
+    }
 
     onMounted(() => {
         window.addEventListener('beforeunload', onBeforeUnload);

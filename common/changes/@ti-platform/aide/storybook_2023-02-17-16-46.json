@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Making the default type for package to be ESM and including the file extension in the import so that it meets ESM specifications.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}

@@ -1,63 +1,80 @@
 <template>
-    <QTable :columns="columns" :rows="rows" :rows-per-page-options="[0]" hide-pagination>
-        <template #body-cell-status="scope">
-            <QTd v-if="asTask(scope).isInProgress">
-                <!--
-                @slot Slot to display the progress indicator for a specific task.
-                    @binding {Task} task The task this is rendering for.
-                -->
-                <slot :name="`${asTask(scope).key}--in-progress`" :task="asTask(scope)">
+    <QTable :columns="columns" :rows="rows" :rows-per-page-options="[0]" row-key="key" hide-pagination>
+        <template #body="scope">
+            <QTr :props="scope" :data-row-key="scope.key">
+                <QTd>
                     <!--
-                    @slot Default slot for displaying the progress indicator for all the tasks.
+                    @slot Slot to display the description for a specific task.
                         @binding {Task} task The task this is rendering for.
                     -->
-                    <slot name="in-progress" :task="asTask(scope)">
-                        <QLinearProgress color="positive" indeterminate />
-                        <QLinearProgress color="negative" query />
+                    <slot :name="`${asTask(scope).key}--description`" :task="asTask(scope)">
+                        <!--
+                        @slot Default slot for displaying the description for all the tasks.
+                            @binding {Task} task The task this is rendering for.
+                        -->
+                        <slot name="description" :task="asTask(scope)">
+                            {{ asTask(scope).description }}
+                        </slot>
                     </slot>
-                </slot>
-            </QTd>
-            <QTd v-else-if="!!asTask(scope).errorMessage">
-                <!--
-                @slot Slot to display the error message, assuming there was an error, for a specific task.
-                    @binding {Task} task The task this is rendering for.
-                -->
-                <slot :name="`${asTask(scope).key}--error-message`" :task="asTask(scope)">
+                </QTd>
+                <QTd v-if="asTask(scope).isInProgress">
                     <!--
-                    @slot Slot to display the error message, assuming there was an error, for all the tasks.
+                    @slot Slot to display the progress indicator for a specific task.
                         @binding {Task} task The task this is rendering for.
                     -->
-                    <slot name="error-message" :task="asTask(scope)">
-                        <QBanner color="negative">{{ asTask(scope).errorMessage }}</QBanner>
+                    <slot :name="`${asTask(scope).key}--in-progress`" :task="asTask(scope)">
+                        <!--
+                        @slot Default slot for displaying the progress indicator for all the tasks.
+                            @binding {Task} task The task this is rendering for.
+                        -->
+                        <slot name="in-progress" :task="asTask(scope)">
+                            <QLinearProgress color="positive" indeterminate />
+                            <QLinearProgress color="negative" query />
+                        </slot>
                     </slot>
-                </slot>
-            </QTd>
-            <QTd v-else>
-                <!--
-                @slot Slot to display when the task completes successfully for a specific task.
-                    @binding {Task} task The task this is rendering for.
-                -->
-                <slot :name="`${asTask(scope).key}--success`" :task="asTask(scope)">
+                </QTd>
+                <QTd v-else-if="!!asTask(scope).errorMessage">
                     <!--
-                    @slot Slot to display when the task completes successfully for all the tasks.
+                    @slot Slot to display the error message, assuming there was an error, for a specific task.
                         @binding {Task} task The task this is rendering for.
                     -->
-                    <slot name="success" :task="asTask(scope)">
-                        <QBtn color="positive" icon="done_all" label="Completed" />
+                    <slot :name="`${asTask(scope).key}--error-message`" :task="asTask(scope)">
+                        <!--
+                        @slot Slot to display the error message, assuming there was an error, for all the tasks.
+                            @binding {Task} task The task this is rendering for.
+                        -->
+                        <slot name="error-message" :task="asTask(scope)">
+                            <QBtn :label="asTask(scope).errorMessage" color="negative" icon="new_releases" no-caps />
+                        </slot>
                     </slot>
-                </slot>
-            </QTd>
+                </QTd>
+                <QTd v-else>
+                    <!--
+                    @slot Slot to display when the task completes successfully for a specific task.
+                        @binding {Task} task The task this is rendering for.
+                    -->
+                    <slot :name="`${asTask(scope).key}--success`" :task="asTask(scope)">
+                        <!--
+                        @slot Slot to display when the task completes successfully for all the tasks.
+                            @binding {Task} task The task this is rendering for.
+                        -->
+                        <slot name="success" :task="asTask(scope)">
+                            <QBtn color="positive" icon="done_all" label="Completed" />
+                        </slot>
+                    </slot>
+                </QTd>
+            </QTr>
         </template>
     </QTable>
 </template>
 
 <script setup lang="ts">
     /*@component
-    This component display a progress indicator for each of the given task while it is executing and when it is
-    completed, either show the error message if there are any or show the success message if it was successful.
+    This component displays a progress indicator for each specified task during its execution, and will either display
+    an error message if any errors occur, or a success message if the task is completed successfully.
     */
     import { whenever } from '@vueuse/core';
-    import { QBanner, QBtn, QLinearProgress, QTable, QTableProps, QTd } from 'quasar';
+    import { QBtn, QLinearProgress, QTable, QTableProps, QTd, QTr } from 'quasar';
     import { computed } from 'vue';
 
     import { ProgressIndicatorTask } from './api';

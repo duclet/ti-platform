@@ -6,31 +6,40 @@ import { Component } from 'vue';
 export type WizardStepName = string;
 
 /**
- * @property component
- *  The component that will be used to render the step. It will be given as is modelValue a {@link WizardStepState}.
- * @property name
- *  The unique name for the step.
- * @property title
- *  The title for the step.
- * @property isBeforeLeaveConfirmationEnabled
- *  If true, then if the user tries to navigate while the current step is this, a confirmation dialog will be shown to
- *  ask if the user really want that or not. If the step is done however, it will not be asked.
- * @property [beforeLeaveConfirmationMessage]
- *  If given, this message will be shown to the user in the dialog when the user tries to navigate away.
+ * Represents a step in the wizard.
+ *
  */
 export type WizardStep = {
+    /**
+     * The component that will be used to render the step. It will be given as is modelValue a {@link WizardStepState}.
+     */
     component: Component;
+
+    /**
+     * If true, then if the user tries to navigate while the current step is this, a confirmation dialog will be shown
+     * to ask if the user really want that or not. If the step is done however, it will not be asked.
+     */
     isBeforeLeaveConfirmationEnabled: boolean;
+
+    /**
+     * The unique name for the step.
+     */
     name: WizardStepName;
+
+    /**
+     * The title for the step.
+     */
     title: string;
 
+    /**
+     * If given, this message will be shown to the user in the dialog when the user tries to navigate away.
+     */
     beforeLeaveConfirmationMessage?: string;
 };
 
 /**
  * The current state of a step. Note that for the non-readonly properties, you can also write to it to alter the current
- * rendering of the component. At the moment, this component will only write to those values when the user clicks on the
- * continue or back button.
+ * rendering of the component.
  */
 export interface WizardStepState {
     /**
@@ -44,14 +53,14 @@ export interface WizardStepState {
     readonly latestViewedStepIndex: number;
 
     /**
-     * True is the step has been marked as completed.
-     */
-    readonly isDone: boolean;
-
-    /**
      * True if the continue button should be enabled.
      */
     isContinueButtonEnabled: boolean;
+
+    /**
+     * True is the step has been marked as completed.
+     */
+    isDone: boolean;
 
     /**
      * True if the continue button should be showing the loading icon.
@@ -71,6 +80,9 @@ export interface WizardStepState {
     continueButtonHandler: () => Promise<boolean>;
 }
 
+/**
+ * Create a step for the wizard.
+ */
 export function createWizardStep(
     name: WizardStep['name'],
     title: WizardStep['title'],

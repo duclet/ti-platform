@@ -1,2 +1,2 @@
-export * from './arrays';
-export * from './types';
+export * from './arrays.js';
+export * from './types.js';

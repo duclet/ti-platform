@@ -1,2 +1,2 @@
 export * from './api';
-export { default as TimelineStepperComponent } from './TimelineStepper.vue';
+export { default as TimelineStepper, default as TimelineStepperComponent } from './TimelineStepper.vue';

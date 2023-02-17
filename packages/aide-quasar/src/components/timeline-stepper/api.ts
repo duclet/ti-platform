@@ -6,48 +6,75 @@ import { ensureType, toMap } from '@ti-platform/aide';
 export type TimelineStepName = string;
 
 /**
- * @property name
- *  Unique name for the step.
- * @property task
- *  Task to run when the step starts.
- * @property body
- *  The content for the body of the timeline step. Note that for more complex bodies, you can leave this undefined and
- *  use the slot instead. The slot name will be following the pattern "[TimelineStep.name]--body". It will also be given
- *  the following props:
- *      - status: The current status of the step.
- * @property subtitle
- *  The subtitle for the step.
+ * Representing a step in the timeline.
+ *
  */
 export type TimelineStep = {
+    /**
+     * Unique name for the step.
+     */
     name: TimelineStepName;
+
+    /**
+     * The subtitle for the step.
+     */
     subtitle: string;
+
+    /**
+     * Task to run when the step starts.
+     *
+     * @param step
+     *  The current step definition.
+     */
     task: (step: TimelineStep) => Promise<TimelineStepTaskResult>;
 
+    /**
+     * The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined`
+     * and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also
+     * be given the following props:
+     *  - status: The current status of the step.
+     */
     body?: string;
+
+    /**
+     * Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it
+     * initially or to false to keep it visible.
+     */
+    isInitiallyHidden?: boolean;
 };
 
 /**
- * @property failed
- *  True to mark the step as having failed.
- * @property nextSteps
- *  List of timelineSteps to execute next.
- * @property skipSteps
- *  List of timelineSteps to skip.
+ * Represents the result of executing a step and what is expected to happen next.
  */
 export type TimelineStepTaskResult = {
+    /**
+     * True to mark the step as having failed.
+     */
     failed: boolean;
+
+    /**
+     * List of timelineSteps to execute next.
+     */
     nextSteps: Array<TimelineStepName>;
+
+    /**
+     * List of timelineSteps to skip.
+     */
     skipSteps: Array<TimelineStepName>;
 };
 
 /**
- * @property name
- *  The name of the status.
- * @property isCompletedStep
- *  True if the step is considered to be a completed step, false otherwise.
+ * Represents the status of a step.
  */
 export type TimelineStepStatus = {
+    /**
+     * The name of the status.
+     */
     name: string;
+
+    /**
+     * True if the step is considered to be a completed step, false otherwise.
+     */
     isCompletedStep: boolean;
 };
 
@@ -88,14 +115,6 @@ export const TimelineStepStatuses = toMap(
 
 /**
  * Create the result for the execution of a task.
- *
- * @param args
- * @param args.failed
- *  True if the task execution failed. Set to false or not include if it was a success.
- * @param args.nextSteps
- *  The list of {@link TimelineStepName} to execute next.
- * @param skipSteps
- *  The list of {@link TimelineStepName} to mark as being skipped.
  */
 export function createTimelineStepTaskResult({
     failed,
@@ -107,4 +126,16 @@ export function createTimelineStepTaskResult({
         nextSteps: nextSteps ?? [],
         skipSteps: skipSteps ?? [],
     };
+}
+
+/**
+ * Determine if the two {@link TimelineStepStatus} is the same.
+ *
+ * @param status1
+ *  The first status to check.
+ * @param status2
+ *  The second status to check.
+ */
+export function isSameTimelineStepStatus(status1: TimelineStepStatus, status2: TimelineStepStatus) {
+    return status1.name === status2.name;
 }
