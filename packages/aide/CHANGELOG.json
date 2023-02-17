@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "1.0.0",
+      "tag": "@ti-platform/aide_v1.0.0",
+      "date": "Fri, 17 Feb 2023 17:13:09 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Making the default type for package to be ESM and including the file extension in the import so that it meets ESM specifications."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.1",
       "tag": "@ti-platform/aide_v0.4.1",
       "date": "Tue, 15 Nov 2022 19:59:59 GMT",

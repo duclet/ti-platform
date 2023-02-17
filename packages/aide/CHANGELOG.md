@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide
 
-This log was last generated on Tue, 15 Nov 2022 19:59:59 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Feb 2023 17:13:09 GMT and should not be manually modified.
+
+## 1.0.0
+Fri, 17 Feb 2023 17:13:09 GMT
+
+### Breaking changes
+
+- Making the default type for package to be ESM and including the file extension in the import so that it meets ESM specifications.
 
 ## 0.4.1
 Tue, 15 Nov 2022 19:59:59 GMT
