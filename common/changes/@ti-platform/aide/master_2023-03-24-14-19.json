@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Adding new method to allow executing tasks asynchronously with a maximum number of concurrent workers.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}

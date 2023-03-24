@@ -13,6 +13,7 @@ Docs for more information.
 ### Functions
 
 - [ensureType](README.md#ensuretype)
+- [executeTasks](README.md#executetasks)
 - [first](README.md#first)
 - [firstDefined](README.md#firstdefined)
 - [keepOnlyDefined](README.md#keeponlydefined)
@@ -107,6 +108,38 @@ readonly `T`[]
 #### Defined in
 
 arrays.ts:19
+
+___
+
+### executeTasks
+
+▸ **executeTasks**<`T`\>(`tasks`, `maxNumOfWorkers?`): `Promise`<`T`[]\>
+
+Given a list of tasks to execute, execute them, ensuring there is a maximum number of tasks actively running at the
+same time. The returning array of responses should match the order of the task that was given.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `tasks` | readonly () => `Promise`<`T`\>[] | `undefined` | The tasks to run. |
+| `maxNumOfWorkers` | `number` | `10` | The maximum number of tasks to run at once. |
+
+#### Returns
+
+`Promise`<`T`[]\>
+
+A promise that will resolve when all the tasks are completed.
+
+#### Defined in
+
+queue.ts:12
 
 ___
 
