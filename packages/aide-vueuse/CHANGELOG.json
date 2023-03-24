@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-vueuse",
   "entries": [
     {
+      "version": "0.0.5",
+      "tag": "@ti-platform/aide-vueuse_v0.0.5",
+      "date": "Fri, 24 Mar 2023 14:42:12 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `1.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.4",
       "tag": "@ti-platform/aide-vueuse_v0.0.4",
       "date": "Fri, 17 Feb 2023 17:13:09 GMT",
