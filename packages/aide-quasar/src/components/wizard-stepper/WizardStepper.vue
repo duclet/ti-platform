@@ -11,7 +11,7 @@
         </QStep>
         <template #navigation>
             <QSeparator class="q-mb-lg" />
-            <QStepperNavigation>
+            <QStepperNavigation v-if="navigationVIf" :style="navigationVisibilityStyle">
                 <!--
                 @slot Slot for rendering the content before the navigational buttons for a specific step.
                     @binding {Function} back-button-handler Executing function will navigate back to the previous step.
@@ -184,6 +184,7 @@
     import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
     import { matchedRouteKey, onBeforeRouteLeave } from 'vue-router';
 
+    import { cssStyleByVisibilityState, vIfByVisibilityState } from '../../visibility';
     import { WizardStep, WizardStepName } from './api';
     import { WizardStepStateImpl } from './internal';
 
@@ -268,7 +269,7 @@
             isBackButtonSupported?: boolean;
 
             /**
-             * Assuming that the back buton is supported, should it be visible when all the steps are completed?
+             * Assuming that the back button is supported, should it be visible when all the steps are completed?
              */
             isBackButtonVisibleWhenDone?: boolean;
         }>(),
@@ -301,7 +302,13 @@
         toMap<WizardStepName, WizardStep, WizardStepStateImpl>(
             props.steps,
             (item) => item.name,
-            (item, key, index) => new WizardStepStateImpl(index, () => latestViewedStepIndex.value)
+            (item, key, index) =>
+                new WizardStepStateImpl(
+                    index,
+                    () => void onContinueClick(),
+                    () => void onBackClick(),
+                    () => latestViewedStepIndex.value
+                )
         )
     );
 
@@ -318,6 +325,10 @@
     const isShowingLeaveDialog = computed(
         () => currentStep.value.isBeforeLeaveConfirmationEnabled && !currentStepState.value.isDone
     );
+
+    const navigationVisibilityState = computed(() => currentStepState.value.navigationVisibility);
+    const navigationVisibilityStyle = cssStyleByVisibilityState(navigationVisibilityState);
+    const navigationVIf = vIfByVisibilityState(navigationVisibilityState);
 
     function getNextStep() {
         const currentStepIndex = props.steps.findIndex((step) => step.name === currentStep.value.name);

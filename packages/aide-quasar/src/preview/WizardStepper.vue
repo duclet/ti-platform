@@ -69,6 +69,7 @@
 
     import { createWizardStep, WizardStep, WizardStepperComponent } from '../index';
     import AccountCreation from './wizard-steps/AccountCreation.vue';
+    import RequestConfirmation from './wizard-steps/RequestConfirmation.vue';
     import UserInfoRequestStep from './wizard-steps/UserInfoRequestStep.vue';
     import { WizardStepperStepsDataKey } from './wizard-steps/utils';
     import WelcomeMessageStep from './wizard-steps/WelcomeMessageStep.vue';
@@ -101,6 +102,7 @@
     const steps: Array<WizardStep> = [
         createWizardStep('welcome', 'Introductions', WelcomeMessageStep),
         createWizardStep('user-info-request', 'User Information', UserInfoRequestStep),
+        createWizardStep('request-confirmation', 'Confirm Data', RequestConfirmation),
         createWizardStep('account-creation', 'Account Creation', AccountCreation),
     ];
 

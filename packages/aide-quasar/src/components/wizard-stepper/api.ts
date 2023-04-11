@@ -1,5 +1,7 @@
 import { Component } from 'vue';
 
+import { VisibilityState } from '../../visibility';
+
 /**
  * Unique name for a step.
  */
@@ -53,6 +55,18 @@ export interface WizardStepState {
     readonly latestViewedStepIndex: number;
 
     /**
+     * Call emulate as if the user clicked on the continue button. Note that this will bypass regardless of whether the
+     * continue button is enabled or not.
+     */
+    readonly nextStep: () => void;
+
+    /**
+     * Call emulate as if the user clicked on the back button. Note that this will bypass regardless of whether the
+     * back button is enabled or not.
+     */
+    readonly previousStep: () => void;
+
+    /**
      * True if the continue button should be enabled.
      */
     isContinueButtonEnabled: boolean;
@@ -78,6 +92,11 @@ export interface WizardStepState {
      *  Returns true if we should continue to the next step (assuming it isn't the last step), false otherwise.
      */
     continueButtonHandler: () => Promise<boolean>;
+
+    /**
+     * The visibility state for the navigational area.
+     */
+    navigationVisibility: VisibilityState;
 }
 
 /**

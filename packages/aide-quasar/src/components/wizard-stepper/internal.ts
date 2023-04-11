@@ -1,3 +1,4 @@
+import { VisibilityState } from '../../visibility';
 import { WizardStepState } from './api';
 
 /**
@@ -9,9 +10,13 @@ export class WizardStepStateImpl implements WizardStepState {
     public isProcessing = false;
     public backButtonHandler = () => Promise.resolve(true);
     public continueButtonHandler = () => Promise.resolve(true);
+    public navigationVisibility = VisibilityState.VISIBLE;
 
     public constructor(
         public readonly stepIndex: number,
+        public readonly nextStep: () => void,
+        public readonly previousStep: () => void,
+
         /**
          * @return
          *  Get the latest viewed step's index number.

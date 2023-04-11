@@ -91,7 +91,7 @@ This package exposes new components based off Vue and Quasar.
 | doneButtonIcon               | The icon for the done button.                                                                                            | `string`                  | 'done_all'           |
 | doneButtonText               | The text for the done button.                                                                                            | `string`                  | 'Done'               |
 | isBackButtonSupported        | True to enable showing of the back button, false otherwise.                                                              | `boolean`                 | false                |
-| isBackButtonVisibleWhenDone  | Assuming that the back buton is supported, should it be visible when all the steps are completed?                        | `boolean`                 | false                |
+| isBackButtonVisibleWhenDone  | Assuming that the back button is supported, should it be visible when all the steps are completed?                       | `boolean`                 | false                |
 
 #### Slots
 
@@ -107,6 +107,10 @@ This package exposes new components based off Vue and Quasar.
 ---
 
 ## API Docs
+
+### Enumerations
+
+- [VisibilityState](enums/VisibilityState.md)
 
 ### Interfaces
 
@@ -132,7 +136,9 @@ This package exposes new components based off Vue and Quasar.
 
 - [createTimelineStepTaskResult](README.md#createtimelinesteptaskresult)
 - [createWizardStep](README.md#createwizardstep)
+- [cssStyleByVisibilityState](README.md#cssstylebyvisibilitystate)
 - [isSameTimelineStepStatus](README.md#issametimelinestepstatus)
+- [vIfByVisibilityState](README.md#vifbyvisibilitystate)
 
 ## Type Aliases
 
@@ -304,7 +310,7 @@ Represents a step in the wizard.
 
 #### Defined in
 
-components/wizard-stepper/api.ts:12
+components/wizard-stepper/api.ts:14
 
 ___
 
@@ -316,7 +322,7 @@ Unique name for a step.
 
 #### Defined in
 
-components/wizard-stepper/api.ts:6
+components/wizard-stepper/api.ts:8
 
 ## Variables
 
@@ -375,7 +381,31 @@ Create a step for the wizard.
 
 #### Defined in
 
-components/wizard-stepper/api.ts:86
+components/wizard-stepper/api.ts:105
+
+___
+
+### cssStyleByVisibilityState
+
+▸ **cssStyleByVisibilityState**(`state`): `ComputedRef`<`string`\>
+
+Get a computed style definition based on the provided visibility state. This is not intended for the NO_RENDER state
+as that should be handled via the `v-if` directive. It is best to use this in combination with the
+`vIfByVisibilityState` method.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `state` | `Ref`<[`VisibilityState`](enums/VisibilityState.md)\> | A reactive variable for the current visibility state to calculate the style. |
+
+#### Returns
+
+`ComputedRef`<`string`\>
+
+#### Defined in
+
+visibility.ts:37
 
 ___
 
@@ -399,3 +429,27 @@ Determine if the two [TimelineStepStatus](README.md#timelinestepstatus) is the s
 #### Defined in
 
 components/timeline-stepper/api.ts:139
+
+___
+
+### vIfByVisibilityState
+
+▸ **vIfByVisibilityState**(`state`): `ComputedRef`<`boolean`\>
+
+Determine whether an element or component should be visible for use with the `v-if` directive. This should really be
+used in combination with `cssStyleByVisibilityState` method which handles all the other use cases as this really just
+handles the NO_RENDER state.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `state` | `Ref`<[`VisibilityState`](enums/VisibilityState.md)\> | A reactive variable for the current visibility state to calculate value for the `v-if` directive. |
+
+#### Returns
+
+`ComputedRef`<`boolean`\>
+
+#### Defined in
+
+visibility.ts:54
