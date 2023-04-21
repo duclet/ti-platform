@@ -1,5 +1,5 @@
 <template>
-    <QStepper :model-value="currentStep.name">
+    <QStepper :model-value="stepper.current.value.name">
         <QStep
             v-for="step in steps"
             :key="step.name"
@@ -23,7 +23,7 @@
                     @binding {boolean} is-processing True if the step is currently processing or doing work.
                 -->
                 <slot
-                    :name="`${currentStep.name}--pre-navigation`"
+                    :name="`${stepper.current.value.name}--pre-navigation`"
                     :back-button-handler="onBackClick"
                     :continue-button-handler="onContinueClick"
                     :is-back-button-enabled="isBackButtonEnabled"
@@ -64,7 +64,7 @@
                     @binding {boolean} is-processing True if the step is currently processing or doing work.
                 -->
                 <slot
-                    :name="`${currentStep.name}--navigation`"
+                    :name="`${stepper.current.value.name}--navigation`"
                     :back-button-handler="onBackClick"
                     :continue-button-handler="onContinueClick"
                     :is-back-button-enabled="isBackButtonEnabled"
@@ -113,7 +113,7 @@
                             <QBtn
                                 v-if="
                                     isBackButtonSupported &&
-                                    !isFirstStep &&
+                                    !stepper.isFirst.value &&
                                     (!isDone || (isDone && isBackButtonVisibleWhenDone))
                                 "
                                 :class="backButtonClass"
@@ -137,7 +137,7 @@
                     @binding {boolean} is-processing True if the step is currently processing or doing work.
                 -->
                 <slot
-                    :name="`${currentStep.name}--post-navigation`"
+                    :name="`${stepper.current.value.name}--post-navigation`"
                     :back-button-handler="onBackClick"
                     :continue-button-handler="onContinueClick"
                     :is-back-button-enabled="isBackButtonEnabled"
@@ -177,11 +177,10 @@
     This is a wrapper component over the QStepper component with enhancements to make managing buttons and certain user
     interactions easier.
     */
-    import { last } from '@s-libs/micro-dash';
     import { first, toMap } from '@ti-platform/aide';
-    import { isDef } from '@vueuse/core';
+    import { isDef, useStepper } from '@vueuse/core';
     import { QBtn, QSeparator, QStep, QStepper, QStepperNavigation, useQuasar } from 'quasar';
-    import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
+    import { computed, ComputedRef, inject, onMounted, onUnmounted, ref } from 'vue';
     import { matchedRouteKey, onBeforeRouteLeave } from 'vue-router';
 
     import { cssStyleByVisibilityState, vIfByVisibilityState } from '../../visibility';
@@ -293,13 +292,22 @@
     );
 
     const quasar = useQuasar();
+    const stepper = useStepper(
+        toMap(
+            props.steps,
+            (step) => step.name,
+            (step) => step
+        ),
+        first(props.steps)!.name
+    );
 
-    const currentStep = ref(first(props.steps)!);
     const isBackButtonEnabled = ref(true);
-    const latestViewedStepIndex = ref(0);
+    const latestViewedStepIndex: ComputedRef<number> = computed(() =>
+        Math.max(latestViewedStepIndex.value ?? 0, stepper.index.value)
+    );
 
     const stateMap = ref(
-        toMap<WizardStepName, WizardStep, WizardStepStateImpl>(
+        toMap(
             props.steps,
             (item) => item.name,
             (item, key, index) =>
@@ -316,32 +324,20 @@
         return stateMap.value[stepName];
     }
 
-    const currentStepState = computed(() => asState(currentStep.value.name));
+    const currentStepState = computed(() => asState(stepper.current.value.name));
     const isContinueButtonEnabled = computed(() => currentStepState.value.isContinueButtonEnabled);
-    const isFirstStep = computed(() => currentStep.value.name === first(props.steps)!.name);
-    const isLastStep = computed(() => currentStep.value.name === last(props.steps).name);
     const isProcessing = computed(() => currentStepState.value.isProcessing);
-    const isDone = computed(() => isLastStep.value && currentStepState.value.isDone);
+    const isDone = computed(() => stepper.isLast.value && currentStepState.value.isDone);
     const isShowingLeaveDialog = computed(
-        () => currentStep.value.isBeforeLeaveConfirmationEnabled && !currentStepState.value.isDone
+        () => stepper.current.value.isBeforeLeaveConfirmationEnabled && !currentStepState.value.isDone
     );
 
     const navigationVisibilityState = computed(() => currentStepState.value.navigationVisibility);
     const navigationVisibilityStyle = cssStyleByVisibilityState(navigationVisibilityState);
     const navigationVIf = vIfByVisibilityState(navigationVisibilityState);
 
-    function getNextStep() {
-        const currentStepIndex = props.steps.findIndex((step) => step.name === currentStep.value.name);
-        return props.steps[currentStepIndex + 1];
-    }
-
-    function getPreviousStep() {
-        const currentStepIndex = props.steps.findIndex((step) => step.name === currentStep.value.name);
-        return props.steps[currentStepIndex - 1];
-    }
-
     async function onBackClick() {
-        if (isFirstStep.value) {
+        if (stepper.isFirst.value) {
             return;
         }
 
@@ -355,7 +351,7 @@
             return;
         }
 
-        currentStep.value = getPreviousStep();
+        stepper.goToPrevious();
     }
 
     function onBeforeUnload(event: Event) {
@@ -380,14 +376,7 @@
         currentStepState.value.isProcessing = false;
         currentStepState.value.isDone = true;
 
-        if (isLastStep.value) {
-            return;
-        }
-
-        currentStep.value = getNextStep();
-        if (currentStepState.value.stepIndex > latestViewedStepIndex.value) {
-            latestViewedStepIndex.value = currentStepState.value.stepIndex;
-        }
+        stepper.goToNext();
     }
 
     // Check to use if whatever is calling this component is done within the context of vue-router and if not, don't
@@ -410,7 +399,7 @@
                         .dialog({
                             class: props.beforeLeaveDialogClass,
                             message:
-                                currentStep.value.beforeLeaveConfirmationMessage ??
+                                stepper.current.value.beforeLeaveConfirmationMessage ??
                                 'Processing is not completed, navigate away?',
                             cancel: true,
                             ok: {
