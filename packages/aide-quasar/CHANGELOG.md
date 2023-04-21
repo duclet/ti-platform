@@ -1,6 +1,17 @@
 # Change Log - @ti-platform/aide-quasar
 
-This log was last generated on Fri, 24 Mar 2023 14:42:12 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Apr 2023 15:44:57 GMT and should not be manually modified.
+
+## 2.2.0
+Fri, 21 Apr 2023 15:44:57 GMT
+
+### Minor changes
+
+- Adding ability to hide or show the navigation bar
+
+### Patches
+
+- Switching to use VueUse's useStepper utility method to handle the steps interactions
 
 ## 2.1.1
 Fri, 24 Mar 2023 14:42:12 GMT

@@ -2,6 +2,28 @@
   "name": "@ti-platform/aide-quasar",
   "entries": [
     {
+      "version": "2.2.0",
+      "tag": "@ti-platform/aide-quasar_v2.2.0",
+      "date": "Fri, 21 Apr 2023 15:44:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding ability to hide or show the navigation bar"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Switching to use VueUse's useStepper utility method to handle the steps interactions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `1.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.1.1",
       "tag": "@ti-platform/aide-quasar_v2.1.1",
       "date": "Fri, 24 Mar 2023 14:42:12 GMT",

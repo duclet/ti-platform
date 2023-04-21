@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-vue
 
-This log was last generated on Fri, 24 Mar 2023 14:42:12 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Apr 2023 15:44:57 GMT and should not be manually modified.
+
+## 1.1.0
+Fri, 21 Apr 2023 15:44:57 GMT
+
+### Minor changes
+
+- Added new function to execute tasks in a queue but with reactive components
 
 ## 1.0.3
 Fri, 24 Mar 2023 14:42:12 GMT

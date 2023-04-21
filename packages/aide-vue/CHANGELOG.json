@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "1.1.0",
+      "tag": "@ti-platform/aide-vue_v1.1.0",
+      "date": "Fri, 21 Apr 2023 15:44:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added new function to execute tasks in a queue but with reactive components"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.3",
       "tag": "@ti-platform/aide-vue_v1.0.3",
       "date": "Fri, 24 Mar 2023 14:42:12 GMT",
