@@ -6,6 +6,7 @@ This package contains utility functions that can be used with Vue to enhance the
 
 ### Type Aliases
 
+- [ReactiveExecuteTasksRet](README.md#reactiveexecutetasksret)
 - [ValueTypes](README.md#valuetypes)
 
 ### Functions
@@ -13,8 +14,36 @@ This package contains utility functions that can be used with Vue to enhance the
 - [isRequiredField](README.md#isrequiredfield)
 - [isRequiredFieldWhen](README.md#isrequiredfieldwhen)
 - [isUniqueField](README.md#isuniquefield)
+- [reactiveExecuteTasks](README.md#reactiveexecutetasks)
 
 ## Type Aliases
+
+### ReactiveExecuteTasksRet
+
+Ƭ **ReactiveExecuteTasksRet**<`T`\>: `Object`
+
+The return value for the function [reactiveExecuteTasks](README.md#reactiveexecutetasks).
+
+#### Type parameters
+
+| Name | Description |
+| :------ | :------ |
+| `T` | The type of the result. |
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `activeWorkers` | `Readonly`<`Ref`<`number`\>\> | The current active number of workers. |
+| `completedTasks` | `Readonly`<`Ref`<`number`\>\> | The current number of completed tasks. |
+| `isAllTasksCompleted` | `Readonly`<`Ref`<`boolean`\>\> | True if all the tasks have completed running, false otherwise. |
+| `results` | `Readonly`<`Ref`<`T`[]\>\> | The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it is filled with the results only when it is available. You should check for undefined before using it. |
+
+#### Defined in
+
+queue.ts:9
+
+___
 
 ### ValueTypes
 
@@ -129,3 +158,32 @@ Given a reference to a list of values, check when a value is given that it isn't
 #### Defined in
 
 validators.ts:43
+
+___
+
+### reactiveExecuteTasks
+
+▸ **reactiveExecuteTasks**<`T`\>(`tasks`, `maxNumOfWorkers?`): [`ReactiveExecuteTasksRet`](README.md#reactiveexecutetasksret)<`T`\>
+
+Reactive version of [@ti-platform/aide#executeTasks](README.md).
+
+#### Type parameters
+
+| Name | Description |
+| :------ | :------ |
+| `T` | The type of the result of each task. |
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `tasks` | readonly () => `Promise`<`T`\>[] | `undefined` | The tasks to run. |
+| `maxNumOfWorkers` | `number` | `10` | The maximum number of tasks ot run at once. |
+
+#### Returns
+
+[`ReactiveExecuteTasksRet`](README.md#reactiveexecutetasksret)<`T`\>
+
+#### Defined in
+
+queue.ts:42

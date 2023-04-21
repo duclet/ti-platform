@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Added new function to execute tasks in a queue but with reactive components",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}
