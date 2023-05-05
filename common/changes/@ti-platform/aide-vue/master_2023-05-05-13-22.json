@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Adding Ref to the total number of tasks that is running for reactiveExecuteTasks",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}

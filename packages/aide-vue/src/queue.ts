@@ -27,6 +27,11 @@ export type ReactiveExecuteTasksRet<T> = {
      * is filled with the results only when it is available. You should check for undefined before using it.
      */
     results: Readonly<Ref<Array<T>>>;
+
+    /**
+     * The total number of tasks that was queued.
+     */
+    totalTasks: Readonly<Ref<number>>;
 };
 
 /**
@@ -44,6 +49,7 @@ export function reactiveExecuteTasks<T>(
     maxNumOfWorkers = 10
 ): ReactiveExecuteTasksRet<T> {
     const activeWorkers = ref(0);
+    const totalTasks = ref(tasks.length);
     const completedTasks = ref(0);
     const isAllTasksCompleted = computed(() => completedTasks.value === tasks.length);
     const results = ref([]) as Ref<Array<T>>;
@@ -65,5 +71,6 @@ export function reactiveExecuteTasks<T>(
         completedTasks,
         isAllTasksCompleted,
         results,
+        totalTasks,
     };
 }

@@ -38,6 +38,7 @@ The return value for the function [reactiveExecuteTasks](README.md#reactiveexecu
 | `completedTasks` | `Readonly`<`Ref`<`number`\>\> | The current number of completed tasks. |
 | `isAllTasksCompleted` | `Readonly`<`Ref`<`boolean`\>\> | True if all the tasks have completed running, false otherwise. |
 | `results` | `Readonly`<`Ref`<`T`[]\>\> | The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it is filled with the results only when it is available. You should check for undefined before using it. |
+| `totalTasks` | `Readonly`<`Ref`<`number`\>\> | The total number of tasks that was queued. |
 
 #### Defined in
 
@@ -186,4 +187,4 @@ Reactive version of [@ti-platform/aide#executeTasks](README.md).
 
 #### Defined in
 
-queue.ts:42
+queue.ts:47
