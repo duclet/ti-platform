@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-vue
 
-This log was last generated on Fri, 21 Apr 2023 15:44:57 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 13:27:11 GMT and should not be manually modified.
+
+## 1.2.0
+Fri, 05 May 2023 13:27:11 GMT
+
+### Minor changes
+
+- Adding Ref to the total number of tasks that is running for reactiveExecuteTasks
 
 ## 1.1.0
 Fri, 21 Apr 2023 15:44:57 GMT
