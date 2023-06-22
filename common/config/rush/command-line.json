@@ -188,7 +188,7 @@
       name: "ti-pack",
       summary: "rush publish --pack with custom configurations",
       description: "Run the rush publish --pack command to include all packages",
-      shellCommand: "./packages/aide-build-tools/bash/build.sh",
+      shellCommand: "./packages/aide-build-tools/bash/pack.sh",
       safeForSimultaneousRushProcesses: true
     },
     {
@@ -196,7 +196,7 @@
       name: "ti-publish",
       summary: "rush publish with custom configurations interactively",
       description: "Run the rush publish command interactively with some custom configurations",
-      shellCommand: "./packages/aide-build-tools/bash/build.sh",
+      shellCommand: "./packages/aide-build-tools/bash/publish.sh",
       safeForSimultaneousRushProcesses: true
     }
   ],
