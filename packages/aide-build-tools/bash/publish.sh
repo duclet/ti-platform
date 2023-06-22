@@ -27,4 +27,6 @@ else
 fi
 
 export NPM_AUTH_TOKEN=$NPM_AUTH_TOKEN
-./build.sh && rush publish -a -p -b master --set-access-level $accessLevel
+
+SCRIPT_PATH=`readlink -f $(dirname $BASH_SOURCE)`
+$SCRIPT_PATH/build.sh && rush publish -a -p -b master --set-access-level $accessLevel
