@@ -2,6 +2,26 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "1.3.0",
+      "tag": "@ti-platform/aide-vue_v1.3.0",
+      "date": "Thu, 22 Jun 2023 19:39:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating configurations and adding method to return computed Refs"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `1.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `0.11.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.0",
       "tag": "@ti-platform/aide-vue_v1.2.0",
       "date": "Fri, 05 May 2023 13:27:11 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-vue
 
-This log was last generated on Fri, 05 May 2023 13:27:11 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jun 2023 19:39:21 GMT and should not be manually modified.
+
+## 1.3.0
+Thu, 22 Jun 2023 19:39:21 GMT
+
+### Minor changes
+
+- Updating configurations and adding method to return computed Refs
 
 ## 1.2.0
 Fri, 05 May 2023 13:27:11 GMT

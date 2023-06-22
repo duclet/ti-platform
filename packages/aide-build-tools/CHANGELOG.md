@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Tue, 15 Nov 2022 19:59:59 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jun 2023 19:39:21 GMT and should not be manually modified.
+
+## 0.11.0
+Thu, 22 Jun 2023 19:39:21 GMT
+
+### Minor changes
+
+- Upgrading configurations and adding new consistency ESLint rules
 
 ## 0.10.0
 Tue, 15 Nov 2022 19:59:59 GMT
