@@ -11,9 +11,9 @@
     import { isRequiredField } from '@ti-platform/aide-vue';
     import { useVModel } from '@vueuse/core';
     import { QForm } from 'quasar';
-    import { inject, onMounted, Ref, ref } from 'vue';
+    import { inject, onMounted, type Ref, ref } from 'vue';
 
-    import { WizardStepState } from '../../components/wizard-stepper';
+    import { type WizardStepState } from '../../components/wizard-stepper';
     import { WizardStepperStepsDataKey } from './utils';
 
     const props = defineProps<{

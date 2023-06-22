@@ -21,7 +21,7 @@
     import { promiseTimeout, refAutoReset, whenever } from '@vueuse/core';
     import { nextTick, onMounted, ref } from 'vue';
 
-    import { ProgressIndicatorTask } from '../components/multi-progress-indicator';
+    import { type ProgressIndicatorTask } from '../components/multi-progress-indicator';
     import { MultiProgressIndicatorComponent } from '../index';
 
     const splitterModel = ref(30);

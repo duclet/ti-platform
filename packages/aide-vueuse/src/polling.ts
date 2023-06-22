@@ -1,5 +1,6 @@
-import { Awaitable, useTimeoutFn, useTimeoutPoll } from '@vueuse/core';
-import { ComputedRef, ref } from 'vue';
+import { asComputed } from '@ti-platform/aide-vue';
+import { type Awaitable, useTimeoutFn, useTimeoutPoll } from '@vueuse/core';
+import { type ComputedRef, ref } from 'vue';
 
 /**
  * The state of the polling.
@@ -44,7 +45,7 @@ export function isPollingFailure(state: PollingState) {
  * @return
  *  Return an object with the current state of the polling and function to start the polling.
  */
-export function usePolling(fn: () => Awaitable<PollingState>, intervalMs: number, timeoutMs: number) {
+export function usePolling(fn: () => Awaitable<PollingState>, intervalMs: number, timeoutMs: number): UsePollingRetVal {
     const state = ref(PollingState.NOT_STARTED);
 
     const { resume, pause } = useTimeoutPoll(
@@ -77,6 +78,6 @@ export function usePolling(fn: () => Awaitable<PollingState>, intervalMs: number
         return retVal;
     }
 
-    const retVal = { state, startPolling } as UsePollingRetVal;
+    const retVal: UsePollingRetVal = { state: asComputed(state), startPolling };
     return retVal;
 }

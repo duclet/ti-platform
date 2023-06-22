@@ -7,7 +7,7 @@
     import { useVModel } from '@vueuse/core';
     import { onMounted } from 'vue';
 
-    import { WizardStepState } from '../../index';
+    import { type WizardStepState } from '../../index';
 
     const props = defineProps<{
         modelValue: WizardStepState;

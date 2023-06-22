@@ -50,11 +50,11 @@
 
     import {
         isSameTimelineStepStatus,
-        TimelineStep,
-        TimelineStepColorSupplier,
-        TimelineStepIconSupplier,
-        TimelineStepName,
-        TimelineStepStatus,
+        type TimelineStep,
+        type TimelineStepColorSupplier,
+        type TimelineStepIconSupplier,
+        type TimelineStepName,
+        type TimelineStepStatus,
         TimelineStepStatuses,
     } from './api';
     import { getTimelineStepColorByStatus, getTimelineStepIconByStatus, TimelineStepState } from './internal';
@@ -100,11 +100,11 @@
             iconSupplier?: TimelineStepIconSupplier;
         }>(),
         {
-            colorSupplier: () => getTimelineStepColorByStatus,
             fullyCompletedHiddenTimeoutMs: 1000,
-            iconSupplier: () => getTimelineStepIconByStatus,
             isHiddenWhenFullyCompleted: false,
             isInitiallyHidden: false,
+            colorSupplier: () => getTimelineStepColorByStatus,
+            iconSupplier: () => getTimelineStepIconByStatus,
         }
     );
 

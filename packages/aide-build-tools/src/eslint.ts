@@ -1,11 +1,11 @@
-import { Linter } from 'eslint';
+import { type Linter } from 'eslint';
 
 import { getHtmlConfigs } from './eslint/html-configs';
 import { getCjsConfigs, getJsConfigs } from './eslint/javascript-configs';
 import { getJsonConfigs } from './eslint/json-configs';
 import { getTsConfigs } from './eslint/typescript-configs';
 import { getVueConfigs } from './eslint/vue-configs';
-import { keepOnlyExistentPaths, RunEsLintPrettierParams } from './misc';
+import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from './misc';
 import { spawnCommand } from './spawn';
 
 export type EslintConfigsParams = {

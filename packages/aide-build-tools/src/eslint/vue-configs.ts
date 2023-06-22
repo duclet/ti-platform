@@ -1,4 +1,4 @@
-import { Linter } from 'eslint';
+import { type Linter } from 'eslint';
 
 export function getVueConfigs(tsConfigs: Linter.ConfigOverride): Linter.ConfigOverride {
     return {

@@ -1,5 +1,5 @@
-import { ModuleFormat } from 'rollup';
-import { defineConfig, UserConfig } from 'vite';
+import { type ModuleFormat } from 'rollup';
+import { defineConfig, type UserConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 export function getLibraryFilename(format: ModuleFormat) {
@@ -16,7 +16,7 @@ export function isLibraryExternalDep(source: string) {
 
 export function generateViteConfigs() {
     return defineConfig({
-        plugins: [dts({ insertTypesEntry: true, logDiagnostics: true })],
+        plugins: [dts({ insertTypesEntry: true })],
         build: {
             minify: process.env.NODE_ENV === 'production' ? 'esbuild' : false,
         },

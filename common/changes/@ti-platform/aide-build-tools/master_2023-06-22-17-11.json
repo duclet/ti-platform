@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Upgrading configurations and adding new consistency ESLint rules",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-build-tools"
+}

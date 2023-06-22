@@ -74,10 +74,10 @@
     an error message if any errors occur, or a success message if the task is completed successfully.
     */
     import { whenever } from '@vueuse/core';
-    import { QBtn, QLinearProgress, QTable, QTableProps, QTd, QTr } from 'quasar';
+    import { QBtn, QLinearProgress, QTable, type QTableProps, QTd, QTr } from 'quasar';
     import { computed } from 'vue';
 
-    import { ProgressIndicatorTask } from './api';
+    import { type ProgressIndicatorTask } from './api';
 
     const props = defineProps<{
         /**

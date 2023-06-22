@@ -1,5 +1,5 @@
 import { debounce } from 'ts-debounce';
-import { Plugin } from 'vite';
+import { type Plugin } from 'vite';
 
 import { runEslint } from '../eslint';
 import { GENERAL_FILES } from '../misc';

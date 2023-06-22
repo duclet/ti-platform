@@ -11,7 +11,7 @@
     import { promiseTimeout, useVModel } from '@vueuse/core';
     import { onMounted, ref } from 'vue';
 
-    import { WizardStepState } from '../../components/wizard-stepper';
+    import { type WizardStepState } from '../../components/wizard-stepper';
 
     const props = defineProps<{
         modelValue: WizardStepState;

@@ -1,4 +1,4 @@
-import { Linter } from 'eslint';
+import { type Linter } from 'eslint';
 import { resolve } from 'path';
 
 export function getTsConfigs(jsConfigs: Linter.ConfigOverride, baseDir: string): Linter.ConfigOverride {
@@ -20,6 +20,25 @@ export function getTsConfigs(jsConfigs: Linter.ConfigOverride, baseDir: string):
         },
         rules: {
             ...jsConfigs.rules,
+            '@typescript-eslint/consistent-generic-constructors': ['error', 'constructor'],
+            '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
+            '@typescript-eslint/consistent-type-assertions': [
+                'error',
+                { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow-as-parameter' },
+            ],
+            '@typescript-eslint/consistent-type-exports': [
+                'error',
+                {
+                    fixMixedExportsWithInlineTypeSpecifier: true,
+                },
+            ],
+            '@typescript-eslint/consistent-type-imports': [
+                'error',
+                {
+                    prefer: 'type-imports',
+                    fixStyle: 'inline-type-imports',
+                },
+            ],
             '@typescript-eslint/explicit-function-return-type': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/no-non-null-assertion': 'off',

@@ -1,6 +1,6 @@
-import { Config } from 'prettier';
+import { type Config } from 'prettier';
 
-import { keepOnlyExistentPaths, RunEsLintPrettierParams } from './misc';
+import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from './misc';
 import { spawnCommand } from './spawn';
 
 export function generatePrettierConfigs(): Config {

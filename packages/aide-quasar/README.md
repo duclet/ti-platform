@@ -173,7 +173,7 @@ Representing a step in the timeline.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `body?` | `string` | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined` and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also be given the following props:  - status: The current status of the step. |
+| `body?` | `string` | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined` and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also be given the following props: - status: The current status of the step. |
 | `isInitiallyHidden?` | `boolean` | Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it initially or to false to keep it visible. |
 | `name` | [`TimelineStepName`](README.md#timelinestepname) | Unique name for the step. |
 | `subtitle` | `string` | The subtitle for the step. |
@@ -340,7 +340,7 @@ components/timeline-stepper/api.ts:104
 
 ### createTimelineStepTaskResult
 
-▸ **createTimelineStepTaskResult**(`__namedParameters?`): [`TimelineStepTaskResult`](README.md#timelinesteptaskresult)
+▸ **createTimelineStepTaskResult**(`«destructured»?`): [`TimelineStepTaskResult`](README.md#timelinesteptaskresult)
 
 Create the result for the execution of a task.
 
@@ -348,7 +348,7 @@ Create the result for the execution of a task.
 
 | Name | Type |
 | :------ | :------ |
-| `__namedParameters` | `Partial`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)\> |
+| `«destructured»` | `Partial`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)\> |
 
 #### Returns
 
@@ -372,7 +372,7 @@ Create a step for the wizard.
 | :------ | :------ |
 | `name` | `string` |
 | `title` | `string` |
-| `component` | `Component`<`any`, `any`, `any`, `ComputedOptions`, `MethodOptions`\> |
+| `component` | `Component` |
 | `opts` | `Partial`<`Pick`<[`WizardStep`](README.md#wizardstep), ``"beforeLeaveConfirmationMessage"`` \| ``"isBeforeLeaveConfirmationEnabled"``\>\> |
 
 #### Returns

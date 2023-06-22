@@ -1,5 +1,5 @@
 import { executeTasks } from '@ti-platform/aide';
-import { computed, Ref, ref } from 'vue';
+import { computed, type Ref, ref } from 'vue';
 
 /**
  * The return value for the function {@link reactiveExecuteTasks}.

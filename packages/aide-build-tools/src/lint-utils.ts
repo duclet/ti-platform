@@ -2,9 +2,9 @@ import chokidar from 'chokidar';
 import { cli } from 'cleye';
 import { cwd, exit } from 'process';
 
-import { runEslint } from './eslint';
+import { type runEslint } from './eslint';
 import { GENERAL_FILES } from './misc';
-import { runPrettier } from './prettier';
+import { type runPrettier } from './prettier';
 import { spawnCommand } from './spawn';
 
 function getArgv(commandName: string) {

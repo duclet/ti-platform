@@ -1,4 +1,4 @@
-import { Linter } from 'eslint';
+import { type Linter } from 'eslint';
 
 export const BASE_JAVASCRIPT_RULES: Partial<Linter.RulesRecord> = {
     'no-case-declarations': 'off',

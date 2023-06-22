@@ -11,6 +11,7 @@ This package contains utility functions that can be used with Vue to enhance the
 
 ### Functions
 
+- [asComputed](README.md#ascomputed)
 - [isRequiredField](README.md#isrequiredfield)
 - [isRequiredFieldWhen](README.md#isrequiredfieldwhen)
 - [isUniqueField](README.md#isuniquefield)
@@ -55,6 +56,36 @@ ___
 validators.ts:3
 
 ## Functions
+
+### asComputed
+
+▸ **asComputed**<`T`\>(`ref`): `ComputedRef`<`T`\>
+
+Shorthand method to simply convert a Ref to a ComputedRef.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ref` | `Ref`<`T`\> | The Ref to convert. |
+
+#### Returns
+
+`ComputedRef`<`T`\>
+
+The ComputedRef that simply returns the value of the given Ref.
+
+#### Defined in
+
+reactivity.ts:11
+
+___
 
 ### isRequiredField
 
@@ -102,7 +133,7 @@ condition.
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `when` | () => `boolean` | `undefined` | Function to execute to see if the required validation field is necessary. It should return true when the field is  required, false otherwise. |
+| `when` | () => `boolean` | `undefined` | Function to execute to see if the required validation field is necessary. It should return true when the field is required, false otherwise. |
 | `invalidMessage` | `string` | `DEFAULT_REQUIRED_INVALID_MESSAGE` | The message to show when validation failed. |
 
 #### Returns

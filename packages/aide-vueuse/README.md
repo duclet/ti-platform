@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-polling.ts:15
+polling.ts:16
 
 ## Functions
 
@@ -69,7 +69,7 @@ Returns true if it is considered to be a failure, false otherwise.
 
 #### Defined in
 
-polling.ts:29
+polling.ts:30
 
 ___
 
@@ -108,7 +108,7 @@ polling will not start until the current task finishes.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `fn` | () => `Awaitable`<[`PollingState`](enums/PollingState.md)\> | The function to execute. The function should return [POLLING](enums/PollingState.md#polling) to have the polling to continue.  Returning either [SUCCESS](enums/PollingState.md#success) or [FAILURE](enums/PollingState.md#failure) will stop polling. |
+| `fn` | () => `Awaitable`<[`PollingState`](enums/PollingState.md)\> | The function to execute. The function should return [POLLING](enums/PollingState.md#polling) to have the polling to continue. Returning either [SUCCESS](enums/PollingState.md#success) or [FAILURE](enums/PollingState.md#failure) will stop polling. |
 | `intervalMs` | `number` | The time in milliseconds between each poll. |
 | `timeoutMs` | `number` | The maximum time in milliseconds before it is considered a polling timeout. |
 
@@ -120,4 +120,4 @@ Return an object with the current state of the polling and function to start the
 
 #### Defined in
 
-polling.ts:47
+polling.ts:48

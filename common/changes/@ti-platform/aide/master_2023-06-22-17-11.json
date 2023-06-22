@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Upgrading configurations",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}

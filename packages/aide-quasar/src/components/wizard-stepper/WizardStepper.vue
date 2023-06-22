@@ -180,11 +180,11 @@
     import { first, toMap } from '@ti-platform/aide';
     import { isDef, useStepper } from '@vueuse/core';
     import { QBtn, QSeparator, QStep, QStepper, QStepperNavigation, useQuasar } from 'quasar';
-    import { computed, ComputedRef, inject, onMounted, onUnmounted, ref } from 'vue';
+    import { computed, type ComputedRef, inject, onMounted, onUnmounted, ref } from 'vue';
     import { matchedRouteKey, onBeforeRouteLeave } from 'vue-router';
 
     import { cssStyleByVisibilityState, vIfByVisibilityState } from '../../visibility';
-    import { WizardStep, WizardStepName } from './api';
+    import { type WizardStep, type WizardStepName } from './api';
     import { WizardStepStateImpl } from './internal';
 
     const props = withDefaults(

@@ -14,7 +14,7 @@
     import { useVModel } from '@vueuse/core';
     import { inject, onMounted } from 'vue';
 
-    import { WizardStepState } from '../../components/wizard-stepper';
+    import { type WizardStepState } from '../../components/wizard-stepper';
     import { VisibilityState } from '../../visibility';
     import { WizardStepperStepsDataKey } from './utils';
 

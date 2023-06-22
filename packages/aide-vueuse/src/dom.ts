@@ -1,5 +1,5 @@
-import { ComputedRefWithControl, computedWithControl } from '@vueuse/core';
-import { Ref } from 'vue';
+import { type ComputedRefWithControl, computedWithControl } from '@vueuse/core';
+import { type Ref } from 'vue';
 
 export type ElementOrComponentWithEl = HTMLElement | { $el: HTMLElement };
 

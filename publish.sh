@@ -1,1 +1,0 @@
-packages/aide-build-tools/bash/publish.sh

@@ -67,7 +67,7 @@
     import { refAutoReset } from '@vueuse/core';
     import { computed, provide, ref } from 'vue';
 
-    import { createWizardStep, WizardStep, WizardStepperComponent } from '../index';
+    import { createWizardStep, type WizardStep, WizardStepperComponent } from '../index';
     import AccountCreation from './wizard-steps/AccountCreation.vue';
     import RequestConfirmation from './wizard-steps/RequestConfirmation.vue';
     import UserInfoRequestStep from './wizard-steps/UserInfoRequestStep.vue';

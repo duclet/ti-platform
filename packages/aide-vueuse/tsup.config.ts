@@ -7,5 +7,5 @@ export default defineConfig({
     entry: ['./src/**/*'],
     outDir: './dist',
     treeshake: true,
-    // target: 'es2018',
+    target: 'es2018',
 });

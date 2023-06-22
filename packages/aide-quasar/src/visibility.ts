@@ -1,4 +1,4 @@
-import { computed, ComputedRef, Ref } from 'vue';
+import { computed, type ComputedRef, type Ref } from 'vue';
 
 /**
  * For configuring the visibility of elements.
