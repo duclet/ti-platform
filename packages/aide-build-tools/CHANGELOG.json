@@ -2,6 +2,40 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "1.0.0",
+      "tag": "@ti-platform/aide-build-tools_v1.0.0",
+      "date": "Mon, 10 Jul 2023 10:01:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding esbuild plugin to allow for chaining of modifying the source before transforming."
+          },
+          {
+            "comment": "Adding esbuild plugin to appending the file extension when generating ESM builds."
+          },
+          {
+            "comment": "Adding esbuild plugin to replace aliases with relative paths."
+          },
+          {
+            "comment": "Adding base Vite configs for generating multiple files in library mode."
+          }
+        ],
+        "none": [
+          {
+            "comment": "Using aliases for relative imports."
+          },
+          {
+            "comment": "Adding documentation of the binaries exported by this package."
+          }
+        ],
+        "major": [
+          {
+            "comment": "Removing what should be unused methods that was mistakenly exported."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.0",
       "tag": "@ti-platform/aide-build-tools_v0.11.0",
       "date": "Thu, 22 Jun 2023 19:39:21 GMT",

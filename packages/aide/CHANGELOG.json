@@ -2,6 +2,28 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "1.2.0",
+      "tag": "@ti-platform/aide_v1.2.0",
+      "date": "Mon, 10 Jul 2023 10:01:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding some methods and types to help with type guarding maps."
+          }
+        ],
+        "none": [
+          {
+            "comment": "Using aliases for relative imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.1",
       "tag": "@ti-platform/aide_v1.1.1",
       "date": "Thu, 22 Jun 2023 19:39:21 GMT",

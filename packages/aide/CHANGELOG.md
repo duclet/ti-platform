@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide
 
-This log was last generated on Thu, 22 Jun 2023 19:39:21 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jul 2023 10:01:02 GMT and should not be manually modified.
+
+## 1.2.0
+Mon, 10 Jul 2023 10:01:02 GMT
+
+### Minor changes
+
+- Adding some methods and types to help with type guarding maps.
 
 ## 1.1.1
 Thu, 22 Jun 2023 19:39:21 GMT

@@ -1,6 +1,15 @@
 # Change Log - @ti-platform/aide-quasar
 
-This log was last generated on Thu, 22 Jun 2023 19:39:21 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jul 2023 10:01:02 GMT and should not be manually modified.
+
+## 2.2.3
+Mon, 10 Jul 2023 10:01:02 GMT
+
+### Patches
+
+- Bug fix for TimelineStepper component with its default value being given invalid function reference.
+- Exporting as multiple files rather than singular file.
+- Fixing Typescript definition exports.
 
 ## 2.2.2
 Thu, 22 Jun 2023 19:39:21 GMT

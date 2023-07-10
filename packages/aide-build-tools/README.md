@@ -369,7 +369,10 @@ ___
 
 ▸ **generateViteMultiFileLibConfigs**(`entries?`): `Promise`<`UserConfig`\>
 
-Get the default configurations for Vite if we want to generate individual files as part of a library export.
+Get the default configurations for Vite if we want to generate individual files as part of a library export. This
+will make it so that all the files referenced by the given `entries` will be generated using the same directory
+structure as it is in the `src` folder. For Vue components, it will remove the `.vue` in the file extension. For the
+extracted CSS from the Vue files, it will also place them in the same folder as the component itself.
 
 #### Parameters
 
@@ -383,7 +386,7 @@ Get the default configurations for Vite if we want to generate individual files 
 
 #### Defined in
 
-vite.ts:19
+vite.ts:22
 
 ___
 

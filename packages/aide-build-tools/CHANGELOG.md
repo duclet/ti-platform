@@ -1,6 +1,20 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Thu, 22 Jun 2023 19:39:21 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jul 2023 10:01:02 GMT and should not be manually modified.
+
+## 1.0.0
+Mon, 10 Jul 2023 10:01:02 GMT
+
+### Breaking changes
+
+- Removing what should be unused methods that was mistakenly exported.
+
+### Minor changes
+
+- Adding esbuild plugin to allow for chaining of modifying the source before transforming.
+- Adding esbuild plugin to appending the file extension when generating ESM builds.
+- Adding esbuild plugin to replace aliases with relative paths.
+- Adding base Vite configs for generating multiple files in library mode.
 
 ## 0.11.0
 Thu, 22 Jun 2023 19:39:21 GMT

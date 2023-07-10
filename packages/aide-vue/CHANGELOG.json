@@ -2,6 +2,26 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "1.3.1",
+      "tag": "@ti-platform/aide-vue_v1.3.1",
+      "date": "Mon, 10 Jul 2023 10:01:02 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Using aliases for relative imports."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `1.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.0",
       "tag": "@ti-platform/aide-vue_v1.3.0",
       "date": "Thu, 22 Jun 2023 19:39:21 GMT",
