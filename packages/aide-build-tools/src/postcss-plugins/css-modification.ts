@@ -10,6 +10,7 @@ export function cssModification(): Plugin {
         postcssPlugin: 'crm-platform:css-modification',
         AtRule: {
             // There is a bug in the version of SASS we use that is adding the charset multiple times, so remove them
+            // We are also not able to upgrade it because Quasar requires that version
             charset: (atRule) => {
                 if (atRule.name === 'charset') {
                     if (!foundCharsetRule) {

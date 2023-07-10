@@ -1,5 +1,8 @@
 import { type Linter } from 'eslint';
 
+/**
+ * Get the default configurations for `.html` files.
+ */
 export function getHtmlConfigs(): Linter.ConfigOverride {
     return {
         files: '*.html',

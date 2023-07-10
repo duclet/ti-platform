@@ -3,7 +3,7 @@ import {
     type TimelineStepIconSupplier,
     type TimelineStepStatus,
     TimelineStepStatuses,
-} from './api';
+} from '@src/components/timeline-stepper/api';
 
 /**
  * Tracking the state of a step.

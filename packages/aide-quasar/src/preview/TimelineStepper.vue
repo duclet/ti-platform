@@ -67,15 +67,14 @@
 </template>
 
 <script setup lang="ts">
-    import { promiseTimeout, refAutoReset } from '@vueuse/core';
-    import { computed, ref } from 'vue';
-
     import {
         createTimelineStepTaskResult,
         type TimelineStep,
         type TimelineStepName,
         TimelineStepperComponent,
-    } from '../index';
+    } from '@src/index';
+    import { promiseTimeout, refAutoReset } from '@vueuse/core';
+    import { computed, ref } from 'vue';
 
     const splitterModel = ref(30);
     const isComponentVisible = refAutoReset(true, 1000);

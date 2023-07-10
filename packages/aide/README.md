@@ -5,6 +5,10 @@ Docs for more information.
 
 ## API Docs
 
+### Interfaces
+
+- [GuardedMap](interfaces/GuardedMap.md)
+
 ### Type Aliases
 
 - [AnyArray](README.md#anyarray)
@@ -16,7 +20,9 @@ Docs for more information.
 - [executeTasks](README.md#executetasks)
 - [first](README.md#first)
 - [firstDefined](README.md#firstdefined)
+- [getOrDefault](README.md#getordefault)
 - [keepOnlyDefined](README.md#keeponlydefined)
+- [mapHas](README.md#maphas)
 - [toMap](README.md#tomap)
 
 ## Type Aliases
@@ -35,7 +41,7 @@ Type matching against both a writable array and a readonly array.
 
 #### Defined in
 
-arrays.ts:4
+packages/aide/src/arrays.ts:4
 
 ___
 
@@ -54,7 +60,7 @@ For a given object, T, mark the keys given as being readonly.
 
 #### Defined in
 
-types.ts:4
+packages/aide/src/types.ts:4
 
 ## Functions
 
@@ -107,7 +113,7 @@ readonly `T`[]
 
 #### Defined in
 
-arrays.ts:19
+packages/aide/src/arrays.ts:19
 
 ___
 
@@ -139,7 +145,7 @@ A promise that will resolve when all the tasks are completed.
 
 #### Defined in
 
-queue.ts:12
+packages/aide/src/queue.ts:12
 
 ___
 
@@ -167,7 +173,7 @@ Retrieve the first element of a list.
 
 #### Defined in
 
-arrays.ts:31
+packages/aide/src/arrays.ts:31
 
 ___
 
@@ -198,7 +204,39 @@ The return value of the first function to not return an undefined value.
 
 #### Defined in
 
-arrays.ts:44
+packages/aide/src/arrays.ts:44
+
+___
+
+### getOrDefault
+
+▸ **getOrDefault**<`K`, `V`, `M`\>(`map`, `key`, `defaultValue`): `V`
+
+Given a map, return the value with the requested key or the default value if the key does not exists.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `K` | `K` |
+| `V` | `V` |
+| `M` | extends `Map`<`K`, `V`, `M`\> |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `map` | `M` | The map to get the data from. |
+| `key` | `K` | The key to get the data for. |
+| `defaultValue` | `V` | The default value to return if the key does not exist. |
+
+#### Returns
+
+`V`
+
+#### Defined in
+
+packages/aide/src/map.ts:11
 
 ___
 
@@ -226,7 +264,40 @@ Given a list of items, remove null and undefined from the list.
 
 #### Defined in
 
-arrays.ts:60
+packages/aide/src/arrays.ts:60
+
+___
+
+### mapHas
+
+▸ **mapHas**<`K`, `V`, `M`\>(`map`, `key`): `Promise`<`V`\>
+
+Type guards aren't available for map so this method is here to somewhat provides that.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `K` | `K` |
+| `V` | `V` |
+| `M` | extends `Map`<`K`, `V`, `M`\> |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `map` | `M` | The map to check to see if the key exists. |
+| `key` | `K` | The key to get the data for. |
+
+#### Returns
+
+`Promise`<`V`\>
+
+Returns a promise of the value if the key exists or a rejection if it doesn't.
+
+#### Defined in
+
+packages/aide/src/map.ts:25
 
 ___
 
@@ -258,4 +329,4 @@ Given a list, convert it to a map where the key will be provided using the given
 
 #### Defined in
 
-arrays.ts:74
+packages/aide/src/arrays.ts:74

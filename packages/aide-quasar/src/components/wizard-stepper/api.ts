@@ -1,6 +1,5 @@
+import { type VisibilityState } from '@src//visibility';
 import { type Component } from 'vue';
-
-import { type VisibilityState } from '../../visibility';
 
 /**
  * Unique name for a step.

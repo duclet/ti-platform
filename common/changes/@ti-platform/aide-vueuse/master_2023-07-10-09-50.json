@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vueuse",
+      "comment": "Using aliases for relative imports.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vueuse"
+}

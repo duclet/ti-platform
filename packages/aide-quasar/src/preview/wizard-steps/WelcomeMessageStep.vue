@@ -4,10 +4,9 @@
 </template>
 
 <script setup lang="ts">
+    import { type WizardStepState } from '@src/index';
     import { useVModel } from '@vueuse/core';
     import { onMounted } from 'vue';
-
-    import { type WizardStepState } from '../../index';
 
     const props = defineProps<{
         modelValue: WizardStepState;

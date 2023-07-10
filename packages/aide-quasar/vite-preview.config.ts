@@ -1,8 +1,8 @@
-import {transformAssetUrls} from '@quasar/vite-plugin';
-import {cssModification, generateViteConfigs, lintAndReformat} from '@ti-platform/aide-build-tools';
+import { transformAssetUrls } from '@quasar/vite-plugin';
+import { cssModification, GENERAL_FILES, generateViteConfigs, lintAndReformat } from '@ti-platform/aide-build-tools';
 import vue from '@vitejs/plugin-vue';
-import {resolve} from 'path';
-import {defineConfig} from 'vite';
+import { join } from 'path';
+import { defineConfig } from 'vite';
 
 const configs = generateViteConfigs();
 
@@ -13,7 +13,9 @@ export default defineConfig({
             template: { transformAssetUrls },
         }),
 
-        lintAndReformat(['./src'], ['.ts', '.vue'], undefined, { verifyVueTs: true }),
+        lintAndReformat(['./src'], ['.ts', '.vue'], [...GENERAL_FILES, 'vite-preview.config.ts'], {
+            verifyVueTs: true,
+        }),
     ],
     build: {
         ...configs.build!,
@@ -29,11 +31,13 @@ export default defineConfig({
             // alias the libs that we use from our SCSS
             '~@quasar/extras': '@quasar/extras',
             '~quasar': 'quasar',
+            '@src': join(__dirname, 'src'),
+            '~@src': join(__dirname, 'src'),
         },
     },
     server: {
         fs: {
-            strict: false
-        }
-    }
+            strict: false,
+        },
+    },
 });

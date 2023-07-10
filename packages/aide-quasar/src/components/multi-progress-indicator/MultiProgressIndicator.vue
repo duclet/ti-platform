@@ -73,11 +73,10 @@
     This component displays a progress indicator for each specified task during its execution, and will either display
     an error message if any errors occur, or a success message if the task is completed successfully.
     */
+    import { type ProgressIndicatorTask } from '@src/components/multi-progress-indicator/api';
     import { whenever } from '@vueuse/core';
     import { QBtn, QLinearProgress, QTable, type QTableProps, QTd, QTr } from 'quasar';
     import { computed } from 'vue';
-
-    import { type ProgressIndicatorTask } from './api';
 
     const props = defineProps<{
         /**

@@ -1,34 +1,34 @@
 import { transformAssetUrls } from '@quasar/vite-plugin';
-import { cssModification, generateViteConfigs, lintAndReformat } from '@ti-platform/aide-build-tools';
+import {
+    cssModification,
+    GENERAL_FILES,
+    generateViteMultiFileLibConfigs,
+    lintAndReformat,
+} from '@ti-platform/aide-build-tools';
 import vue from '@vitejs/plugin-vue';
-import { resolve } from 'path';
+import { join } from 'path';
 import { defineConfig } from 'vite';
+import dtsPlugin from 'vite-plugin-dts';
 
-import { dependencies } from './package.json';
-
-const configs = generateViteConfigs();
+const configs = await generateViteMultiFileLibConfigs();
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    ...configs,
     plugins: [
         vue({
             template: { transformAssetUrls },
         }),
 
-        lintAndReformat(['./src'], ['.ts', '.vue'], undefined, { verifyVueTs: true }),
+        dtsPlugin({
+            include: ['./src/**/*.ts', './src/**/*.vue'],
+            exclude: ['./src/preview/**/*', './src/**/*.docs.ts'],
+        }),
+
+        lintAndReformat(['./src'], ['.ts', '.vue'], [...GENERAL_FILES, 'vite-preview.config.ts'], {
+            verifyVueTs: true,
+        }),
     ],
-    build: {
-        ...configs.build!,
-        lib: {
-            formats: ['es'],
-            entry: resolve(__dirname, 'src/index.ts'),
-            name: 'TiPlatform.AideQuasar',
-            fileName: (format) => `index.js`,
-        },
-        rollupOptions: {
-            external: Object.keys(dependencies),
-        },
-    },
     css: {
         postcss: { plugins: [cssModification()] },
     },
@@ -39,6 +39,8 @@ export default defineConfig({
             // alias the libs that we use from our SCSS
             '~@quasar/extras': '@quasar/extras',
             '~quasar': 'quasar',
+            '@src': join(__dirname, 'src'),
+            '~@src': join(__dirname, 'src'),
         },
     },
 });

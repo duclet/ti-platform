@@ -16,11 +16,10 @@
 </template>
 
 <script setup lang="ts">
+    import MultiProgressIndicator from '@src/preview/MultiProgressIndicator.vue';
+    import TimelineStepper from '@src/preview/TimelineStepper.vue';
+    import WizardStepper from '@src/preview/WizardStepper.vue';
     import { ref } from 'vue';
-
-    import MultiProgressIndicator from './MultiProgressIndicator.vue';
-    import TimelineStepper from './TimelineStepper.vue';
-    import WizardStepper from './WizardStepper.vue';
 
     const components: Array<string> = ['MultiProgressIndicator', 'TimelineStepper', 'WizardStepper'];
 

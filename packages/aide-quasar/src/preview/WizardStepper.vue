@@ -64,15 +64,14 @@
 </template>
 
 <script setup lang="ts">
+    import { createWizardStep, type WizardStep, WizardStepperComponent } from '@src/index';
+    import AccountCreation from '@src/preview/wizard-steps/AccountCreation.vue';
+    import RequestConfirmation from '@src/preview/wizard-steps/RequestConfirmation.vue';
+    import UserInfoRequestStep from '@src/preview/wizard-steps/UserInfoRequestStep.vue';
+    import { WizardStepperStepsDataKey } from '@src/preview/wizard-steps/utils';
+    import WelcomeMessageStep from '@src/preview/wizard-steps/WelcomeMessageStep.vue';
     import { refAutoReset } from '@vueuse/core';
     import { computed, provide, ref } from 'vue';
-
-    import { createWizardStep, type WizardStep, WizardStepperComponent } from '../index';
-    import AccountCreation from './wizard-steps/AccountCreation.vue';
-    import RequestConfirmation from './wizard-steps/RequestConfirmation.vue';
-    import UserInfoRequestStep from './wizard-steps/UserInfoRequestStep.vue';
-    import { WizardStepperStepsDataKey } from './wizard-steps/utils';
-    import WelcomeMessageStep from './wizard-steps/WelcomeMessageStep.vue';
 
     const splitterModel = ref(30);
     const isComponentVisible = refAutoReset(true, 1000);

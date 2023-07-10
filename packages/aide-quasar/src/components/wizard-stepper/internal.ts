@@ -1,5 +1,5 @@
-import { VisibilityState } from '../../visibility';
-import { type WizardStepState } from './api';
+import { type WizardStepState } from '@src/components/wizard-stepper/api';
+import { VisibilityState } from '@src/visibility';
 
 /**
  * Backing implementation of a {@link WizardStepState}.

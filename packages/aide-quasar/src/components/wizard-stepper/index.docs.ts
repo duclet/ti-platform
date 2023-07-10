@@ -1,1 +1,1 @@
-export * from './api';
+export * from '@src/components/wizard-stepper/api';

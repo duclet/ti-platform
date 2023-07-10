@@ -1,21 +1,51 @@
+import { getHtmlConfigs } from '@src/eslint/html-configs';
+import { getCjsConfigs, getJsConfigs } from '@src/eslint/javascript-configs';
+import { getJsonConfigs } from '@src/eslint/json-configs';
+import { getTsConfigs } from '@src/eslint/typescript-configs';
+import { getVueConfigs } from '@src/eslint/vue-configs';
+import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from '@src/misc';
+import { spawnCommand } from '@src/spawn';
 import { type Linter } from 'eslint';
 
-import { getHtmlConfigs } from './eslint/html-configs';
-import { getCjsConfigs, getJsConfigs } from './eslint/javascript-configs';
-import { getJsonConfigs } from './eslint/json-configs';
-import { getTsConfigs } from './eslint/typescript-configs';
-import { getVueConfigs } from './eslint/vue-configs';
-import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from './misc';
-import { spawnCommand } from './spawn';
-
 export type EslintConfigsParams = {
+    /**
+     * The base directory for your package.
+     */
     baseDir: string;
+
+    /**
+     * List of files to enable linting support for.
+     */
     enable?: Array<'cjs' | 'html' | 'js' | 'json' | 'ts' | 'vue'>;
+
+    /**
+     * If we need to override or extend the configurations for `.cjs` files, this handler can be provided.
+     */
     configureCjs?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;
+
+    /**
+     * If we need to override or extend the configurations for `.html` files, this handler can be provided.
+     */
     configureHtml?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;
+
+    /**
+     * If we need to override or extend the configurations for `.js` files, this handler can be provided.
+     */
     configureJs?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;
+
+    /**
+     * If we need to override or extend the configurations for `.json` files, this handler can be provided.
+     */
     configureJson?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;
+
+    /**
+     * If we need to override or extend the configurations for `.ts` files, this handler can be provided.
+     */
     configureTs?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;
+
+    /**
+     * If we need to override or extend the configurations for `.vue` files, this handler can be provided.
+     */
     configureVue?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;
 };
 
@@ -26,7 +56,7 @@ export type EslintConfigsParams = {
 export function configureWithPossibleExtension(
     baseConfigs: Linter.ConfigOverride,
     extender: (configs: Linter.ConfigOverride) => Linter.ConfigOverride = (x) => x
-) {
+): Linter.ConfigOverride {
     return extender(baseConfigs);
 }
 
@@ -37,7 +67,7 @@ export function configureWithPossibleExtension(
  * - Configurations for *.ts files will inherit the plugins and rules set by the *.js configurations.
  * - Configurations for *.vue files will inherit the plugins, and rules set by the *.ts configurations.
  */
-export function generateEslintConfigs(configs: EslintConfigsParams) {
+export function generateEslintConfigs(configs: EslintConfigsParams): Linter.Config {
     const cjsConfigs = configureWithPossibleExtension(getCjsConfigs(), configs.configureCjs);
     const htmlConfigs = configureWithPossibleExtension(getHtmlConfigs(), configs.configureHtml);
     const jsConfigs = configureWithPossibleExtension(getJsConfigs(), configs.configureJs);
@@ -55,10 +85,13 @@ export function generateEslintConfigs(configs: EslintConfigsParams) {
             configs.enable?.includes('json') ? jsonConfigs : null,
             configs.enable?.includes('ts') ? tsConfigs : null,
             configs.enable?.includes('vue') ? vueConfigs : null,
-        ].filter((config) => config !== null),
+        ].filter((config): config is NonNullable<Linter.ConfigOverride> => config !== null),
     };
 }
 
+/**
+ * Execute the command to run ESLint.
+ */
 export function runEslint(params: RunEsLintPrettierParams) {
     return spawnCommand(
         [

@@ -1,14 +1,18 @@
 import { type Linter } from 'eslint';
 import { resolve } from 'path';
 
+/**
+ * Get the default configurations for `.ts` files.
+ */
 export function getTsConfigs(jsConfigs: Linter.ConfigOverride, baseDir: string): Linter.ConfigOverride {
     return {
         files: '*.ts',
         extends: [
-            ...jsConfigs.extends!.slice(0, -1),
+            // Note that we need to ensure "prettier" is last
+            ...(jsConfigs.extends! as Array<string>).filter((v) => v !== 'prettier'),
             'plugin:@typescript-eslint/recommended',
             'plugin:@typescript-eslint/recommended-requiring-type-checking',
-            ...jsConfigs.extends!.slice(-1),
+            'prettier',
         ],
         plugins: [...jsConfigs.plugins!, '@typescript-eslint'],
         parserOptions: {

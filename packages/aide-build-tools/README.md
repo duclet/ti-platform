@@ -3,11 +3,79 @@
 This package contains a bunch of tools and default configurations to help build libraries and sharable packages. Refer
 to the API Docs below for the types, variables, and functions that are exposed.
 
+## Binaries
+The following binaries are exposed:
+
+### Linters
+```
+Usage:
+  {run-eslint|run-prettier|run-linter} [flags...]
+
+Flags:
+  -c, --command <string>             Optional list of commands to run after linting is complete
+  -d, --dir <string>                 Directory to scan
+  -e, --extension <string>           Extension to scan. Ex: .ts
+  -f, --file <string>                File to include. Ex: ./my-file.ts
+  -h, --help                         Show help
+  -g, --include-general-files        Include some of the general files like package.json, prettier.config.cjs, etc when linting
+  -k, --kill-on-error                Kill the process when a linter fails rather than continuing on initial run
+  -w, --watch                        Enable watch mode
+  -s, --watch-only                   Skip the initial linting and only watch files
+```
+
+There are 3 binaries available here: `run-eslint`, `run-prettier`, and `run-linter`. The first two simply runs the
+linting tool in their name while the latter runs both of them sequentially (first ESLint, then Prettier).
+
+### API Docs Generator
+```
+Usage:
+  run-typedoc [flags...]
+
+Flags:
+  -b, --base-readme <string>                    The base file to inject the generated content into. (default: "./base-readme.md")
+  -h, --help                                    Show help
+  -v, --include-vue-doc-gen                     Include the generation of vue-docgen-cli.
+  -i, --input-file <string>                     The input file. (default: "./src/index.ts")
+  -o, --out-dir <string>                        Directory to output the generated content. (default: "./docs")
+  -c, --vue-doc-gen-config-file <string>        The path to the configuration file for vue-docgen-cli. (default: "./docgen.config.cjs")
+```
+
+Please note that this tool assumes and requires the extension `typedoc-plugin-markdown` to be installed. You'll also 
+need configure TypeDoc to use that plugin. You can do so in your `package.json` file but including the following:
+
+```
+...
+    "typedocOptions": {
+        "plugin": [
+            "typedoc-plugin-markdown"
+        ]
+    }
+...
+```
+
+So what the whole point of this binary? It basically came into existent because I couldn't find a single tool that 
+generates good-looking API Docs and good documentation for Vue components. As such, this actually combines 2 tools,
+TypeDoc and Vue-DocGen.
+
+The way this works is that it will find a base file and then inject into it contents from the two tools by replacing
+some of the placeholder text in it. As such, you'll be able to include custom content within the doc (the documentation
+you are reading about these binaries are custom as an example). Below are the text it will look for and replace (note
+that both of the options requires the string to be wrapped around with `<!-- and -->`, the only reason I'm not 
+including it below is because I used some very simply string matching and replace and as such will probably replace
+the string too if I have it exactly as is):
+
+- `Insert API Docs`: Will be replaced with the contents of TypeDoc.
+- `Insert components`: Will be replaced with the contents of Vue-DocGen.
+
 ## API Docs
 
 ### Type Aliases
 
+- [BuildArgs](README.md#buildargs)
 - [EslintConfigsParams](README.md#eslintconfigsparams)
+- [Handler](README.md#handler)
+- [HandlerCreator](README.md#handlercreator)
+- [PluginArgs](README.md#pluginargs)
 - [RunEsLintPrettierParams](README.md#runeslintprettierparams)
 
 ### Variables
@@ -16,20 +84,40 @@ to the API Docs below for the types, variables, and functions that are exposed.
 
 ### Functions
 
+- [appendFileExtensionForEsm](README.md#appendfileextensionforesm)
 - [configureWithPossibleExtension](README.md#configurewithpossibleextension)
 - [cssModification](README.md#cssmodification)
 - [generateEslintConfigs](README.md#generateeslintconfigs)
 - [generatePrettierConfigs](README.md#generateprettierconfigs)
 - [generateViteConfigs](README.md#generateviteconfigs)
-- [getLibraryFilename](README.md#getlibraryfilename)
-- [isLibraryExternalDep](README.md#islibraryexternaldep)
+- [generateViteMultiFileLibConfigs](README.md#generatevitemultifilelibconfigs)
 - [keepOnlyExistentPaths](README.md#keeponlyexistentpaths)
 - [lintAndReformat](README.md#lintandreformat)
+- [modifySourceContentsChain](README.md#modifysourcecontentschain)
+- [replaceAliasWithTsconfigPaths](README.md#replacealiaswithtsconfigpaths)
 - [runEslint](README.md#runeslint)
 - [runPrettier](README.md#runprettier)
 - [spawnCommand](README.md#spawncommand)
 
 ## Type Aliases
+
+### BuildArgs
+
+Ƭ **BuildArgs**: `Object`
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cwd?` | `string` | The current working directory. Defaults to whatever value is returned by `process.cwd()`. |
+| `debug?` | `boolean` | Set to true to output some debugging information while executing. Defaults to `false`. |
+| `extensions?` | `string`[] | The list of file extensions to parse. Defaults to `[".ts"]`. |
+
+#### Defined in
+
+esbuild-plugins/modify-source-contents-chain.ts:5
+
+___
 
 ### EslintConfigsParams
 
@@ -37,20 +125,89 @@ to the API Docs below for the types, variables, and functions that are exposed.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `baseDir` | `string` |
-| `configureCjs?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` |
-| `configureHtml?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` |
-| `configureJs?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` |
-| `configureJson?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` |
-| `configureTs?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` |
-| `configureVue?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` |
-| `enable?` | (``"cjs"`` \| ``"html"`` \| ``"js"`` \| ``"json"`` \| ``"ts"`` \| ``"vue"``)[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `baseDir` | `string` | The base directory for your package. |
+| `configureCjs?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.cjs` files, this handler can be provided. |
+| `configureHtml?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.html` files, this handler can be provided. |
+| `configureJs?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.js` files, this handler can be provided. |
+| `configureJson?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.json` files, this handler can be provided. |
+| `configureTs?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.ts` files, this handler can be provided. |
+| `configureVue?` | (`configs`: `Linter.ConfigOverride`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.vue` files, this handler can be provided. |
+| `enable?` | (``"cjs"`` \| ``"html"`` \| ``"js"`` \| ``"json"`` \| ``"ts"`` \| ``"vue"``)[] | List of files to enable linting support for. |
 
 #### Defined in
 
-eslint.ts:11
+eslint.ts:10
+
+___
+
+### Handler
+
+Ƭ **Handler**: (`args`: { `contents`: `string` ; `path`: `string`  }) => { `contents`: `string`  }
+
+#### Type declaration
+
+▸ (`args`): `Object`
+
+Handler to be given the path of the file whose content is also given. It should return an object with the updated
+contents before it is passed to the next handler.
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `args` | `Object` |
+| `args.contents` | `string` |
+| `args.path` | `string` |
+
+##### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `contents` | `string` |
+
+#### Defined in
+
+esbuild-plugins/modify-source-contents-chain.ts:26
+
+___
+
+### HandlerCreator
+
+Ƭ **HandlerCreator**: (`args`: [`BuildArgs`](README.md#buildargs) & { `build`: `PluginBuild`  }) => [`Handler`](README.md#handler)
+
+#### Type declaration
+
+▸ (`args`): [`Handler`](README.md#handler)
+
+Use to create the handler as part of the build step.
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `args` | [`BuildArgs`](README.md#buildargs) & { `build`: `PluginBuild`  } |
+
+##### Returns
+
+[`Handler`](README.md#handler)
+
+#### Defined in
+
+esbuild-plugins/modify-source-contents-chain.ts:31
+
+___
+
+### PluginArgs
+
+Ƭ **PluginArgs**: [`BuildArgs`](README.md#buildargs) & { `handlerCreators`: [`HandlerCreator`](README.md#handlercreator)[]  }
+
+#### Defined in
+
+esbuild-plugins/modify-source-contents-chain.ts:33
 
 ___
 
@@ -60,11 +217,11 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `dirs?` | `string`[] |
-| `extensions?` | `string`[] |
-| `files?` | `string`[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `dirs?` | `string`[] | List of directory glob patterns to run the linter on. |
+| `extensions?` | `string`[] | List of file extensions to run the linter on. |
+| `files?` | `string`[] | List of files to run the linter on. |
 
 #### Defined in
 
@@ -76,15 +233,39 @@ misc.ts:5
 
 • `Const` **GENERAL\_FILES**: `string`[]
 
+General list of files that most packages should have that we want to lint and format.
+
 #### Defined in
 
-misc.ts:11
+misc.ts:25
 
 ## Functions
 
+### appendFileExtensionForEsm
+
+▸ **appendFileExtensionForEsm**(`args`): [`Handler`](README.md#handler)
+
+This will append the file extension to the end of relative imports if we are building for ESM.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `args` | [`BuildArgs`](README.md#buildargs) & { `build`: `PluginBuild`  } |
+
+#### Returns
+
+[`Handler`](README.md#handler)
+
+#### Defined in
+
+esbuild-plugins/modify-source-contents-chain.ts:31
+
+___
+
 ### configureWithPossibleExtension
 
-▸ **configureWithPossibleExtension**(`baseConfigs`, `extender?`): `ConfigOverride`<`RulesRecord`\>
+▸ **configureWithPossibleExtension**(`baseConfigs`, `extender?`): `Linter.ConfigOverride`
 
 Given the base configurations, if an extender function is provided, execute it to retrieve the extended
 configurations.
@@ -98,11 +279,11 @@ configurations.
 
 #### Returns
 
-`ConfigOverride`<`RulesRecord`\>
+`Linter.ConfigOverride`
 
 #### Defined in
 
-eslint.ts:26
+eslint.ts:56
 
 ___
 
@@ -128,7 +309,7 @@ ___
 
 ### generateEslintConfigs
 
-▸ **generateEslintConfigs**(`configs`): `Object`
+▸ **generateEslintConfigs**(`configs`): `Linter.Config`
 
 Generate the configurations to use for ESLint.
 
@@ -144,16 +325,11 @@ Note the following unique features while the configurations are generated:
 
 #### Returns
 
-`Object`
-
-| Name | Type |
-| :------ | :------ |
-| `overrides` | (``null`` \| `ConfigOverride`<`RulesRecord`\>)[] |
-| `root` | `boolean` |
+`Linter.Config`
 
 #### Defined in
 
-eslint.ts:40
+eslint.ts:70
 
 ___
 
@@ -161,13 +337,15 @@ ___
 
 ▸ **generatePrettierConfigs**(): `Config`
 
+Get the default configurations for Prettier.
+
 #### Returns
 
 `Config`
 
 #### Defined in
 
-prettier.ts:6
+prettier.ts:8
 
 ___
 
@@ -175,59 +353,45 @@ ___
 
 ▸ **generateViteConfigs**(): `UserConfig`
 
+Get the default configurations for Vite.
+
 #### Returns
 
 `UserConfig`
 
 #### Defined in
 
-vite.ts:17
+vite.ts:8
 
 ___
 
-### getLibraryFilename
+### generateViteMultiFileLibConfigs
 
-▸ **getLibraryFilename**(`format`): ``"index.cjs"`` \| ``"index.js"``
+▸ **generateViteMultiFileLibConfigs**(`entries?`): `Promise`<`UserConfig`\>
+
+Get the default configurations for Vite if we want to generate individual files as part of a library export.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `format` | `ModuleFormat` |
+| `entries` | `string`[] |
 
 #### Returns
 
-``"index.cjs"`` \| ``"index.js"``
+`Promise`<`UserConfig`\>
 
 #### Defined in
 
-vite.ts:5
-
-___
-
-### isLibraryExternalDep
-
-▸ **isLibraryExternalDep**(`source`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `source` | `string` |
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-vite.ts:13
+vite.ts:19
 
 ___
 
 ### keepOnlyExistentPaths
 
 ▸ **keepOnlyExistentPaths**(`paths`): `string`[]
+
+Given a list of paths, remove files that doesn't exists.
 
 #### Parameters
 
@@ -241,13 +405,18 @@ ___
 
 #### Defined in
 
-misc.ts:20
+misc.ts:37
 
 ___
 
 ### lintAndReformat
 
 ▸ **lintAndReformat**(`dirs`, `extensions`, `files?`, `options?`): `Plugin`
+
+Lint and reformat the code.
+
+Note that this contains an escape hatch to linting so you can still "build" by including the environment variable
+`DISABLE_LINTING`.
 
 #### Parameters
 
@@ -266,7 +435,60 @@ ___
 
 #### Defined in
 
-vite-plugins/lint-and-reformat.ts:58
+vite-plugins/lint-and-reformat.ts:69
+
+___
+
+### modifySourceContentsChain
+
+▸ **modifySourceContentsChain**(`«destructured»`): `Plugin`
+
+While esbuild allows you to add multiple handlers for its onLoad event, once one of the handler returns something,
+the subsequent handlers will not run. That means we can't have multiple handlers that updates the source content.
+This plugin allows for the possibility.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `«destructured»` | [`PluginArgs`](README.md#pluginargs) |
+
+#### Returns
+
+`Plugin`
+
+#### Defined in
+
+esbuild-plugins/modify-source-contents-chain.ts:56
+
+___
+
+### replaceAliasWithTsconfigPaths
+
+▸ **replaceAliasWithTsconfigPaths**(`args`): [`Handler`](README.md#handler)
+
+This plugin allows the use of path aliases in TSConfig, and it will be replaced with the mapped value in the
+generated output. This plugin makes use of simple string matching and replace so that it can still be fast. If you
+want to use a plugin that is likely safer which actually parses the code and does the replacement, you can look at
+the plugin available here: https://github.com/wjfei/esbuild-plugin-tsconfig-paths
+
+**`Throws`**
+
+Throws a `tsconfig-path#ConfigLoaderFailResult` If we cannot load the `tsconfig.json` file for this package.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `args` | [`BuildArgs`](README.md#buildargs) & { `build`: `PluginBuild`  } |
+
+#### Returns
+
+[`Handler`](README.md#handler)
+
+#### Defined in
+
+esbuild-plugins/modify-source-contents-chain.ts:31
 
 ___
 
@@ -274,6 +496,8 @@ ___
 
 ▸ **runEslint**(`params`): `SpawnSyncReturns`<`Buffer`\>
 
+Execute the command to run ESLint.
+
 #### Parameters
 
 | Name | Type |
@@ -286,7 +510,7 @@ ___
 
 #### Defined in
 
-eslint.ts:62
+eslint.ts:95
 
 ___
 
@@ -294,6 +518,8 @@ ___
 
 ▸ **runPrettier**(`params`): `SpawnSyncReturns`<`Buffer`\>
 
+Execute the command to run Prettier.
+
 #### Parameters
 
 | Name | Type |
@@ -306,13 +532,15 @@ ___
 
 #### Defined in
 
-prettier.ts:21
+prettier.ts:26
 
 ___
 
 ### spawnCommand
 
 ▸ **spawnCommand**(`command`): `SpawnSyncReturns`<`Buffer`\>
+
+Spawn the given command synchronously and passing along the current environment variables.
 
 #### Parameters
 
@@ -326,4 +554,4 @@ ___
 
 #### Defined in
 
-spawn.ts:3
+spawn.ts:6

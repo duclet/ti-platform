@@ -103,8 +103,8 @@
             fullyCompletedHiddenTimeoutMs: 1000,
             isHiddenWhenFullyCompleted: false,
             isInitiallyHidden: false,
-            colorSupplier: () => getTimelineStepColorByStatus,
-            iconSupplier: () => getTimelineStepIconByStatus,
+            colorSupplier: getTimelineStepColorByStatus,
+            iconSupplier: getTimelineStepIconByStatus,
         }
     );
 

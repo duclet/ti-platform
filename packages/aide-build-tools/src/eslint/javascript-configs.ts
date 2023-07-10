@@ -1,10 +1,16 @@
 import { type Linter } from 'eslint';
 
+/**
+ * Shared rules for `.cjs` and `.js` files.
+ */
 export const BASE_JAVASCRIPT_RULES: Partial<Linter.RulesRecord> = {
     'no-case-declarations': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 };
 
+/**
+ * Get the default configurations for `.cjs` files.
+ */
 export function getCjsConfigs(): Linter.ConfigOverride {
     return {
         files: '*.cjs',
@@ -21,6 +27,9 @@ export function getCjsConfigs(): Linter.ConfigOverride {
     };
 }
 
+/**
+ * Get the default configurations for `.js` files.
+ */
 export function getJsConfigs(): Linter.ConfigOverride {
     return {
         files: '*.js',

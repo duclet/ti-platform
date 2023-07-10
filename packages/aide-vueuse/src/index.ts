@@ -1,2 +1,2 @@
-export * from './dom';
-export * from './polling';
+export * from '@src/dom';
+export * from '@src/polling';

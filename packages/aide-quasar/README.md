@@ -310,7 +310,7 @@ Represents a step in the wizard.
 
 #### Defined in
 
-components/wizard-stepper/api.ts:14
+components/wizard-stepper/api.ts:13
 
 ___
 
@@ -322,7 +322,7 @@ Unique name for a step.
 
 #### Defined in
 
-components/wizard-stepper/api.ts:8
+components/wizard-stepper/api.ts:7
 
 ## Variables
 
@@ -381,7 +381,7 @@ Create a step for the wizard.
 
 #### Defined in
 
-components/wizard-stepper/api.ts:105
+components/wizard-stepper/api.ts:104
 
 ___
 

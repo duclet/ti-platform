@@ -1,11 +1,10 @@
+import { type runEslint } from '@src/eslint';
+import { GENERAL_FILES } from '@src/misc';
+import { type runPrettier } from '@src/prettier';
+import { spawnCommand } from '@src/spawn';
 import chokidar from 'chokidar';
 import { cli } from 'cleye';
 import { cwd, exit } from 'process';
-
-import { type runEslint } from './eslint';
-import { GENERAL_FILES } from './misc';
-import { type runPrettier } from './prettier';
-import { spawnCommand } from './spawn';
 
 function getArgv(commandName: string) {
     return cli({
@@ -62,6 +61,9 @@ function getArgv(commandName: string) {
     });
 }
 
+/**
+ * Generate the globbing pattern to use for the watching files.
+ */
 function getWatchPatterns(dirs: Array<string>, extensions: Array<string>, files: Array<string>) {
     const dirExtensionPatterns =
         dirs.length && extensions.length
@@ -75,6 +77,9 @@ function getWatchPatterns(dirs: Array<string>, extensions: Array<string>, files:
     return [...dirExtensionPatterns, ...files];
 }
 
+/**
+ * Run the linter.
+ */
 export function runLinter(name: string, linter: typeof runEslint | typeof runPrettier) {
     const argv = getArgv(name);
 

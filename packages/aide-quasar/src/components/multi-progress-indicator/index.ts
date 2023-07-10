@@ -1,5 +1,5 @@
-export * from './api';
+export * from '@src/components/multi-progress-indicator/api';
 export {
     default as MultiProgressIndicator,
     default as MultiProgressIndicatorComponent,
-} from './MultiProgressIndicator.vue';
+} from '@src/components/multi-progress-indicator/MultiProgressIndicator.vue';

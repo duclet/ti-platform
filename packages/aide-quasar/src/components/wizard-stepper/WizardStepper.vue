@@ -177,15 +177,14 @@
     This is a wrapper component over the QStepper component with enhancements to make managing buttons and certain user
     interactions easier.
     */
+    import { type WizardStep, type WizardStepName } from '@src/components/wizard-stepper/api';
+    import { WizardStepStateImpl } from '@src/components/wizard-stepper/internal';
+    import { cssStyleByVisibilityState, vIfByVisibilityState } from '@src/visibility';
     import { first, toMap } from '@ti-platform/aide';
     import { isDef, useStepper } from '@vueuse/core';
     import { QBtn, QSeparator, QStep, QStepper, QStepperNavigation, useQuasar } from 'quasar';
     import { computed, type ComputedRef, inject, onMounted, onUnmounted, ref } from 'vue';
     import { matchedRouteKey, onBeforeRouteLeave } from 'vue-router';
-
-    import { cssStyleByVisibilityState, vIfByVisibilityState } from '../../visibility';
-    import { type WizardStep, type WizardStepName } from './api';
-    import { WizardStepStateImpl } from './internal';
 
     const props = withDefaults(
         defineProps<{

@@ -1,3 +1,8 @@
+import {
+    appendFileExtensionForEsm,
+    modifySourceContentsChain,
+    replaceAliasWithTsconfigPaths,
+} from '@ti-platform/aide-build-tools';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
@@ -8,4 +13,9 @@ export default defineConfig({
     outDir: './dist',
     treeshake: true,
     target: 'es2018',
+    esbuildPlugins: [
+        modifySourceContentsChain({
+            handlerCreators: [replaceAliasWithTsconfigPaths, appendFileExtensionForEsm],
+        }),
+    ],
 });

@@ -1,15 +1,20 @@
+import { runEslint } from '@src/eslint';
+import { GENERAL_FILES } from '@src/misc';
+import { runPrettier } from '@src/prettier';
+import { spawnCommand } from '@src/spawn';
 import { debounce } from 'ts-debounce';
 import { type Plugin } from 'vite';
 
-import { runEslint } from '../eslint';
-import { GENERAL_FILES } from '../misc';
-import { runPrettier } from '../prettier';
-import { spawnCommand } from '../spawn';
-
+/**
+ * Execute the command to verify using the Typescript compiler.
+ */
 function runVerifyTs() {
     return spawnCommand('./node_modules/.bin/tsc --noEmit --listFiles | grep -v node_modules');
 }
 
+/**
+ * Execute the command to verify using the Vue Typescript compiler.
+ */
 function runVerifyVueTs() {
     return spawnCommand('./node_modules/.bin/vue-tsc --noEmit --listFiles | grep -v node_modules');
 }
@@ -55,6 +60,12 @@ function createWatchHandler({ verifyTs, verifyVueTs }: { verifyTs?: boolean; ver
     };
 }
 
+/**
+ * Lint and reformat the code.
+ *
+ * Note that this contains an escape hatch to linting so you can still "build" by including the environment variable
+ * `DISABLE_LINTING`.
+ */
 export function lintAndReformat(
     dirs: Array<string>,
     extensions: Array<string>,
@@ -73,7 +84,7 @@ export function lintAndReformat(
         name: 'crm-platform:lint-and-reformat',
         enforce: 'pre',
         buildStart() {
-            // Rollup will actually call this on each watch change so we don't want to lint after the initial build
+            // Rollup will actually call this on each watch change, so we don't want to lint after the initial build
             if (!isEnabled || !isInitialBuild) {
                 return;
             }

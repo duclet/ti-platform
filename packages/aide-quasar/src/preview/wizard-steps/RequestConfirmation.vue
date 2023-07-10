@@ -11,12 +11,10 @@
 </template>
 
 <script setup lang="ts">
+    import { VisibilityState, type WizardStepState } from '@src/index';
+    import { WizardStepperStepsDataKey } from '@src/preview/wizard-steps/utils';
     import { useVModel } from '@vueuse/core';
     import { inject, onMounted } from 'vue';
-
-    import { type WizardStepState } from '../../components/wizard-stepper';
-    import { VisibilityState } from '../../visibility';
-    import { WizardStepperStepsDataKey } from './utils';
 
     const props = defineProps<{
         modelValue: WizardStepState;

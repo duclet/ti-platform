@@ -8,10 +8,9 @@
 </template>
 
 <script setup lang="ts">
+    import { type WizardStepState } from '@src/index';
     import { promiseTimeout, useVModel } from '@vueuse/core';
     import { onMounted, ref } from 'vue';
-
-    import { type WizardStepState } from '../../components/wizard-stepper';
 
     const props = defineProps<{
         modelValue: WizardStepState;

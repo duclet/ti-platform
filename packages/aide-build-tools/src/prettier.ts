@@ -1,8 +1,10 @@
+import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from '@src/misc';
+import { spawnCommand } from '@src/spawn';
 import { type Config } from 'prettier';
 
-import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from './misc';
-import { spawnCommand } from './spawn';
-
+/**
+ * Get the default configurations for Prettier.
+ */
 export function generatePrettierConfigs(): Config {
     return {
         arrowParens: 'always',
@@ -18,6 +20,9 @@ export function generatePrettierConfigs(): Config {
     };
 }
 
+/**
+ * Execute the command to run Prettier.
+ */
 export function runPrettier(params: RunEsLintPrettierParams) {
     const dirExtensionPatterns =
         params.dirs?.length && params.extensions?.length

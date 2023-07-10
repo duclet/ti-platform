@@ -1,7 +1,6 @@
+import App from '@src/preview/App.vue';
 import { Dialog, Quasar } from 'quasar';
 import { createApp } from 'vue';
-
-import App from './App.vue';
 
 const app = createApp(App);
 

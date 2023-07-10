@@ -40,6 +40,9 @@ function getArgv(commandName: string) {
     });
 }
 
+/**
+ * Execute the command to run TypeDoc (and potentially Vue-DocGen) and insert it into the base read me file.
+ */
 export function runTypedoc() {
     const argv = getArgv('run-typedoc');
 
