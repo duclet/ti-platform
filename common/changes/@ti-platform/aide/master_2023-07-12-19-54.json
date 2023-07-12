@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Targeting ES2020 as well as changing the exported file types.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}

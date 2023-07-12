@@ -23,11 +23,10 @@ const RELATIVE_IMPORT_STATEMENT_REGEXP =
     /(?<before>(import|export) ((.|\n)*?) from ('|"))(?<import>\.{1,2}\/.+)(?<after>('|");)/gm;
 
 /**
- * This will append the file extension to the end of relative imports if we are building for ESM.
+ * This will append the file extension to the end of relative imports if we are building for ESM and CJS.
  */
-export const appendFileExtensionForEsm: HandlerCreator = ({ build: { initialOptions } }) => {
-    // Only ESM requires the file extension to be appended, so we can exit early if we are not building for it
-    if (initialOptions.define?.TSUP_FORMAT !== '"esm"') {
+export const appendFileExtensionForImports: HandlerCreator = ({ build: { initialOptions } }) => {
+    if (!['"cjs"', '"esm"'].includes(initialOptions.define?.TSUP_FORMAT ?? '')) {
         return ({ contents, path }) => ({ contents });
     }
 

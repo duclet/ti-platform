@@ -2,11 +2,11 @@
     "extends": "./tsconfig.base.json",
     "include": ["./*.ts", "./src/**/*.ts"],
     "compilerOptions": {
+        "baseUrl": "./",
         "module": "CommonJS",
         "outDir": "dist",
-        "baseUrl": "./",
         "paths": {
-            "@src/*": ["src/*"]
+            "@src/*": ["./src/*"]
         }
     }
 }

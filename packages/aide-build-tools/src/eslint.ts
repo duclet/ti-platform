@@ -7,6 +7,12 @@ import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from '@src/misc';
 import { spawnCommand } from '@src/spawn';
 import { type Linter } from 'eslint';
 
+export * from '@src/eslint/html-configs';
+export * from '@src/eslint/javascript-configs';
+export * from '@src/eslint/json-configs';
+export * from '@src/eslint/typescript-configs';
+export * from '@src/eslint/vue-configs';
+
 export type EslintConfigsParams = {
     /**
      * The base directory for your package.

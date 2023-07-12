@@ -3,7 +3,7 @@
     "version": "2.2.3",
     "type": "module",
     "main": "./dist/index.js",
-    "types": "./src/index.ts",
+    "types": "./dist/index.d.ts",
     "files": [
         "dist/",
         "src/",
@@ -36,6 +36,7 @@
         "@typescript-eslint/eslint-plugin": "^5.60.0",
         "@typescript-eslint/parser": "^5.60.0",
         "@vitejs/plugin-vue": "^4.2.3",
+        "defu": "^6.1.1",
         "eslint": "^8.43.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-import-resolver-typescript": "^3.5.5",

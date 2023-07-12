@@ -1,5 +1,5 @@
 import {
-    appendFileExtensionForEsm,
+    appendFileExtensionForImports,
     modifySourceContentsChain,
     replaceAliasWithTsconfigPaths,
 } from '@ti-platform/aide-build-tools';
@@ -12,10 +12,10 @@ export default defineConfig({
     entry: ['./src/**/*'],
     outDir: './dist',
     treeshake: true,
-    target: 'es2018',
+    target: 'es2020',
     esbuildPlugins: [
         modifySourceContentsChain({
-            handlerCreators: [replaceAliasWithTsconfigPaths, appendFileExtensionForEsm],
+            handlerCreators: [replaceAliasWithTsconfigPaths, appendFileExtensionForImports],
         }),
     ],
 });

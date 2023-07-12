@@ -1,5 +1,6 @@
+import { appendFileExtensionForImports } from '@src/esbuild-plugins';
+import { replaceAliasWithTsconfigPaths } from '@src/esbuild-plugins/handler-creators/replace-alias-with-tsconfig-paths';
 import { modifySourceContentsChain } from '@src/esbuild-plugins/modify-source-contents-chain';
-import { replaceAliasWithTsconfigPaths } from '@src/esbuild-plugins/replace-alias-with-tsconfig-paths';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
@@ -9,10 +10,10 @@ export default defineConfig({
     entry: ['./src/**/*.ts'],
     outDir: './dist',
     treeshake: true,
-    target: 'es2018',
+    target: 'es2020',
     esbuildPlugins: [
         modifySourceContentsChain({
-            handlerCreators: [replaceAliasWithTsconfigPaths],
+            handlerCreators: [replaceAliasWithTsconfigPaths, appendFileExtensionForImports],
         }),
     ],
 });

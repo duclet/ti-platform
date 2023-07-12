@@ -80,17 +80,25 @@ the string too if I have it exactly as is):
 
 ### Variables
 
+- [BASE\_JAVASCRIPT\_RULES](README.md#base_javascript_rules)
 - [GENERAL\_FILES](README.md#general_files)
 
 ### Functions
 
 - [appendFileExtensionForEsm](README.md#appendfileextensionforesm)
+- [appendFileExtensionForImports](README.md#appendfileextensionforimports)
 - [configureWithPossibleExtension](README.md#configurewithpossibleextension)
 - [cssModification](README.md#cssmodification)
 - [generateEslintConfigs](README.md#generateeslintconfigs)
 - [generatePrettierConfigs](README.md#generateprettierconfigs)
 - [generateViteConfigs](README.md#generateviteconfigs)
 - [generateViteMultiFileLibConfigs](README.md#generatevitemultifilelibconfigs)
+- [getCjsConfigs](README.md#getcjsconfigs)
+- [getHtmlConfigs](README.md#gethtmlconfigs)
+- [getJsConfigs](README.md#getjsconfigs)
+- [getJsonConfigs](README.md#getjsonconfigs)
+- [getTsConfigs](README.md#gettsconfigs)
+- [getVueConfigs](README.md#getvueconfigs)
 - [keepOnlyExistentPaths](README.md#keeponlyexistentpaths)
 - [lintAndReformat](README.md#lintandreformat)
 - [modifySourceContentsChain](README.md#modifysourcecontentschain)
@@ -138,7 +146,7 @@ ___
 
 #### Defined in
 
-eslint.ts:10
+eslint.ts:16
 
 ___
 
@@ -229,6 +237,18 @@ misc.ts:5
 
 ## Variables
 
+### BASE\_JAVASCRIPT\_RULES
+
+• `Const` **BASE\_JAVASCRIPT\_RULES**: `Partial`<`Linter.RulesRecord`\>
+
+Shared rules for `.cjs` and `.js` files.
+
+#### Defined in
+
+eslint/javascript-configs.ts:6
+
+___
+
 ### GENERAL\_FILES
 
 • `Const` **GENERAL\_FILES**: `string`[]
@@ -246,6 +266,33 @@ misc.ts:25
 ▸ **appendFileExtensionForEsm**(`args`): [`Handler`](README.md#handler)
 
 This will append the file extension to the end of relative imports if we are building for ESM.
+
+**`Deprecated`**
+
+Just use `appendFileExtensionForImports` which will add it for both ESM and CJS since they'll end up
+ needing it.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `args` | [`BuildArgs`](README.md#buildargs) & { `build`: `PluginBuild`  } |
+
+#### Returns
+
+[`Handler`](README.md#handler)
+
+#### Defined in
+
+esbuild-plugins/modify-source-contents-chain.ts:31
+
+___
+
+### appendFileExtensionForImports
+
+▸ **appendFileExtensionForImports**(`args`): [`Handler`](README.md#handler)
+
+This will append the file extension to the end of relative imports if we are building for ESM and CJS.
 
 #### Parameters
 
@@ -283,7 +330,7 @@ configurations.
 
 #### Defined in
 
-eslint.ts:56
+eslint.ts:62
 
 ___
 
@@ -329,7 +376,7 @@ Note the following unique features while the configurations are generated:
 
 #### Defined in
 
-eslint.ts:70
+eslint.ts:76
 
 ___
 
@@ -387,6 +434,115 @@ extracted CSS from the Vue files, it will also place them in the same folder as 
 #### Defined in
 
 vite.ts:22
+
+___
+
+### getCjsConfigs
+
+▸ **getCjsConfigs**(): `Linter.ConfigOverride`
+
+Get the default configurations for `.cjs` files.
+
+#### Returns
+
+`Linter.ConfigOverride`
+
+#### Defined in
+
+eslint/javascript-configs.ts:14
+
+___
+
+### getHtmlConfigs
+
+▸ **getHtmlConfigs**(): `Linter.ConfigOverride`
+
+Get the default configurations for `.html` files.
+
+#### Returns
+
+`Linter.ConfigOverride`
+
+#### Defined in
+
+eslint/html-configs.ts:6
+
+___
+
+### getJsConfigs
+
+▸ **getJsConfigs**(): `Linter.ConfigOverride`
+
+Get the default configurations for `.js` files.
+
+#### Returns
+
+`Linter.ConfigOverride`
+
+#### Defined in
+
+eslint/javascript-configs.ts:33
+
+___
+
+### getJsonConfigs
+
+▸ **getJsonConfigs**(): `Linter.ConfigOverride`
+
+Get the default configurations for `.json` files.
+
+#### Returns
+
+`Linter.ConfigOverride`
+
+#### Defined in
+
+eslint/json-configs.ts:6
+
+___
+
+### getTsConfigs
+
+▸ **getTsConfigs**(`jsConfigs`, `baseDir`): `Linter.ConfigOverride`
+
+Get the default configurations for `.ts` files.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `jsConfigs` | `ConfigOverride`<`RulesRecord`\> |
+| `baseDir` | `string` |
+
+#### Returns
+
+`Linter.ConfigOverride`
+
+#### Defined in
+
+eslint/typescript-configs.ts:7
+
+___
+
+### getVueConfigs
+
+▸ **getVueConfigs**(`tsConfigs`): `Linter.ConfigOverride`
+
+Get default configurations for `.vue` files.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tsConfigs` | `ConfigOverride`<`RulesRecord`\> |
+
+#### Returns
+
+`Linter.ConfigOverride`
+
+#### Defined in
+
+eslint/vue-configs.ts:6
 
 ___
 
@@ -513,7 +669,7 @@ Execute the command to run ESLint.
 
 #### Defined in
 
-eslint.ts:95
+eslint.ts:101
 
 ___
 
