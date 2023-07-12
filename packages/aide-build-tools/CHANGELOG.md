@@ -1,6 +1,17 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Mon, 10 Jul 2023 10:01:02 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2023 20:01:30 GMT and should not be manually modified.
+
+## 2.0.0
+Wed, 12 Jul 2023 20:01:30 GMT
+
+### Breaking changes
+
+- Targeting ES2020 as well as changing the exported file types.
+
+### Patches
+
+- Deprecates the plugin that adds the file extension only for ESM in favor of one that supports both ESM and CJS.
 
 ## 1.0.0
 Mon, 10 Jul 2023 10:01:02 GMT

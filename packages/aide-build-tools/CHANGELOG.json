@@ -2,6 +2,23 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "2.0.0",
+      "tag": "@ti-platform/aide-build-tools_v2.0.0",
+      "date": "Wed, 12 Jul 2023 20:01:30 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Targeting ES2020 as well as changing the exported file types."
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Deprecates the plugin that adds the file extension only for ESM in favor of one that supports both ESM and CJS."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.0",
       "tag": "@ti-platform/aide-build-tools_v1.0.0",
       "date": "Mon, 10 Jul 2023 10:01:02 GMT",

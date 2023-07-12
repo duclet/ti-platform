@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-quasar
 
-This log was last generated on Mon, 10 Jul 2023 10:01:02 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2023 20:01:30 GMT and should not be manually modified.
+
+## 3.0.0
+Wed, 12 Jul 2023 20:01:30 GMT
+
+### Breaking changes
+
+- Targeting ES2020 as well as changing the exported file types.
 
 ## 2.2.3
 Mon, 10 Jul 2023 10:01:02 GMT

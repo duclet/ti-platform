@@ -2,6 +2,29 @@
   "name": "@ti-platform/aide-vueuse",
   "entries": [
     {
+      "version": "1.0.0",
+      "tag": "@ti-platform/aide-vueuse_v1.0.0",
+      "date": "Wed, 12 Jul 2023 20:01:30 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Targeting ES2020 as well as changing the exported file types."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.7",
       "tag": "@ti-platform/aide-vueuse_v0.0.7",
       "date": "Mon, 10 Jul 2023 10:01:02 GMT",

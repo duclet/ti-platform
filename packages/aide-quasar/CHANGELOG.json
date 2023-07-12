@@ -2,6 +2,29 @@
   "name": "@ti-platform/aide-quasar",
   "entries": [
     {
+      "version": "3.0.0",
+      "tag": "@ti-platform/aide-quasar_v3.0.0",
+      "date": "Wed, 12 Jul 2023 20:01:30 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Targeting ES2020 as well as changing the exported file types."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.2.3",
       "tag": "@ti-platform/aide-quasar_v2.2.3",
       "date": "Mon, 10 Jul 2023 10:01:02 GMT",

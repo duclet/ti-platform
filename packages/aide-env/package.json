@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide-env",
-    "version": "0.1.4",
+    "version": "1.0.0",
     "type": "module",
     "types": "./dist/index.d.ts",
     "exports": {
