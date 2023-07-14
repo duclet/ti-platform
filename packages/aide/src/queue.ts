@@ -9,8 +9,8 @@
  * @return
  *  A promise that will resolve when all the tasks are completed.
  */
-export function executeTasks<T>(tasks: ReadonlyArray<() => Promise<T>>, maxNumOfWorkers = 10): Promise<T[]> {
-    const results: T[] = [];
+export function executeTasks<T>(tasks: ReadonlyArray<() => Promise<T>>, maxNumOfWorkers = 10): Promise<Array<T>> {
+    const results: Array<T> = [];
     let numOfWorkers = 0;
     let taskIndex = 0;
 

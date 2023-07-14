@@ -42,7 +42,7 @@ export const replaceAliasWithTsconfigPaths: HandlerCreator = ({ build, cwd, debu
             }
 
             const relativePath = relative(dirname(path), aliasedPath);
-            const normalizedRelativePath = relativePath.indexOf('.') === 0 ? relativePath : `./${relativePath}`;
+            const normalizedRelativePath = relativePath.startsWith('.') ? relativePath : `./${relativePath}`;
 
             debug && console.log(`${path}: ${match.groups!.import} => ${normalizedRelativePath}`);
 

@@ -98,7 +98,7 @@ export function createCombinedPackageJsonDependencies(): void {
         throw new Error('Source path must be given and is not empty');
     }
 
-    if (!targetPath || !targetPath.trim()) {
+    if (!targetPath?.trim()) {
         throw new Error('Target path must be given and is not empty');
     }
 

@@ -76,7 +76,7 @@ export function lintAndReformat(
     } = {}
 ): Plugin {
     const rootDir = process.cwd();
-    const isEnabled = !process.env['DISABLE_LINTING'];
+    const isEnabled = !process.env.DISABLE_LINTING;
     const watchHandler = createWatchHandler({ ...options });
     let isInitialBuild = true;
 
