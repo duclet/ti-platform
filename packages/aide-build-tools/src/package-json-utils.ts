@@ -112,6 +112,11 @@ export function createCombinedPackageJsonDependencies(): void {
         }))
         .forEach(({ path, dependencies }) =>
             Object.entries(dependencies).forEach(([packageName, version]) => {
+                if (version.startsWith('workspace:')) {
+                    console.log(`Does not support workspace versions, skipping: ${path} - ${packageName} - ${version}`);
+                    return;
+                }
+
                 const versionsForPackage = (packageVersions[packageName] = packageVersions[packageName] || []);
 
                 versionsForPackage.push({ version, source: path });

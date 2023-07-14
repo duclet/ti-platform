@@ -28,7 +28,7 @@
     "scripts": {
         "build:docs": "node -r esbuild-register ./src/bin/run-typedoc.ts",
         "build:src": "tsup",
-        "build:versions": "node -r esbuild-register ./src/bin/create-combined-package-json-dependencies.ts -s ../*/package.json -t ./package-versions.json -d=false",
+        "build:versions": "node -r esbuild-register ./src/bin/create-combined-package-json-dependencies.ts -s '../*/package.json' -t ./package-versions.json -d=false",
         "clean": "rm -rf ./dist",
         "lint": "node -r esbuild-register ./src/bin/run-linter.ts -d ./src -e .ts -g -k -c 'pnpm tsc --noEmit'",
         "prod": "pnpm clean && pnpm lint && pnpm build:src --minify && pnpm build:docs && pnpm build:versions",
