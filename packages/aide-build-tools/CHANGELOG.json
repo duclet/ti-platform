@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "2.1.1",
+      "tag": "@ti-platform/aide-build-tools_v2.1.1",
+      "date": "Fri, 14 Jul 2023 20:31:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Exporting all dependencies used"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.1.0",
       "tag": "@ti-platform/aide-build-tools_v2.1.0",
       "date": "Fri, 14 Jul 2023 20:03:39 GMT",

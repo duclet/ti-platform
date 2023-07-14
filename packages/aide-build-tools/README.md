@@ -102,7 +102,9 @@ basically run `update-package-json-versions` by using the exported `package-vers
 and set to target to your `package.json` and you will end up using the same exact versions. Note that you can also just
 specify the path directly to this package's `package.json` file to only care about the dependencies of this package, the
 other file I've mentioned is a combined view of all the packages under the same mono repository. Should you want to 
-create the same combined file, you can use `create-combined-package-json-dependencies` binary to achieve that. 
+create the same combined file, you can use `create-combined-package-json-dependencies` binary to achieve that.
+
+Note that if you a providing a glob for the pattern, be sure to wrap it in quotes.
 
 ## API Docs
 
