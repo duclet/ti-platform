@@ -67,5 +67,42 @@ the string too if I have it exactly as is):
 - `Insert API Docs`: Will be replaced with the contents of TypeDoc.
 - `Insert components`: Will be replaced with the contents of Vue-DocGen.
 
+### package.json Version Sync
+```
+Usage:
+  create-combined-package-json-dependencies [flags...]
+
+Flags:
+  -d, --dry-run                          Enable dry-run mode which not actually write the target file. If changing to "false" must be passed as "-d=false". (default: true)                                                                                                                                           
+  -h, --help                             Show help                                                                                                                                                                                                                                                                    
+  -s, --source-path <string>             Either the path or glob pattern for the package.json files to read to get the dependencies.                                                                                                                                                                                  
+  -t, --target-path <string>             Path to target package.json that will be created.                                                                                                                                                                                                                            
+  -n, --write-on-no-conflict-only        Enable to only write the target files if there are no conflict between sources. (default: true)
+```
+
+```
+Usage:
+  update-package-json-versions [flags...]
+
+Flags:
+  -d, --dry-run                     Enable dry-run mode which will not actually update the target package.json. If changing to "false" must be passed as "-d=false". (default: true)                                                                                                                                  
+  -h, --help                        Show help                                                                                                                                                                                                                                                                         
+  -s, --source-path <string>        Path to source package.json with versions to copy from.                                                                                                                                                                                                                           
+  -t, --target-path <string>        Path to target package.json that will have its versions updated.
+```
+
+These 2 binaries together can help you keep versions of various dependencies in-sync across multiple packages even if
+they are not in the same repository. Most other tooling only support something similar to this if all the packages are
+part of the same repository so this package came into existent to solve those other cases. This is a good way to ensure 
+you use the same version of dependencies that other dependencies you use rely on. For example, this package, since it
+provides a pattern for building libraries and makes many assumptions, relies on the fact that certain dependencies are
+at certain versions. Should you choose to follow the patterns of this package and want to keep your versions of 
+dependencies in-sync with this package and other packages under its same mono-repositories, you can do so. Just 
+basically run `update-package-json-versions` by using the exported `package-versions.json` from this package as a source
+and set to target to your `package.json` and you will end up using the same exact versions. Note that you can also just
+specify the path directly to this package's `package.json` file to only care about the dependencies of this package, the
+other file I've mentioned is a combined view of all the packages under the same mono repository. Should you want to 
+create the same combined file, you can use `create-combined-package-json-dependencies` binary to achieve that. 
+
 ## API Docs
 <!-- Insert API Docs -->

@@ -5,28 +5,33 @@
     "types": "./dist/index.d.ts",
     "exports": {
         ".": "./dist/index.js",
+        "./package-versions.json": "./package-versions.json",
         "./tsconfig.base.json": "./tsconfig.base.json"
     },
     "bin": {
+        "create-combined-package-json-dependencies": "./dist/bin/create-combined-package-json-dependencies.js",
         "run-eslint": "./dist/bin/run-eslint.js",
         "run-linter": "./dist/bin/run-linter.js",
         "run-prettier": "./dist/bin/run-prettier.js",
-        "run-typedoc": "./dist/bin/run-typedoc.js"
+        "run-typedoc": "./dist/bin/run-typedoc.js",
+        "update-package-json-versions": "./dist/bin/update-package-json-versions.js"
     },
     "files": [
         "bash/",
         "dist/",
         "src/",
         "tsconfig.base.json",
+        "package-versions.json",
         "CHANGELOG.md",
         "README.md"
     ],
     "scripts": {
         "build:docs": "node -r esbuild-register ./src/bin/run-typedoc.ts",
         "build:src": "tsup",
+        "build:versions": "node -r esbuild-register ./src/bin/create-combined-package-json-dependencies.ts -s ../*/package.json -t ./package-versions.json -d=false",
         "clean": "rm -rf ./dist",
         "lint": "node -r esbuild-register ./src/bin/run-linter.ts -d ./src -e .ts -g -k -c 'pnpm tsc --noEmit'",
-        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify && pnpm build:docs",
+        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify && pnpm build:docs && pnpm build:versions",
         "dev": "pnpm clean && pnpm lint -w -c 'pnpm build:src'",
         "build": "pnpm prod"
     },
@@ -46,6 +51,7 @@
         "eslint-plugin-json": "^3.1.0",
         "eslint-plugin-simple-import-sort": "^10.0.0",
         "eslint-plugin-vue": "^9.15.0",
+        "glob": "^10.3.3",
         "pkg-types": "^1.0.3",
         "postcss": "^8.4.24",
         "prettier": "^2.8.8",

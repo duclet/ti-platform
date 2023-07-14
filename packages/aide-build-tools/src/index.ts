@@ -1,6 +1,7 @@
 export * from '@src/esbuild-plugins';
 export * from '@src/eslint';
 export * from '@src/misc';
+export * from '@src/package-json-utils';
 export * from '@src/postcss-plugins/css-modification';
 export * from '@src/prettier';
 export * from '@src/spawn';
