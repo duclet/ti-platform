@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
     import { TopbarWithSidebarLayout } from '@src/index';
-    import { type MenuItem } from 'primevue/menuitem';
+    import type { MenuItem } from 'primevue/menuitem';
     import { ref } from 'vue';
 
     const isSidebarVisible = ref(true);

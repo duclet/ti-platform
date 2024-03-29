@@ -28,7 +28,7 @@
 <script setup lang="ts">
     import { useVModel } from '@vueuse/core';
     import BarsIcon from 'primevue/icons/bars';
-    import { type MenuItem } from 'primevue/menuitem';
+    import type { MenuItem } from 'primevue/menuitem';
     import { computed, ref } from 'vue';
 
     const props = withDefaults(
