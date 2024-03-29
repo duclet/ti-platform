@@ -12,9 +12,11 @@ This package contains utility functions that can be used with Vue to enhance the
 ### Functions
 
 - [asComputed](README.md#ascomputed)
+- [injectRefs](README.md#injectrefs)
 - [isRequiredField](README.md#isrequiredfield)
 - [isRequiredFieldWhen](README.md#isrequiredfieldwhen)
 - [isUniqueField](README.md#isuniquefield)
+- [provideAndReturnRefs](README.md#provideandreturnrefs)
 - [reactiveExecuteTasks](README.md#reactiveexecutetasks)
 
 ## Type Aliases
@@ -84,6 +86,34 @@ The ComputedRef that simply returns the value of the given Ref.
 #### Defined in
 
 reactivity.ts:11
+
+___
+
+### injectRefs
+
+▸ **injectRefs**<`T`\>(`key`): `ToRefs`<`NonNullable`<`T`\>\>
+
+Inject the data from the provided key (we are assuming the data exists) but return the results as refs.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `InjectionKey`<`T`\> | The key to retrieve the data to inject. |
+
+#### Returns
+
+`ToRefs`<`NonNullable`<`T`\>\>
+
+#### Defined in
+
+reactivity.ts:21
 
 ___
 
@@ -190,6 +220,35 @@ Given a reference to a list of values, check when a value is given that it isn't
 #### Defined in
 
 validators.ts:43
+
+___
+
+### provideAndReturnRefs
+
+▸ **provideAndReturnRefs**<`T`\>(`key`, `data`): `ToRefs`<`NonNullable`<`T`\>\>
+
+Provide the given data to child components and return the data as refs.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `InjectionKey`<`T`\> | The key to store the data as. |
+| `data` | `T` | The data to store. |
+
+#### Returns
+
+`ToRefs`<`NonNullable`<`T`\>\>
+
+#### Defined in
+
+reactivity.ts:33
 
 ___
 

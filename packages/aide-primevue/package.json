@@ -1,0 +1,60 @@
+{
+    "name": "@ti-platform/aide-primevue",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist/",
+        "src/",
+        "CHANGELOG.md",
+        "README.md"
+    ],
+    "scripts": {
+        "build:docs": "run-typedoc -i ./src/index.docs.ts -v 2>&1",
+        "build:src": "vite build",
+        "clean": "rm -rf ./dist",
+        "prod": "pnpm clean && pnpm build:src && pnpm build:docs",
+        "dev": "pnpm clean && pnpm build:src --watch",
+        "build": "pnpm prod",
+        "preview": "pnpm vite -c vite-preview.config.ts"
+    },
+    "dependencies": {
+        "@s-libs/micro-dash": "^16.0.0",
+        "@ti-platform/aide": "workspace:*",
+        "@ti-platform/aide-vue": "workspace:*",
+        "@vueuse/core": "^10.2.1",
+        "primeflex": "^3.3.1",
+        "primeicons": "^6.0.1",
+        "primevue": "^3.35.0",
+        "vue": "^3.3.4"
+    },
+    "devDependencies": {
+        "@ti-platform/aide-build-tools": "workspace:*",
+        "@types/node": "^16.0.0",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "@vitejs/plugin-vue": "^4.2.3",
+        "defu": "^6.1.2",
+        "eslint": "^8.45.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-import-resolver-typescript": "^3.5.5",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-json": "^3.1.0",
+        "eslint-plugin-simple-import-sort": "^10.0.0",
+        "eslint-plugin-vue": "^9.15.1",
+        "prettier": "^3.0.0",
+        "typedoc": "^0.24.8",
+        "typedoc-plugin-markdown": "^3.15.3",
+        "typescript": "^5.0.4",
+        "vite": "^4.4.4",
+        "vite-plugin-dts": "^3.3.0",
+        "vue-docgen-cli": "^4.67.0",
+        "vue-tsc": "^1.8.5"
+    },
+    "typedocOptions": {
+        "plugin": [
+            "typedoc-plugin-markdown"
+        ]
+    }
+}

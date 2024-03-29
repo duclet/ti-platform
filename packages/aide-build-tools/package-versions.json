@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/auto-generated-combined-package-json-versions",
-    "lastUpdated": "2023-07-14T20:26:38.090Z",
+    "lastUpdated": "2023-10-06T13:33:20.086Z",
     "dependencies": {
         "@html-eslint/eslint-plugin": "^0.19.0",
         "@html-eslint/parser": "^0.19.0",
@@ -33,6 +33,9 @@
         "pkg-types": "^1.0.3",
         "postcss": "^8.4.26",
         "prettier": "^3.0.0",
+        "primeflex": "^3.3.1",
+        "primeicons": "^6.0.1",
+        "primevue": "^3.35.0",
         "quasar": "^2.12.2",
         "rollup": "^3.26.2",
         "sass": "1.32.13",

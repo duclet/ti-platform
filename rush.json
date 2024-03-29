@@ -439,6 +439,11 @@
       "packageName": "@ti-platform/aide-quasar",
       "projectFolder": "packages/aide-quasar",
       "shouldPublish":  true
+    },
+    {
+      "packageName": "@ti-platform/aide-primevue",
+      "projectFolder": "packages/aide-primevue",
+      "shouldPublish":  true
     }
   ]
 }

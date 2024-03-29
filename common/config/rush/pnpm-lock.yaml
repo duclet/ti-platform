@@ -169,6 +169,97 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
 
+  ../../packages/aide-primevue:
+    dependencies:
+      '@s-libs/micro-dash':
+        specifier: ^16.0.0
+        version: 16.0.0
+      '@ti-platform/aide':
+        specifier: workspace:*
+        version: link:../aide
+      '@ti-platform/aide-vue':
+        specifier: workspace:*
+        version: link:../aide-vue
+      '@vueuse/core':
+        specifier: ^10.2.1
+        version: 10.2.1(vue@3.3.4)
+      primeflex:
+        specifier: ^3.3.1
+        version: 3.3.1
+      primeicons:
+        specifier: ^6.0.1
+        version: 6.0.1
+      primevue:
+        specifier: ^3.35.0
+        version: 3.35.0(vue@3.3.4)
+      vue:
+        specifier: ^3.3.4
+        version: 3.3.4
+    devDependencies:
+      '@ti-platform/aide-build-tools':
+        specifier: workspace:*
+        version: link:../aide-build-tools
+      '@types/node':
+        specifier: ^16.0.0
+        version: 16.0.0
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.0.0
+        version: 6.0.0(@typescript-eslint/parser@6.0.0)(eslint@8.45.0)(typescript@5.0.4)
+      '@typescript-eslint/parser':
+        specifier: ^6.0.0
+        version: 6.0.0(eslint@8.45.0)(typescript@5.0.4)
+      '@vitejs/plugin-vue':
+        specifier: ^4.2.3
+        version: 4.2.3(vite@4.4.4)(vue@3.3.4)
+      defu:
+        specifier: ^6.1.2
+        version: 6.1.2
+      eslint:
+        specifier: ^8.45.0
+        version: 8.45.0
+      eslint-config-prettier:
+        specifier: ^8.8.0
+        version: 8.8.0(eslint@8.45.0)
+      eslint-import-resolver-typescript:
+        specifier: ^3.5.5
+        version: 3.5.5(eslint-plugin-import@2.27.5)(eslint@8.45.0)
+      eslint-plugin-import:
+        specifier: ^2.27.5
+        version: 2.27.5(eslint@8.45.0)
+      eslint-plugin-json:
+        specifier: ^3.1.0
+        version: 3.1.0
+      eslint-plugin-simple-import-sort:
+        specifier: ^10.0.0
+        version: 10.0.0(eslint@8.45.0)
+      eslint-plugin-vue:
+        specifier: ^9.15.1
+        version: 9.15.1(eslint@8.45.0)
+      prettier:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typedoc:
+        specifier: ^0.24.8
+        version: 0.24.8(typescript@5.0.4)
+      typedoc-plugin-markdown:
+        specifier: ^3.15.3
+        version: 3.15.3(typedoc@0.24.8)
+      typescript:
+        specifier: ^5.0.4
+        version: 5.0.4
+      vite:
+        specifier: ^4.4.4
+        version: 4.4.4(@types/node@16.0.0)(sass@1.32.13)
+      vite-plugin-dts:
+        specifier: ^3.3.0
+        version: 3.3.0(@types/node@16.0.0)(typescript@5.0.4)(vite@4.4.4)
+      vue-docgen-cli:
+        specifier: ^4.67.0
+        version: 4.67.0(vue@3.3.4)
+      vue-tsc:
+        specifier: ^1.8.5
+        version: 1.8.5(typescript@5.0.4)
+
   ../../packages/aide-quasar:
     dependencies:
       '@s-libs/micro-dash':
@@ -571,7 +662,7 @@ packages:
       debug: 4.3.4
       espree: 9.6.1
       globals: 13.20.0
-      ignore: 5.2.0
+      ignore: 5.2.4
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
@@ -776,7 +867,7 @@ packages:
   /@s-libs/micro-dash@16.0.0:
     resolution: {integrity: sha512-LNQi1zBIWOeBNzD7KqvhAusoYM2dloZF57ipV/hUk+5A7x7UpUkCm0mmtdxK32BdKv+1D8DKHmTQafnNA5l+Wg==}
     dependencies:
-      tslib: 2.4.0
+      tslib: 2.5.3
       utility-types: 3.10.0
     dev: false
 
@@ -956,22 +1047,10 @@ packages:
       vue: 3.3.4
     dev: true
 
-  /@volar/language-core@1.7.8:
-    resolution: {integrity: sha512-TPklg4c2e/f1xB/MGZEiQc3AWG+dH64ZfBlYjFB8nNaWJt4Z4k+IHBhmaP52APG+5PHFerwiWI9oF002RrRTPA==}
-    dependencies:
-      '@volar/source-map': 1.7.8
-    dev: true
-
   /@volar/language-core@1.9.0:
     resolution: {integrity: sha512-+PTRrGanAD2PxqMty0ZC46xhgW5BWzb67RLHhZyB3Im4+eMXsKlYjFUt7Z8ZCwTWQQOnj8NQ6gSgUEoOTwAHrQ==}
     dependencies:
       '@volar/source-map': 1.9.0
-    dev: true
-
-  /@volar/source-map@1.7.8:
-    resolution: {integrity: sha512-g2dtC2kOghvfzMDWeODIo4HO1Ml4hxzPTZyAFDz+YhRF9HjZYJSCaWaVuPZ+z0kY+T2daOHYA10GdrWQ5q0teA==}
-    dependencies:
-      muggle-string: 0.3.1
     dev: true
 
   /@volar/source-map@1.9.0:
@@ -1023,25 +1102,6 @@ packages:
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
     dev: false
-
-  /@vue/language-core@1.8.1(typescript@5.0.4):
-    resolution: {integrity: sha512-pumv3k4J7P58hVh4YGRM9Qz3HaAr4TlFWM9bnVOkZ/2K9o2CK1lAP2y9Jw+Z0+mNL4F2uWQqnAPzj3seLyfpDA==}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@volar/language-core': 1.7.8
-      '@volar/source-map': 1.7.8
-      '@vue/compiler-dom': 3.3.4
-      '@vue/reactivity': 3.3.4
-      '@vue/shared': 3.3.4
-      minimatch: 9.0.1
-      muggle-string: 0.3.1
-      typescript: 5.0.4
-      vue-template-compiler: 2.7.14
-    dev: true
 
   /@vue/language-core@1.8.5(typescript@5.0.4):
     resolution: {integrity: sha512-DKQNiNQzNV7nrkZQujvjfX73zqKdj2+KoM4YeKl+ft3f+crO3JB4ycPnmgaRMNX/ULJootdQPGHKFRl5cXxwaw==}
@@ -2000,7 +2060,7 @@ packages:
       array-union: 2.1.0
       dir-glob: 3.0.1
       fast-glob: 3.2.12
-      ignore: 5.2.0
+      ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
 
@@ -2010,7 +2070,7 @@ packages:
     dependencies:
       dir-glob: 3.0.1
       fast-glob: 3.2.12
-      ignore: 5.2.0
+      ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
 
@@ -2720,6 +2780,22 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
+  /primeflex@3.3.1:
+    resolution: {integrity: sha512-zaOq3YvcOYytbAmKv3zYc+0VNS9Wg5d37dfxZnveKBFPr7vEIwfV5ydrpiouTft8MVW6qNjfkaQphHSnvgQbpQ==}
+    dev: false
+
+  /primeicons@6.0.1:
+    resolution: {integrity: sha512-KDeO94CbWI4pKsPnYpA1FPjo79EsY9I+M8ywoPBSf9XMXoe/0crjbUK7jcQEDHuc0ZMRIZsxH3TYLv4TUtHmAA==}
+    dev: false
+
+  /primevue@3.35.0(vue@3.3.4):
+    resolution: {integrity: sha512-p1YTxBtxG9SyGvHKRqO0LbacJZUYJfUOPgLu7kwhXR34E1Rcmu6iDBnZ2c3jkH+wmRL4fMzQmNnpX6DUrLtGfQ==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.3.4
+    dev: false
+
   /promise@7.3.1:
     resolution: {integrity: sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==}
     dependencies:
@@ -3183,10 +3259,6 @@ packages:
       strip-bom: 3.0.0
     dev: false
 
-  /tslib@2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
-    dev: false
-
   /tslib@2.5.3:
     resolution: {integrity: sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==}
 
@@ -3334,7 +3406,7 @@ packages:
     dependencies:
       '@microsoft/api-extractor': 7.36.1(@types/node@16.0.0)
       '@rollup/pluginutils': 5.0.2
-      '@vue/language-core': 1.8.1(typescript@5.0.4)
+      '@vue/language-core': 1.8.5(typescript@5.0.4)
       debug: 4.3.4
       kolorist: 1.8.0
       typescript: 5.0.4
@@ -3478,7 +3550,7 @@ packages:
       espree: 9.6.1
       esquery: 1.5.0
       lodash: 4.17.21
-      semver: 7.3.8
+      semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
 
