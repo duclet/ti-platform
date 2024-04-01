@@ -1,6 +1,18 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Fri, 14 Jul 2023 20:31:34 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Apr 2024 01:31:07 GMT and should not be manually modified.
+
+## 3.0.0
+Mon, 01 Apr 2024 01:31:07 GMT
+
+### Breaking changes
+
+- Update dependencies.
+- Renamed some of the types; Change the placeholder text for the documentation generator.
+
+### Minor changes
+
+- Update ESLint configurations.
 
 ## 2.1.1
 Fri, 14 Jul 2023 20:31:34 GMT

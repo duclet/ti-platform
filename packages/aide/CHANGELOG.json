@@ -2,6 +2,31 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "3.0.0",
+      "tag": "@ti-platform/aide_v3.0.0",
+      "date": "Mon, 01 Apr 2024 01:31:07 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Update dependencies."
+          },
+          {
+            "comment": "Remove the function mapHas and the interface GuardedMap."
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added the class Deferred and Queue, and the type Awaitable."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `3.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.2",
       "tag": "@ti-platform/aide_v2.0.2",
       "date": "Fri, 14 Jul 2023 20:31:34 GMT",
