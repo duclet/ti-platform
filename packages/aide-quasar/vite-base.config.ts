@@ -2,7 +2,7 @@ import { transformAssetUrls } from '@quasar/vite-plugin';
 import { cssModification, GENERAL_FILES, lintAndReformat } from '@ti-platform/aide-build-tools';
 import vue from '@vitejs/plugin-vue';
 import { join } from 'path';
-import { defineConfig, type UserConfig } from 'vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [
@@ -35,4 +35,4 @@ export default defineConfig({
             '~@src': join(__dirname, 'src'),
         },
     },
-}) as UserConfig;
+});

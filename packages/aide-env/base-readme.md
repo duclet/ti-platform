@@ -9,5 +9,7 @@ approach. It will load in the following order by default:
 
 You can of course configure it to change the order and pattern that best fit your style.
 
-## API Docs
-<!-- Insert API Docs -->
+# Contents
+
+# API Docs
+---Insert API Docs---

@@ -1,8 +1,11 @@
-import { type Loader, type Plugin, type PluginBuild } from 'esbuild';
+import type { Loader, Plugin, PluginBuild } from 'esbuild';
 import { readFileSync } from 'fs';
 import { cwd as processCwd, env } from 'process';
 
-export type BuildArgs = {
+/**
+ * Arguments passed to the {@link ModifySourceContentsChainHandlerCreator} during the build step.
+ */
+export type ModifySourceContentsChainHandlerCreatorBuildArgs = {
     /**
      * The current working directory. Defaults to whatever value is returned by `process.cwd()`.
      */
@@ -23,18 +26,23 @@ export type BuildArgs = {
  * Handler to be given the path of the file whose content is also given. It should return an object with the updated
  * contents before it is passed to the next handler.
  */
-export type Handler = (args: { path: string; contents: string }) => { contents: string };
+export type ModifySourceContentsChainHandler = (args: { path: string; contents: string }) => { contents: string };
 
 /**
  * Use to create the handler as part of the build step.
  */
-export type HandlerCreator = (args: BuildArgs & { build: PluginBuild }) => Handler;
+export type ModifySourceContentsChainHandlerCreator = (
+    args: ModifySourceContentsChainHandlerCreatorBuildArgs & { build: PluginBuild }
+) => ModifySourceContentsChainHandler;
 
-export type PluginArgs = BuildArgs & {
+/**
+ * Arguments for the function {@link modifySourceContentsChain}.
+ */
+export type ModifySourceContentsChainArgs = ModifySourceContentsChainHandlerCreatorBuildArgs & {
     /**
      * List of creators for handlers.
      */
-    handlerCreators: Array<HandlerCreator>;
+    handlerCreators: Array<ModifySourceContentsChainHandlerCreator>;
 };
 
 /**
@@ -58,7 +66,7 @@ export function modifySourceContentsChain({
     cwd = processCwd(),
     debug = env.TI_PLATFORM_MODIFY_SOURCE_CONTENTS_CHAIN_DEBUG === 'true' || false,
     extensions = ['.ts'],
-}: PluginArgs): Plugin {
+}: ModifySourceContentsChainArgs): Plugin {
     return {
         name: '@ti-platform/esbuild-plugin-modify-source-contents-chain',
         setup: (build) => {

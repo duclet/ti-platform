@@ -1,7 +1,7 @@
 import { cli } from 'cleye';
 import { readFileSync, writeFileSync } from 'fs';
 import { globSync } from 'glob';
-import { type PackageJson } from 'pkg-types';
+import type { PackageJson } from 'pkg-types';
 
 type PackageName = string;
 type Path = string;

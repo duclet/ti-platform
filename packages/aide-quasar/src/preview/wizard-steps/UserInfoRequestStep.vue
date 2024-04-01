@@ -8,12 +8,13 @@
 </template>
 
 <script setup lang="ts">
-    import { type WizardStepState } from '@src/index';
+    import type { WizardStepState } from '@src/index';
     import { WizardStepperStepsDataKey } from '@src/preview/wizard-steps/utils';
     import { isRequiredField } from '@ti-platform/aide-vue';
     import { useVModel } from '@vueuse/core';
     import { QForm } from 'quasar';
-    import { inject, onMounted, type Ref, ref } from 'vue';
+    import type { Ref } from 'vue';
+    import { inject, onMounted, ref } from 'vue';
 
     const props = defineProps<{
         modelValue: WizardStepState;

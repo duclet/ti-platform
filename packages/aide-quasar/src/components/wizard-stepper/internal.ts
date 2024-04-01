@@ -1,4 +1,4 @@
-import { type WizardStepState } from '@src/components/wizard-stepper/api';
+import type { WizardStepState } from '@src/components/wizard-stepper/api';
 import { VisibilityState } from '@src/visibility';
 
 /**

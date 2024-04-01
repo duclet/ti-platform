@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-    import { type WizardStepState } from '@src/index';
+    import type { WizardStepState } from '@src/index';
     import { useVModel } from '@vueuse/core';
     import { onMounted } from 'vue';
 

@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-    import { type WizardStepState } from '@src/index';
+    import type { WizardStepState } from '@src/index';
     import { promiseTimeout, useVModel } from '@vueuse/core';
     import { onMounted, ref } from 'vue';
 

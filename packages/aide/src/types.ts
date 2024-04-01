@@ -4,8 +4,6 @@
 export type MarkReadonly<T, K extends keyof T> = Omit<T, K> & Readonly<Pick<T, K>>;
 
 /**
- * To allow for guarded maps for simple use cases.
+ * The type is simply `T` or a promise which, when resolved, is given `T`.
  */
-export interface GuardedMap<K, V> extends Map<K, V> {
-    has<S extends K>(k: S): this is (K extends S ? Record<string, never> : { get(k: S): V }) & this;
-}
+export type Awaitable<T> = T | Promise<T>;

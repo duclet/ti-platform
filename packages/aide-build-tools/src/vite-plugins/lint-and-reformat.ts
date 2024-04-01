@@ -3,20 +3,20 @@ import { GENERAL_FILES } from '@src/misc';
 import { runPrettier } from '@src/prettier';
 import { spawnCommand } from '@src/spawn';
 import { debounce } from 'ts-debounce';
-import { type Plugin } from 'vite';
+import type { Plugin } from 'vite';
 
 /**
  * Execute the command to verify using the Typescript compiler.
  */
 function runVerifyTs() {
-    return spawnCommand('./node_modules/.bin/tsc --noEmit --listFiles | grep -v node_modules');
+    return spawnCommand('npx tsc --noEmit --listFiles | grep -v node_modules');
 }
 
 /**
  * Execute the command to verify using the Vue Typescript compiler.
  */
 function runVerifyVueTs() {
-    return spawnCommand('./node_modules/.bin/vue-tsc --noEmit --listFiles | grep -v node_modules');
+    return spawnCommand('npx vue-tsc --noEmit --listFiles | grep -v node_modules');
 }
 
 /**

@@ -1,9 +1,9 @@
-import {
-    type TimelineStepColorSupplier,
-    type TimelineStepIconSupplier,
-    type TimelineStepStatus,
-    TimelineStepStatuses,
+import type {
+    TimelineStepColorSupplier,
+    TimelineStepIconSupplier,
+    TimelineStepStatus,
 } from '@src/components/timeline-stepper/api';
+import { TimelineStepStatuses } from '@src/components/timeline-stepper/api';
 
 /**
  * Tracking the state of a step.

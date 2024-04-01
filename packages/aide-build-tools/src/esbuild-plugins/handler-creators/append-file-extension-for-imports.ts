@@ -1,4 +1,4 @@
-import { type HandlerCreator } from '@src/esbuild-plugins/modify-source-contents-chain';
+import type { ModifySourceContentsChainHandlerCreator } from '@src/esbuild-plugins/modify-source-contents-chain';
 
 /**
  * Should match against:
@@ -25,7 +25,9 @@ const RELATIVE_IMPORT_STATEMENT_REGEXP =
 /**
  * This will append the file extension to the end of relative imports if we are building for ESM and CJS.
  */
-export const appendFileExtensionForImports: HandlerCreator = ({ build: { initialOptions } }) => {
+export const appendFileExtensionForImports: ModifySourceContentsChainHandlerCreator = ({
+    build: { initialOptions },
+}) => {
     if (!['"cjs"', '"esm"'].includes(initialOptions.define?.TSUP_FORMAT ?? '')) {
         return ({ contents, path }) => ({ contents });
     }

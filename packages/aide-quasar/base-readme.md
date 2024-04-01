@@ -2,8 +2,10 @@
 
 This package exposes new components based off Vue and Quasar.
 
-## Components
-<!-- Insert Components -->
+# Contents
 
-## API Docs
-<!-- Insert API Docs -->
+# Components
+---Insert Components---
+
+# API Docs
+---Insert API Docs---

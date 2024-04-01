@@ -1,6 +1,6 @@
-import { type runEslint } from '@src/eslint';
+import type { runEslint } from '@src/eslint';
 import { GENERAL_FILES } from '@src/misc';
-import { type runPrettier } from '@src/prettier';
+import type { runPrettier } from '@src/prettier';
 import { spawnCommand } from '@src/spawn';
 import chokidar from 'chokidar';
 import { cli } from 'cleye';
@@ -69,10 +69,10 @@ function getWatchPatterns(dirs: Array<string>, extensions: Array<string>, files:
         dirs.length && extensions.length
             ? dirs.flatMap((dir) => extensions.map((extension) => `${dir}/**/*${extension}`))
             : dirs.length && !extensions.length
-            ? dirs
-            : extensions.length && !dirs.length
-            ? extensions.map((extension) => `./*${extension}`)
-            : [];
+              ? dirs
+              : extensions.length && !dirs.length
+                ? extensions.map((extension) => `./*${extension}`)
+                : [];
 
     return [...dirExtensionPatterns, ...files];
 }

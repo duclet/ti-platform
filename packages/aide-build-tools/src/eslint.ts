@@ -3,15 +3,18 @@ import { getCjsConfigs, getJsConfigs } from '@src/eslint/javascript-configs';
 import { getJsonConfigs } from '@src/eslint/json-configs';
 import { getTsConfigs } from '@src/eslint/typescript-configs';
 import { getVueConfigs } from '@src/eslint/vue-configs';
-import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from '@src/misc';
+import type { RunEsLintPrettierParams } from '@src/misc';
+import { keepOnlyExistentPaths } from '@src/misc';
 import { spawnCommand } from '@src/spawn';
-import { type Linter } from 'eslint';
+import type { Linter } from 'eslint';
 
 export * from '@src/eslint/html-configs';
 export * from '@src/eslint/javascript-configs';
 export * from '@src/eslint/json-configs';
 export * from '@src/eslint/typescript-configs';
 export * from '@src/eslint/vue-configs';
+
+export type EslintConfigType = 'cjs' | 'html' | 'js' | 'json' | 'ts' | 'vue';
 
 export type EslintConfigsParams = {
     /**
@@ -22,7 +25,7 @@ export type EslintConfigsParams = {
     /**
      * List of files to enable linting support for.
      */
-    enable?: Array<'cjs' | 'html' | 'js' | 'json' | 'ts' | 'vue'>;
+    enable?: Array<EslintConfigType>;
 
     /**
      * If we need to override or extend the configurations for `.cjs` files, this handler can be provided.
@@ -101,7 +104,7 @@ export function generateEslintConfigs(configs: EslintConfigsParams): Linter.Conf
 export function runEslint(params: RunEsLintPrettierParams) {
     return spawnCommand(
         [
-            'DEBUG=eslint:cli-engine ./node_modules/.bin/eslint --fix',
+            'DEBUG=eslint:cli-engine npx eslint --fix',
             ...(params.extensions ?? []).map((extension) => `--ext ${extension}`),
             ...keepOnlyExistentPaths(params.dirs ?? []),
             ...keepOnlyExistentPaths(params.files ?? []),

@@ -11,7 +11,8 @@
 </template>
 
 <script setup lang="ts">
-    import { VisibilityState, type WizardStepState } from '@src/index';
+    import type { WizardStepState } from '@src/index';
+    import { VisibilityState } from '@src/index';
     import { WizardStepperStepsDataKey } from '@src/preview/wizard-steps/utils';
     import { useVModel } from '@vueuse/core';
     import { inject, onMounted } from 'vue';

@@ -1,4 +1,5 @@
 import { cli } from 'cleye';
+import { readFileSync, writeFileSync } from 'fs';
 
 import { spawnCommand } from './spawn';
 
@@ -43,27 +44,34 @@ function getArgv(commandName: string) {
 /**
  * Execute the command to run TypeDoc (and potentially Vue-DocGen) and insert it into the base read me file.
  */
-export function runTypedoc() {
+export async function runTypedoc() {
     const argv = getArgv('run-typedoc');
 
     spawnCommand(
-        `pnpm typedoc --out ${argv.flags.outDir} --hideBreadcrumbs --readme ${argv.flags.baseReadme} ${argv.flags.inputFile}`
+        `npx typedoc --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} --excludePrivate --plugin typedoc-plugin-markdown --outputFileStrategy modules --parametersFormat table --propertiesFormat table --enumMembersFormat table --typeDeclarationFormat table --indexFormat table --hidePageHeader --hidePageTitle ${argv.flags.inputFile}`
     );
-    spawnCommand(`tail -n +5 ${argv.flags.outDir}/modules.md > ${argv.flags.outDir}/modules-with-header.md`);
-    spawnCommand(
-        `sed -i -e "/<!-- Insert API Docs -->/r ${argv.flags.outDir}/modules-with-header.md" ${argv.flags.outDir}/README.md`
-    );
-    spawnCommand(`sed -i -- "s/modules.md/README.md/g" ${argv.flags.outDir}/README.md`);
-    spawnCommand(`sed -i -- "s/<!-- Insert API Docs -->//g" ${argv.flags.outDir}/README.md`);
+    // spawnCommand(`sed -i 's/# /## /g' ${argv.flags.outDir}/globals.md`);
+    spawnCommand(`sed -i -e "/---Insert API Docs---/r ${argv.flags.outDir}/globals.md" ${argv.flags.outDir}/README.md`);
+    spawnCommand(`sed -i -- "s/globals.md/README.md/g" ${argv.flags.outDir}/README.md`);
+    spawnCommand(`sed -i -- "s/---Insert API Docs---//g" ${argv.flags.outDir}/README.md`);
 
     if (argv.flags.includeVueDocGen) {
-        spawnCommand(`pnpm vue-docgen -c ${argv.flags.vueDocGenConfigFile}`);
+        spawnCommand(`npx vue-docgen -c ${argv.flags.vueDocGenConfigFile}`);
         spawnCommand(`sed -i 's/# /### /g' ${argv.flags.outDir}/components.md`);
         spawnCommand(
-            `sed -i -e "/<!-- Insert Components -->/r ${argv.flags.outDir}/components.md" ${argv.flags.outDir}/README.md`
+            `sed -i -e "/---Insert Components---/r ${argv.flags.outDir}/components.md" ${argv.flags.outDir}/README.md`
         );
-        spawnCommand(`sed -i -- "s/<!-- Insert Components -->//g" ${argv.flags.outDir}/README.md`);
+        spawnCommand(`sed -i -- "s/---Insert Components---//g" ${argv.flags.outDir}/README.md`);
     }
 
     spawnCommand(`cp ${argv.flags.outDir}/README.md ./ && rm -rf ${argv.flags.outDir}`);
+
+    console.log('Adding TOC');
+
+    const { remark } = await import('remark');
+    const { default: remarkToc } = await import('remark-toc');
+
+    const result = remark().use(remarkToc, { maxDepth: 3 }).processSync(readFileSync('./README.md'));
+    writeFileSync('./README.md', result.toString());
+    console.log('Done.');
 }

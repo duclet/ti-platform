@@ -48,15 +48,14 @@
     import { QSlideTransition, QTimeline, QTimelineEntry } from 'quasar';
     import { computed, onMounted, ref } from 'vue';
 
-    import {
-        isSameTimelineStepStatus,
-        type TimelineStep,
-        type TimelineStepColorSupplier,
-        type TimelineStepIconSupplier,
-        type TimelineStepName,
-        type TimelineStepStatus,
-        TimelineStepStatuses,
+    import type {
+        TimelineStep,
+        TimelineStepColorSupplier,
+        TimelineStepIconSupplier,
+        TimelineStepName,
+        TimelineStepStatus,
     } from './api';
+    import { isSameTimelineStepStatus, TimelineStepStatuses } from './api';
     import { getTimelineStepColorByStatus, getTimelineStepIconByStatus, TimelineStepState } from './internal';
 
     const props = withDefaults(

@@ -1,6 +1,7 @@
 import { generateViteConfigs } from '@ti-platform/aide-build-tools';
 import { defu } from 'defu';
-import { defineConfig, type UserConfig } from 'vite';
+import type { UserConfig } from 'vite';
+import { defineConfig } from 'vite';
 
 import baseConfigs from './vite-base.config';
 
@@ -18,4 +19,4 @@ export default defineConfig(
             },
         },
     })
-) as UserConfig;
+);

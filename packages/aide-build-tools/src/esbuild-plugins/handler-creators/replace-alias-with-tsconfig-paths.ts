@@ -1,4 +1,4 @@
-import { type HandlerCreator } from '@src/esbuild-plugins/modify-source-contents-chain';
+import type { ModifySourceContentsChainHandlerCreator } from '@src/esbuild-plugins/modify-source-contents-chain';
 import { dirname, relative } from 'path';
 import { createMatchPath, loadConfig } from 'tsconfig-paths';
 
@@ -21,7 +21,12 @@ const IMPORT_STATEMENT_REGEXP = /(?<before>(import|export) ((.|\n)*?) from ('|")
  *
  * @throws Throws a `tsconfig-path#ConfigLoaderFailResult` If we cannot load the `tsconfig.json` file for this package.
  */
-export const replaceAliasWithTsconfigPaths: HandlerCreator = ({ build, cwd, debug, extensions }) => {
+export const replaceAliasWithTsconfigPaths: ModifySourceContentsChainHandlerCreator = ({
+    build,
+    cwd,
+    debug,
+    extensions,
+}) => {
     const configs = loadConfig(cwd);
     if (configs.resultType === 'failed') {
         throw configs;

@@ -3,36 +3,38 @@
 This package provides enhancement towards loading environment variables from `.env` files but in a hierarchical
 approach. It will load in the following order by default:
 
-- `.env`
-- `.env.{NODE_ENV}`, where `{NODE_ENV}` is the value of `process.env.NODE_ENV`
-- `.env.local`
+* `.env`
+* `.env.{NODE_ENV}`, where `{NODE_ENV}` is the value of `process.env.NODE_ENV`
+* `.env.local`
 
 You can of course configure it to change the order and pattern that best fit your style.
 
-## API Docs
+# Contents
 
-### Functions
+* [API Docs](#api-docs)
+  * [Functions](#functions)
+    * [loadEnv()](#loadenv)
 
-- [loadEnv](README.md#loadenv)
+# API Docs
 
 ## Functions
 
-### loadEnv
+### loadEnv()
 
-▸ **loadEnv**(`filesOrder?`): `void`
+> **loadEnv**(`filesOrder`): `void`
 
 Load the environment variables.
 
 #### Parameters
 
-| Name | Type |
+| Parameter | Type |
 | :------ | :------ |
-| `filesOrder` | `string`[] |
+| `filesOrder` | `string`\[] |
 
 #### Returns
 
 `void`
 
-#### Defined in
+#### Source
 
 index.ts:10

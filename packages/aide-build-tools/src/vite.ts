@@ -1,16 +1,18 @@
 import { basename } from 'path';
 import { readPackageJSON } from 'pkg-types';
-import { defineConfig, type UserConfig } from 'vite';
+import type { UserConfig } from 'vite';
 
 /**
  * Get the default configurations for Vite.
  */
-export function generateViteConfigs(): UserConfig {
+export async function generateViteConfigs(): Promise<UserConfig> {
+    const { defineConfig } = await import('vite');
+
     return defineConfig({
         build: {
             minify: process.env.NODE_ENV === 'production' ? 'esbuild' : false,
         },
-    }) as UserConfig;
+    });
 }
 
 /**
@@ -22,8 +24,10 @@ export function generateViteConfigs(): UserConfig {
 export async function generateViteMultiFileLibConfigs(
     entries: Array<string> = ['./src/index.ts']
 ): Promise<UserConfig> {
-    const genericConfigs = generateViteConfigs();
+    const { defineConfig } = await import('vite');
+
     const assetsData = new Map<string, string>();
+    const genericConfigs = await generateViteConfigs();
     const { dependencies } = await readPackageJSON();
 
     return defineConfig({
@@ -62,5 +66,5 @@ export async function generateViteMultiFileLibConfigs(
                 },
             },
         },
-    }) as UserConfig;
+    });
 }

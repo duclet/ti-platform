@@ -2,7 +2,37 @@
 
 This package exposes new components based off Vue and Quasar.
 
-## Components
+# Contents
+
+* [Components](#components)
+  * * [MultiProgressIndicator](#multiprogressindicator)
+    * [TimelineStepper](#timelinestepper)
+    * [WizardStepper](#wizardstepper)
+* [API Docs](#api-docs)
+  * [Enumerations](#enumerations)
+    * [VisibilityState](#visibilitystate)
+  * [Interfaces](#interfaces)
+    * [WizardStepState](#wizardstepstate)
+  * [Type Aliases](#type-aliases)
+    * [ProgressIndicatorTask](#progressindicatortask)
+    * [TimelineStep](#timelinestep)
+    * [TimelineStepColorSupplier()](#timelinestepcolorsupplier)
+    * [TimelineStepIconSupplier()](#timelinestepiconsupplier)
+    * [TimelineStepName](#timelinestepname)
+    * [TimelineStepStatus](#timelinestepstatus)
+    * [TimelineStepTaskResult](#timelinesteptaskresult)
+    * [WizardStep](#wizardstep)
+    * [WizardStepName](#wizardstepname)
+  * [Variables](#variables)
+    * [TimelineStepStatuses](#timelinestepstatuses)
+  * [Functions](#functions)
+    * [createTimelineStepTaskResult()](#createtimelinesteptaskresult)
+    * [createWizardStep()](#createwizardstep)
+    * [cssStyleByVisibilityState()](#cssstylebyvisibilitystate)
+    * [isSameTimelineStepStatus()](#issametimelinestepstatus)
+    * [vIfByVisibilityState()](#vifbyvisibilitystate)
+
+# Components
 
 ### MultiProgressIndicator
 
@@ -34,7 +64,8 @@ This package exposes new components based off Vue and Quasar.
 | `${asTask(scope).key}--success`       | Slot to display when the task completes successfully for a specific task.            | <br/>**task** `Task` - The task this is rendering for. |
 | success                               | Slot to display when the task completes successfully for all the tasks.              | **task** `Task` - The task this is rendering for.      |
 
----
+***
+
 ### TimelineStepper
 
 > This component enables users to perform certain tasks and view the current progress and results in a timeline-style
@@ -66,7 +97,8 @@ This package exposes new components based off Vue and Quasar.
 | body                 | Slot for displaying the body for all steps.                           | **step** `TimelineStep` - The timeline step this is for.<br/>**status** `TimelineStepStatus` - The current status of the step.      |
 | fully-completed      | Slot for displaying content after all steps has been fully completed. |                                                                                                                                     |
 
----
+***
+
 ### WizardStepper
 
 > This is a wrapper component over the QStepper component with enhancements to make managing buttons and certain user
@@ -88,7 +120,7 @@ This package exposes new components based off Vue and Quasar.
 | continueButtonText           | The text for the continue button.                                                                                        | `string`                  | 'Continue'           |
 | doneButtonClass              | The CSS class name for the done button.                                                                                  | `string`                  | ''                   |
 | doneButtonColor              | The color for the done button.                                                                                           | `string`                  | 'positive'           |
-| doneButtonIcon               | The icon for the done button.                                                                                            | `string`                  | 'done_all'           |
+| doneButtonIcon               | The icon for the done button.                                                                                            | `string`                  | 'done\_all'           |
 | doneButtonText               | The text for the done button.                                                                                            | `string`                  | 'Done'               |
 | isBackButtonSupported        | True to enable showing of the back button, false otherwise.                                                              | `boolean`                 | false                |
 | isBackButtonVisibleWhenDone  | Assuming that the back button is supported, should it be visible when all the steps are completed?                       | `boolean`                 | false                |
@@ -104,223 +136,216 @@ This package exposes new components based off Vue and Quasar.
 | `${stepper.current.value.name}--post-navigation` | Slot for rendering the content after the navigational buttons for a specific step.  | <br/>**back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-done** `boolean` - True if we are on the last step and it is completed.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work. |
 | post-navigation                                  | Slot for rendering the content after the navigational buttons.                      | **back-button-handler** `Function` - Executing function will navigate back to the previous step.<br/>**continue-button-handler** `Function` - Executing function will navigate to the next step.<br/>**is-back-button-enabled** `boolean` - True if the back button should be enabled.<br/>**is-back-button-supported** `boolean` - True if the back button is supported.<br/>**is-continue-button-enabled** `boolean` - True if continue button should be enabled.<br/>**is-done** `boolean` - True if we are on the last step and it is completed.<br/>**is-processing** `boolean` - True if the step is currently processing or doing work.      |
 
----
+***
 
-## API Docs
+# API Docs
 
-### Enumerations
+## Enumerations
 
-- [VisibilityState](enums/VisibilityState.md)
+### VisibilityState
 
-### Interfaces
+For configuring the visibility of elements.
 
-- [WizardStepState](interfaces/WizardStepState.md)
+#### Enumeration Members
 
-### Type Aliases
+| Enumeration Member | Value | Description |
+| :------ | :------ | :------ |
+| `HIDDEN_HIDE_DIMENSIONS` | `2` | The element should be hidden but the HTML for it should still be on the page but the element is collapsed.<br />Usually, this is done with "display: none". |
+| `HIDDEN_KEEP_DIMENSIONS` | `1` | The element should be hidden but the HTML for it should still be on the page while keeping the space it occupies<br />visible. Usually, this is done with "visibility: hidden" or "opacity: 0". |
+| `NO_RENDER` | `3` | The element should not be rendered at all. Usually this is done using the `v-if` directive. |
+| `VISIBLE` | `0` | The element should be visible. |
 
-- [ProgressIndicatorTask](README.md#progressindicatortask)
-- [TimelineStep](README.md#timelinestep)
-- [TimelineStepColorSupplier](README.md#timelinestepcolorsupplier)
-- [TimelineStepIconSupplier](README.md#timelinestepiconsupplier)
-- [TimelineStepName](README.md#timelinestepname)
-- [TimelineStepStatus](README.md#timelinestepstatus)
-- [TimelineStepTaskResult](README.md#timelinesteptaskresult)
-- [WizardStep](README.md#wizardstep)
-- [WizardStepName](README.md#wizardstepname)
+## Interfaces
 
-### Variables
+### WizardStepState
 
-- [TimelineStepStatuses](README.md#timelinestepstatuses)
+The current state of a step. Note that for the non-readonly properties, you can also write to it to alter the current
+rendering of the component.
 
-### Functions
+#### Properties
 
-- [createTimelineStepTaskResult](README.md#createtimelinesteptaskresult)
-- [createWizardStep](README.md#createwizardstep)
-- [cssStyleByVisibilityState](README.md#cssstylebyvisibilitystate)
-- [isSameTimelineStepStatus](README.md#issametimelinestepstatus)
-- [vIfByVisibilityState](README.md#vifbyvisibilitystate)
+| Property | Modifier | Type | Description |
+| :------ | :------ | :------ | :------ |
+| `backButtonHandler` | `public` | () => `Promise`<`boolean`> |  |
+| `continueButtonHandler` | `public` | () => `Promise`<`boolean`> |  |
+| `isContinueButtonEnabled` | `public` | `boolean` | True if the continue button should be enabled. |
+| `isDone` | `public` | `boolean` | True is the step has been marked as completed. |
+| `isProcessing` | `public` | `boolean` | True if the continue button should be showing the loading icon. |
+| `latestViewedStepIndex` | `readonly` | `number` | The index of the latest step that was viewed by the user. |
+| `navigationVisibility` | `public` | [`VisibilityState`](README.md#visibilitystate) | The visibility state for the navigational area. |
+| `nextStep` | `readonly` | () => `void` | Call emulate as if the user clicked on the continue button. Note that this will bypass regardless of whether the<br />continue button is enabled or not. |
+| `previousStep` | `readonly` | () => `void` | Call emulate as if the user clicked on the back button. Note that this will bypass regardless of whether the<br />back button is enabled or not. |
+| `stepIndex` | `readonly` | `number` | The index number for the step. |
 
 ## Type Aliases
 
 ### ProgressIndicatorTask
 
-Ƭ **ProgressIndicatorTask**: `Object`
+> **ProgressIndicatorTask**: `Object`
 
 Information for a task to show in the MultiProgressIndicator component.
 
 #### Type declaration
 
-| Name | Type | Description |
+| Member | Type | Description |
 | :------ | :------ | :------ |
 | `description` | `string` | A description for what progress we are waiting for. |
-| `errorMessage?` | `string` | When no longer in progress, error message to show. If value is null, it assumes that task was completed successfully. |
+| `errorMessage` | `string` | When no longer in progress, error message to show. If value is null, it assumes that task was completed<br />successfully. |
 | `isInProgress` | `boolean` | True to show a progress bar, indicating that it is in progress or false other. |
 | `key` | `string` | Unique identifier for the task. |
 
-#### Defined in
+#### Source
 
 components/multi-progress-indicator/api.ts:4
 
-___
+***
 
 ### TimelineStep
 
-Ƭ **TimelineStep**: `Object`
+> **TimelineStep**: `Object`
 
 Representing a step in the timeline.
 
 #### Type declaration
 
-| Name | Type | Description |
+| Member | Type | Description |
 | :------ | :------ | :------ |
-| `body?` | `string` | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined` and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also be given the following props: - status: The current status of the step. |
-| `isInitiallyHidden?` | `boolean` | Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it initially or to false to keep it visible. |
+| `body` | `string` | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined`<br />and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also<br />be given the following props:<br /> - status: The current status of the step. |
+| `isInitiallyHidden` | `boolean` | Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it<br />initially or to false to keep it visible. |
 | `name` | [`TimelineStepName`](README.md#timelinestepname) | Unique name for the step. |
 | `subtitle` | `string` | The subtitle for the step. |
-| `task` | (`step`: [`TimelineStep`](README.md#timelinestep)) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)\> | Task to run when the step starts. |
+| `task` | (`step`) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)> | Task to run when the step starts. |
 
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:12
 
-___
+***
 
-### TimelineStepColorSupplier
+### TimelineStepColorSupplier()
 
-Ƭ **TimelineStepColorSupplier**: (`status`: [`TimelineStepStatus`](README.md#timelinestepstatus)) => `string`
-
-#### Type declaration
-
-▸ (`status`): `string`
+> **TimelineStepColorSupplier**: (`status`) => `string`
 
 Function to use to get the color for a step.
 
-##### Parameters
+#### Parameters
 
-| Name | Type | Description |
+| Parameter | Type | Description |
 | :------ | :------ | :------ |
 | `status` | [`TimelineStepStatus`](README.md#timelinestepstatus) | The current status of the step. |
 
-##### Returns
+#### Returns
 
 `string`
 
-The color for the step.
-
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:89
 
-___
+***
 
-### TimelineStepIconSupplier
+### TimelineStepIconSupplier()
 
-Ƭ **TimelineStepIconSupplier**: (`status`: [`TimelineStepStatus`](README.md#timelinestepstatus)) => `string` \| `undefined`
-
-#### Type declaration
-
-▸ (`status`): `string` \| `undefined`
+> **TimelineStepIconSupplier**: (`status`) => `string` | `undefined`
 
 Function to use to get the icon for a step.
 
-##### Parameters
+#### Parameters
 
-| Name | Type | Description |
+| Parameter | Type | Description |
 | :------ | :------ | :------ |
 | `status` | [`TimelineStepStatus`](README.md#timelinestepstatus) | The current status of the step. |
 
-##### Returns
+#### Returns
 
-`string` \| `undefined`
+`string` | `undefined`
 
-The icon for the step or undefined if it should not use any icon.
-
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:99
 
-___
+***
 
 ### TimelineStepName
 
-Ƭ **TimelineStepName**: `string`
+> **TimelineStepName**: `string`
 
 Unique name for a step.
 
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:6
 
-___
+***
 
 ### TimelineStepStatus
 
-Ƭ **TimelineStepStatus**: `Object`
+> **TimelineStepStatus**: `Object`
 
 Represents the status of a step.
 
 #### Type declaration
 
-| Name | Type | Description |
+| Member | Type | Description |
 | :------ | :------ | :------ |
 | `isCompletedStep` | `boolean` | True if the step is considered to be a completed step, false otherwise. |
 | `name` | `string` | The name of the status. |
 
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:69
 
-___
+***
 
 ### TimelineStepTaskResult
 
-Ƭ **TimelineStepTaskResult**: `Object`
+> **TimelineStepTaskResult**: `Object`
 
 Represents the result of executing a step and what is expected to happen next.
 
 #### Type declaration
 
-| Name | Type | Description |
+| Member | Type | Description |
 | :------ | :------ | :------ |
 | `failed` | `boolean` | True to mark the step as having failed. |
-| `nextSteps` | [`TimelineStepName`](README.md#timelinestepname)[] | List of timelineSteps to execute next. |
-| `skipSteps` | [`TimelineStepName`](README.md#timelinestepname)[] | List of timelineSteps to skip. |
+| `nextSteps` | [`TimelineStepName`](README.md#timelinestepname)\[] | List of timelineSteps to execute next. |
+| `skipSteps` | [`TimelineStepName`](README.md#timelinestepname)\[] | List of timelineSteps to skip. |
 
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:49
 
-___
+***
 
 ### WizardStep
 
-Ƭ **WizardStep**: `Object`
+> **WizardStep**: `Object`
 
 Represents a step in the wizard.
 
 #### Type declaration
 
-| Name | Type | Description |
+| Member | Type | Description |
 | :------ | :------ | :------ |
-| `beforeLeaveConfirmationMessage?` | `string` | If given, this message will be shown to the user in the dialog when the user tries to navigate away. |
-| `component` | `Component` | The component that will be used to render the step. It will be given as is modelValue a [WizardStepState](interfaces/WizardStepState.md). |
-| `isBeforeLeaveConfirmationEnabled` | `boolean` | If true, then if the user tries to navigate while the current step is this, a confirmation dialog will be shown to ask if the user really want that or not. If the step is done however, it will not be asked. |
+| `beforeLeaveConfirmationMessage` | `string` | If given, this message will be shown to the user in the dialog when the user tries to navigate away. |
+| `component` | `Component` | The component that will be used to render the step. It will be given as is modelValue a [WizardStepState](README.md#wizardstepstate). |
+| `isBeforeLeaveConfirmationEnabled` | `boolean` | If true, then if the user tries to navigate while the current step is this, a confirmation dialog will be shown<br />to ask if the user really want that or not. If the step is done however, it will not be asked. |
 | `name` | [`WizardStepName`](README.md#wizardstepname) | The unique name for the step. |
 | `title` | `string` | The title for the step. |
 
-#### Defined in
+#### Source
 
 components/wizard-stepper/api.ts:13
 
-___
+***
 
 ### WizardStepName
 
-Ƭ **WizardStepName**: `string`
+> **WizardStepName**: `string`
 
 Unique name for a step.
 
-#### Defined in
+#### Source
 
 components/wizard-stepper/api.ts:7
 
@@ -328,96 +353,96 @@ components/wizard-stepper/api.ts:7
 
 ### TimelineStepStatuses
 
-• `Const` **TimelineStepStatuses**: `Record`<``"FAILED"`` \| ``"IN_PROGRESS"`` \| ``"NOT_STARTED"`` \| ``"SKIPPED"`` \| ``"SUCCEED"``, { `isCompletedStep`: ``true`` = true; `name`: ``"FAILED"`` = 'FAILED' } \| { `isCompletedStep`: ``false`` = false; `name`: ``"IN_PROGRESS"`` = 'IN\_PROGRESS' } \| { `isCompletedStep`: ``false`` = false; `name`: ``"NOT_STARTED"`` = 'NOT\_STARTED' } \| { `isCompletedStep`: ``true`` = true; `name`: ``"SKIPPED"`` = 'SKIPPED' } \| { `isCompletedStep`: ``true`` = true; `name`: ``"SUCCEED"`` = 'SUCCEED' }\>
+> **`const`** **TimelineStepStatuses**: `Record`<`"FAILED"` | `"IN_PROGRESS"` | `"NOT_STARTED"` | `"SKIPPED"` | `"SUCCEED"`, `Object` | `Object` | `Object` | `Object` | `Object`>
 
 Map of [TimelineStepStatus](README.md#timelinestepstatus)'s name to its definition.
 
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:104
 
 ## Functions
 
-### createTimelineStepTaskResult
+### createTimelineStepTaskResult()
 
-▸ **createTimelineStepTaskResult**(`«destructured»?`): [`TimelineStepTaskResult`](README.md#timelinesteptaskresult)
+> **createTimelineStepTaskResult**(`__namedParameters`): [`TimelineStepTaskResult`](README.md#timelinesteptaskresult)
 
 Create the result for the execution of a task.
 
 #### Parameters
 
-| Name | Type |
+| Parameter | Type |
 | :------ | :------ |
-| `«destructured»` | `Partial`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)\> |
+| `__namedParameters` | `Partial`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)> |
 
 #### Returns
 
 [`TimelineStepTaskResult`](README.md#timelinesteptaskresult)
 
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:119
 
-___
+***
 
-### createWizardStep
+### createWizardStep()
 
-▸ **createWizardStep**(`name`, `title`, `component`, `opts?`): [`WizardStep`](README.md#wizardstep)
+> **createWizardStep**(`name`, `title`, `component`, `opts`): [`WizardStep`](README.md#wizardstep)
 
 Create a step for the wizard.
 
 #### Parameters
 
-| Name | Type |
+| Parameter | Type |
 | :------ | :------ |
 | `name` | `string` |
 | `title` | `string` |
 | `component` | `Component` |
-| `opts` | `Partial`<`Pick`<[`WizardStep`](README.md#wizardstep), ``"beforeLeaveConfirmationMessage"`` \| ``"isBeforeLeaveConfirmationEnabled"``\>\> |
+| `opts` | `Partial`<`Pick`<[`WizardStep`](README.md#wizardstep), `"beforeLeaveConfirmationMessage"` | `"isBeforeLeaveConfirmationEnabled"`>> |
 
 #### Returns
 
 [`WizardStep`](README.md#wizardstep)
 
-#### Defined in
+#### Source
 
 components/wizard-stepper/api.ts:104
 
-___
+***
 
-### cssStyleByVisibilityState
+### cssStyleByVisibilityState()
 
-▸ **cssStyleByVisibilityState**(`state`): `ComputedRef`<`string`\>
+> **cssStyleByVisibilityState**(`state`): `ComputedRef`<`string`>
 
-Get a computed style definition based on the provided visibility state. This is not intended for the NO_RENDER state
+Get a computed style definition based on the provided visibility state. This is not intended for the NO\_RENDER state
 as that should be handled via the `v-if` directive. It is best to use this in combination with the
 `vIfByVisibilityState` method.
 
 #### Parameters
 
-| Name | Type | Description |
+| Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `state` | `Ref`<[`VisibilityState`](enums/VisibilityState.md)\> | A reactive variable for the current visibility state to calculate the style. |
+| `state` | `Ref`<[`VisibilityState`](README.md#visibilitystate)> | A reactive variable for the current visibility state to calculate the style. |
 
 #### Returns
 
-`ComputedRef`<`string`\>
+`ComputedRef`<`string`>
 
-#### Defined in
+#### Source
 
-visibility.ts:37
+visibility.ts:38
 
-___
+***
 
-### isSameTimelineStepStatus
+### isSameTimelineStepStatus()
 
-▸ **isSameTimelineStepStatus**(`status1`, `status2`): `boolean`
+> **isSameTimelineStepStatus**(`status1`, `status2`): `boolean`
 
 Determine if the two [TimelineStepStatus](README.md#timelinestepstatus) is the same.
 
 #### Parameters
 
-| Name | Type | Description |
+| Parameter | Type | Description |
 | :------ | :------ | :------ |
 | `status1` | [`TimelineStepStatus`](README.md#timelinestepstatus) | The first status to check. |
 | `status2` | [`TimelineStepStatus`](README.md#timelinestepstatus) | The second status to check. |
@@ -426,30 +451,30 @@ Determine if the two [TimelineStepStatus](README.md#timelinestepstatus) is the s
 
 `boolean`
 
-#### Defined in
+#### Source
 
 components/timeline-stepper/api.ts:139
 
-___
+***
 
-### vIfByVisibilityState
+### vIfByVisibilityState()
 
-▸ **vIfByVisibilityState**(`state`): `ComputedRef`<`boolean`\>
+> **vIfByVisibilityState**(`state`): `ComputedRef`<`boolean`>
 
 Determine whether an element or component should be visible for use with the `v-if` directive. This should really be
 used in combination with `cssStyleByVisibilityState` method which handles all the other use cases as this really just
-handles the NO_RENDER state.
+handles the NO\_RENDER state.
 
 #### Parameters
 
-| Name | Type | Description |
+| Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `state` | `Ref`<[`VisibilityState`](enums/VisibilityState.md)\> | A reactive variable for the current visibility state to calculate value for the `v-if` directive. |
+| `state` | `Ref`<[`VisibilityState`](README.md#visibilitystate)> | A reactive variable for the current visibility state to calculate value for the `v-if` directive. |
 
 #### Returns
 
-`ComputedRef`<`boolean`\>
+`ComputedRef`<`boolean`>
 
-#### Defined in
+#### Source
 
-visibility.ts:54
+visibility.ts:55

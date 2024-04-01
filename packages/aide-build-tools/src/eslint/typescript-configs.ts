@@ -1,4 +1,4 @@
-import { type Linter } from 'eslint';
+import type { Linter } from 'eslint';
 import { resolve } from 'path';
 
 /**
@@ -14,7 +14,7 @@ export function getTsConfigs(jsConfigs: Linter.ConfigOverride, baseDir: string):
             'plugin:@typescript-eslint/stylistic-type-checked',
             'prettier',
         ],
-        plugins: [...jsConfigs.plugins!, '@typescript-eslint'],
+        plugins: [...jsConfigs.plugins!, '@typescript-eslint', 'import'],
         parserOptions: {
             parser: '@typescript-eslint/parser',
             project: resolve(baseDir, './tsconfig.json'),
@@ -38,13 +38,7 @@ export function getTsConfigs(jsConfigs: Linter.ConfigOverride, baseDir: string):
                     fixMixedExportsWithInlineTypeSpecifier: true,
                 },
             ],
-            '@typescript-eslint/consistent-type-imports': [
-                'error',
-                {
-                    prefer: 'type-imports',
-                    fixStyle: 'inline-type-imports',
-                },
-            ],
+            'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
             '@typescript-eslint/explicit-function-return-type': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/no-non-null-assertion': 'off',

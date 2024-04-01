@@ -1,6 +1,7 @@
-import { keepOnlyExistentPaths, type RunEsLintPrettierParams } from '@src/misc';
+import type { RunEsLintPrettierParams } from '@src/misc';
+import { keepOnlyExistentPaths } from '@src/misc';
 import { spawnCommand } from '@src/spawn';
-import { type Config } from 'prettier';
+import type { Config } from 'prettier';
 
 /**
  * Get the default configurations for Prettier.
@@ -28,16 +29,12 @@ export function runPrettier(params: RunEsLintPrettierParams) {
         params.dirs?.length && params.extensions?.length
             ? params.dirs.flatMap((dir) => params.extensions!.map((extension) => `"${dir}/**/*${extension}"`))
             : params.dirs?.length && !params.extensions
-            ? keepOnlyExistentPaths(params.dirs)
-            : params.extensions?.length && !params.dirs
-            ? params.extensions.map((extension) => `"./*${extension}"`)
-            : [];
+              ? keepOnlyExistentPaths(params.dirs)
+              : params.extensions?.length && !params.dirs
+                ? params.extensions.map((extension) => `"./*${extension}"`)
+                : [];
 
     return spawnCommand(
-        [
-            './node_modules/.bin/prettier --write',
-            ...dirExtensionPatterns,
-            ...keepOnlyExistentPaths(params.files ?? []),
-        ].join(' ')
+        ['npx prettier --write', ...dirExtensionPatterns, ...keepOnlyExistentPaths(params.files ?? [])].join(' ')
     );
 }

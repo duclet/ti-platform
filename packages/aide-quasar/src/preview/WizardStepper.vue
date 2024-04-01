@@ -64,7 +64,8 @@
 </template>
 
 <script setup lang="ts">
-    import { createWizardStep, type WizardStep, WizardStepperComponent } from '@src/index';
+    import type { WizardStep } from '@src/index';
+    import { createWizardStep, WizardStepperComponent } from '@src/index';
     import AccountCreation from '@src/preview/wizard-steps/AccountCreation.vue';
     import RequestConfirmation from '@src/preview/wizard-steps/RequestConfirmation.vue';
     import UserInfoRequestStep from '@src/preview/wizard-steps/UserInfoRequestStep.vue';

@@ -1,4 +1,5 @@
-import { computed, type ComputedRef, type Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
+import { computed } from 'vue';
 
 /**
  * For configuring the visibility of elements.
@@ -39,8 +40,8 @@ export function cssStyleByVisibilityState(state: Ref<VisibilityState>): Computed
         state.value === VisibilityState.HIDDEN_KEEP_DIMENSIONS
             ? 'visibility: hidden !important; opacity: 0 !important;'
             : state.value === VisibilityState.HIDDEN_HIDE_DIMENSIONS
-            ? 'display: none !important;'
-            : ''
+              ? 'display: none !important;'
+              : ''
     );
 }
 

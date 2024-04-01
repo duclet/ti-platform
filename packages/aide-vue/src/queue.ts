@@ -1,10 +1,11 @@
 import { executeTasks } from '@ti-platform/aide';
-import { computed, type Ref, ref } from 'vue';
+import type { Ref } from 'vue';
+import { computed, ref } from 'vue';
 
 /**
  * The return value for the function {@link reactiveExecuteTasks}.
  *
- * @param T The type of the result.
+ * @typeParam T The type of the result.
  */
 export type ReactiveExecuteTasksRet<T> = {
     /**
@@ -37,12 +38,9 @@ export type ReactiveExecuteTasksRet<T> = {
 /**
  * Reactive version of {@link @ti-platform/aide#executeTasks}.
  *
- * @param T
- *  The type of the result of each task.
- * @param tasks
- *  The tasks to run.
- * @param maxNumOfWorkers
- *  The maximum number of tasks ot run at once.
+ * @typeParam T The type of the result of each task.
+ * @param tasks The tasks to run.
+ * @param maxNumOfWorkers The maximum number of tasks ot run at once.
  */
 export function reactiveExecuteTasks<T>(
     tasks: ReadonlyArray<() => Promise<T>>,

@@ -67,12 +67,8 @@
 </template>
 
 <script setup lang="ts">
-    import {
-        createTimelineStepTaskResult,
-        type TimelineStep,
-        type TimelineStepName,
-        TimelineStepperComponent,
-    } from '@src/index';
+    import type { TimelineStep, TimelineStepName } from '@src/index';
+    import { createTimelineStepTaskResult, TimelineStepperComponent } from '@src/index';
     import { promiseTimeout, refAutoReset } from '@vueuse/core';
     import { computed, ref } from 'vue';
 

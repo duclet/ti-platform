@@ -1,4 +1,4 @@
-import { type InjectionKey, type Ref } from 'vue';
+import type { InjectionKey, Ref } from 'vue';
 
 export const WizardStepperStepsDataKey: InjectionKey<{
     firstName: Ref<string>;

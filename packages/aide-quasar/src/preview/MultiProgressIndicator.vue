@@ -18,7 +18,8 @@
 </template>
 
 <script setup lang="ts">
-    import { MultiProgressIndicatorComponent, type ProgressIndicatorTask } from '@src/index';
+    import type { ProgressIndicatorTask } from '@src/index';
+    import { MultiProgressIndicatorComponent } from '@src/index';
     import { promiseTimeout, refAutoReset, whenever } from '@vueuse/core';
     import { nextTick, onMounted, ref } from 'vue';
 
