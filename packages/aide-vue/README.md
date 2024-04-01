@@ -191,7 +191,7 @@ validators.ts:38
 
 > **reactiveExecuteTasks**<`T`>(`tasks`, `maxNumOfWorkers`): [`ReactiveExecuteTasksRet`](README.md#reactiveexecutetasksrett)<`T`>
 
-Reactive version of @ti-platform/aide#executeTasks.
+Reactive version of `@ti-platform/aidee#xecuteTasks`.
 
 #### Type parameters
 

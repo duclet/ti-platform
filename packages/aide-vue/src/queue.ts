@@ -36,7 +36,7 @@ export type ReactiveExecuteTasksRet<T> = {
 };
 
 /**
- * Reactive version of {@link @ti-platform/aide#executeTasks}.
+ * Reactive version of `@ti-platform/aidee#xecuteTasks`.
  *
  * @typeParam T The type of the result of each task.
  * @param tasks The tasks to run.

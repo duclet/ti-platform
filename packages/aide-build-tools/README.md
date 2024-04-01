@@ -71,6 +71,11 @@ Flags:
 There are 3 binaries available here: `run-eslint`, `run-prettier`, and `run-linter`. The first two simply runs the
 linting tool in their name while the latter runs both of them sequentially (first ESLint, then Prettier).
 
+Note that in order for this to work, you will also need to have the following packages included:
+
+* eslint
+* prettier
+
 ## API Docs Generator
 
 ```
@@ -99,6 +104,11 @@ it exactly as is):
 
 * `Insert API Docs`: Will be replaced with the contents of TypeDoc.
 * `Insert components`: Will be replaced with the contents of Vue-DocGen.
+
+Note that in order for this to work, you will also need to have the following packages included:
+
+* typedoc
+* typedoc-plugin-markdown
 
 ## package.json Version Sync
 
