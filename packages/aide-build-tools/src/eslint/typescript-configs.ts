@@ -38,7 +38,6 @@ export function getTsConfigs(jsConfigs: Linter.ConfigOverride, baseDir: string):
                     fixMixedExportsWithInlineTypeSpecifier: true,
                 },
             ],
-            'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
             '@typescript-eslint/explicit-function-return-type': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/no-non-null-assertion': 'off',
@@ -47,6 +46,8 @@ export function getTsConfigs(jsConfigs: Linter.ConfigOverride, baseDir: string):
             '@typescript-eslint/prefer-function-type': 'off',
             '@typescript-eslint/restrict-template-expressions': 'off',
             '@typescript-eslint/unbound-method': ['error', { ignoreStatic: true }],
+            'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+            'import/no-duplicates': 'error',
         },
     };
 }

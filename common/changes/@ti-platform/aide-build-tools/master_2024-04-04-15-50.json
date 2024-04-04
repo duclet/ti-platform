@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Update ESLint configs to ensure no duplicates of imports.",
+      "type": "minor"
+    },
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Update update-package-json-versions binary to allow specifying the target path as a glob pattern or array.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-build-tools"
+}

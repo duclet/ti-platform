@@ -186,8 +186,9 @@ export function updatePackageJsonVersions(): void {
             },
             targetPath: {
                 alias: 't',
-                description: 'Path to target package.json that will have its versions updated.',
-                type: String,
+                description:
+                    'Either the path or glob pattern for the package.json that will have its versions updated.',
+                type: [String],
             },
             dryRun: {
                 alias: 'd',
@@ -199,41 +200,47 @@ export function updatePackageJsonVersions(): void {
         },
     });
 
-    if (!sourcePath || !targetPath || !sourcePath.trim() || !targetPath.trim()) {
-        throw new Error('Must provide the source and target path');
+    if (!sourcePath?.trim()) {
+        throw new Error('Source path must be given and is not empty');
+    }
+
+    if (!targetPath || targetPath.length < 1 || targetPath.find((p) => !p.trim())) {
+        throw new Error('Target path must be given an is not empty');
     }
 
     const source = readAsPackageJson(sourcePath);
-    const target = readAsPackageJson(targetPath);
-
     const sourceVersions = getFlattenDependenciesWithVersions(source);
-    const updatedDependencies: Record<PackageName, { from: Version; to: Version }> = {};
 
-    getDependenciesWithVersions(target).forEach((dependencies) =>
-        Object.entries(dependencies).forEach(([packageName, version]) => {
-            const currentVersion = dependencies[packageName];
-            const versionToUse = sourceVersions[packageName];
+    globSync(targetPath).map((path) => {
+        const target = readAsPackageJson(path);
+        const updatedDependencies: Record<PackageName, { from: Version; to: Version }> = {};
 
-            if (!!versionToUse && versionToUse !== currentVersion) {
-                updatedDependencies[packageName] = { from: dependencies[packageName], to: versionToUse };
-                dependencies[packageName] = versionToUse;
-            }
-        })
-    );
+        getDependenciesWithVersions(target).forEach((dependencies) =>
+            Object.entries(dependencies).forEach(([packageName, version]) => {
+                const currentVersion = dependencies[packageName];
+                const versionToUse = sourceVersions[packageName];
 
-    if (Object.entries(updatedDependencies).length < 1) {
-        console.log('No dependencies to update found.');
-        return;
-    }
+                if (!!versionToUse && versionToUse !== currentVersion) {
+                    updatedDependencies[packageName] = { from: dependencies[packageName], to: versionToUse };
+                    dependencies[packageName] = versionToUse;
+                }
+            })
+        );
 
-    console.log('Dependencies with updated versions');
-    console.log(updatedDependencies);
+        if (Object.entries(updatedDependencies).length < 1) {
+            console.log(`${path}: No dependencies to update found.`);
+            return;
+        }
 
-    if (dryRun) {
-        console.log('Is dry-run, not actually updating files');
-        return;
-    }
+        console.log(`${path}: Dependencies with updated versions`);
+        console.log(updatedDependencies);
 
-    writePackageJson(targetPath, target);
-    console.log(`Updated ${targetPath} with new dependencies`);
+        if (dryRun) {
+            console.log('Is dry-run, not actually updating files');
+            return;
+        }
+
+        writePackageJson(path, target);
+        console.log(`Updated ${path} with new dependencies`);
+    });
 }
