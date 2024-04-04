@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "3.0.1",
+      "tag": "@ti-platform/aide_v3.0.1",
+      "date": "Thu, 04 Apr 2024 15:51:52 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `3.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.0",
       "tag": "@ti-platform/aide_v3.0.0",
       "date": "Mon, 01 Apr 2024 01:31:07 GMT",

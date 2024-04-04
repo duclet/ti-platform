@@ -2,6 +2,21 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "3.1.0",
+      "tag": "@ti-platform/aide-build-tools_v3.1.0",
+      "date": "Thu, 04 Apr 2024 15:51:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update ESLint configs to ensure no duplicates of imports."
+          },
+          {
+            "comment": "Update update-package-json-versions binary to allow specifying the target path as a glob pattern or array."
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.0",
       "tag": "@ti-platform/aide-build-tools_v3.0.0",
       "date": "Mon, 01 Apr 2024 01:31:07 GMT",

@@ -1,6 +1,14 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Mon, 01 Apr 2024 01:31:07 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Apr 2024 15:51:52 GMT and should not be manually modified.
+
+## 3.1.0
+Thu, 04 Apr 2024 15:51:52 GMT
+
+### Minor changes
+
+- Update ESLint configs to ensure no duplicates of imports.
+- Update update-package-json-versions binary to allow specifying the target path as a glob pattern or array.
 
 ## 3.0.0
 Mon, 01 Apr 2024 01:31:07 GMT
