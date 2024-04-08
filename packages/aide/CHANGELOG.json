@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "3.1.0",
+      "tag": "@ti-platform/aide_v3.1.0",
+      "date": "Mon, 08 Apr 2024 18:08:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add return type for Queue"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.1",
       "tag": "@ti-platform/aide_v3.0.1",
       "date": "Thu, 04 Apr 2024 15:51:52 GMT",

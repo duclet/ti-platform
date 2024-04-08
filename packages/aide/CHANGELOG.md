@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide
 
-This log was last generated on Thu, 04 Apr 2024 15:51:52 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Apr 2024 18:08:17 GMT and should not be manually modified.
+
+## 3.1.0
+Mon, 08 Apr 2024 18:08:17 GMT
+
+### Minor changes
+
+- Add return type for Queue
 
 ## 3.0.1
 Thu, 04 Apr 2024 15:51:52 GMT

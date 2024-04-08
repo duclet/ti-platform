@@ -1,6 +1,11 @@
 # Change Log - @ti-platform/aide-vueuse
 
-This log was last generated on Thu, 04 Apr 2024 15:51:52 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Apr 2024 18:08:17 GMT and should not be manually modified.
+
+## 1.0.5
+Mon, 08 Apr 2024 18:08:17 GMT
+
+_Version update only_
 
 ## 1.0.4
 Thu, 04 Apr 2024 15:51:52 GMT
