@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Add return type for Queue",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}

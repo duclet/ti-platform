@@ -26,8 +26,10 @@ export async function executeTasks<T>(tasks: ReadonlyArray<() => Promise<T>>, ma
 
 /**
  * An item in the queue.
+ *
+ * @typeParam T The type of the item that the promise resolves with. Defaults to void.
  */
-export type QueueItem = () => Awaitable<void>;
+export type QueueItem<T = void> = () => Awaitable<T>;
 
 /**
  * Arguments for constructing a {@link Queue}.
@@ -54,8 +56,10 @@ export type QueueConstructorOptions = {
 /**
  * Queue that execute handlers as per the configured concurrency limit. It also has the ability to rate limit how much
  * execution happens within an interval.
+ *
+ * @typeParam T The type of the item that the promise resolves with for the handlers. Defaults to void.
  */
-export class Queue {
+export class Queue<T = void> {
     /**
      * Refer to {@link QueueConstructorOptions~intervalMs}.
      */
@@ -99,7 +103,7 @@ export class Queue {
         /**
          * The actual item in the queue.
          */
-        fn: QueueItem;
+        fn: QueueItem<T>;
 
         /**
          * Called right before the item is to be executed.
@@ -114,7 +118,7 @@ export class Queue {
         /**
          * Called after the item finishes executing.
          */
-        onEndResolve: () => void;
+        onEndResolve: (handlerResult: T) => void;
     }> = [];
 
     /**
@@ -140,14 +144,14 @@ export class Queue {
      *  right before the item is executed, right after the item is executed, and right after it finishes execution.
      * @throws Error if items can no longer be added.
      */
-    public add(item: QueueItem) {
+    public add(item: QueueItem<T>) {
         if (!this.canAddItem) {
             throw new Error('Item can no longer be added to queue.');
         }
 
         const onBeforeStart = new Deferred();
         const onAfterStart = new Deferred();
-        const onEnd = new Deferred();
+        const onEnd = new Deferred<T>();
 
         this.items.push({
             fn: item,
@@ -188,11 +192,10 @@ export class Queue {
         this.trackIntervalMonitoring();
 
         item.onBeforeStartResolve();
+
         const promise = item.fn();
         item.onAfterStartResolve();
-
-        await promise;
-        item.onEndResolve();
+        item.onEndResolve(await promise);
 
         this.activelyRunning--;
 

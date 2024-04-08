@@ -8,13 +8,13 @@ Docs for more information.
 * [API Docs](#api-docs)
   * [Classes](#classes)
     * [Deferred\<T>](#deferredt)
-    * [Queue](#queue)
+    * [Queue\<T>](#queuet)
   * [Type Aliases](#type-aliases)
     * [AnyArray\<V>](#anyarrayv)
     * [Awaitable\<T>](#awaitablet)
     * [MarkReadonly\<T, K>](#markreadonlyt-k)
     * [QueueConstructorOptions](#queueconstructoroptions)
-    * [QueueItem()](#queueitem)
+    * [QueueItem()\<T>](#queueitemt)
   * [Functions](#functions)
     * [ensureType()](#ensuretype)
     * [executeTasks()](#executetasks)
@@ -64,16 +64,22 @@ promises.ts:32
 
 ***
 
-### Queue
+### Queue\<T>
 
 Queue that execute handlers as per the configured concurrency limit. It also has the ability to rate limit how much
 execution happens within an interval.
+
+#### Type parameters
+
+| Type parameter | Value | Description |
+| :------ | :------ | :------ |
+| `T` | `void` | The type of the item that the promise resolves with for the handlers. Defaults to void. |
 
 #### Constructors
 
 ##### new Queue(\_\_namedParameters)
 
-> **new Queue**(`__namedParameters`): [`Queue`](README.md#queue)
+> **new Queue**<`T`>(`__namedParameters`): [`Queue`](README.md#queuet)<`T`>
 
 Create a new instance.
 
@@ -85,11 +91,11 @@ Create a new instance.
 
 ###### Returns
 
-[`Queue`](README.md#queue)
+[`Queue`](README.md#queuet)<`T`>
 
 ###### Source
 
-queue.ts:128
+queue.ts:132
 
 #### Properties
 
@@ -111,7 +117,7 @@ Add a new item to the queue for execution.
 
 | Parameter | Type |
 | :------ | :------ |
-| `item` | [`QueueItem`](README.md#queueitem) |
+| `item` | [`QueueItem`](README.md#queueitemt)<`T`> |
 
 ###### Returns
 
@@ -124,7 +130,7 @@ right before the item is executed, right after the item is executed, and right a
 | :------ | :------ | :------ |
 | `onAfterStart` | `Promise`<`void`> | onAfterStart.promise |
 | `onBeforeStart` | `Promise`<`void`> | onBeforeStart.promise |
-| `onEnd` | `Promise`<`void`> | onEnd.promise |
+| `onEnd` | `Promise`<`T`> | onEnd.promise |
 
 ###### Throws
 
@@ -132,7 +138,7 @@ Error if items can no longer be added.
 
 ###### Source
 
-queue.ts:143
+queue.ts:147
 
 ##### lockQueue()
 
@@ -146,7 +152,7 @@ Lock the queue and return a promise that will resolve when all the handlers fini
 
 ###### Source
 
-queue.ts:167
+queue.ts:171
 
 ## Type Aliases
 
@@ -209,7 +215,7 @@ types.ts:4
 
 > **QueueConstructorOptions**: `Object`
 
-Arguments for constructing a [Queue](README.md#queue).
+Arguments for constructing a [Queue](README.md#queuet).
 
 #### Type declaration
 
@@ -221,23 +227,29 @@ Arguments for constructing a [Queue](README.md#queue).
 
 #### Source
 
-queue.ts:35
+queue.ts:37
 
 ***
 
-### QueueItem()
+### QueueItem()\<T>
 
-> **QueueItem**: () => [`Awaitable`](README.md#awaitablet)<`void`>
+> **QueueItem**<`T`>: () => [`Awaitable`](README.md#awaitablet)<`T`>
 
 An item in the queue.
 
+#### Type parameters
+
+| Type parameter | Value | Description |
+| :------ | :------ | :------ |
+| `T` | `void` | The type of the item that the promise resolves with. Defaults to void. |
+
 #### Returns
 
-[`Awaitable`](README.md#awaitablet)<`void`>
+[`Awaitable`](README.md#awaitablet)<`T`>
 
 #### Source
 
-queue.ts:30
+queue.ts:32
 
 ## Functions
 
