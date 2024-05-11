@@ -48,7 +48,7 @@ export async function runTypedoc() {
     const argv = getArgv('run-typedoc');
 
     spawnCommand(
-        `npx typedoc --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} --excludePrivate --plugin typedoc-plugin-markdown --outputFileStrategy modules --parametersFormat table --propertiesFormat table --enumMembersFormat table --typeDeclarationFormat table --indexFormat table --hidePageHeader --hidePageTitle ${argv.flags.inputFile}`
+        `npx typedoc --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} --excludeInternal --excludePrivate --excludeProtected --pretty --plugin typedoc-plugin-markdown --outputFileStrategy modules --expandObjects true --parametersFormat table --propertiesFormat table --enumMembersFormat table --typeDeclarationFormat table --indexFormat table --hidePageHeader --hidePageTitle ${argv.flags.inputFile}`
     );
     // spawnCommand(`sed -i 's/# /## /g' ${argv.flags.outDir}/globals.md`);
     spawnCommand(`sed -i -e "/---Insert API Docs---/r ${argv.flags.outDir}/globals.md" ${argv.flags.outDir}/README.md`);

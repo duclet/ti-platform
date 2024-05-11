@@ -1,4 +1,4 @@
-import { executeTasks } from '@ti-platform/aide';
+import {executeTasks, type Simplify} from '@ti-platform/aide';
 import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
 
@@ -36,7 +36,7 @@ export type ReactiveExecuteTasksRet<T> = {
 };
 
 /**
- * Reactive version of `@ti-platform/aidee#xecuteTasks`.
+ * Reactive version of `@ti-platform/aide#xecuteTasks`.
  *
  * @typeParam T The type of the result of each task.
  * @param tasks The tasks to run.

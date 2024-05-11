@@ -1,0 +1,43 @@
+{
+    "name": "@ti-platform/client-airtable",
+    "version": "0.0.1",
+    "type": "module",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+    },
+    "files": [
+        "dist/",
+        "src/",
+        "CHANGELOG.md",
+        "README.md"
+    ],
+    "scripts": {
+        "build:docs": "run-typedoc -i ./src/index.docs.ts",
+        "build:src": "tsup",
+        "clean": "rm -rf ./dist",
+        "lint": "run-linter -d ./src -e .ts -g -k -c 'npx tsc --noEmit'",
+        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify 2>&1 && pnpm build:docs",
+        "dev": "pnpm clean && pnpm lint -w -c 'pnpm build:src'",
+        "build": "pnpm prod"
+    },
+    "dependencies": {
+        "@ti-platform/aide": "workspace:*",
+        "defu": "^6.1.4",
+        "ofetch": "^1.3.4",
+        "type-fest": "^4.18.2",
+        "zod": "^3.23.7"
+    },
+    "devDependencies": {
+        "@ti-platform/aide-build-tools": "workspace:*",
+        "@types/node": "^20.12.2",
+        "eslint": "^8.57.0",
+        "prettier": "^3.2.5",
+        "tsup": "^8.0.2",
+        "typedoc": "^0.25.12",
+        "typedoc-plugin-markdown": "^4.0.0-next.54",
+        "typescript": "^5.4.3",
+        "vite": "^5.2.7"
+    }
+}

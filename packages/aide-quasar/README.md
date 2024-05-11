@@ -181,7 +181,7 @@ rendering of the component.
 
 ### ProgressIndicatorTask
 
-> **ProgressIndicatorTask**: `Object`
+> **ProgressIndicatorTask**: {`description`: `string`;`errorMessage`: `string`;`isInProgress`: `boolean`;`key`: `string`;  }
 
 Information for a task to show in the MultiProgressIndicator component.
 
@@ -202,7 +202,7 @@ components/multi-progress-indicator/api.ts:4
 
 ### TimelineStep
 
-> **TimelineStep**: `Object`
+> **TimelineStep**: {`body`: `string`;`isInitiallyHidden`: `boolean`;`name`: [`TimelineStepName`](README.md#timelinestepname);`subtitle`: `string`;`task`: (`step`) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)>;  }
 
 Representing a step in the timeline.
 
@@ -280,7 +280,7 @@ components/timeline-stepper/api.ts:6
 
 ### TimelineStepStatus
 
-> **TimelineStepStatus**: `Object`
+> **TimelineStepStatus**: {`isCompletedStep`: `boolean`;`name`: `string`;  }
 
 Represents the status of a step.
 
@@ -299,7 +299,7 @@ components/timeline-stepper/api.ts:69
 
 ### TimelineStepTaskResult
 
-> **TimelineStepTaskResult**: `Object`
+> **TimelineStepTaskResult**: {`failed`: `boolean`;`nextSteps`: [`TimelineStepName`](README.md#timelinestepname)\[];`skipSteps`: [`TimelineStepName`](README.md#timelinestepname)\[];  }
 
 Represents the result of executing a step and what is expected to happen next.
 
@@ -319,7 +319,7 @@ components/timeline-stepper/api.ts:49
 
 ### WizardStep
 
-> **WizardStep**: `Object`
+> **WizardStep**: {`beforeLeaveConfirmationMessage`: `string`;`component`: `Component`;`isBeforeLeaveConfirmationEnabled`: `boolean`;`name`: [`WizardStepName`](README.md#wizardstepname);`title`: `string`;  }
 
 Represents a step in the wizard.
 
@@ -353,7 +353,7 @@ components/wizard-stepper/api.ts:7
 
 ### TimelineStepStatuses
 
-> **`const`** **TimelineStepStatuses**: `Record`<`"FAILED"` | `"IN_PROGRESS"` | `"NOT_STARTED"` | `"SKIPPED"` | `"SUCCEED"`, `Object` | `Object` | `Object` | `Object` | `Object`>
+> **`const`** **TimelineStepStatuses**: `Record`<`"FAILED"` | `"IN_PROGRESS"` | `"NOT_STARTED"` | `"SKIPPED"` | `"SUCCEED"`, {`isCompletedStep`: `true`;`name`: `'FAILED'`;  } | {`isCompletedStep`: `false`;`name`: `'IN_PROGRESS'`;  } | {`isCompletedStep`: `false`;`name`: `'NOT_STARTED'`;  } | {`isCompletedStep`: `true`;`name`: `'SKIPPED'`;  } | {`isCompletedStep`: `true`;`name`: `'SUCCEED'`;  }>
 
 Map of [TimelineStepStatus](README.md#timelinestepstatus)'s name to its definition.
 

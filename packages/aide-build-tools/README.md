@@ -166,7 +166,7 @@ eslint.ts:17
 
 ### EslintConfigsParams
 
-> **EslintConfigsParams**: `Object`
+> **EslintConfigsParams**: {`baseDir`: `string`;`configureCjs`: (`configs`) => `Linter.ConfigOverride`;`configureHtml`: (`configs`) => `Linter.ConfigOverride`;`configureJs`: (`configs`) => `Linter.ConfigOverride`;`configureJson`: (`configs`) => `Linter.ConfigOverride`;`configureTs`: (`configs`) => `Linter.ConfigOverride`;`configureVue`: (`configs`) => `Linter.ConfigOverride`;`enable`: [`EslintConfigType`](README.md#eslintconfigtype)\[];  }
 
 #### Type declaration
 
@@ -189,7 +189,7 @@ eslint.ts:19
 
 ### ModifySourceContentsChainArgs
 
-> **ModifySourceContentsChainArgs**: [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & `Object`
+> **ModifySourceContentsChainArgs**: [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`handlerCreators`: [`ModifySourceContentsChainHandlerCreator`](README.md#modifysourcecontentschainhandlercreator)\[];  }
 
 Arguments for the function [modifySourceContentsChain](README.md#modifysourcecontentschain).
 
@@ -207,7 +207,7 @@ esbuild-plugins/modify-source-contents-chain.ts:41
 
 ### ModifySourceContentsChainHandler()
 
-> **ModifySourceContentsChainHandler**: (`args`) => `Object`
+> **ModifySourceContentsChainHandler**: (`args`) => {`contents`: `string`;  }
 
 Handler to be given the path of the file whose content is also given. It should return an object with the updated
 contents before it is passed to the next handler.
@@ -222,7 +222,7 @@ contents before it is passed to the next handler.
 
 #### Returns
 
-`Object`
+{`contents`: `string`;  }
 
 | Member | Type |
 | :------ | :------ |
@@ -244,7 +244,7 @@ Use to create the handler as part of the build step.
 
 | Parameter | Type |
 | :------ | :------ |
-| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & `Object` |
+| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
 
 #### Returns
 
@@ -258,7 +258,7 @@ esbuild-plugins/modify-source-contents-chain.ts:34
 
 ### ModifySourceContentsChainHandlerCreatorBuildArgs
 
-> **ModifySourceContentsChainHandlerCreatorBuildArgs**: `Object`
+> **ModifySourceContentsChainHandlerCreatorBuildArgs**: {`cwd`: `string`;`debug`: `boolean`;`extensions`: `string`\[];  }
 
 Arguments passed to the [ModifySourceContentsChainHandlerCreator](README.md#modifysourcecontentschainhandlercreator) during the build step.
 
@@ -278,7 +278,7 @@ esbuild-plugins/modify-source-contents-chain.ts:8
 
 ### RunEsLintPrettierParams
 
-> **RunEsLintPrettierParams**: `Object`
+> **RunEsLintPrettierParams**: {`dirs`: `string`\[];`extensions`: `string`\[];`files`: `string`\[];  }
 
 #### Type declaration
 
@@ -328,7 +328,7 @@ This will append the file extension to the end of relative imports if we are bui
 
 | Parameter | Type |
 | :------ | :------ |
-| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & `Object` |
+| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
 
 #### Returns
 
@@ -355,7 +355,7 @@ This will append the file extension to the end of relative imports if we are bui
 
 | Parameter | Type |
 | :------ | :------ |
-| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & `Object` |
+| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
 
 #### Returns
 
@@ -710,7 +710,7 @@ the plugin available here: https://github.com/wjfei/esbuild-plugin-tsconfig-path
 
 | Parameter | Type |
 | :------ | :------ |
-| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & `Object` |
+| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
 
 #### Returns
 

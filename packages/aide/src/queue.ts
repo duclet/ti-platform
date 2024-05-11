@@ -1,5 +1,5 @@
 import { Deferred } from '@src/promises';
-import type { Awaitable } from '@src/types';
+import type { Awaitable, Simplify } from '@src/types';
 
 /**
  * Given a list of tasks to execute, execute them, ensuring there is a maximum number of tasks actively running at the
@@ -11,14 +11,10 @@ import type { Awaitable } from '@src/types';
  * @returns A promise that will resolve when all the tasks are completed.
  */
 export async function executeTasks<T>(tasks: ReadonlyArray<() => Promise<T>>, maxNumOfWorkers = 10): Promise<Array<T>> {
-    const queue = new Queue({ maxConcurrent: maxNumOfWorkers });
+    const queue = new Queue<T>({ maxConcurrent: maxNumOfWorkers });
     const results: Array<T> = [];
 
-    tasks.forEach((task, taskIndex) => {
-        queue.add(async () => {
-            results[taskIndex] = await task();
-        });
-    });
+    tasks.forEach((task, taskIndex) => void queue.add(task).onEnd.then((result) => (results[taskIndex] = result)));
 
     await queue.lockQueue();
     return results;
@@ -33,6 +29,8 @@ export type QueueItem<T = void> = () => Awaitable<T>;
 
 /**
  * Arguments for constructing a {@link Queue}.
+ *
+ * @interface
  */
 export type QueueConstructorOptions = {
     /**
@@ -53,6 +51,22 @@ export type QueueConstructorOptions = {
     intervalMs?: number;
 };
 
+/** @internal */
+type AddReturnValue<T> = {
+    /** Promised that is resolved right before the handler is executed. */
+    onBeforeStart: Promise<void>;
+
+    /**
+     * Promised that is resolved right after the handler is executed but not necessarily after it has finished execution.
+     */
+    onAfterStart: Promise<void>;
+
+    /**
+     * Promised that is resolved after the handler finished executing.
+     */
+    onEnd: Promise<T>;
+};
+
 /**
  * Queue that execute handlers as per the configured concurrency limit. It also has the ability to rate limit how much
  * execution happens within an interval.
@@ -61,17 +75,17 @@ export type QueueConstructorOptions = {
  */
 export class Queue<T = void> {
     /**
-     * Refer to {@link QueueConstructorOptions~intervalMs}.
+     * {@inheritDoc QueueConstructorOptions.intervalMs}
      */
     public readonly intervalMs: NonNullable<QueueConstructorOptions['intervalMs']>;
 
     /**
-     * Refer to {@link QueueConstructorOptions~maxConcurrent}.
+     * {@inheritDoc QueueConstructorOptions.maxConcurrent}.
      */
     public readonly maxConcurrent: QueueConstructorOptions['maxConcurrent'];
 
     /**
-     * Refer to {@link QueueConstructorOptions~maxPerInterval}.
+     * {@inheritDoc QueueConstructorOptions.maxPerInterval}.
      */
     public readonly maxPerInterval: NonNullable<QueueConstructorOptions['maxPerInterval']>;
 
@@ -79,7 +93,7 @@ export class Queue<T = void> {
      * A {@link Deferred} that will be resolved when no more items are added to the queue and all items in the queue has
      * finished executing.
      */
-    private readonly whenDone: Deferred;
+    private readonly whenDone: Deferred = new Deferred();
 
     /**
      * Counts of the number of currently actively running jobs.
@@ -129,22 +143,18 @@ export class Queue<T = void> {
     /**
      * Create a new instance.
      */
-    public constructor({ maxConcurrent, maxPerInterval = -1, intervalMs = -1 }: QueueConstructorOptions) {
+    public constructor({ maxConcurrent, maxPerInterval = -1, intervalMs = -1 }: Simplify<QueueConstructorOptions>) {
         this.maxConcurrent = maxConcurrent;
         this.maxPerInterval = maxPerInterval;
         this.intervalMs = intervalMs;
-
-        this.whenDone = new Deferred();
     }
 
     /**
      * Add a new item to the queue for execution.
      *
-     * @returns An object containing 3 promises, `onBeforeStart`, `onAfterStart`, and `onEnd`. The promises are resolved
-     *  right before the item is executed, right after the item is executed, and right after it finishes execution.
      * @throws Error if items can no longer be added.
      */
-    public add(item: QueueItem<T>) {
+    public add(item: QueueItem<T>): Simplify<AddReturnValue<T>> {
         if (!this.canAddItem) {
             throw new Error('Item can no longer be added to queue.');
         }

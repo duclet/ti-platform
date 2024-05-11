@@ -9,15 +9,13 @@ export class Deferred<T = void> {
     /**
      * Resolves the internal promise.
      */
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error Will definitely be set in the constructor.
     public resolve: (value: Awaitable<T>) => void;
 
     /**
      * Reject the internal promise.
      */
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error Will definitely be set in constructor.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     public reject: (reason?: any) => void;
 

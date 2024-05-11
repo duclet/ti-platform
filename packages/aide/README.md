@@ -9,12 +9,16 @@ Docs for more information.
   * [Classes](#classes)
     * [Deferred\<T>](#deferredt)
     * [Queue\<T>](#queuet)
+  * [Interfaces](#interfaces)
+    * [QueueConstructorOptions](#queueconstructoroptions)
   * [Type Aliases](#type-aliases)
     * [AnyArray\<V>](#anyarrayv)
     * [Awaitable\<T>](#awaitablet)
     * [MarkReadonly\<T, K>](#markreadonlyt-k)
-    * [QueueConstructorOptions](#queueconstructoroptions)
+    * [NonEmptyArray\<T>](#nonemptyarrayt)
     * [QueueItem()\<T>](#queueitemt)
+    * [Simplify\<T>](#simplifyt)
+    * [UndefinedFallback\<T, Fallback>](#undefinedfallbackt-fallback)
   * [Functions](#functions)
     * [ensureType()](#ensuretype)
     * [executeTasks()](#executetasks)
@@ -52,7 +56,7 @@ Create a new instance.
 
 ###### Source
 
-promises.ts:32
+promises.ts:30
 
 #### Properties
 
@@ -85,9 +89,12 @@ Create a new instance.
 
 ###### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `__namedParameters` | [`QueueConstructorOptions`](README.md#queueconstructoroptions) |
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `__namedParameters` | `Object` | - |
+| `__namedParameters.intervalMs`? | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is<br />simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| `__namedParameters.maxConcurrent` | `number` | Maximum number of concurrent executions. |
+| `__namedParameters.maxPerInterval`? | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is<br />simply the maximum number of executions within the interval. |
 
 ###### Returns
 
@@ -95,21 +102,21 @@ Create a new instance.
 
 ###### Source
 
-queue.ts:132
+queue.ts:146
 
 #### Properties
 
 | Property | Modifier | Type | Description |
 | :------ | :------ | :------ | :------ |
-| `intervalMs` | `readonly` | `number` | Refer to [~intervalMs](README.md#queueconstructoroptions). |
-| `maxConcurrent` | `readonly` | `number` | Refer to [~maxConcurrent](README.md#queueconstructoroptions). |
-| `maxPerInterval` | `readonly` | `number` | Refer to [~maxPerInterval](README.md#queueconstructoroptions). |
+| `intervalMs` | `readonly` | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is<br />simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| `maxConcurrent` | `readonly` | `number` | Maximum number of concurrent executions. |
+| `maxPerInterval` | `readonly` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is<br />simply the maximum number of executions within the interval. |
 
 #### Methods
 
 ##### add()
 
-> **add**(`item`): `Object`
+> **add**(`item`): {`onAfterStart`: `Promise`<`void`>;`onBeforeStart`: `Promise`<`void`>;`onEnd`: `Promise`<`T`>;  }
 
 Add a new item to the queue for execution.
 
@@ -121,16 +128,13 @@ Add a new item to the queue for execution.
 
 ###### Returns
 
-`Object`
+{`onAfterStart`: `Promise`<`void`>;`onBeforeStart`: `Promise`<`void`>;`onEnd`: `Promise`<`T`>;  }
 
-An object containing 3 promises, `onBeforeStart`, `onAfterStart`, and `onEnd`. The promises are resolved
-right before the item is executed, right after the item is executed, and right after it finishes execution.
-
-| Member | Type | Value |
+| Member | Type | Description |
 | :------ | :------ | :------ |
-| `onAfterStart` | `Promise`<`void`> | onAfterStart.promise |
-| `onBeforeStart` | `Promise`<`void`> | onBeforeStart.promise |
-| `onEnd` | `Promise`<`T`> | onEnd.promise |
+| `onAfterStart` | `Promise`<`void`> | Promised that is resolved right after the handler is executed but not necessarily after it has finished execution. |
+| `onBeforeStart` | `Promise`<`void`> | Promised that is resolved right before the handler is executed. |
+| `onEnd` | `Promise`<`T`> | Promised that is resolved after the handler finished executing. |
 
 ###### Throws
 
@@ -138,7 +142,7 @@ Error if items can no longer be added.
 
 ###### Source
 
-queue.ts:147
+queue.ts:157
 
 ##### lockQueue()
 
@@ -152,7 +156,21 @@ Lock the queue and return a promise that will resolve when all the handlers fini
 
 ###### Source
 
-queue.ts:171
+queue.ts:181
+
+## Interfaces
+
+### QueueConstructorOptions
+
+Arguments for constructing a [Queue](README.md#queuet).
+
+#### Properties
+
+| Property | Type | Description |
+| :------ | :------ | :------ |
+| `intervalMs?` | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is<br />simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| `maxConcurrent` | `number` | Maximum number of concurrent executions. |
+| `maxPerInterval?` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is<br />simply the maximum number of executions within the interval. |
 
 ## Type Aliases
 
@@ -170,7 +188,7 @@ Type matching against both a writable array and a readonly array.
 
 #### Source
 
-arrays.ts:6
+types.ts:11
 
 ***
 
@@ -188,7 +206,7 @@ The type is simply `T` or a promise which, when resolved, is given `T`.
 
 #### Source
 
-types.ts:9
+types.ts:4
 
 ***
 
@@ -207,27 +225,25 @@ For a given object, T, mark the keys given as being readonly.
 
 #### Source
 
-types.ts:4
+types.ts:16
 
 ***
 
-### QueueConstructorOptions
+### NonEmptyArray\<T>
 
-> **QueueConstructorOptions**: `Object`
+> **NonEmptyArray**<`T`>: \[`T`, `...T[]`]
 
-Arguments for constructing a [Queue](README.md#queuet).
+For a non-empty array.
 
-#### Type declaration
+#### Type parameters
 
-| Member | Type | Description |
-| :------ | :------ | :------ |
-| `intervalMs` | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is<br />simply the time, in milliseconds, for when to reset the execution counts per interval. |
-| `maxConcurrent` | `number` | Maximum number of concurrent executions. |
-| `maxPerInterval` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is<br />simply the maximum number of executions within the interval. |
+| Type parameter |
+| :------ |
+| `T` |
 
 #### Source
 
-queue.ts:37
+types.ts:21
 
 ***
 
@@ -249,7 +265,44 @@ An item in the queue.
 
 #### Source
 
-queue.ts:32
+queue.ts:28
+
+***
+
+### Simplify\<T>
+
+> **Simplify**<`T`>: `{ [KeyType in keyof T]: T[KeyType] }` & `NonNullable`<`unknown`>
+
+Refer to <https://github.com/sindresorhus/type-fest/blob/main/source/simplify.d.ts>.
+
+#### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+#### Source
+
+types.ts:26
+
+***
+
+### UndefinedFallback\<T, Fallback>
+
+> **UndefinedFallback**<`T`, `Fallback`>: \[`T`] extends \[`undefined`] ? `Fallback` : `T`
+
+If the given type, `T` is undefined, return `Fallback`, otherwise just return \`T.
+
+#### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+| `Fallback` |
+
+#### Source
+
+types.ts:31
 
 ## Functions
 
@@ -302,7 +355,7 @@ type MyItem = { name: string, displayName: string };
 
 #### Source
 
-arrays.ts:24
+arrays.ts:19
 
 ***
 
@@ -362,7 +415,7 @@ The first item in the list or undefined if the list is empty.
 
 #### Source
 
-arrays.ts:35
+arrays.ts:30
 
 ***
 
@@ -393,7 +446,7 @@ The return value of the first function to not return an undefined value.
 
 #### Source
 
-arrays.ts:47
+arrays.ts:42
 
 ***
 
@@ -454,7 +507,7 @@ The given list without null or undefined values.
 
 #### Source
 
-arrays.ts:64
+arrays.ts:59
 
 ***
 
@@ -488,4 +541,4 @@ An object representation of the given list using the provided suppliers to gener
 
 #### Source
 
-arrays.ts:79
+arrays.ts:74

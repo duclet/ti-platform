@@ -21,7 +21,7 @@ This package contains utility functions that can be used with Vue to enhance the
 
 ### ReactiveExecuteTasksRet\<T>
 
-> **ReactiveExecuteTasksRet**<`T`>: `Object`
+> **ReactiveExecuteTasksRet**<`T`>: {`activeWorkers`: `Readonly`<`Ref`<`number`>>;`completedTasks`: `Readonly`<`Ref`<`number`>>;`isAllTasksCompleted`: `Readonly`<`Ref`<`boolean`>>;`results`: `Readonly`<`Ref`<`T`\[]>>;`totalTasks`: `Readonly`<`Ref`<`number`>>;  }
 
 The return value for the function [reactiveExecuteTasks](README.md#reactiveexecutetasks).
 
@@ -191,7 +191,7 @@ validators.ts:38
 
 > **reactiveExecuteTasks**<`T`>(`tasks`, `maxNumOfWorkers`): [`ReactiveExecuteTasksRet`](README.md#reactiveexecutetasksrett)<`T`>
 
-Reactive version of `@ti-platform/aidee#xecuteTasks`.
+Reactive version of `@ti-platform/aide#xecuteTasks`.
 
 #### Type parameters
 

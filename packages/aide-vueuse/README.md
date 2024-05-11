@@ -37,7 +37,7 @@ The state of the polling.
 
 ### ElementOrComponentWithEl
 
-> **ElementOrComponentWithEl**: `HTMLElement` | `Object`
+> **ElementOrComponentWithEl**: `HTMLElement` | {`$el`: `HTMLElement`;  }
 
 Either an `HTMLElement` or a Vue component with the property `$el` which is an `HTMLElement`.
 
@@ -49,7 +49,7 @@ dom.ts:8
 
 ### UsePollingRetVal
 
-> **UsePollingRetVal**: `Object`
+> **UsePollingRetVal**: {`startPolling`: () => [`UsePollingRetVal`](README.md#usepollingretval);`state`: `ComputedRef`<[`PollingState`](README.md#pollingstate)>;  }
 
 Return value of the [usePolling](README.md#usepolling) function.
 

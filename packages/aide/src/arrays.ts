@@ -1,9 +1,4 @@
-/**
- * Type matching against both a writable array and a readonly array.
- *
- * @typeParam V The type of each item in the array.
- */
-export type AnyArray<V> = Array<V> | ReadonlyArray<V>;
+import type { AnyArray } from '@src/types';
 
 /**
  * This function is primarily here to help with stricter typing. When Typescript allows for partial inference of
