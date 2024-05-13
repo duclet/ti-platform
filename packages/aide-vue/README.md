@@ -10,9 +10,11 @@ This package contains utility functions that can be used with Vue to enhance the
     * [ValueTypes](#valuetypes)
   * [Functions](#functions)
     * [asComputed()](#ascomputed)
+    * [injectRefs()](#injectrefs)
     * [isRequiredField()](#isrequiredfield)
     * [isRequiredFieldWhen()](#isrequiredfieldwhen)
     * [isUniqueField()](#isuniquefield)
+    * [provideAndReturnRefs()](#provideandreturnrefs)
     * [reactiveExecuteTasks()](#reactiveexecutetasks)
 
 # API Docs
@@ -84,6 +86,34 @@ The ComputedRef that simply returns the value of the given Ref.
 #### Source
 
 reactivity.ts:10
+
+***
+
+### injectRefs()
+
+> **injectRefs**<`T`>(`key`): `ToRefs`<`NonNullable`<`T`>>
+
+Inject the data from the provided key (we are assuming the data exists) and return the results as refs.
+
+#### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `InjectionKey`<`T`> | The key to retrieve the data to inject. |
+
+#### Returns
+
+`ToRefs`<`NonNullable`<`T`>>
+
+#### Source
+
+data.ts:10
 
 ***
 
@@ -184,6 +214,35 @@ Given a reference to a list of values, check when a value is given that it isn't
 #### Source
 
 validators.ts:38
+
+***
+
+### provideAndReturnRefs()
+
+> **provideAndReturnRefs**<`T`>(`key`, `data`): `ToRefs`<`UnwrapNestedRefs`<`T`>>
+
+Provide the given data to child components and return the data as refs.
+
+#### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` extends `object` |
+
+#### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `InjectionKey`<`T`> | The key to store the data as. |
+| `data` | `T` | The data to store. |
+
+#### Returns
+
+`ToRefs`<`UnwrapNestedRefs`<`T`>>
+
+#### Source
+
+data.ts:22
 
 ***
 
