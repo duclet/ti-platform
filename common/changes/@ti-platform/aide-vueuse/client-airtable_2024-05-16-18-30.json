@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vueuse",
+      "comment": "Improve documentation.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vueuse"
+}

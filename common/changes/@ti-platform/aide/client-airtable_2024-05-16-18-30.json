@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Improve documentation and adding some new utility types.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}
