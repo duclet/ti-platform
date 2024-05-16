@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vueuse",
+      "comment": "Adding site info.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vueuse"
+}

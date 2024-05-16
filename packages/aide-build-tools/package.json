@@ -1,6 +1,8 @@
 {
     "name": "@ti-platform/aide-build-tools",
     "version": "3.1.1",
+    "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide-build-tools",
+    "repository": "https://github.com/duclet/ti-platform",
     "type": "commonjs",
     "types": "./dist/index.d.ts",
     "exports": {
