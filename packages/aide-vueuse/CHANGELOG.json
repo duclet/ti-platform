@@ -2,6 +2,29 @@
   "name": "@ti-platform/aide-vueuse",
   "entries": [
     {
+      "version": "1.0.6",
+      "tag": "@ti-platform/aide-vueuse_v1.0.6",
+      "date": "Thu, 16 May 2024 18:34:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve documentation."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `2.0.6`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `3.1.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.5",
       "tag": "@ti-platform/aide-vueuse_v1.0.5",
       "date": "Mon, 08 Apr 2024 18:08:17 GMT",

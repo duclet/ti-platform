@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "3.1.1",
+      "tag": "@ti-platform/aide-build-tools_v3.1.1",
+      "date": "Thu, 16 May 2024 18:34:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve formatting of generated docs."
+          }
+        ]
+      }
+    },
+    {
       "version": "3.1.0",
       "tag": "@ti-platform/aide-build-tools_v3.1.0",
       "date": "Thu, 04 Apr 2024 15:51:52 GMT",

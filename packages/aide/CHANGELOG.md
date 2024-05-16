@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide
 
-This log was last generated on Mon, 08 Apr 2024 18:08:17 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 18:34:08 GMT and should not be manually modified.
+
+## 3.2.0
+Thu, 16 May 2024 18:34:08 GMT
+
+### Minor changes
+
+- Improve documentation and adding some new utility types.
 
 ## 3.1.0
 Mon, 08 Apr 2024 18:08:17 GMT
