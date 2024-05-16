@@ -75,17 +75,17 @@ type AddReturnValue<T> = {
  */
 export class Queue<T = void> {
     /**
-     * {@inheritDoc QueueConstructorOptions.intervalMs}
+     * @inheritDoc QueueConstructorOptions.intervalMs
      */
     public readonly intervalMs: NonNullable<QueueConstructorOptions['intervalMs']>;
 
     /**
-     * {@inheritDoc QueueConstructorOptions.maxConcurrent}.
+     * @inheritDoc QueueConstructorOptions.maxConcurrent
      */
     public readonly maxConcurrent: QueueConstructorOptions['maxConcurrent'];
 
     /**
-     * {@inheritDoc QueueConstructorOptions.maxPerInterval}.
+     * @inheritDoc QueueConstructorOptions.maxPerInterval
      */
     public readonly maxPerInterval: NonNullable<QueueConstructorOptions['maxPerInterval']>;
 

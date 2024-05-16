@@ -114,7 +114,10 @@ export type IndividualRecord<Fields extends RecordFields> = {
     fields: Fields;
 };
 
-/** @internal */
+/**
+ * Helper type that given a union of strings, produces a type where all the possible options are elements of an array.
+ * Useful to ensure that when a user specify the union, the user provides all those values.
+ */
 export type UnionToTuple<U extends string, R extends Array<unknown> = []> = {
     [S in U]: Exclude<U, S> extends never ? [...R, S] : UnionToTuple<Exclude<U, S>, [...R, S]>;
 }[U];

@@ -7,6 +7,7 @@ to actually implement all features of their REST APIs with their client. This pa
 
 # Contents
 
+* [Example Usage](#example-usage)
 * [API Docs](#api-docs)
   * [Enumerations](#enumerations)
     * [CellFormat](#cellformat)
@@ -31,6 +32,22 @@ to actually implement all features of their REST APIs with their client. This pa
     * [UpdateRecordsResponseUpsert\<Fields>](#updaterecordsresponseupsertfields)
   * [Type Aliases](#type-aliases)
     * [RecordFields](#recordfields)
+    * [UnionToTuple\<U, R>](#uniontotupleu-r)
+
+# Example Usage
+
+```typescript
+import {AirtableClient } from "@ti-platform/client-airtable";
+
+const client = new AirtableClient('my-api-token');
+
+const records = await client.listRecords<{ Field1: boolean; Field2: string }>({
+    baseId: 'app12345',
+    tableId: 'tbl12345',
+    fields: ['Field1', 'Field2'],
+    maxRecords: 10,
+});
+```
 
 # API Docs
 
@@ -1171,3 +1188,23 @@ The fields of a record.
 #### Source
 
 packages/client-airtable/src/records/shared.ts:13
+
+***
+
+### UnionToTuple\<U, R>
+
+> **UnionToTuple**<`U`, `R`>: `{ [S in U]: Exclude<U, S> extends never ? [...R, S] : UnionToTuple<Exclude<U, S>, [...R, S]> }`\[`U`]
+
+Helper type that given a union of strings, produces a type where all the possible options are elements of an array.
+Useful to ensure that when a user specify the union, the user provides all those values.
+
+#### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `U` extends `string` | - |
+| `R` extends `unknown`\[] | \[] |
+
+#### Source
+
+packages/client-airtable/src/records/shared.ts:121
