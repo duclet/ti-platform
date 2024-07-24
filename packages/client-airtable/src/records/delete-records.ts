@@ -7,8 +7,6 @@ const SCHEMA_DELETE_RECORDS_QUERYSTRING_PARAMS = object({
     records: array(SCHEMA_INDIVIDUAL_RECORD.shape.id).nonempty().max(10),
 });
 
-// const SCHEMA_DELETE_RECORDS_REQUEST = SCHEMA_BASE_AND_TABLE_PATH_PARAMS.merge(SCHEMA_DELETE_RECORDS_QUERYSTRING_PARAMS);
-
 /**
  * Request data for deleting records.
  *

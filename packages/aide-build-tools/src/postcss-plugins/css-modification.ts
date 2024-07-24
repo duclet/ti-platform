@@ -1,7 +1,7 @@
 import type { Plugin } from 'postcss';
 
 /**
- * This plugin basically removes duplicate @charset tags in the final CSS file as well as remove those legacy IE hacks.
+ * This plugin basically removes duplicate charset tags in the final CSS file as well as remove those legacy IE hacks.
  */
 export function cssModification(): Plugin {
     let foundCharsetRule = false;

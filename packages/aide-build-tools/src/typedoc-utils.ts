@@ -48,7 +48,7 @@ export async function runTypedoc() {
     const argv = getArgv('run-typedoc');
 
     spawnCommand(
-        `npx typedoc --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} --excludeInternal --excludePrivate --excludeProtected --pretty --plugin typedoc-plugin-markdown --outputFileStrategy modules --expandObjects true --parametersFormat table --propertiesFormat table --enumMembersFormat table --typeDeclarationFormat table --indexFormat table --hidePageHeader --hidePageTitle ${argv.flags.inputFile}`
+        `npx typedoc --options ${__dirname}/../typedoc.json --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} ${argv.flags.inputFile}`
     );
     // spawnCommand(`sed -i 's/# /## /g' ${argv.flags.outDir}/globals.md`);
     spawnCommand(`sed -i -e "/---Insert API Docs---/r ${argv.flags.outDir}/globals.md" ${argv.flags.outDir}/README.md`);
@@ -70,8 +70,9 @@ export async function runTypedoc() {
 
     const { remark } = await import('remark');
     const { default: remarkToc } = await import('remark-toc');
+    const { default: remarkGfm } = await import('remark-gfm');
 
-    const result = remark().use(remarkToc, { maxDepth: 3 }).processSync(readFileSync('./README.md'));
+    const result = remark().use(remarkGfm).use(remarkToc, { maxDepth: 3 }).processSync(readFileSync('./README.md'));
     writeFileSync('./README.md', result.toString());
     console.log('Done.');
 }

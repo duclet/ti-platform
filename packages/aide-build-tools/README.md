@@ -158,7 +158,7 @@ Note that if you a providing a glob for the pattern, be sure to wrap it in quote
 
 > **EslintConfigType**: `"cjs"` | `"html"` | `"js"` | `"json"` | `"ts"` | `"vue"`
 
-#### Source
+#### Defined in
 
 eslint.ts:17
 
@@ -166,22 +166,22 @@ eslint.ts:17
 
 ### EslintConfigsParams
 
-> **EslintConfigsParams**: {`baseDir`: `string`;`configureCjs`: (`configs`) => `Linter.ConfigOverride`;`configureHtml`: (`configs`) => `Linter.ConfigOverride`;`configureJs`: (`configs`) => `Linter.ConfigOverride`;`configureJson`: (`configs`) => `Linter.ConfigOverride`;`configureTs`: (`configs`) => `Linter.ConfigOverride`;`configureVue`: (`configs`) => `Linter.ConfigOverride`;`enable`: [`EslintConfigType`](README.md#eslintconfigtype)\[];  }
+> **EslintConfigsParams**: {`baseDir`: `string`;`configureCjs`: (`configs`) => `Linter.ConfigOverride`;`configureHtml`: (`configs`) => `Linter.ConfigOverride`;`configureJs`: (`configs`) => `Linter.ConfigOverride`;`configureJson`: (`configs`) => `Linter.ConfigOverride`;`configureTs`: (`configs`) => `Linter.ConfigOverride`;`configureVue`: (`configs`) => `Linter.ConfigOverride`;`enable`: [`EslintConfigType`](README.md#eslintconfigtype)\[]; }
 
 #### Type declaration
 
-| Member | Type | Description |
-| :------ | :------ | :------ |
-| `baseDir` | `string` | The base directory for your package. |
-| `configureCjs` | (`configs`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.cjs` files, this handler can be provided. |
-| `configureHtml` | (`configs`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.html` files, this handler can be provided. |
-| `configureJs` | (`configs`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.js` files, this handler can be provided. |
-| `configureJson` | (`configs`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.json` files, this handler can be provided. |
-| `configureTs` | (`configs`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.ts` files, this handler can be provided. |
-| `configureVue` | (`configs`) => `Linter.ConfigOverride` | If we need to override or extend the configurations for `.vue` files, this handler can be provided. |
-| `enable` | [`EslintConfigType`](README.md#eslintconfigtype)\[] | List of files to enable linting support for. |
+| Name            | Type                                                | Description                                                                                          |
+| --------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `baseDir`       | `string`                                            | The base directory for your package.                                                                 |
+| `configureCjs`  | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.cjs` files, this handler can be provided.  |
+| `configureHtml` | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.html` files, this handler can be provided. |
+| `configureJs`   | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.js` files, this handler can be provided.   |
+| `configureJson` | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.json` files, this handler can be provided. |
+| `configureTs`   | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.ts` files, this handler can be provided.   |
+| `configureVue`  | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.vue` files, this handler can be provided.  |
+| `enable`        | [`EslintConfigType`](README.md#eslintconfigtype)\[] | List of files to enable linting support for.                                                         |
 
-#### Source
+#### Defined in
 
 eslint.ts:19
 
@@ -189,17 +189,17 @@ eslint.ts:19
 
 ### ModifySourceContentsChainArgs
 
-> **ModifySourceContentsChainArgs**: [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`handlerCreators`: [`ModifySourceContentsChainHandlerCreator`](README.md#modifysourcecontentschainhandlercreator)\[];  }
+> **ModifySourceContentsChainArgs**: [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`handlerCreators`: [`ModifySourceContentsChainHandlerCreator`](README.md#modifysourcecontentschainhandlercreator)\[]; }
 
 Arguments for the function [modifySourceContentsChain](README.md#modifysourcecontentschain).
 
 #### Type declaration
 
-| Member | Type | Description |
-| :------ | :------ | :------ |
+| Name              | Type                                                                                              | Description                    |
+| ----------------- | ------------------------------------------------------------------------------------------------- | ------------------------------ |
 | `handlerCreators` | [`ModifySourceContentsChainHandlerCreator`](README.md#modifysourcecontentschainhandlercreator)\[] | List of creators for handlers. |
 
-#### Source
+#### Defined in
 
 esbuild-plugins/modify-source-contents-chain.ts:41
 
@@ -207,28 +207,28 @@ esbuild-plugins/modify-source-contents-chain.ts:41
 
 ### ModifySourceContentsChainHandler()
 
-> **ModifySourceContentsChainHandler**: (`args`) => {`contents`: `string`;  }
+> **ModifySourceContentsChainHandler**: (`args`) => {`contents`: `string`; }
 
 Handler to be given the path of the file whose content is also given. It should return an object with the updated
 contents before it is passed to the next handler.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `args` | `Object` |
+| Parameter       | Type     |
+| --------------- | -------- |
+| `args`          | `object` |
 | `args.contents` | `string` |
-| `args.path` | `string` |
+| `args.path`     | `string` |
 
 #### Returns
 
-{`contents`: `string`;  }
+{`contents`: `string`; }
 
-| Member | Type |
-| :------ | :------ |
+| Name       | Type     |
+| ---------- | -------- |
 | `contents` | `string` |
 
-#### Source
+#### Defined in
 
 esbuild-plugins/modify-source-contents-chain.ts:29
 
@@ -242,15 +242,15 @@ Use to create the handler as part of the build step.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
+| Parameter | Type                                                                                                                                          |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`    | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
 
 #### Returns
 
 [`ModifySourceContentsChainHandler`](README.md#modifysourcecontentschainhandler)
 
-#### Source
+#### Defined in
 
 esbuild-plugins/modify-source-contents-chain.ts:34
 
@@ -258,19 +258,19 @@ esbuild-plugins/modify-source-contents-chain.ts:34
 
 ### ModifySourceContentsChainHandlerCreatorBuildArgs
 
-> **ModifySourceContentsChainHandlerCreatorBuildArgs**: {`cwd`: `string`;`debug`: `boolean`;`extensions`: `string`\[];  }
+> **ModifySourceContentsChainHandlerCreatorBuildArgs**: {`cwd`: `string`;`debug`: `boolean`;`extensions`: `string`\[]; }
 
 Arguments passed to the [ModifySourceContentsChainHandlerCreator](README.md#modifysourcecontentschainhandlercreator) during the build step.
 
 #### Type declaration
 
-| Member | Type | Description |
-| :------ | :------ | :------ |
-| `cwd` | `string` | The current working directory. Defaults to whatever value is returned by `process.cwd()`. |
-| `debug` | `boolean` | Set to true to output some debugging information while executing. Defaults to `false`. |
-| `extensions` | `string`\[] | The list of file extensions to parse. Defaults to `[".ts"]`. |
+| Name         | Type        | Description                                                                               |
+| ------------ | ----------- | ----------------------------------------------------------------------------------------- |
+| `cwd`        | `string`    | The current working directory. Defaults to whatever value is returned by `process.cwd()`. |
+| `debug`      | `boolean`   | Set to true to output some debugging information while executing. Defaults to `false`.    |
+| `extensions` | `string`\[] | The list of file extensions to parse. Defaults to `[".ts"]`.                              |
 
-#### Source
+#### Defined in
 
 esbuild-plugins/modify-source-contents-chain.ts:8
 
@@ -278,17 +278,17 @@ esbuild-plugins/modify-source-contents-chain.ts:8
 
 ### RunEsLintPrettierParams
 
-> **RunEsLintPrettierParams**: {`dirs`: `string`\[];`extensions`: `string`\[];`files`: `string`\[];  }
+> **RunEsLintPrettierParams**: {`dirs`: `string`\[];`extensions`: `string`\[];`files`: `string`\[]; }
 
 #### Type declaration
 
-| Member | Type | Description |
-| :------ | :------ | :------ |
-| `dirs` | `string`\[] | List of directory glob patterns to run the linter on. |
-| `extensions` | `string`\[] | List of file extensions to run the linter on. |
-| `files` | `string`\[] | List of files to run the linter on. |
+| Name         | Type        | Description                                           |
+| ------------ | ----------- | ----------------------------------------------------- |
+| `dirs`       | `string`\[] | List of directory glob patterns to run the linter on. |
+| `extensions` | `string`\[] | List of file extensions to run the linter on.         |
+| `files`      | `string`\[] | List of files to run the linter on.                   |
 
-#### Source
+#### Defined in
 
 misc.ts:5
 
@@ -296,11 +296,11 @@ misc.ts:5
 
 ### BASE\_JAVASCRIPT\_RULES
 
-> **`const`** **BASE\_JAVASCRIPT\_RULES**: `Partial`<`Linter.RulesRecord`>
+> `const` **BASE\_JAVASCRIPT\_RULES**: `Partial`<`Linter.RulesRecord`>
 
 Shared rules for `.cjs` and `.js` files.
 
-#### Source
+#### Defined in
 
 eslint/javascript-configs.ts:6
 
@@ -308,11 +308,11 @@ eslint/javascript-configs.ts:6
 
 ### GENERAL\_FILES
 
-> **`const`** **GENERAL\_FILES**: `string`\[]
+> `const` **GENERAL\_FILES**: `string`\[]
 
 General list of files that most packages should have that we want to lint and format.
 
-#### Source
+#### Defined in
 
 misc.ts:25
 
@@ -326,9 +326,9 @@ This will append the file extension to the end of relative imports if we are bui
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
+| Parameter | Type                                                                                                                                          |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`    | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
 
 #### Returns
 
@@ -339,7 +339,7 @@ This will append the file extension to the end of relative imports if we are bui
 Just use `appendFileExtensionForImports` which will add it for both ESM and CJS since they'll end up
 needing it.
 
-#### Source
+#### Defined in
 
 esbuild-plugins/handler-creators/append-file-extension-for-esm.ts:10
 
@@ -353,15 +353,15 @@ This will append the file extension to the end of relative imports if we are bui
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
+| Parameter | Type                                                                                                                                          |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`    | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
 
 #### Returns
 
 [`ModifySourceContentsChainHandler`](README.md#modifysourcecontentschainhandler)
 
-#### Source
+#### Defined in
 
 esbuild-plugins/handler-creators/append-file-extension-for-imports.ts:28
 
@@ -376,16 +376,16 @@ configurations.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `baseConfigs` | `ConfigOverride`<`RulesRecord`> |
-| `extender` | (`configs`) => `ConfigOverride`<`RulesRecord`> |
+| Parameter     | Type                                           |
+| ------------- | ---------------------------------------------- |
+| `baseConfigs` | `ConfigOverride`<`RulesRecord`>                |
+| `extender`    | (`configs`) => `ConfigOverride`<`RulesRecord`> |
 
 #### Returns
 
 `Linter.ConfigOverride`
 
-#### Source
+#### Defined in
 
 eslint.ts:65
 
@@ -402,7 +402,7 @@ file that will simply write all dependencies into the "dependencies" block on th
 
 `void`
 
-#### Source
+#### Defined in
 
 package-json-utils.ts:64
 
@@ -412,17 +412,13 @@ package-json-utils.ts:64
 
 > **cssModification**(): `Plugin`
 
-This plugin basically removes duplicate
+This plugin basically removes duplicate charset tags in the final CSS file as well as remove those legacy IE hacks.
 
 #### Returns
 
 `Plugin`
 
-#### Charset
-
-tags in the final CSS file as well as remove those legacy IE hacks.
-
-#### Source
+#### Defined in
 
 postcss-plugins/css-modification.ts:6
 
@@ -441,15 +437,15 @@ Note the following unique features while the configurations are generated:
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
+| Parameter | Type                                                   |
+| --------- | ------------------------------------------------------ |
 | `configs` | [`EslintConfigsParams`](README.md#eslintconfigsparams) |
 
 #### Returns
 
 `Linter.Config`
 
-#### Source
+#### Defined in
 
 eslint.ts:79
 
@@ -465,7 +461,7 @@ Get the default configurations for Prettier.
 
 `Config`
 
-#### Source
+#### Defined in
 
 prettier.ts:9
 
@@ -481,7 +477,7 @@ Get the default configurations for Vite.
 
 `Promise`<`UserConfig`>
 
-#### Source
+#### Defined in
 
 vite.ts:8
 
@@ -498,15 +494,15 @@ extracted CSS from the Vue files, it will also place them in the same folder as 
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
+| Parameter | Type        |
+| --------- | ----------- |
 | `entries` | `string`\[] |
 
 #### Returns
 
 `Promise`<`UserConfig`>
 
-#### Source
+#### Defined in
 
 vite.ts:24
 
@@ -522,7 +518,7 @@ Get the default configurations for `.cjs` files.
 
 `Linter.ConfigOverride`
 
-#### Source
+#### Defined in
 
 eslint/javascript-configs.ts:14
 
@@ -538,7 +534,7 @@ Get the default configurations for `.html` files.
 
 `Linter.ConfigOverride`
 
-#### Source
+#### Defined in
 
 eslint/html-configs.ts:6
 
@@ -554,7 +550,7 @@ Get the default configurations for `.js` files.
 
 `Linter.ConfigOverride`
 
-#### Source
+#### Defined in
 
 eslint/javascript-configs.ts:33
 
@@ -570,7 +566,7 @@ Get the default configurations for `.json` files.
 
 `Linter.ConfigOverride`
 
-#### Source
+#### Defined in
 
 eslint/json-configs.ts:6
 
@@ -584,16 +580,16 @@ Get the default configurations for `.ts` files.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
+| Parameter   | Type                            |
+| ----------- | ------------------------------- |
 | `jsConfigs` | `ConfigOverride`<`RulesRecord`> |
-| `baseDir` | `string` |
+| `baseDir`   | `string`                        |
 
 #### Returns
 
 `Linter.ConfigOverride`
 
-#### Source
+#### Defined in
 
 eslint/typescript-configs.ts:7
 
@@ -607,15 +603,15 @@ Get default configurations for `.vue` files.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
+| Parameter   | Type                            |
+| ----------- | ------------------------------- |
 | `tsConfigs` | `ConfigOverride`<`RulesRecord`> |
 
 #### Returns
 
 `Linter.ConfigOverride`
 
-#### Source
+#### Defined in
 
 eslint/vue-configs.ts:6
 
@@ -629,15 +625,15 @@ Given a list of paths, remove files that doesn't exists.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `paths` | `string`\[] |
+| Parameter | Type        |
+| --------- | ----------- |
+| `paths`   | `string`\[] |
 
 #### Returns
 
 `string`\[]
 
-#### Source
+#### Defined in
 
 misc.ts:37
 
@@ -654,20 +650,20 @@ Note that this contains an escape hatch to linting so you can still "build" by i
 
 #### Parameters
 
-| Parameter | Type | Default value |
-| :------ | :------ | :------ |
-| `dirs` | `string`\[] | `undefined` |
-| `extensions` | `string`\[] | `undefined` |
-| `files` | `string`\[] | `GENERAL_FILES` |
-| `options` | `Object` | `{}` |
-| `options.verifyTs`? | `boolean` | `undefined` |
-| `options.verifyVueTs`? | `boolean` | `undefined` |
+| Parameter              | Type        | Default value   |
+| ---------------------- | ----------- | --------------- |
+| `dirs`                 | `string`\[] | `undefined`     |
+| `extensions`           | `string`\[] | `undefined`     |
+| `files`                | `string`\[] | `GENERAL_FILES` |
+| `options`              | `object`    | `{}`            |
+| `options.verifyTs`?    | `boolean`   | `undefined`     |
+| `options.verifyVueTs`? | `boolean`   | `undefined`     |
 
 #### Returns
 
 `Plugin`
 
-#### Source
+#### Defined in
 
 vite-plugins/lint-and-reformat.ts:69
 
@@ -683,15 +679,15 @@ This plugin allows for the possibility.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
+| Parameter           | Type                                                                       |
+| ------------------- | -------------------------------------------------------------------------- |
 | `__namedParameters` | [`ModifySourceContentsChainArgs`](README.md#modifysourcecontentschainargs) |
 
 #### Returns
 
 `Plugin`
 
-#### Source
+#### Defined in
 
 esbuild-plugins/modify-source-contents-chain.ts:64
 
@@ -704,13 +700,13 @@ esbuild-plugins/modify-source-contents-chain.ts:64
 This plugin allows the use of path aliases in TSConfig, and it will be replaced with the mapped value in the
 generated output. This plugin makes use of simple string matching and replace so that it can still be fast. If you
 want to use a plugin that is likely safer which actually parses the code and does the replacement, you can look at
-the plugin available here: https://github.com/wjfei/esbuild-plugin-tsconfig-paths
+the plugin available here: <https://github.com/wjfei/esbuild-plugin-tsconfig-paths>
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `args` | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
+| Parameter | Type                                                                                                                                          |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`    | [`ModifySourceContentsChainHandlerCreatorBuildArgs`](README.md#modifysourcecontentschainhandlercreatorbuildargs) & {`build`: `PluginBuild`; } |
 
 #### Returns
 
@@ -720,7 +716,7 @@ the plugin available here: https://github.com/wjfei/esbuild-plugin-tsconfig-path
 
 Throws a `tsconfig-path#ConfigLoaderFailResult` If we cannot load the `tsconfig.json` file for this package.
 
-#### Source
+#### Defined in
 
 esbuild-plugins/handler-creators/replace-alias-with-tsconfig-paths.ts:24
 
@@ -734,15 +730,15 @@ Execute the command to run ESLint.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `params` | [`RunEsLintPrettierParams`](README.md#runeslintprettierparams) |
+| Parameter | Type                                                           |
+| --------- | -------------------------------------------------------------- |
+| `params`  | [`RunEsLintPrettierParams`](README.md#runeslintprettierparams) |
 
 #### Returns
 
 `SpawnSyncReturns`<`Buffer`>
 
-#### Source
+#### Defined in
 
 eslint.ts:104
 
@@ -756,15 +752,15 @@ Execute the command to run Prettier.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `params` | [`RunEsLintPrettierParams`](README.md#runeslintprettierparams) |
+| Parameter | Type                                                           |
+| --------- | -------------------------------------------------------------- |
+| `params`  | [`RunEsLintPrettierParams`](README.md#runeslintprettierparams) |
 
 #### Returns
 
 `SpawnSyncReturns`<`Buffer`>
 
-#### Source
+#### Defined in
 
 prettier.ts:27
 
@@ -778,15 +774,15 @@ Spawn the given command synchronously and passing along the current environment 
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
+| Parameter | Type     |
+| --------- | -------- |
 | `command` | `string` |
 
 #### Returns
 
 `SpawnSyncReturns`<`Buffer`>
 
-#### Source
+#### Defined in
 
 spawn.ts:6
 
@@ -803,6 +799,6 @@ source.
 
 `void`
 
-#### Source
+#### Defined in
 
 package-json-utils.ts:176

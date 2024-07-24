@@ -13,7 +13,7 @@ import {
     SCHEMA_INDIVIDUAL_RECORD,
     SCHEMA_RECORD_FIELDS,
 } from '@src/records/shared';
-import type { Simplify, StringKeyOf } from 'type-fest';
+import type { StringKeyOf } from 'type-fest';
 import { array, literal, nativeEnum, number, object, string } from 'zod';
 
 const SCHEMA_LIST_RECORDS_REQUEST_QUERYSTRING_PARAMS = object({
@@ -36,10 +36,6 @@ const SCHEMA_LIST_RECORDS_REQUEST_QUERYSTRING_PARAMS = object({
     view: string().optional(),
 });
 
-// const SCHEMA_LIST_RECORDS_REQUEST = SCHEMA_BASE_AND_TABLE_PATH_PARAMS.merge(
-//     SCHEMA_LIST_RECORDS_REQUEST_QUERYSTRING_PARAMS
-// );
-
 /**
  * Data for fetching the list of records.
  *
@@ -54,7 +50,7 @@ export type ListRecordsRequest<Fields extends string> = {
      * Note Airtable's API only accepts request with a URL shorter than 16,000 characters. Encoded formulas may
      * cause your requests to exceed this limit.
      */
-    fields?: Simplify<UnionToTuple<Fields>>;
+    fields?: UnionToTuple<Fields>;
 
     /**
      * A formula used to filter records. The formula will be evaluated for each record, and if the result is not

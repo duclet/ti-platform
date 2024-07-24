@@ -23,27 +23,27 @@ This package contains utility functions that can be used with Vue to enhance the
 
 ### ReactiveExecuteTasksRet\<T>
 
-> **ReactiveExecuteTasksRet**<`T`>: {`activeWorkers`: `Readonly`<`Ref`<`number`>>;`completedTasks`: `Readonly`<`Ref`<`number`>>;`isAllTasksCompleted`: `Readonly`<`Ref`<`boolean`>>;`results`: `Readonly`<`Ref`<`T`\[]>>;`totalTasks`: `Readonly`<`Ref`<`number`>>;  }
+> **ReactiveExecuteTasksRet**<`T`>: {`activeWorkers`: `Readonly`<`Ref`<`number`>>;`completedTasks`: `Readonly`<`Ref`<`number`>>;`isAllTasksCompleted`: `Readonly`<`Ref`<`boolean`>>;`results`: `Readonly`<`Ref`<`T`\[]>>;`totalTasks`: `Readonly`<`Ref`<`number`>>; }
 
 The return value for the function [reactiveExecuteTasks](README.md#reactiveexecutetasks).
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `T` | The type of the result. |
+| Type Parameter | Description             |
+| -------------- | ----------------------- |
+| `T`            | The type of the result. |
 
 #### Type declaration
 
-| Member | Type | Description |
-| :------ | :------ | :------ |
-| `activeWorkers` | `Readonly`<`Ref`<`number`>> | The current active number of workers. |
-| `completedTasks` | `Readonly`<`Ref`<`number`>> | The current number of completed tasks. |
-| `isAllTasksCompleted` | `Readonly`<`Ref`<`boolean`>> | True if all the tasks have completed running, false otherwise. |
-| `results` | `Readonly`<`Ref`<`T`\[]>> | The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it<br />is filled with the results only when it is available. You should check for undefined before using it. |
-| `totalTasks` | `Readonly`<`Ref`<`number`>> | The total number of tasks that was queued. |
+| Name                  | Type                         | Description                                                                                                                                                                                                             |
+| --------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeWorkers`       | `Readonly`<`Ref`<`number`>>  | The current active number of workers.                                                                                                                                                                                   |
+| `completedTasks`      | `Readonly`<`Ref`<`number`>>  | The current number of completed tasks.                                                                                                                                                                                  |
+| `isAllTasksCompleted` | `Readonly`<`Ref`<`boolean`>> | True if all the tasks have completed running, false otherwise.                                                                                                                                                          |
+| `results`             | `Readonly`<`Ref`<`T`\[]>>    | The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it is filled with the results only when it is available. You should check for undefined before using it. |
+| `totalTasks`          | `Readonly`<`Ref`<`number`>>  | The total number of tasks that was queued.                                                                                                                                                                              |
 
-#### Source
+#### Defined in
 
 queue.ts:10
 
@@ -53,7 +53,7 @@ queue.ts:10
 
 > **ValueTypes**: `string` | `number` | `string`\[] | `number`\[]
 
-#### Source
+#### Defined in
 
 validators.ts:3
 
@@ -65,17 +65,17 @@ validators.ts:3
 
 Shorthand method to simply convert a Ref to a ComputedRef.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter |
-| :------ |
-| `T` |
+| Type Parameter |
+| -------------- |
+| `T`            |
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `ref` | `Ref`<`T`> | The Ref to convert. |
+| Parameter | Type       | Description         |
+| --------- | ---------- | ------------------- |
+| `ref`     | `Ref`<`T`> | The Ref to convert. |
 
 #### Returns
 
@@ -83,7 +83,7 @@ Shorthand method to simply convert a Ref to a ComputedRef.
 
 The ComputedRef that simply returns the value of the given Ref.
 
-#### Source
+#### Defined in
 
 reactivity.ts:10
 
@@ -95,23 +95,23 @@ reactivity.ts:10
 
 Inject the data from the provided key (we are assuming the data exists) and return the results as refs.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter |
-| :------ |
-| `T` |
+| Type Parameter |
+| -------------- |
+| `T`            |
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `key` | `InjectionKey`<`T`> | The key to retrieve the data to inject. |
+| Parameter | Type                | Description                             |
+| --------- | ------------------- | --------------------------------------- |
+| `key`     | `InjectionKey`<`T`> | The key to retrieve the data to inject. |
 
 #### Returns
 
 `ToRefs`<`NonNullable`<`T`>>
 
-#### Source
+#### Defined in
 
 data.ts:10
 
@@ -126,25 +126,25 @@ with QForm.
 
 #### Parameters
 
-| Parameter | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
+| Parameter        | Type     | Default value                      | Description                                 |
+| ---------------- | -------- | ---------------------------------- | ------------------------------------------- |
 | `invalidMessage` | `string` | `DEFAULT_REQUIRED_INVALID_MESSAGE` | The message to show when validation failed. |
 
 #### Returns
 
 `Function`
 
-> ##### Parameters
->
-> | Parameter | Type |
-> | :------ | :------ |
-> | `value` | [`ValueTypes`](README.md#valuetypes) |
->
-> ##### Returns
->
-> `string` | `true`
+##### Parameters
 
-#### Source
+| Parameter | Type                                 |
+| --------- | ------------------------------------ |
+| `value`   | [`ValueTypes`](README.md#valuetypes) |
+
+##### Returns
+
+`string` | `true`
+
+#### Defined in
 
 validators.ts:14
 
@@ -159,26 +159,26 @@ condition.
 
 #### Parameters
 
-| Parameter | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `when` | () => `boolean` | `undefined` | Function to execute to see if the required validation field is necessary. It should return true when the<br /> field is required, false otherwise. |
-| `invalidMessage` | `string` | `DEFAULT_REQUIRED_INVALID_MESSAGE` | The message to show when validation failed. |
+| Parameter        | Type            | Default value                      | Description                                                                                                                                  |
+| ---------------- | --------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `when`           | () => `boolean` | `undefined`                        | Function to execute to see if the required validation field is necessary. It should return true when the field is required, false otherwise. |
+| `invalidMessage` | `string`        | `DEFAULT_REQUIRED_INVALID_MESSAGE` | The message to show when validation failed.                                                                                                  |
 
 #### Returns
 
 `Function`
 
-> ##### Parameters
->
-> | Parameter | Type |
-> | :------ | :------ |
-> | `value` | [`ValueTypes`](README.md#valuetypes) |
->
-> ##### Returns
->
-> `string` | `true`
+##### Parameters
 
-#### Source
+| Parameter | Type                                 |
+| --------- | ------------------------------------ |
+| `value`   | [`ValueTypes`](README.md#valuetypes) |
+
+##### Returns
+
+`string` | `true`
+
+#### Defined in
 
 validators.ts:26
 
@@ -192,26 +192,26 @@ Given a reference to a list of values, check when a value is given that it isn't
 
 #### Parameters
 
-| Parameter | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `existingValues` | `Ref`<(`string` | `number`)\[]> | `undefined` | A reference to the list of existing values. The list should update when new values are added. |
-| `invalidMessage` | `string` | `DEFAULT_UNIQUE_INVALID_MESSAGE` | The message to show when validation failed. |
+| Parameter        | Type                             | Default value                    | Description                                                                                   |
+| ---------------- | -------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------- |
+| `existingValues` | `Ref`<(`string` \| `number`)\[]> | `undefined`                      | A reference to the list of existing values. The list should update when new values are added. |
+| `invalidMessage` | `string`                         | `DEFAULT_UNIQUE_INVALID_MESSAGE` | The message to show when validation failed.                                                   |
 
 #### Returns
 
 `Function`
 
-> ##### Parameters
->
-> | Parameter | Type |
-> | :------ | :------ |
-> | `value` | `string` | `number` |
->
-> ##### Returns
->
-> `string` | `true`
+##### Parameters
 
-#### Source
+| Parameter | Type                 |
+| --------- | -------------------- |
+| `value`   | `string` \| `number` |
+
+##### Returns
+
+`string` | `true`
+
+#### Defined in
 
 validators.ts:38
 
@@ -223,24 +223,24 @@ validators.ts:38
 
 Provide the given data to child components and return the data as refs.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter |
-| :------ |
-| `T` extends `object` |
+| Type Parameter         |
+| ---------------------- |
+| `T` *extends* `object` |
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `key` | `InjectionKey`<`T`> | The key to store the data as. |
-| `data` | `T` | The data to store. |
+| Parameter | Type                | Description                   |
+| --------- | ------------------- | ----------------------------- |
+| `key`     | `InjectionKey`<`T`> | The key to store the data as. |
+| `data`    | `T`                 | The data to store.            |
 
 #### Returns
 
 `ToRefs`<`UnwrapNestedRefs`<`T`>>
 
-#### Source
+#### Defined in
 
 data.ts:22
 
@@ -252,23 +252,23 @@ data.ts:22
 
 Reactive version of `@ti-platform/aide#xecuteTasks`.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `T` | The type of the result of each task. |
+| Type Parameter | Description                          |
+| -------------- | ------------------------------------ |
+| `T`            | The type of the result of each task. |
 
 #### Parameters
 
-| Parameter | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `tasks` | readonly () => `Promise`<`T`>\[] | `undefined` | The tasks to run. |
-| `maxNumOfWorkers` | `number` | `10` | The maximum number of tasks ot run at once. |
+| Parameter         | Type                             | Default value | Description                                 |
+| ----------------- | -------------------------------- | ------------- | ------------------------------------------- |
+| `tasks`           | readonly () => `Promise`<`T`>\[] | `undefined`   | The tasks to run.                           |
+| `maxNumOfWorkers` | `number`                         | `10`          | The maximum number of tasks ot run at once. |
 
 #### Returns
 
 [`ReactiveExecuteTasksRet`](README.md#reactiveexecutetasksrett)<`T`>
 
-#### Source
+#### Defined in
 
 queue.ts:45

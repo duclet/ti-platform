@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/client-airtable",
+      "comment": "Expose some static values as constants and cleanup code.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/client-airtable"
+}

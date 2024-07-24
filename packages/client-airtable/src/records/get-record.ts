@@ -18,10 +18,6 @@ const SCHEMA_GET_RECORD_REQUEST_QUERYSTRING_PARAMS = SCHEMA_COMMON_REQUEST_PARAM
     userLocale: true,
 });
 
-// const SCHEMA_GET_RECORD_REQUEST = SCHEMA_BASE_TABLE_AND_RECORD_PATH_PARAMS.merge(
-//     SCHEMA_GET_RECORD_REQUEST_QUERYSTRING_PARAMS
-// );
-
 /**
  * Request data for getting the details of a single record.
  *

@@ -36,11 +36,11 @@ Docs for more information.
 
 Extracting out a `Promise`'s `resolve` and `reject` method to allow one to more easily pass around those methods.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Value | Description |
-| :------ | :------ | :------ |
-| `T` | `void` | The type to resolve with. |
+| Type Parameter | Default type | Description               |
+| -------------- | ------------ | ------------------------- |
+| `T`            | `void`       | The type to resolve with. |
 
 #### Constructors
 
@@ -54,17 +54,17 @@ Create a new instance.
 
 [`Deferred`](README.md#deferredt)<`T`>
 
-###### Source
+###### Defined in
 
 promises.ts:30
 
 #### Properties
 
-| Property | Modifier | Type | Description |
-| :------ | :------ | :------ | :------ |
-| `promise` | `readonly` | `Promise`<`T`> | The underlying promise. |
-| `reject` | `public` | (`reason`?: `any`) => `void` | Reject the internal promise. |
-| `resolve` | `public` | (`value`: [`Awaitable`](README.md#awaitablet)<`T`>) => `void` | Resolves the internal promise. |
+| Property  | Modifier   | Type                                                          | Description                    |
+| --------- | ---------- | ------------------------------------------------------------- | ------------------------------ |
+| `promise` | `readonly` | `Promise`<`T`>                                                | The underlying promise.        |
+| `reject`  | `public`   | (`reason`?: `any`) => `void`                                  | Reject the internal promise.   |
+| `resolve` | `public`   | (`value`: [`Awaitable`](README.md#awaitablet)<`T`>) => `void` | Resolves the internal promise. |
 
 ***
 
@@ -73,15 +73,15 @@ promises.ts:30
 Queue that execute handlers as per the configured concurrency limit. It also has the ability to rate limit how much
 execution happens within an interval.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Value | Description |
-| :------ | :------ | :------ |
-| `T` | `void` | The type of the item that the promise resolves with for the handlers. Defaults to void. |
+| Type Parameter | Default type | Description                                                                             |
+| -------------- | ------------ | --------------------------------------------------------------------------------------- |
+| `T`            | `void`       | The type of the item that the promise resolves with for the handlers. Defaults to void. |
 
 #### Constructors
 
-##### new Queue(\_\_namedParameters)
+##### new Queue()
 
 > **new Queue**<`T`>(`__namedParameters`): [`Queue`](README.md#queuet)<`T`>
 
@@ -89,58 +89,58 @@ Create a new instance.
 
 ###### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `__namedParameters` | `Object` | - |
-| `__namedParameters.intervalMs`? | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is<br />simply the time, in milliseconds, for when to reset the execution counts per interval. |
-| `__namedParameters.maxConcurrent` | `number` | Maximum number of concurrent executions. |
-| `__namedParameters.maxPerInterval`? | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is<br />simply the maximum number of executions within the interval. |
+| Parameter                           | Type     | Description                                                                                                                                                                                             |
+| ----------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`                 | `object` | -                                                                                                                                                                                                       |
+| `__namedParameters.intervalMs`?     | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| `__namedParameters.maxConcurrent`   | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
+| `__namedParameters.maxPerInterval`? | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
 
 ###### Returns
 
 [`Queue`](README.md#queuet)<`T`>
 
-###### Source
+###### Defined in
 
 queue.ts:146
 
 #### Properties
 
-| Property | Modifier | Type | Description |
-| :------ | :------ | :------ | :------ |
-| `intervalMs` | `readonly` | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is<br />simply the time, in milliseconds, for when to reset the execution counts per interval. |
-| `maxConcurrent` | `readonly` | `number` | Maximum number of concurrent executions. |
-| `maxPerInterval` | `readonly` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is<br />simply the maximum number of executions within the interval. |
+| Property         | Modifier   | Type     | Description                                                                                                                                                                                             |
+| ---------------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `intervalMs`     | `readonly` | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| `maxConcurrent`  | `readonly` | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
+| `maxPerInterval` | `readonly` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
 
 #### Methods
 
 ##### add()
 
-> **add**(`item`): {`onAfterStart`: `Promise`<`void`>;`onBeforeStart`: `Promise`<`void`>;`onEnd`: `Promise`<`T`>;  }
+> **add**(`item`): {`onAfterStart`: `Promise`<`void`>;`onBeforeStart`: `Promise`<`void`>;`onEnd`: `Promise`<`T`>; }
 
 Add a new item to the queue for execution.
 
 ###### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
-| `item` | [`QueueItem`](README.md#queueitemt)<`T`> |
+| Parameter | Type                                     |
+| --------- | ---------------------------------------- |
+| `item`    | [`QueueItem`](README.md#queueitemt)<`T`> |
 
 ###### Returns
 
-{`onAfterStart`: `Promise`<`void`>;`onBeforeStart`: `Promise`<`void`>;`onEnd`: `Promise`<`T`>;  }
+{`onAfterStart`: `Promise`<`void`>;`onBeforeStart`: `Promise`<`void`>;`onEnd`: `Promise`<`T`>; }
 
-| Member | Type | Description |
-| :------ | :------ | :------ |
-| `onAfterStart` | `Promise`<`void`> | Promised that is resolved right after the handler is executed but not necessarily after it has finished execution. |
-| `onBeforeStart` | `Promise`<`void`> | Promised that is resolved right before the handler is executed. |
-| `onEnd` | `Promise`<`T`> | Promised that is resolved after the handler finished executing. |
+| Name            | Type              | Description                                                                                                        |
+| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `onAfterStart`  | `Promise`<`void`> | Promised that is resolved right after the handler is executed but not necessarily after it has finished execution. |
+| `onBeforeStart` | `Promise`<`void`> | Promised that is resolved right before the handler is executed.                                                    |
+| `onEnd`         | `Promise`<`T`>    | Promised that is resolved after the handler finished executing.                                                    |
 
 ###### Throws
 
 Error if items can no longer be added.
 
-###### Source
+###### Defined in
 
 queue.ts:157
 
@@ -154,7 +154,7 @@ Lock the queue and return a promise that will resolve when all the handlers fini
 
 `Promise`<`void`>
 
-###### Source
+###### Defined in
 
 queue.ts:181
 
@@ -166,11 +166,11 @@ Arguments for constructing a [Queue](README.md#queuet).
 
 #### Properties
 
-| Property | Type | Description |
-| :------ | :------ | :------ |
-| `intervalMs?` | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is<br />simply the time, in milliseconds, for when to reset the execution counts per interval. |
-| `maxConcurrent` | `number` | Maximum number of concurrent executions. |
-| `maxPerInterval?` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is<br />simply the maximum number of executions within the interval. |
+| Property          | Type     | Description                                                                                                                                                                                             |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `intervalMs?`     | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| `maxConcurrent`   | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
+| `maxPerInterval?` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
 
 ## Type Aliases
 
@@ -180,13 +180,13 @@ Arguments for constructing a [Queue](README.md#queuet).
 
 Type matching against both a writable array and a readonly array.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `V` | The type of each item in the array. |
+| Type Parameter | Description                         |
+| -------------- | ----------------------------------- |
+| `V`            | The type of each item in the array. |
 
-#### Source
+#### Defined in
 
 types.ts:11
 
@@ -198,13 +198,13 @@ types.ts:11
 
 The type is simply `T` or a promise which, when resolved, is given `T`.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter |
-| :------ |
-| `T` |
+| Type Parameter |
+| -------------- |
+| `T`            |
 
-#### Source
+#### Defined in
 
 types.ts:4
 
@@ -216,14 +216,14 @@ types.ts:4
 
 For a given object, T, mark the keys given as being readonly.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter |
-| :------ |
-| `T` |
-| `K` extends keyof `T` |
+| Type Parameter          |
+| ----------------------- |
+| `T`                     |
+| `K` *extends* keyof `T` |
 
-#### Source
+#### Defined in
 
 types.ts:16
 
@@ -235,13 +235,13 @@ types.ts:16
 
 For a non-empty array.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter |
-| :------ |
-| `T` |
+| Type Parameter |
+| -------------- |
+| `T`            |
 
-#### Source
+#### Defined in
 
 types.ts:21
 
@@ -253,17 +253,17 @@ types.ts:21
 
 An item in the queue.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Value | Description |
-| :------ | :------ | :------ |
-| `T` | `void` | The type of the item that the promise resolves with. Defaults to void. |
+| Type Parameter | Default type | Description                                                            |
+| -------------- | ------------ | ---------------------------------------------------------------------- |
+| `T`            | `void`       | The type of the item that the promise resolves with. Defaults to void. |
 
 #### Returns
 
 [`Awaitable`](README.md#awaitablet)<`T`>
 
-#### Source
+#### Defined in
 
 queue.ts:28
 
@@ -275,13 +275,13 @@ queue.ts:28
 
 Refer to <https://github.com/sindresorhus/type-fest/blob/main/source/simplify.d.ts>.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter |
-| :------ |
-| `T` |
+| Type Parameter |
+| -------------- |
+| `T`            |
 
-#### Source
+#### Defined in
 
 types.ts:26
 
@@ -289,18 +289,18 @@ types.ts:26
 
 ### UndefinedFallback\<T, Fallback>
 
-> **UndefinedFallback**<`T`, `Fallback`>: \[`T`] extends \[`undefined`] ? `Fallback` : `T`
+> **UndefinedFallback**<`T`, `Fallback`>: \[`T`] *extends* \[`undefined`] ? `Fallback` : `T`
 
 If the given type, `T` is undefined, return `Fallback`, otherwise just return \`T.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter |
-| :------ |
-| `T` |
-| `Fallback` |
+| Type Parameter |
+| -------------- |
+| `T`            |
+| `Fallback`     |
 
-#### Source
+#### Defined in
 
 types.ts:31
 
@@ -313,11 +313,11 @@ types.ts:31
 This function is primarily here to help with stricter typing. When Typescript allows for partial inference of
 arguments to functions, this function would likely not be needed anymore.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `V` | The type of each item in the array. |
+| Type Parameter | Description                         |
+| -------------- | ----------------------------------- |
+| `V`            | The type of each item in the array. |
 
 #### Returns
 
@@ -325,21 +325,21 @@ arguments to functions, this function would likely not be needed anymore.
 
 An identity function that accepts a list and simply returns it.
 
-> ##### Type parameters
->
-> | Type parameter |
-> | :------ |
-> | `T` |
->
-> ##### Parameters
->
-> | Parameter | Type |
-> | :------ | :------ |
-> | `list` | readonly `T`\[] |
->
-> ##### Returns
->
-> readonly `T`\[]
+##### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+##### Parameters
+
+| Parameter | Type            |
+| --------- | --------------- |
+| `list`    | readonly `T`\[] |
+
+##### Returns
+
+readonly `T`\[]
 
 #### Example
 
@@ -353,7 +353,7 @@ type MyItem = { name: string, displayName: string };
  type Name = typeof list[number]['name'];    // == "one" | "two" vs string if not using this
 ```
 
-#### Source
+#### Defined in
 
 arrays.ts:19
 
@@ -366,18 +366,18 @@ arrays.ts:19
 Given a list of tasks to execute, execute them, ensuring there is a maximum number of tasks actively running at the
 same time. The returning array of responses should match the order of the task that was given.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `T` | The type of the result of each task. |
+| Type Parameter | Description                          |
+| -------------- | ------------------------------------ |
+| `T`            | The type of the result of each task. |
 
 #### Parameters
 
-| Parameter | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `tasks` | readonly () => `Promise`<`T`>\[] | `undefined` | The tasks to run. |
-| `maxNumOfWorkers` | `number` | `10` | The maximum number of tasks to run at once. |
+| Parameter         | Type                             | Default value | Description                                 |
+| ----------------- | -------------------------------- | ------------- | ------------------------------------------- |
+| `tasks`           | readonly () => `Promise`<`T`>\[] | `undefined`   | The tasks to run.                           |
+| `maxNumOfWorkers` | `number`                         | `10`          | The maximum number of tasks to run at once. |
 
 #### Returns
 
@@ -385,7 +385,7 @@ same time. The returning array of responses should match the order of the task t
 
 A promise that will resolve when all the tasks are completed.
 
-#### Source
+#### Defined in
 
 queue.ts:13
 
@@ -395,17 +395,17 @@ queue.ts:13
 
 > **first**<`V`>(`list`): `undefined` | `V`
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `V` | The type of each item in the array. |
+| Type Parameter | Description                         |
+| -------------- | ----------------------------------- |
+| `V`            | The type of each item in the array. |
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `list` | [`AnyArray`](README.md#anyarrayv)<`V`> | The list to retrieve the first element for. |
+| Parameter | Type                                   | Description                                 |
+| --------- | -------------------------------------- | ------------------------------------------- |
+| `list`    | [`AnyArray`](README.md#anyarrayv)<`V`> | The list to retrieve the first element for. |
 
 #### Returns
 
@@ -413,7 +413,7 @@ queue.ts:13
 
 The first item in the list or undefined if the list is empty.
 
-#### Source
+#### Defined in
 
 arrays.ts:30
 
@@ -426,17 +426,17 @@ arrays.ts:30
 Given a list of function, execute each until there is a function that does not return undefined. You should have at
 least one of the function return something to prevent problems.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `V` | The type of each item in the list. |
+| Type Parameter | Description                        |
+| -------------- | ---------------------------------- |
+| `V`            | The type of each item in the list. |
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `list` | [`AnyArray`](README.md#anyarrayv)<() => `undefined` | `V`> | The list of functions to execute. |
+| Parameter | Type                                                        | Description                       |
+| --------- | ----------------------------------------------------------- | --------------------------------- |
+| `list`    | [`AnyArray`](README.md#anyarrayv)<() => `undefined` \| `V`> | The list of functions to execute. |
 
 #### Returns
 
@@ -444,7 +444,7 @@ least one of the function return something to prevent problems.
 
 The return value of the first function to not return an undefined value.
 
-#### Source
+#### Defined in
 
 arrays.ts:42
 
@@ -454,20 +454,20 @@ arrays.ts:42
 
 > **getOrDefault**<`K`, `V`>(`map`, `key`, `defaultValue`): `V`
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `K` | The type of the key in the map. |
-| `V` | The type of the value in the map. |
+| Type Parameter | Description                       |
+| -------------- | --------------------------------- |
+| `K`            | The type of the key in the map.   |
+| `V`            | The type of the value in the map. |
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `map` | `Map`<`K`, `V`> | The map to get the data from. |
-| `key` | `K` | The key to get the data for. |
-| `defaultValue` | `V` | The default value to return if the key does not exist. |
+| Parameter      | Type            | Description                                            |
+| -------------- | --------------- | ------------------------------------------------------ |
+| `map`          | `Map`<`K`, `V`> | The map to get the data from.                          |
+| `key`          | `K`             | The key to get the data for.                           |
+| `defaultValue` | `V`             | The default value to return if the key does not exist. |
 
 #### Returns
 
@@ -475,7 +475,7 @@ arrays.ts:42
 
 The value in the map with the given key or if the key does not exist, the provided default value.
 
-#### Source
+#### Defined in
 
 map.ts:9
 
@@ -487,17 +487,17 @@ map.ts:9
 
 Given a list of items, remove null and undefined from the list.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `V` | The type of each item in the list. |
+| Type Parameter | Description                        |
+| -------------- | ---------------------------------- |
+| `V`            | The type of each item in the list. |
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `list` | [`AnyArray`](README.md#anyarrayv)<`V`> | The list of items to traverse and filter. |
+| Parameter | Type                                   | Description                               |
+| --------- | -------------------------------------- | ----------------------------------------- |
+| `list`    | [`AnyArray`](README.md#anyarrayv)<`V`> | The list of items to traverse and filter. |
 
 #### Returns
 
@@ -505,7 +505,7 @@ Given a list of items, remove null and undefined from the list.
 
 The given list without null or undefined values.
 
-#### Source
+#### Defined in
 
 arrays.ts:59
 
@@ -517,21 +517,21 @@ arrays.ts:59
 
 Given a list, convert it to an object where the key will be provided using the given supplier.
 
-#### Type parameters
+#### Type Parameters
 
-| Type parameter | Description |
-| :------ | :------ |
-| `K` extends `PropertyKey` | The type for the key that will be produced for the map. |
-| `V` | The type of each item in the list. |
-| `V2` | The type for the value when it is set to the map. |
+| Type Parameter              | Description                                             |
+| --------------------------- | ------------------------------------------------------- |
+| `K` *extends* `PropertyKey` | The type for the key that will be produced for the map. |
+| `V`                         | The type of each item in the list.                      |
+| `V2`                        | The type for the value when it is set to the map.       |
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `list` | [`AnyArray`](README.md#anyarrayv)<`V`> | The list of items to convert. |
-| `keySupplier` | (`item`, `index`) => `K` | Function to use to generate the key for each entry. |
-| `valueSupplier` | (`item`, `key`, `index`) => `V2` | Function to use to generate the value for each entry. |
+| Parameter       | Type                                   | Description                                           |
+| --------------- | -------------------------------------- | ----------------------------------------------------- |
+| `list`          | [`AnyArray`](README.md#anyarrayv)<`V`> | The list of items to convert.                         |
+| `keySupplier`   | (`item`, `index`) => `K`               | Function to use to generate the key for each entry.   |
+| `valueSupplier` | (`item`, `key`, `index`) => `V2`       | Function to use to generate the value for each entry. |
 
 #### Returns
 
@@ -539,6 +539,6 @@ Given a list, convert it to an object where the key will be provided using the g
 
 An object representation of the given list using the provided suppliers to generate the keys and values.
 
-#### Source
+#### Defined in
 
 arrays.ts:74

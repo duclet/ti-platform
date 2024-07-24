@@ -26,22 +26,22 @@ The state of the polling.
 #### Enumeration Members
 
 | Enumeration Member | Value |
-| :------ | :------ |
-| `FAILURE` | `3` |
-| `NOT_STARTED` | `0` |
-| `POLLING` | `1` |
-| `SUCCESS` | `2` |
-| `TIMEOUT` | `4` |
+| ------------------ | ----- |
+| `FAILURE`          | `3`   |
+| `NOT_STARTED`      | `0`   |
+| `POLLING`          | `1`   |
+| `SUCCESS`          | `2`   |
+| `TIMEOUT`          | `4`   |
 
 ## Type Aliases
 
 ### ElementOrComponentWithEl
 
-> **ElementOrComponentWithEl**: `HTMLElement` | {`$el`: `HTMLElement`;  }
+> **ElementOrComponentWithEl**: `HTMLElement` | {`$el`: `HTMLElement`; }
 
 Either an `HTMLElement` or a Vue component with the property `$el` which is an `HTMLElement`.
 
-#### Source
+#### Defined in
 
 dom.ts:8
 
@@ -49,18 +49,18 @@ dom.ts:8
 
 ### UsePollingRetVal
 
-> **UsePollingRetVal**: {`startPolling`: () => [`UsePollingRetVal`](README.md#usepollingretval);`state`: `ComputedRef`<[`PollingState`](README.md#pollingstate)>;  }
+> **UsePollingRetVal**: {`startPolling`: () => [`UsePollingRetVal`](README.md#usepollingretval);`state`: `ComputedRef`<[`PollingState`](README.md#pollingstate)>; }
 
 Return value of the [usePolling](README.md#usepolling) function.
 
 #### Type declaration
 
-| Member | Type | Description |
-| :------ | :------ | :------ |
-| `startPolling` | () => [`UsePollingRetVal`](README.md#usepollingretval) | Start polling. |
-| `state` | `ComputedRef`<[`PollingState`](README.md#pollingstate)> | The current state of the polling. |
+| Name           | Type                                                    | Description                       |
+| -------------- | ------------------------------------------------------- | --------------------------------- |
+| `startPolling` | () => [`UsePollingRetVal`](README.md#usepollingretval)  | Start polling.                    |
+| `state`        | `ComputedRef`<[`PollingState`](README.md#pollingstate)> | The current state of the polling. |
 
-#### Source
+#### Defined in
 
 polling.ts:21
 
@@ -75,9 +75,9 @@ had timed out.
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `state` | [`PollingState`](README.md#pollingstate) | The state to validate. |
+| Parameter | Type                                     | Description            |
+| --------- | ---------------------------------------- | ---------------------- |
+| `state`   | [`PollingState`](README.md#pollingstate) | The state to validate. |
 
 #### Returns
 
@@ -85,7 +85,7 @@ had timed out.
 
 Returns true if it is considered to be a failure, false otherwise.
 
-#### Source
+#### Defined in
 
 polling.ts:40
 
@@ -100,16 +100,16 @@ subtract from a base height the current height of some elements, this function a
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `baseHeight` | `string` | The base height to essentially subtract from. Ex: 90vh, 800px, 100% |
-| `elements` | `Ref`<[`ElementOrComponentWithEl`](README.md#elementorcomponentwithel)>\[] | The list of elements or components with a singular root element whose height we will subtract from. |
+| Parameter    | Type                                                                       | Description                                                                                         |
+| ------------ | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `baseHeight` | `string`                                                                   | The base height to essentially subtract from. Ex: 90vh, 800px, 100%                                 |
+| `elements`   | `Ref`<[`ElementOrComponentWithEl`](README.md#elementorcomponentwithel)>\[] | The list of elements or components with a singular root element whose height we will subtract from. |
 
 #### Returns
 
 `ComputedRefWithControl`<`string`>
 
-#### Source
+#### Defined in
 
 dom.ts:17
 
@@ -124,11 +124,11 @@ polling will not start until the current task finishes.
 
 #### Parameters
 
-| Parameter | Type | Description |
-| :------ | :------ | :------ |
-| `fn` | () => `Awaitable`<[`PollingState`](README.md#pollingstate)> | The function to execute. The function should return [PollingState.POLLING](README.md#pollingstate) to have the polling to<br /> continue. Returning either [PollingState.SUCCESS](README.md#pollingstate) or [PollingState.FAILURE](README.md#pollingstate) will stop polling. |
-| `intervalMs` | `number` | The time in milliseconds between each poll. |
-| `timeoutMs` | `number` | The maximum time in milliseconds before it is considered a polling timeout. |
+| Parameter    | Type                                                        | Description                                                                                                                                                                                                                                                              |
+| ------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `fn`         | () => `Awaitable`<[`PollingState`](README.md#pollingstate)> | The function to execute. The function should return [PollingState.POLLING](README.md#pollingstate) to have the polling to continue. Returning either [PollingState.SUCCESS](README.md#pollingstate) or [PollingState.FAILURE](README.md#pollingstate) will stop polling. |
+| `intervalMs` | `number`                                                    | The time in milliseconds between each poll.                                                                                                                                                                                                                              |
+| `timeoutMs`  | `number`                                                    | The maximum time in milliseconds before it is considered a polling timeout.                                                                                                                                                                                              |
 
 #### Returns
 
@@ -136,6 +136,6 @@ polling will not start until the current task finishes.
 
 Return an object with the current state of the polling and function to start the polling.
 
-#### Source
+#### Defined in
 
 polling.ts:54

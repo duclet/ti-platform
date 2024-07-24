@@ -1,3 +1,4 @@
+import { REQUESTS_PER_SECOND_PER_ACCESS_TOKEN, REQUESTS_PER_SECOND_PER_BASE } from '@src/constants';
 import type { CreateRecordsRequest, CreateRecordsResponse } from '@src/records/create-records';
 import { createRecords } from '@src/records/create-records';
 import type { DeleteRecordsRequest, DeleteRecordsResponse } from '@src/records/delete-records';
@@ -66,8 +67,8 @@ export class AirtableClient {
         );
 
         this.queueOverall = new Queue({
-            maxConcurrent: 50,
-            maxPerInterval: 50,
+            maxConcurrent: REQUESTS_PER_SECOND_PER_ACCESS_TOKEN,
+            maxPerInterval: REQUESTS_PER_SECOND_PER_ACCESS_TOKEN,
             intervalMs: 1000,
         });
         this.queuePerBase = new Map();
@@ -117,10 +118,9 @@ export class AirtableClient {
      * @returns Refer to {@link ListRecordsResponse}.
      */
     public listRecords<Fields extends RecordFields>(
-        /** Refer to {@link ListRecordsRequest<Fields>}. */
+        /** Refer to {@link ListRecordsRequest}. */
         request: Simplify<ListRecordsRequest<StringKeyOf<Fields>>>
     ): Promise<Simplify<ListRecordsResponse<Fields>>> {
-        // @ts-expect-error Apparently using Simplify makes it too nested which the compiler complains but is fine
         return listRecords(this, request);
     }
 
@@ -165,8 +165,8 @@ export class AirtableClient {
         let queue = this.queuePerBase.get(baseId);
         if (queue === undefined) {
             queue = new Queue({
-                maxConcurrent: 5,
-                maxPerInterval: 5,
+                maxConcurrent: REQUESTS_PER_SECOND_PER_BASE,
+                maxPerInterval: REQUESTS_PER_SECOND_PER_BASE,
                 intervalMs: 1000,
             });
 

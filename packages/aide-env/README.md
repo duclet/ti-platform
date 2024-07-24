@@ -27,14 +27,14 @@ Load the environment variables.
 
 #### Parameters
 
-| Parameter | Type |
-| :------ | :------ |
+| Parameter    | Type        |
+| ------------ | ----------- |
 | `filesOrder` | `string`\[] |
 
 #### Returns
 
 `void`
 
-#### Source
+#### Defined in
 
 index.ts:10

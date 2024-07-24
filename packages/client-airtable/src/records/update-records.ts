@@ -29,10 +29,6 @@ const SCHEMA_UPDATE_RECORDS_REQUEST_NON_UPSERT_BODY_PARAMS = object({
     typecast: SCHEMA_COMMON_REQUEST_PARAMS.shape.typecast,
 });
 
-// const SCHEMA_UPDATE_RECORDS_REQUEST_NON_UPSERT = SCHEMA_REQUEST_METHOD.merge(SCHEMA_BASE_AND_TABLE_PATH_PARAMS).merge(
-//     SCHEMA_UPDATE_RECORDS_REQUEST_NON_UPSERT_BODY_PARAMS
-// );
-
 /**
  * Request data for updating records.
  *
@@ -62,10 +58,6 @@ const SCHEMA_UPDATE_RECORDS_REQUEST_UPSERT_BODY_PARAMS = SCHEMA_UPDATE_RECORDS_R
         fieldsToMergeOn: array(string()).nonempty(),
     }),
 });
-
-// const SCHEMA_UPDATE_RECORDS_REQUEST_UPSERT = SCHEMA_REQUEST_METHOD.merge(SCHEMA_BASE_AND_TABLE_PATH_PARAMS).merge(
-//     SCHEMA_UPDATE_RECORDS_REQUEST_UPSERT_BODY_PARAMS
-// );
 
 /**
  * Request data for upserting records.
@@ -147,22 +139,6 @@ export type UpdateRecordsResponse<Fields extends RecordFields> =
     | UpdateRecordsResponseNonUpsert<Fields>
     | UpdateRecordsResponseUpsert<Fields>;
 
-/** @internal */
-// export function updateRecords<
-//     RequestFields extends NonEmptyObject<RecordFields>,
-//     ResponseFields extends NonEmptyObject<RecordFields> = RequestFields,
-// >(
-//     client: AirtableClient,
-//     request: UpdateRecordsRequestNonUpsert<RequestFields>
-// ): Promise<UpdateRecordsResponseNonUpsert<ResponseFields>>;
-// /** @internal */
-// export function updateRecords<
-//     RequestFields extends NonEmptyObject<RecordFields>,
-//     ResponseFields extends NonEmptyObject<RecordFields> = RequestFields,
-// >(
-//     client: AirtableClient,
-//     request: UpdateRecordsRequestUpsert<RequestFields>
-// ): Promise<UpdateRecordsResponseUpsert<ResponseFields>>;
 /** @internal */
 export function updateRecords<RequestFields extends RecordFields, ResponseFields extends RecordFields = RequestFields>(
     client: AirtableClient,

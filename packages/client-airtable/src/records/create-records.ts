@@ -18,8 +18,6 @@ const SCHEMA_CREATE_RECORDS_BODY_PARAMS = object({
     typecast: SCHEMA_COMMON_REQUEST_PARAMS.shape.typecast,
 });
 
-// const SCHEMA_CREATE_RECORDS_REQUEST = SCHEMA_BASE_AND_TABLE_PATH_PARAMS.merge(SCHEMA_CREATE_RECORDS_BODY_PARAMS);
-
 /**
  * Request data for creating records.
  *
