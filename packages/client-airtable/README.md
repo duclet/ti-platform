@@ -854,25 +854,7 @@ Refer to [ListRecordsResponse](README.md#listrecordsresponsefields).
 
 ###### Defined in
 
-packages/client-airtable/src/client.ts:124
-
-##### test()
-
-> **test**(`one`): `null`
-
-###### Parameters
-
-| Parameter | Type                                        |
-| --------- | ------------------------------------------- |
-| `one`     | `null` \| `string` \| `number` \| `boolean` |
-
-###### Returns
-
-`null`
-
-###### Defined in
-
-packages/client-airtable/src/client.ts:115
+packages/client-airtable/src/client.ts:120
 
 ## Interfaces
 
