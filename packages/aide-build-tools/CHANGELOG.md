@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Thu, 16 May 2024 18:49:59 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jul 2024 18:55:35 GMT and should not be manually modified.
+
+## 3.1.3
+Wed, 24 Jul 2024 18:55:35 GMT
+
+### Patches
+
+- Fix to better output API docs.
 
 ## 3.1.2
 Thu, 16 May 2024 18:49:59 GMT

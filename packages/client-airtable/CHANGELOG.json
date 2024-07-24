@@ -2,6 +2,26 @@
   "name": "@ti-platform/client-airtable",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@ti-platform/client-airtable_v0.2.0",
+      "date": "Wed, 24 Jul 2024 18:55:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose some static values as constants and cleanup code."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.2.2`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `3.1.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.1",
       "tag": "@ti-platform/client-airtable_v0.1.1",
       "date": "Thu, 16 May 2024 18:49:59 GMT",
