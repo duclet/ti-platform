@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/client-airtable
 
-This log was last generated on Wed, 24 Jul 2024 18:55:35 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Aug 2024 17:38:35 GMT and should not be manually modified.
+
+## 0.2.1
+Tue, 20 Aug 2024 17:38:35 GMT
+
+### Patches
+
+- Reverse schema OR definition for updating records so it can actually parse the more specific definition.
 
 ## 0.2.0
 Wed, 24 Jul 2024 18:55:35 GMT
