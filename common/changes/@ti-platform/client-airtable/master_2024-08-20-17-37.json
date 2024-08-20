@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/client-airtable",
+      "comment": "Reverse schema OR definition for updating records so it can actually parse the more specific definition.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/client-airtable"
+}

@@ -89,14 +89,14 @@ export type UpdateRecordsRequestUpsert<Fields extends RecordFields> = {
     BaseAndTablePathParams &
     Pick<CommonRequestParams, 'returnFieldsByFieldId' | 'typecast'>;
 
-const SCHEMA_UPDATE_RECORDS_REQUEST_BODY_PARAMS = SCHEMA_UPDATE_RECORDS_REQUEST_NON_UPSERT_BODY_PARAMS.or(
-    SCHEMA_UPDATE_RECORDS_REQUEST_UPSERT_BODY_PARAMS
+const SCHEMA_UPDATE_RECORDS_REQUEST_BODY_PARAMS = SCHEMA_UPDATE_RECORDS_REQUEST_UPSERT_BODY_PARAMS.or(
+    SCHEMA_UPDATE_RECORDS_REQUEST_NON_UPSERT_BODY_PARAMS
 );
 
 /** @internal */
 export type UpdateRecordsRequest<Fields extends RecordFields> =
-    | UpdateRecordsRequestNonUpsert<Fields>
-    | UpdateRecordsRequestUpsert<Fields>;
+    | UpdateRecordsRequestUpsert<Fields>
+    | UpdateRecordsRequestNonUpsert<Fields>;
 
 const SCHEMA_UPDATE_RECORDS_RESPONSE_NON_UPSERT = object({
     records: array(SCHEMA_INDIVIDUAL_RECORD),
@@ -130,14 +130,14 @@ export type UpdateRecordsResponseUpsert<Fields extends RecordFields> = {
     updatedRecords: Array<string>;
 } & UpdateRecordsResponseNonUpsert<Fields>;
 
-const SCHEMA_UPDATE_RECORDS_RESPONSE = SCHEMA_UPDATE_RECORDS_RESPONSE_NON_UPSERT.or(
-    SCHEMA_UPDATE_RECORDS_RESPONSE_UPSERT
+const SCHEMA_UPDATE_RECORDS_RESPONSE = SCHEMA_UPDATE_RECORDS_RESPONSE_UPSERT.or(
+    SCHEMA_UPDATE_RECORDS_RESPONSE_NON_UPSERT
 );
 
 /** @internal */
 export type UpdateRecordsResponse<Fields extends RecordFields> =
-    | UpdateRecordsResponseNonUpsert<Fields>
-    | UpdateRecordsResponseUpsert<Fields>;
+    | UpdateRecordsResponseUpsert<Fields>
+    | UpdateRecordsResponseNonUpsert<Fields>;
 
 /** @internal */
 export function updateRecords<RequestFields extends RecordFields, ResponseFields extends RecordFields = RequestFields>(
