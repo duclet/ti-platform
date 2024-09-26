@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-quasar",
   "entries": [
     {
+      "version": "3.0.10",
+      "tag": "@ti-platform/aide-quasar_v3.0.10",
+      "date": "Thu, 26 Sep 2024 20:30:17 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `2.0.10`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.9",
       "tag": "@ti-platform/aide-quasar_v3.0.9",
       "date": "Thu, 26 Sep 2024 15:49:21 GMT",

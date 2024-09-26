@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "2.0.10",
+      "tag": "@ti-platform/aide-vue_v2.0.10",
+      "date": "Thu, 26 Sep 2024 20:30:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bug fix to allow references injection to work."
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.9",
       "tag": "@ti-platform/aide-vue_v2.0.9",
       "date": "Thu, 26 Sep 2024 15:49:21 GMT",

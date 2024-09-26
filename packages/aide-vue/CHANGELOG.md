@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-vue
 
-This log was last generated on Thu, 26 Sep 2024 15:49:21 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 20:30:17 GMT and should not be manually modified.
+
+## 2.0.10
+Thu, 26 Sep 2024 20:30:17 GMT
+
+### Patches
+
+- Bug fix to allow references injection to work.
 
 ## 2.0.9
 Thu, 26 Sep 2024 15:49:21 GMT

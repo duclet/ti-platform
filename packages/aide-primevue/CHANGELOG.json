@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-primevue",
   "entries": [
     {
+      "version": "0.0.3",
+      "tag": "@ti-platform/aide-primevue_v0.0.3",
+      "date": "Thu, 26 Sep 2024 20:30:17 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `2.0.10`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.2",
       "tag": "@ti-platform/aide-primevue_v0.0.2",
       "date": "Thu, 26 Sep 2024 15:49:21 GMT",
