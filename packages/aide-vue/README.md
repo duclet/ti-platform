@@ -219,7 +219,7 @@ validators.ts:38
 
 ### provideAndReturnRefs()
 
-> **provideAndReturnRefs**<`T`>(`key`, `data`): `ToRefs`<`T`>
+> **provideAndReturnRefs**<`T`>(`key`, `data`): `ToRefs`<`UnwrapNestedRefs`<`T`>>
 
 Provide the given data to child components and return the data as refs.
 
@@ -238,7 +238,7 @@ Provide the given data to child components and return the data as refs.
 
 #### Returns
 
-`ToRefs`<`T`>
+`ToRefs`<`UnwrapNestedRefs`<`T`>>
 
 #### Defined in
 

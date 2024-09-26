@@ -33,5 +33,5 @@ export function provideAndReturnRefs<T extends object>(key: InjectionKey<T>, dat
     const reactiveData = reactive(data);
 
     provide(key, reactiveData as T);
-    return injectRefs(key);
+    return toRefs(reactiveData);
 }
