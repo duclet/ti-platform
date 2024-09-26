@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide-vue",
-    "version": "2.0.8",
+    "version": "2.0.9",
     "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide-vue",
     "repository": "https://github.com/duclet/ti-platform",
     "type": "module",

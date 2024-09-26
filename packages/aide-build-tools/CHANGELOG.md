@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Wed, 24 Jul 2024 18:55:35 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 15:49:21 GMT and should not be manually modified.
+
+## 3.2.0
+Thu, 26 Sep 2024 15:49:21 GMT
+
+### Minor changes
+
+- Added function to split chunks and better detection of external dependencies when building with Vite.
 
 ## 3.1.3
 Wed, 24 Jul 2024 18:55:35 GMT

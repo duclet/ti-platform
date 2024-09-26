@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide-vueuse",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide-vueuse",
     "repository": "https://github.com/duclet/ti-platform",
     "type": "module",

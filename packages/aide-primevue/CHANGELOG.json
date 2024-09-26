@@ -1,0 +1,28 @@
+{
+  "name": "@ti-platform/aide-primevue",
+  "entries": [
+    {
+      "version": "0.0.2",
+      "tag": "@ti-platform/aide-primevue_v0.0.2",
+      "date": "Thu, 26 Sep 2024 15:49:21 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Initial release with similar components from aide-quasar and also a layout component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.2.3`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `2.0.9`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `3.2.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

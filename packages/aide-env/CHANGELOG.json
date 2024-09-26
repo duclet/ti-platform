@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-env",
   "entries": [
     {
+      "version": "1.0.8",
+      "tag": "@ti-platform/aide-env_v1.0.8",
+      "date": "Thu, 26 Sep 2024 15:49:21 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `3.2.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.7",
       "tag": "@ti-platform/aide-env_v1.0.7",
       "date": "Wed, 24 Jul 2024 18:55:35 GMT",
