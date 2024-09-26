@@ -1,0 +1,60 @@
+{
+    "name": "@ti-platform/aide-primevue",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist/",
+        "src/",
+        "CHANGELOG.md",
+        "README.md"
+    ],
+    "scripts": {
+        "build:docs": "run-typedoc -i ./src/index.docs.ts -v 2>&1",
+        "build:src": "vite build",
+        "clean": "rm -rf ./dist",
+        "prod": "pnpm clean && pnpm build:src && pnpm build:docs",
+        "dev": "pnpm clean && pnpm build:src --watch",
+        "build": "pnpm prod",
+        "preview": "pnpm vite -c vite-preview.config.ts"
+    },
+    "dependencies": {
+        "@primevue/core": "^4.0.5",
+        "@s-libs/micro-dash": "^17.1.0",
+        "@ti-platform/aide": "workspace:*",
+        "@ti-platform/aide-vue": "workspace:*",
+        "@vueuse/core": "^10.9.0",
+        "primeicons": "^7.0.0",
+        "primevue": "^4.0.5",
+        "vue": "^3.4.21",
+        "vue-router": "^4.3.0"
+    },
+    "devDependencies": {
+        "@primevue/themes": "^4.0.5",
+        "@ti-platform/aide-build-tools": "workspace:*",
+        "@types/node": "^20.12.2",
+        "@typescript-eslint/eslint-plugin": "^7.4.0",
+        "@typescript-eslint/parser": "^7.4.0",
+        "@vitejs/plugin-vue": "^5.0.4",
+        "autoprefixer": "^10.4.20",
+        "defu": "^6.1.4",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.6.1",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-json": "^3.1.0",
+        "eslint-plugin-simple-import-sort": "^12.0.0",
+        "eslint-plugin-vue": "^9.24.0",
+        "prettier": "^3.2.5",
+        "tailwindcss": "^3.4.10",
+        "tailwindcss-primeui": "^0.3.4",
+        "typedoc": "^0.26.4",
+        "typedoc-plugin-markdown": "^4.2.1",
+        "typescript": "^5.4.3",
+        "vite": "^5.2.7",
+        "vite-plugin-dts": "^3.8.1",
+        "vue-docgen-cli": "^4.79.0",
+        "vue-tsc": "^2.0.7"
+    }
+}

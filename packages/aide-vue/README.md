@@ -93,7 +93,7 @@ reactivity.ts:10
 
 > **injectRefs**<`T`>(`key`): `ToRefs`<`NonNullable`<`T`>>
 
-Inject the data from the provided key (we are assuming the data exists) and return the results as refs.
+Inject the data from the provided key (we are assuming the data exists) but return the results as refs.
 
 #### Type Parameters
 
@@ -113,7 +113,7 @@ Inject the data from the provided key (we are assuming the data exists) and retu
 
 #### Defined in
 
-data.ts:10
+reactivity.ts:20
 
 ***
 
@@ -219,7 +219,7 @@ validators.ts:38
 
 ### provideAndReturnRefs()
 
-> **provideAndReturnRefs**<`T`>(`key`, `data`): `ToRefs`<`UnwrapNestedRefs`<`T`>>
+> **provideAndReturnRefs**<`T`>(`key`, `data`): `ToRefs`<`T`>
 
 Provide the given data to child components and return the data as refs.
 
@@ -238,11 +238,11 @@ Provide the given data to child components and return the data as refs.
 
 #### Returns
 
-`ToRefs`<`UnwrapNestedRefs`<`T`>>
+`ToRefs`<`T`>
 
 #### Defined in
 
-data.ts:22
+reactivity.ts:32
 
 ***
 

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-primevue",
+      "comment": "Initial release with similar components from aide-quasar and also a layout component.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@ti-platform/aide-primevue"
+}

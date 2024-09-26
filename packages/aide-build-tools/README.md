@@ -11,6 +11,7 @@ to the API Docs below for the types, variables, and functions that are exposed.
   * [package.json Version Sync](#packagejson-version-sync)
 * [API Docs](#api-docs)
   * [Type Aliases](#type-aliases)
+    * [ChunkNameConfig](#chunknameconfig)
     * [EslintConfigType](#eslintconfigtype)
     * [EslintConfigsParams](#eslintconfigsparams)
     * [ModifySourceContentsChainArgs](#modifysourcecontentschainargs)
@@ -31,6 +32,7 @@ to the API Docs below for the types, variables, and functions that are exposed.
     * [generatePrettierConfigs()](#generateprettierconfigs)
     * [generateViteConfigs()](#generateviteconfigs)
     * [generateViteMultiFileLibConfigs()](#generatevitemultifilelibconfigs)
+    * [getChunkName()](#getchunkname)
     * [getCjsConfigs()](#getcjsconfigs)
     * [getHtmlConfigs()](#gethtmlconfigs)
     * [getJsConfigs()](#getjsconfigs)
@@ -153,6 +155,25 @@ Note that if you a providing a glob for the pattern, be sure to wrap it in quote
 # API Docs
 
 ## Type Aliases
+
+### ChunkNameConfig
+
+> **ChunkNameConfig**: {`handler`: `string` | (`moduleId`, `actualPackage`) => `string` | [`ChunkNameConfig`](README.md#chunknameconfig)\[];`matcher`: `true` | `string` | `RegExp` | (`moduleId`, `actualPackage`) => `boolean`; }
+
+Configurations to compare against the page name and returning its chunk name.
+
+#### Type declaration
+
+| Name      | Type                                                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| --------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `handler` | `string` \| (`moduleId`, `actualPackage`) => `string` \| [`ChunkNameConfig`](README.md#chunknameconfig)\[] | When matched, used to determine the name of the chunk. Supports the following: - If it is a string, just use the string as the chunk name. - If it is a function, execute the function with the full module ID and the package name and its return value is used. - If it is an array of configs, recursively loop into and try to get the chunk name using the sub configs.                                                                  |
+| `matcher` | `true` \| `string` \| `RegExp` \| (`moduleId`, `actualPackage`) => `boolean`                               | Used to compare against the package name. Based on the type given, it does different things: - If true, always consider as a match (good for the catch-all case). - If it is a string, see if the package name starts with the value. - If it is a regular expression, see if the package name matches the expression. - If it is a function, execute the function with the full module ID and the package name and its return value is true. |
+
+#### Defined in
+
+misc.ts:45
+
+***
 
 ### EslintConfigType
 
@@ -505,6 +526,33 @@ extracted CSS from the Vue files, it will also place them in the same folder as 
 #### Defined in
 
 vite.ts:24
+
+***
+
+### getChunkName()
+
+> **getChunkName**(`configs`, `moduleId`): `string` | `undefined`
+
+For the given configs and full module ID, return the name for the chunk or undefined if it is not supported. This
+will only match against imports for packages under node\_modules. Should be used by the "manualChunks" function for
+Rollup.
+
+#### Parameters
+
+| Parameter  | Type                                              | Description                                                                 |
+| ---------- | ------------------------------------------------- | --------------------------------------------------------------------------- |
+| `configs`  | [`ChunkNameConfig`](README.md#chunknameconfig)\[] | Configurations with the pattern to match against and the chunk name to use. |
+| `moduleId` | `string`                                          | ID of the module to get the chunk name for.                                 |
+
+#### Returns
+
+`string` | `undefined`
+
+The name of the chunk to use or undefined to let Rollup decides for itself.
+
+#### Defined in
+
+misc.ts:78
 
 ***
 

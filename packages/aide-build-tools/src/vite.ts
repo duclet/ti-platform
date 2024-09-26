@@ -30,6 +30,8 @@ export async function generateViteMultiFileLibConfigs(
     const genericConfigs = await generateViteConfigs();
     const { dependencies } = await readPackageJSON();
 
+    const externalDeps = Object.keys(dependencies ?? {});
+
     return defineConfig({
         build: {
             ...genericConfigs.build!,
@@ -42,7 +44,18 @@ export async function generateViteMultiFileLibConfigs(
                     entryName.endsWith('.vue') ? entryName.slice(0, -3) + 'js' : '[name].js',
             },
             rollupOptions: {
-                external: Object.keys(dependencies ?? {}),
+                external: (source) =>
+                    externalDeps.some((externalDep) => {
+                        if (externalDep === source) {
+                            return true;
+                        }
+
+                        if (source.match(new RegExp(`^${externalDep}/.+`))) {
+                            return true;
+                        }
+
+                        return false;
+                    }),
                 output: {
                     preserveModules: true,
                     assetFileNames: (chunkInfo) => {

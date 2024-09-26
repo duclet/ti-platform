@@ -441,6 +441,11 @@
       "shouldPublish":  true
     },
     {
+      "packageName": "@ti-platform/aide-primevue",
+      "projectFolder": "packages/aide-primevue",
+      "shouldPublish":  true
+    },
+    {
       "packageName": "@ti-platform/client-airtable",
       "projectFolder": "packages/client-airtable",
       "shouldPublish":  true
