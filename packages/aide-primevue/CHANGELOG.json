@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-primevue",
   "entries": [
     {
+      "version": "0.1.0",
+      "tag": "@ti-platform/aide-primevue_v0.1.0",
+      "date": "Tue, 29 Oct 2024 16:01:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding extended version of MultiSelect component to allow easily setting the toggle all label."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.3",
       "tag": "@ti-platform/aide-primevue_v0.0.3",
       "date": "Thu, 26 Sep 2024 20:30:17 GMT",
