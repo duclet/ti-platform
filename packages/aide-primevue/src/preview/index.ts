@@ -2,6 +2,7 @@ import { definePreset } from '@primevue/themes';
 import Lara from '@primevue/themes/lara';
 import App from '@src/preview/App.vue';
 import MultiProgressIndicator from '@src/preview/MultiProgressIndicator.vue';
+import MultiSelectExtended from '@src/preview/MultiSelectExtended.vue';
 import TimelineStepper from '@src/preview/TimelineStepper.vue';
 import Welcome from '@src/preview/Welcome.vue';
 import WizardStepper from '@src/preview/WizardStepper.vue';
@@ -47,6 +48,7 @@ app.use(ConfirmationService);
 const routes = [
     { path: '/', component: Welcome },
     { path: '/multi-progress-indicator', component: MultiProgressIndicator },
+    { path: '/multi-select-extended', component: MultiSelectExtended },
     { path: '/timeline-stepper', component: TimelineStepper },
     { path: '/wizard-stepper', component: WizardStepper },
 ];

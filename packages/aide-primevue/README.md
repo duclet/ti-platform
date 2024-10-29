@@ -6,6 +6,7 @@ This package exposes new components based off Vue and PrimeVue.
 
 * [Components](#components)
   * * [MultiProgressIndicator](#multiprogressindicator)
+    * [MultiSelectExtended](#multiselectextended)
     * [TimelineStepper](#timelinestepper)
     * [TopbarWithSidebarLayout](#topbarwithsidebarlayout)
     * [WizardStepper](#wizardstepper)
@@ -66,6 +67,25 @@ In following with PrimeVue's passthrough functionality, the following are availa
 | error-message                | Slot to display the error message, assuming there was an error, for all the tasks.   | **task** `ProgressIndicatorTask` - The task this is rendering for.      |
 | `${data.key}--success`       | Slot to display when the task completes successfully for a specific task.            | <br/>**task** `ProgressIndicatorTask` - The task this is rendering for. |
 | success                      | Slot to display when the task completes successfully for all the tasks.              | **task** `ProgressIndicatorTask` - The task this is rendering for.      |
+
+***
+
+### MultiSelectExtended
+
+> An extension to the MultiSelect component to allow one to easily provide a label for the "Select All" toggle since
+> other requests have not been approved: <https://github.com/primefaces/primevue/pull/4502>
+
+#### Props
+
+| Prop name      | Description                            | Type     | Default |
+| -------------- | -------------------------------------- | -------- | ------- |
+| toggleAllLabel | The label for the toggle all checkbox. | `string` |         |
+
+#### Slots
+
+| Name     | Description                                           | Bindings |
+| -------- | ----------------------------------------------------- | -------- |
+| slotName | All your slots from MultiSelect is available for use. |          |
 
 ***
 

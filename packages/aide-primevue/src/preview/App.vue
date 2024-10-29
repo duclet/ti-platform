@@ -35,6 +35,10 @@
                     label: 'Multi Progress Indicator',
                 },
                 {
+                    key: 'multi-select-extended',
+                    label: 'Multi Select Extended',
+                },
+                {
                     key: 'timeline-stepper',
                     label: 'Timeline Stepper',
                 },
