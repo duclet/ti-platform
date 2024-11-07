@@ -373,6 +373,20 @@ Returns an iterable of key, value pairs for every entry in the map.
 
 common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:148
 
+##### entriesAsArray()
+
+> **entriesAsArray**(): \[`K`, `V`]\[]
+
+Get the entries as an array.
+
+###### Returns
+
+\[`K`, `V`]\[]
+
+###### Defined in
+
+packages/aide/src/map.ts:126
+
 ##### every()
 
 > **every**(`predicate`): `boolean`
@@ -391,7 +405,7 @@ Returns true if every entry in this map satisfies the given predicate.
 
 ###### Defined in
 
-packages/aide/src/map.ts:126
+packages/aide/src/map.ts:133
 
 ##### filter()
 
@@ -411,7 +425,27 @@ Create a new map by only keeping the entries that satisfies the provided predica
 
 ###### Defined in
 
-packages/aide/src/map.ts:133
+packages/aide/src/map.ts:140
+
+##### find()
+
+> **find**(`predicate`): [`Optional`](README.md#optionalt)<`V`>
+
+Get an optional for the first value that matches the given predicate.
+
+###### Parameters
+
+| Parameter   | Type                                                          |
+| ----------- | ------------------------------------------------------------- |
+| `predicate` | [`MapPlusPredicate`](README.md#mappluspredicatek-v)<`K`, `V`> |
+
+###### Returns
+
+[`Optional`](README.md#optionalt)<`V`>
+
+###### Defined in
+
+packages/aide/src/map.ts:147
 
 ##### forEach()
 
@@ -484,7 +518,7 @@ default value.
 
 ###### Defined in
 
-packages/aide/src/map.ts:143
+packages/aide/src/map.ts:157
 
 ##### getOrThrow()
 
@@ -504,7 +538,7 @@ Similar to Map#get but will throw an Error if the key does not exist.
 
 ###### Defined in
 
-packages/aide/src/map.ts:150
+packages/aide/src/map.ts:164
 
 ##### has()
 
@@ -542,7 +576,7 @@ Returns true if this map contains no key-value mappings.
 
 ###### Defined in
 
-packages/aide/src/map.ts:161
+packages/aide/src/map.ts:175
 
 ##### keys()
 
@@ -574,7 +608,7 @@ Retrieve the keys as an array.
 
 ###### Defined in
 
-packages/aide/src/map.ts:168
+packages/aide/src/map.ts:182
 
 ##### mapKeys()
 
@@ -602,7 +636,7 @@ generates the same key multiple times, the later will override the previous valu
 
 ###### Defined in
 
-packages/aide/src/map.ts:177
+packages/aide/src/map.ts:191
 
 ##### mapValues()
 
@@ -628,7 +662,7 @@ Create a new version of this map with the values mapped to a different value wit
 
 ###### Defined in
 
-packages/aide/src/map.ts:186
+packages/aide/src/map.ts:200
 
 ##### set()
 
@@ -673,7 +707,7 @@ Set all key/value pair in the given map to this map.
 
 ###### Defined in
 
-packages/aide/src/map.ts:195
+packages/aide/src/map.ts:207
 
 ##### setIfAbsent()
 
@@ -694,7 +728,7 @@ Set the provided value to the provided key if it doesn't exists, returning the n
 
 ###### Defined in
 
-packages/aide/src/map.ts:208
+packages/aide/src/map.ts:220
 
 ##### some()
 
@@ -714,7 +748,7 @@ Returns true if at least one entry in this map satisfies the provided predicate.
 
 ###### Defined in
 
-packages/aide/src/map.ts:220
+packages/aide/src/map.ts:232
 
 ##### toObject()
 
@@ -728,7 +762,7 @@ Convert this to an object of key/value pair.
 
 ###### Defined in
 
-packages/aide/src/map.ts:227
+packages/aide/src/map.ts:239
 
 ##### values()
 
@@ -760,7 +794,7 @@ Retrieves all values as an array.
 
 ###### Defined in
 
-packages/aide/src/map.ts:234
+packages/aide/src/map.ts:246
 
 ##### groupBy()
 

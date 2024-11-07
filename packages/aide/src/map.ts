@@ -121,18 +121,32 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
     }
 
     /**
+     * Get the entries as an array.
+     */
+    public entriesAsArray(): Array<[K, V]> {
+        return Array.from(this.entries());
+    }
+
+    /**
      * Returns true if every entry in this map satisfies the given predicate.
      */
     public every(predicate: MapPlusPredicate<K, V>): boolean {
-        return Array.from(this.entries()).every(([key, value]) => predicate({ key, value, map: this }));
+        return this.entriesAsArray().every(([key, value]) => predicate({ key, value, map: this }));
     }
 
     /**
      * Create a new map by only keeping the entries that satisfies the provided predicate.
      */
     public filter(predicate: MapPlusPredicate<K, V>): MapPlus<K, V> {
-        return new MapPlus<K, V>(
-            Array.from(this.entries()).filter(([key, value]) => predicate({ key, value, map: this }))
+        return new MapPlus<K, V>(this.entriesAsArray().filter(([key, value]) => predicate({ key, value, map: this })));
+    }
+
+    /**
+     * Get an optional for the first value that matches the given predicate.
+     */
+    public find(predicate: MapPlusPredicate<K, V>): Optional<V> {
+        return createOptional(this.entriesAsArray().find(([key, value]) => predicate({ key, value, map: this }))).map(
+            ([key, value]) => value
         );
     }
 
@@ -176,7 +190,7 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
      */
     public mapKeys<R extends MapPlusKey>(mapper: MapperFn<{ key: K; value: V; map: MapPlus<K, V> }, R>): MapPlus<R, V> {
         return new MapPlus<R, V>(
-            Array.from(this.entries()).map(([key, value]) => [mapper({ key, value, map: this }), value])
+            this.entriesAsArray().map(([key, value]) => [mapper({ key, value, map: this }), value])
         );
     }
 
@@ -184,9 +198,7 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
      * Create a new version of this map with the values mapped to a different value with the provided mapper.
      */
     public mapValues<R>(mapper: MapperFn<{ key: K; value: V; map: MapPlus<K, V> }, R>): MapPlus<K, R> {
-        return new MapPlus<K, R>(
-            Array.from(this.entries()).map(([key, value]) => [key, mapper({ key, value, map: this })])
-        );
+        return new MapPlus<K, R>(this.entriesAsArray().map(([key, value]) => [key, mapper({ key, value, map: this })]));
     }
 
     /**
@@ -218,7 +230,7 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
      * Returns true if at least one entry in this map satisfies the provided predicate.
      */
     public some(predicate: MapPlusPredicate<K, V>): boolean {
-        return Array.from(this.entries()).some(([key, value]) => predicate({ key, value, map: this }));
+        return this.entriesAsArray().some(([key, value]) => predicate({ key, value, map: this }));
     }
 
     /**
