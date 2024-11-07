@@ -2,6 +2,23 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "3.3.0",
+      "tag": "@ti-platform/aide_v3.3.0",
+      "date": "Thu, 07 Nov 2024 20:48:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrading dependencies; Adding MapPlus class which extends Map for more useful methods; Added Optional to support not using nulls/undefined"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `3.3.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.2.3",
       "tag": "@ti-platform/aide_v3.2.3",
       "date": "Thu, 26 Sep 2024 15:49:21 GMT",

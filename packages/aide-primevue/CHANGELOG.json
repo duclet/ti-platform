@@ -2,6 +2,29 @@
   "name": "@ti-platform/aide-primevue",
   "entries": [
     {
+      "version": "1.0.0",
+      "tag": "@ti-platform/aide-primevue_v1.0.0",
+      "date": "Thu, 07 Nov 2024 20:48:29 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Upgrading dependencies; Change return value of getSeverity* methods to be undefined when empty"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `3.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `3.3.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@ti-platform/aide-primevue_v0.1.0",
       "date": "Tue, 29 Oct 2024 16:01:36 GMT",

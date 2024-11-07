@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-primevue
 
-This log was last generated on Tue, 29 Oct 2024 16:01:36 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Nov 2024 20:48:29 GMT and should not be manually modified.
+
+## 1.0.0
+Thu, 07 Nov 2024 20:48:29 GMT
+
+### Breaking changes
+
+- Upgrading dependencies; Change return value of getSeverity* methods to be undefined when empty
 
 ## 0.1.0
 Tue, 29 Oct 2024 16:01:36 GMT

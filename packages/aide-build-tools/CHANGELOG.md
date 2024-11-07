@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Thu, 26 Sep 2024 15:49:21 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Nov 2024 20:48:29 GMT and should not be manually modified.
+
+## 3.3.0
+Thu, 07 Nov 2024 20:48:29 GMT
+
+### Minor changes
+
+- Upgrading dependencies; Distribution of package now supports both ESM and CommonJS
 
 ## 3.2.0
 Thu, 26 Sep 2024 15:49:21 GMT

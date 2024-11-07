@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "3.3.0",
+      "tag": "@ti-platform/aide-build-tools_v3.3.0",
+      "date": "Thu, 07 Nov 2024 20:48:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrading dependencies; Distribution of package now supports both ESM and CommonJS"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.2.0",
       "tag": "@ti-platform/aide-build-tools_v3.2.0",
       "date": "Thu, 26 Sep 2024 15:49:21 GMT",
