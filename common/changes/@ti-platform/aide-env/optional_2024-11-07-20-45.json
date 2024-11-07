@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-env",
+      "comment": "Upgrading dependencies",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide-env"
+}

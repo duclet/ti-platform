@@ -2,6 +2,8 @@
 
 This package exposes new components based off Vue and Quasar.
 
+**Please note that this package is now deprecated and will no longer be maintained. We are moving to use PrimeVue instead.**
+
 # Contents
 
 * [Components](#components)
@@ -187,12 +189,12 @@ Information for a task to show in the MultiProgressIndicator component.
 
 #### Type declaration
 
-| Name           | Type      | Description                                                                                                           |
-| -------------- | --------- | --------------------------------------------------------------------------------------------------------------------- |
-| `description`  | `string`  | A description for what progress we are waiting for.                                                                   |
-| `errorMessage` | `string`  | When no longer in progress, error message to show. If value is null, it assumes that task was completed successfully. |
-| `isInProgress` | `boolean` | True to show a progress bar, indicating that it is in progress or false other.                                        |
-| `key`          | `string`  | Unique identifier for the task.                                                                                       |
+| Name            | Type      | Description                                                                                                           |
+| --------------- | --------- | --------------------------------------------------------------------------------------------------------------------- |
+| `description`   | `string`  | A description for what progress we are waiting for.                                                                   |
+| `errorMessage`? | `string`  | When no longer in progress, error message to show. If value is null, it assumes that task was completed successfully. |
+| `isInProgress`  | `boolean` | True to show a progress bar, indicating that it is in progress or false other.                                        |
+| `key`           | `string`  | Unique identifier for the task.                                                                                       |
 
 #### Defined in
 
@@ -208,13 +210,13 @@ Representing a step in the timeline.
 
 #### Type declaration
 
-| Name                | Type                                                                                | Description                                                                                                                                                                                                                                                                                              |
-| ------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `body`              | `string`                                                                            | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined` and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also be given the following props: - status: The current status of the step. |
-| `isInitiallyHidden` | `boolean`                                                                           | Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it initially or to false to keep it visible.                                                                                                                                                  |
-| `name`              | [`TimelineStepName`](README.md#timelinestepname)                                    | Unique name for the step.                                                                                                                                                                                                                                                                                |
-| `subtitle`          | `string`                                                                            | The subtitle for the step.                                                                                                                                                                                                                                                                               |
-| `task`              | (`step`) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)> | Task to run when the step starts.                                                                                                                                                                                                                                                                        |
+| Name                 | Type                                                                                | Description                                                                                                                                                                                                                                                                                              |
+| -------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `body`?              | `string`                                                                            | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined` and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also be given the following props: - status: The current status of the step. |
+| `isInitiallyHidden`? | `boolean`                                                                           | Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it initially or to false to keep it visible.                                                                                                                                                  |
+| `name`               | [`TimelineStepName`](README.md#timelinestepname)                                    | Unique name for the step.                                                                                                                                                                                                                                                                                |
+| `subtitle`           | `string`                                                                            | The subtitle for the step.                                                                                                                                                                                                                                                                               |
+| `task`               | (`step`) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)> | Task to run when the step starts.                                                                                                                                                                                                                                                                        |
 
 #### Defined in
 
@@ -225,6 +227,8 @@ components/timeline-stepper/api.ts:12
 ### TimelineStepColorSupplier()
 
 > **TimelineStepColorSupplier**: (`status`) => `string`
+
+Function to use to get the color for a step.
 
 #### Parameters
 
@@ -247,6 +251,8 @@ components/timeline-stepper/api.ts:89
 ### TimelineStepIconSupplier()
 
 > **TimelineStepIconSupplier**: (`status`) => `string` | `undefined`
+
+Function to use to get the icon for a step.
 
 #### Parameters
 
@@ -327,7 +333,7 @@ Represents a step in the wizard.
 
 | Name                               | Type                                         | Description                                                                                                                                                                                                    |
 | ---------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `beforeLeaveConfirmationMessage`   | `string`                                     | If given, this message will be shown to the user in the dialog when the user tries to navigate away.                                                                                                           |
+| `beforeLeaveConfirmationMessage`?  | `string`                                     | If given, this message will be shown to the user in the dialog when the user tries to navigate away.                                                                                                           |
 | `component`                        | `Component`                                  | The component that will be used to render the step. It will be given as is modelValue a [WizardStepState](README.md#wizardstepstate).                                                                          |
 | `isBeforeLeaveConfirmationEnabled` | `boolean`                                    | If true, then if the user tries to navigate while the current step is this, a confirmation dialog will be shown to ask if the user really want that or not. If the step is done however, it will not be asked. |
 | `name`                             | [`WizardStepName`](README.md#wizardstepname) | The unique name for the step.                                                                                                                                                                                  |
@@ -420,9 +426,9 @@ as that should be handled via the `v-if` directive. It is best to use this in co
 
 #### Parameters
 
-| Parameter | Type                                                  | Description                                                                  |
-| --------- | ----------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `state`   | `Ref`<[`VisibilityState`](README.md#visibilitystate)> | A reactive variable for the current visibility state to calculate the style. |
+| Parameter | Type                                                                                                  | Description                                                                  |
+| --------- | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `state`   | `Ref`<[`VisibilityState`](README.md#visibilitystate), [`VisibilityState`](README.md#visibilitystate)> | A reactive variable for the current visibility state to calculate the style. |
 
 #### Returns
 
@@ -467,9 +473,9 @@ handles the NO\_RENDER state.
 
 #### Parameters
 
-| Parameter | Type                                                  | Description                                                                                       |
-| --------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `state`   | `Ref`<[`VisibilityState`](README.md#visibilitystate)> | A reactive variable for the current visibility state to calculate value for the `v-if` directive. |
+| Parameter | Type                                                                                                  | Description                                                                                       |
+| --------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `state`   | `Ref`<[`VisibilityState`](README.md#visibilitystate), [`VisibilityState`](README.md#visibilitystate)> | A reactive variable for the current visibility state to calculate value for the `v-if` directive. |
 
 #### Returns
 

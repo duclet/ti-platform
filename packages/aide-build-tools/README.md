@@ -12,8 +12,8 @@ to the API Docs below for the types, variables, and functions that are exposed.
 * [API Docs](#api-docs)
   * [Type Aliases](#type-aliases)
     * [ChunkNameConfig](#chunknameconfig)
-    * [EslintConfigType](#eslintconfigtype)
     * [EslintConfigsParams](#eslintconfigsparams)
+    * [EslintConfigType](#eslintconfigtype)
     * [ModifySourceContentsChainArgs](#modifysourcecontentschainargs)
     * [ModifySourceContentsChainHandler()](#modifysourcecontentschainhandler)
     * [ModifySourceContentsChainHandlerCreator()](#modifysourcecontentschainhandlercreator)
@@ -171,7 +171,30 @@ Configurations to compare against the page name and returning its chunk name.
 
 #### Defined in
 
-misc.ts:45
+misc.ts:47
+
+***
+
+### EslintConfigsParams
+
+> **EslintConfigsParams**: {`baseDir`: `string`;`configureCjs`: (`configs`) => `Linter.ConfigOverride`;`configureHtml`: (`configs`) => `Linter.ConfigOverride`;`configureJs`: (`configs`) => `Linter.ConfigOverride`;`configureJson`: (`configs`) => `Linter.ConfigOverride`;`configureTs`: (`configs`) => `Linter.ConfigOverride`;`configureVue`: (`configs`) => `Linter.ConfigOverride`;`enable`: [`EslintConfigType`](README.md#eslintconfigtype)\[]; }
+
+#### Type declaration
+
+| Name             | Type                                                | Description                                                                                                   |
+| ---------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `baseDir`        | `string`                                            | The base directory for your package.                                                                          |
+| `configureCjs`?  | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.cjs` files, this handler can be provided.           |
+| `configureHtml`? | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.html` files, this handler can be provided.          |
+| `configureJs`?   | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.js` files, this handler can be provided.            |
+| `configureJson`? | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.json` files, this handler can be provided.          |
+| `configureTs`?   | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.ts` and `.cts` files, this handler can be provided. |
+| `configureVue`?  | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.vue` files, this handler can be provided.           |
+| `enable`?        | [`EslintConfigType`](README.md#eslintconfigtype)\[] | List of files to enable linting support for.                                                                  |
+
+#### Defined in
+
+eslint.ts:19
 
 ***
 
@@ -182,29 +205,6 @@ misc.ts:45
 #### Defined in
 
 eslint.ts:17
-
-***
-
-### EslintConfigsParams
-
-> **EslintConfigsParams**: {`baseDir`: `string`;`configureCjs`: (`configs`) => `Linter.ConfigOverride`;`configureHtml`: (`configs`) => `Linter.ConfigOverride`;`configureJs`: (`configs`) => `Linter.ConfigOverride`;`configureJson`: (`configs`) => `Linter.ConfigOverride`;`configureTs`: (`configs`) => `Linter.ConfigOverride`;`configureVue`: (`configs`) => `Linter.ConfigOverride`;`enable`: [`EslintConfigType`](README.md#eslintconfigtype)\[]; }
-
-#### Type declaration
-
-| Name            | Type                                                | Description                                                                                          |
-| --------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `baseDir`       | `string`                                            | The base directory for your package.                                                                 |
-| `configureCjs`  | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.cjs` files, this handler can be provided.  |
-| `configureHtml` | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.html` files, this handler can be provided. |
-| `configureJs`   | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.js` files, this handler can be provided.   |
-| `configureJson` | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.json` files, this handler can be provided. |
-| `configureTs`   | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.ts` files, this handler can be provided.   |
-| `configureVue`  | (`configs`) => `Linter.ConfigOverride`              | If we need to override or extend the configurations for `.vue` files, this handler can be provided.  |
-| `enable`        | [`EslintConfigType`](README.md#eslintconfigtype)\[] | List of files to enable linting support for.                                                         |
-
-#### Defined in
-
-eslint.ts:19
 
 ***
 
@@ -285,11 +285,11 @@ Arguments passed to the [ModifySourceContentsChainHandlerCreator](README.md#modi
 
 #### Type declaration
 
-| Name         | Type        | Description                                                                               |
-| ------------ | ----------- | ----------------------------------------------------------------------------------------- |
-| `cwd`        | `string`    | The current working directory. Defaults to whatever value is returned by `process.cwd()`. |
-| `debug`      | `boolean`   | Set to true to output some debugging information while executing. Defaults to `false`.    |
-| `extensions` | `string`\[] | The list of file extensions to parse. Defaults to `[".ts"]`.                              |
+| Name          | Type        | Description                                                                               |
+| ------------- | ----------- | ----------------------------------------------------------------------------------------- |
+| `cwd`?        | `string`    | The current working directory. Defaults to whatever value is returned by `process.cwd()`. |
+| `debug`?      | `boolean`   | Set to true to output some debugging information while executing. Defaults to `false`.    |
+| `extensions`? | `string`\[] | The list of file extensions to parse. Defaults to `[".ts"]`.                              |
 
 #### Defined in
 
@@ -303,11 +303,11 @@ esbuild-plugins/modify-source-contents-chain.ts:8
 
 #### Type declaration
 
-| Name         | Type        | Description                                           |
-| ------------ | ----------- | ----------------------------------------------------- |
-| `dirs`       | `string`\[] | List of directory glob patterns to run the linter on. |
-| `extensions` | `string`\[] | List of file extensions to run the linter on.         |
-| `files`      | `string`\[] | List of files to run the linter on.                   |
+| Name          | Type        | Description                                           |
+| ------------- | ----------- | ----------------------------------------------------- |
+| `dirs`?       | `string`\[] | List of directory glob patterns to run the linter on. |
+| `extensions`? | `string`\[] | List of file extensions to run the linter on.         |
+| `files`?      | `string`\[] | List of files to run the linter on.                   |
 
 #### Defined in
 
@@ -552,7 +552,7 @@ The name of the chunk to use or undefined to let Rollup decides for itself.
 
 #### Defined in
 
-misc.ts:78
+misc.ts:80
 
 ***
 
@@ -669,7 +669,7 @@ eslint/vue-configs.ts:6
 
 > **keepOnlyExistentPaths**(`paths`): `string`\[]
 
-Given a list of paths, remove files that doesn't exists.
+Given a list of paths, remove files that doesn't exist.
 
 #### Parameters
 
@@ -683,7 +683,7 @@ Given a list of paths, remove files that doesn't exists.
 
 #### Defined in
 
-misc.ts:37
+misc.ts:39
 
 ***
 

@@ -27,19 +27,19 @@
     "dependencies": {
         "@ti-platform/aide": "workspace:*",
         "defu": "^6.1.4",
-        "ofetch": "^1.3.4",
-        "type-fest": "^4.18.2",
-        "zod": "^3.23.7"
+        "ofetch": "^1.4.1",
+        "type-fest": "^4.26.1",
+        "zod": "^3.23.8"
     },
     "devDependencies": {
         "@ti-platform/aide-build-tools": "workspace:*",
         "@types/node": "^20.12.2",
         "eslint": "^8.57.0",
-        "prettier": "^3.2.5",
-        "tsup": "^8.0.2",
-        "typedoc": "^0.26.4",
-        "typedoc-plugin-markdown": "^4.2.1",
-        "typescript": "^5.4.3",
-        "vite": "^5.2.7"
+        "prettier": "^3.3.3",
+        "tsup": "^8.3.5",
+        "typedoc": "^0.26.11",
+        "typedoc-plugin-markdown": "^4.2.10",
+        "typescript": "^5.6.3",
+        "vite": "^5.4.10"
     }
 }

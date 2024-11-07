@@ -6,7 +6,7 @@ import { resolve } from 'path';
  */
 export function getTsConfigs(jsConfigs: Linter.ConfigOverride, baseDir: string): Linter.ConfigOverride {
     return {
-        files: '*.ts',
+        files: ['*.cts', '*.ts'],
         extends: [
             // Note that we need to ensure "prettier" is last
             ...(jsConfigs.extends! as Array<string>).filter((v) => v !== 'prettier'),

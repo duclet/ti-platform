@@ -17,7 +17,7 @@ import type {
     UpdateRecordsResponseUpsert,
 } from '@src/records/update-records';
 import { updateRecords } from '@src/records/update-records';
-import { Queue } from '@ti-platform/aide';
+import { createOptional, MapPlus, Queue } from '@ti-platform/aide';
 import defu from 'defu';
 import type { $Fetch } from 'ofetch';
 import { FetchOptions, ofetch } from 'ofetch';
@@ -42,7 +42,7 @@ export class AirtableClient {
     /**
      * Queue for each base to ensure proper rate limiting per base are taken into consideration.
      */
-    private readonly queuePerBase: Map<string, Queue<unknown>>;
+    private readonly queuePerBase: MapPlus<string, Queue<unknown>>;
 
     /**
      * Create a new instance.
@@ -71,7 +71,7 @@ export class AirtableClient {
             maxPerInterval: REQUESTS_PER_SECOND_PER_ACCESS_TOKEN,
             intervalMs: 1000,
         });
-        this.queuePerBase = new Map();
+        this.queuePerBase = new MapPlus();
     }
 
     /**
@@ -162,17 +162,16 @@ export class AirtableClient {
     }
 
     private getQueueForBase(baseId: string): Queue<unknown> {
-        let queue = this.queuePerBase.get(baseId);
-        if (queue === undefined) {
-            queue = new Queue({
-                maxConcurrent: REQUESTS_PER_SECOND_PER_BASE,
-                maxPerInterval: REQUESTS_PER_SECOND_PER_BASE,
-                intervalMs: 1000,
-            });
-
-            this.queuePerBase.set(baseId, queue);
-        }
-
-        return queue;
+        return this.queuePerBase
+            .computeIfAbsent(baseId, () =>
+                createOptional(
+                    new Queue<unknown>({
+                        maxConcurrent: REQUESTS_PER_SECOND_PER_BASE,
+                        maxPerInterval: REQUESTS_PER_SECOND_PER_BASE,
+                        intervalMs: 1000,
+                    })
+                )
+            )
+            .getOrThrow();
     }
 }

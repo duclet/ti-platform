@@ -29,10 +29,12 @@ export const GENERAL_FILES = [
     './tsconfig.json',
     './tsup.config.ts',
     './vite.config.ts',
+    './vite-base.config.ts',
+    './vite-preview.config.ts',
 ];
 
 /**
- * Given a list of paths, remove files that doesn't exists.
+ * Given a list of paths, remove files that doesn't exist.
  */
 export function keepOnlyExistentPaths(paths: Array<string>) {
     const workingDir = cwd();

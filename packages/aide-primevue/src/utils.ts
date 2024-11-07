@@ -26,7 +26,7 @@ export enum ColorOption {
 export function getSeverityForBadge(colorOption: ColorOption) {
     switch (colorOption) {
         case ColorOption.HELP:
-            return null;
+            return undefined;
         default:
             return getSeverityForButton(colorOption);
     }
@@ -58,7 +58,7 @@ export function getSeverityForButton(colorOption: ColorOption) {
             return 'help';
         case ColorOption.PRIMARY:
         default:
-            return null;
+            return undefined;
     }
 }
 

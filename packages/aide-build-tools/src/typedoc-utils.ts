@@ -72,7 +72,11 @@ export async function runTypedoc() {
     const { default: remarkToc } = await import('remark-toc');
     const { default: remarkGfm } = await import('remark-gfm');
 
-    const result = remark().use(remarkGfm).use(remarkToc, { maxDepth: 3 }).processSync(readFileSync('./README.md'));
+    const result = remark()
+        .use(remarkGfm)
+        .use(remarkToc, { maxDepth: 3 })
+        .processSync(readFileSync('./README.md').toString());
+
     writeFileSync('./README.md', result.toString());
     console.log('Done.');
 }

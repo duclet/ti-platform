@@ -48,7 +48,7 @@ export type EslintConfigsParams = {
     configureJson?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;
 
     /**
-     * If we need to override or extend the configurations for `.ts` files, this handler can be provided.
+     * If we need to override or extend the configurations for `.ts` and `.cts` files, this handler can be provided.
      */
     configureTs?: (configs: Linter.ConfigOverride) => Linter.ConfigOverride;
 

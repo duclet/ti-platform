@@ -100,10 +100,10 @@ subtract from a base height the current height of some elements, this function a
 
 #### Parameters
 
-| Parameter    | Type                                                                       | Description                                                                                         |
-| ------------ | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `baseHeight` | `string`                                                                   | The base height to essentially subtract from. Ex: 90vh, 800px, 100%                                 |
-| `elements`   | `Ref`<[`ElementOrComponentWithEl`](README.md#elementorcomponentwithel)>\[] | The list of elements or components with a singular root element whose height we will subtract from. |
+| Parameter    | Type                                                                                                                                         | Description                                                                                         |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `baseHeight` | `string`                                                                                                                                     | The base height to essentially subtract from. Ex: 90vh, 800px, 100%                                 |
+| `elements`   | `Ref`<[`ElementOrComponentWithEl`](README.md#elementorcomponentwithel), [`ElementOrComponentWithEl`](README.md#elementorcomponentwithel)>\[] | The list of elements or components with a singular root element whose height we will subtract from. |
 
 #### Returns
 

@@ -6,7 +6,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
     bundle: false,
     dts: true,
-    format: ['cjs'],
+    format: ['cjs', 'esm'],
     entry: ['./src/**/*.ts'],
     outDir: './dist',
     treeshake: true,

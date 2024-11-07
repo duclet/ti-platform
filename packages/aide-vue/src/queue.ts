@@ -1,5 +1,6 @@
+import { asComputed } from '@src/reactivity';
 import { executeTasks } from '@ti-platform/aide';
-import type { Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import { computed, ref } from 'vue';
 
 /**
@@ -11,28 +12,28 @@ export type ReactiveExecuteTasksRet<T> = {
     /**
      * The current active number of workers.
      */
-    activeWorkers: Readonly<Ref<number>>;
+    activeWorkers: ComputedRef<number>;
 
     /**
      * The current number of completed tasks.
      */
-    completedTasks: Readonly<Ref<number>>;
+    completedTasks: ComputedRef<number>;
 
     /**
      * True if all the tasks have completed running, false otherwise.
      */
-    isAllTasksCompleted: Readonly<Ref<boolean>>;
+    isAllTasksCompleted: ComputedRef<boolean>;
 
     /**
      * The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it
      * is filled with the results only when it is available. You should check for undefined before using it.
      */
-    results: Readonly<Ref<Array<T>>>;
+    results: ComputedRef<Array<T>>;
 
     /**
      * The total number of tasks that was queued.
      */
-    totalTasks: Readonly<Ref<number>>;
+    totalTasks: ComputedRef<number>;
 };
 
 /**
@@ -65,10 +66,10 @@ export function reactiveExecuteTasks<T>(
     );
 
     return {
-        activeWorkers,
-        completedTasks,
         isAllTasksCompleted,
-        results,
-        totalTasks,
+        activeWorkers: asComputed(activeWorkers),
+        completedTasks: asComputed(completedTasks),
+        results: asComputed(results),
+        totalTasks: asComputed(totalTasks),
     };
 }

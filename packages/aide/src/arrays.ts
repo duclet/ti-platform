@@ -27,7 +27,7 @@ export function ensureType<V>() {
  * @param list The list to retrieve the first element for.
  * @returns The first item in the list or undefined if the list is empty.
  */
-export function first<V>(list: AnyArray<V>) {
+export function first<V>(list: AnyArray<V>): V | undefined {
     return list.find(() => true);
 }
 

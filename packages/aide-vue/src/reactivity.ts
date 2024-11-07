@@ -2,10 +2,10 @@ import type { ComputedRef, InjectionKey, Ref } from 'vue';
 import { computed, inject, provide, reactive, toRefs } from 'vue';
 
 /**
- * Shorthand method to simply convert a {@link Ref} to a {@link ComputedRef}.
+ * Shorthand method to simply convert a Ref to a ComputedRef.
  *
- * @param ref The {@link Ref} to convert.
- * @returns The {@link ComputedRef} that simply returns the value of the given {@link Ref}.
+ * @param ref The Ref to convert.
+ * @returns The ComputedRef that simply returns the value of the given Ref.
  */
 export function asComputed<T>(ref: Ref<T>): ComputedRef<T> {
     return computed(() => ref.value);

@@ -9,14 +9,9 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     plugins: [
         vue(),
-        lintAndReformat(
-            ['./src'],
-            ['.ts', '.vue'],
-            [...GENERAL_FILES, 'vite-base.config.ts', 'vite-preview.config.ts'],
-            {
-                verifyVueTs: true,
-            }
-        ),
+        lintAndReformat(['./src'], ['.ts', '.vue'], GENERAL_FILES, {
+            verifyVueTs: true,
+        }),
     ],
     build: {
         target: 'es2020',

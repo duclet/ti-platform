@@ -23,7 +23,7 @@ This package contains utility functions that can be used with Vue to enhance the
 
 ### ReactiveExecuteTasksRet\<T>
 
-> **ReactiveExecuteTasksRet**<`T`>: {`activeWorkers`: `Readonly`<`Ref`<`number`>>;`completedTasks`: `Readonly`<`Ref`<`number`>>;`isAllTasksCompleted`: `Readonly`<`Ref`<`boolean`>>;`results`: `Readonly`<`Ref`<`T`\[]>>;`totalTasks`: `Readonly`<`Ref`<`number`>>; }
+> **ReactiveExecuteTasksRet**<`T`>: {`activeWorkers`: `ComputedRef`<`number`>;`completedTasks`: `ComputedRef`<`number`>;`isAllTasksCompleted`: `ComputedRef`<`boolean`>;`results`: `ComputedRef`<`T`\[]>;`totalTasks`: `ComputedRef`<`number`>; }
 
 The return value for the function [reactiveExecuteTasks](README.md#reactiveexecutetasks).
 
@@ -35,17 +35,17 @@ The return value for the function [reactiveExecuteTasks](README.md#reactiveexecu
 
 #### Type declaration
 
-| Name                  | Type                         | Description                                                                                                                                                                                                             |
-| --------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeWorkers`       | `Readonly`<`Ref`<`number`>>  | The current active number of workers.                                                                                                                                                                                   |
-| `completedTasks`      | `Readonly`<`Ref`<`number`>>  | The current number of completed tasks.                                                                                                                                                                                  |
-| `isAllTasksCompleted` | `Readonly`<`Ref`<`boolean`>> | True if all the tasks have completed running, false otherwise.                                                                                                                                                          |
-| `results`             | `Readonly`<`Ref`<`T`\[]>>    | The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it is filled with the results only when it is available. You should check for undefined before using it. |
-| `totalTasks`          | `Readonly`<`Ref`<`number`>>  | The total number of tasks that was queued.                                                                                                                                                                              |
+| Name                  | Type                     | Description                                                                                                                                                                                                             |
+| --------------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeWorkers`       | `ComputedRef`<`number`>  | The current active number of workers.                                                                                                                                                                                   |
+| `completedTasks`      | `ComputedRef`<`number`>  | The current number of completed tasks.                                                                                                                                                                                  |
+| `isAllTasksCompleted` | `ComputedRef`<`boolean`> | True if all the tasks have completed running, false otherwise.                                                                                                                                                          |
+| `results`             | `ComputedRef`<`T`\[]>    | The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it is filled with the results only when it is available. You should check for undefined before using it. |
+| `totalTasks`          | `ComputedRef`<`number`>  | The total number of tasks that was queued.                                                                                                                                                                              |
 
 #### Defined in
 
-queue.ts:10
+queue.ts:11
 
 ***
 
@@ -73,9 +73,9 @@ Shorthand method to simply convert a Ref to a ComputedRef.
 
 #### Parameters
 
-| Parameter | Type       | Description         |
-| --------- | ---------- | ------------------- |
-| `ref`     | `Ref`<`T`> | The Ref to convert. |
+| Parameter | Type            | Description         |
+| --------- | --------------- | ------------------- |
+| `ref`     | `Ref`<`T`, `T`> | The Ref to convert. |
 
 #### Returns
 
@@ -192,10 +192,10 @@ Given a reference to a list of values, check when a value is given that it isn't
 
 #### Parameters
 
-| Parameter        | Type                             | Default value                    | Description                                                                                   |
-| ---------------- | -------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------- |
-| `existingValues` | `Ref`<(`string` \| `number`)\[]> | `undefined`                      | A reference to the list of existing values. The list should update when new values are added. |
-| `invalidMessage` | `string`                         | `DEFAULT_UNIQUE_INVALID_MESSAGE` | The message to show when validation failed.                                                   |
+| Parameter        | Type                                                        | Default value                    | Description                                                                                   |
+| ---------------- | ----------------------------------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------- |
+| `existingValues` | `Ref`<(`string` \| `number`)\[], (`string` \| `number`)\[]> | `undefined`                      | A reference to the list of existing values. The list should update when new values are added. |
+| `invalidMessage` | `string`                                                    | `DEFAULT_UNIQUE_INVALID_MESSAGE` | The message to show when validation failed.                                                   |
 
 #### Returns
 
@@ -219,7 +219,7 @@ validators.ts:38
 
 ### provideAndReturnRefs()
 
-> **provideAndReturnRefs**<`T`>(`key`, `data`): `ToRefs`<`UnwrapNestedRefs`<`T`>>
+> **provideAndReturnRefs**<`T`>(`key`, `data`): `ToRefs`<`Reactive`<`T`>>
 
 Provide the given data to child components and return the data as refs.
 
@@ -238,7 +238,7 @@ Provide the given data to child components and return the data as refs.
 
 #### Returns
 
-`ToRefs`<`UnwrapNestedRefs`<`T`>>
+`ToRefs`<`Reactive`<`T`>>
 
 #### Defined in
 
@@ -271,4 +271,4 @@ Reactive version of `@ti-platform/aide#xecuteTasks`.
 
 #### Defined in
 
-queue.ts:45
+queue.ts:46
