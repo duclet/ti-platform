@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide
 
-This log was last generated on Thu, 07 Nov 2024 20:48:29 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Nov 2024 21:15:00 GMT and should not be manually modified.
+
+## 3.4.0
+Thu, 07 Nov 2024 21:15:00 GMT
+
+### Minor changes
+
+- Adding method to find a value within MapPlus and getting the entries as an array
 
 ## 3.3.0
 Thu, 07 Nov 2024 20:48:29 GMT
