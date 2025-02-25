@@ -1,0 +1,17 @@
+{
+  "name": "@ti-platform/aide-test",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@ti-platform/aide-test_v0.1.0",
+      "date": "Tue, 25 Feb 2025 01:27:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Initial release"
+          }
+        ]
+      }
+    }
+  ]
+}

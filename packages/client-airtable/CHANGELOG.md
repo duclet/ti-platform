@@ -1,6 +1,11 @@
 # Change Log - @ti-platform/client-airtable
 
-This log was last generated on Thu, 07 Nov 2024 21:15:00 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2025 01:27:07 GMT and should not be manually modified.
+
+## 0.2.5
+Tue, 25 Feb 2025 01:27:07 GMT
+
+_Version update only_
 
 ## 0.2.4
 Thu, 07 Nov 2024 21:15:00 GMT

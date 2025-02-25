@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide-quasar",
-    "version": "3.0.12",
+    "version": "3.0.13",
     "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide-quasar",
     "repository": "https://github.com/duclet/ti-platform",
     "type": "module",

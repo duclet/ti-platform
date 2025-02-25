@@ -1,6 +1,11 @@
 # Change Log - @ti-platform/aide-primevue
 
-This log was last generated on Thu, 07 Nov 2024 21:15:00 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2025 01:27:07 GMT and should not be manually modified.
+
+## 1.0.2
+Tue, 25 Feb 2025 01:27:07 GMT
+
+_Version update only_
 
 ## 1.0.1
 Thu, 07 Nov 2024 21:15:00 GMT

@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide-test",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide-test",
     "repository": "https://github.com/duclet/ti-platform",
     "type": "module",

@@ -2,6 +2,26 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "3.1.0",
+      "tag": "@ti-platform/aide-vue_v3.1.0",
+      "date": "Tue, 25 Feb 2025 01:27:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add function asRef and tests"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.5.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-test\" to `0.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.1",
       "tag": "@ti-platform/aide-vue_v3.0.1",
       "date": "Thu, 07 Nov 2024 21:15:00 GMT",
