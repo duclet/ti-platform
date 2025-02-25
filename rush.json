@@ -421,6 +421,11 @@
       "shouldPublish":  true
     },
     {
+      "packageName": "@ti-platform/aide-test",
+      "projectFolder": "packages/aide-test",
+      "shouldPublish":  true
+    },
+    {
       "packageName": "@ti-platform/aide-build-tools",
       "projectFolder": "packages/aide-build-tools",
       "shouldPublish":  true,

@@ -1,5 +1,5 @@
+import { Awaitable } from '@ti-platform/aide';
 import { asComputed } from '@ti-platform/aide-vue';
-import type { Awaitable } from '@vueuse/core';
 import { useTimeoutFn, useTimeoutPoll } from '@vueuse/core';
 import type { ComputedRef } from 'vue';
 import { ref } from 'vue';

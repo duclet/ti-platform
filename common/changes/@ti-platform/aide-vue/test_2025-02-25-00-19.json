@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Add function asRef and tests",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}

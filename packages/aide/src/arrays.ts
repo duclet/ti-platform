@@ -1,3 +1,5 @@
+import { BiMapper, Supplier, TriMapper } from '@src/function';
+import { createOptional, Optional } from '@src/optional';
 import type { AnyArray } from '@src/types';
 
 /**
@@ -23,27 +25,34 @@ export function ensureType<V>() {
 }
 
 /**
- * @typeParam V The type of each item in the array.
- * @param list The list to retrieve the first element for.
- * @returns The first item in the list or undefined if the list is empty.
+ * Retrieve the first value in the given list or undefined if it is empty.
  */
 export function first<V>(list: AnyArray<V>): V | undefined {
     return list.find(() => true);
 }
 
 /**
- * Given a list of function, execute each until there is a function that does not return undefined. You should have at
- * least one of the function return something to prevent problems.
- *
- * @typeParam V The type of each item in the list.
- * @param list The list of functions to execute.
- * @returns The return value of the first function to not return an undefined value.
+ * Same as {@link first} except this returns an {@link Optional}.
  */
-export function firstDefined<V>(list: AnyArray<() => V | undefined>) {
-    let result: V = null as V;
+export function firstOpt<V>(list: AnyArray<V>): Optional<V> {
+    return createOptional(first(list));
+}
+
+/**
+ * Execute the functions in the list and return the value of the first supplier that return a defined value.
+ */
+export function firstDefined<V>(list: AnyArray<Supplier<V | undefined>>): V | undefined {
+    return firstDefinedOpt(list.map((fn: Supplier<V | undefined>) => () => createOptional(fn()))).orUndefined();
+}
+
+/**
+ * Same as {@link firstDefined} except both the supplier and the return value of this should be an {@link Optional}.
+ */
+export function firstDefinedOpt<V>(list: AnyArray<Supplier<Optional<V>>>): Optional<V> {
+    let result: Optional<V> = createOptional();
     list.some((item) => {
-        result = item() as V;
-        return result !== undefined;
+        result = item();
+        return result.isPresent();
     });
 
     return result;
@@ -51,13 +60,9 @@ export function firstDefined<V>(list: AnyArray<() => V | undefined>) {
 
 /**
  * Given a list of items, remove null and undefined from the list.
- *
- * @param V The type of each item in the list.
- * @param list The list of items to traverse and filter.
- * @returns The given list without null or undefined values.
  */
-export function keepOnlyDefined<V>(list: AnyArray<V>) {
-    return list.filter((item): item is NonNullable<V> => item !== null && item !== undefined);
+export function keepOnlyDefined<V>(list: AnyArray<V>): Array<NonNullable<V>> {
+    return list.filter((item) => item !== null && item !== undefined) as Array<NonNullable<V>>;
 }
 
 /**
@@ -73,9 +78,9 @@ export function keepOnlyDefined<V>(list: AnyArray<V>) {
  */
 export function toMap<K extends PropertyKey, V, V2>(
     list: AnyArray<V>,
-    keySupplier: (item: V, index: number) => K,
-    valueSupplier: (item: V, key: K, index: number) => V2
-) {
+    keySupplier: BiMapper<V, number, K>,
+    valueSupplier: TriMapper<V, K, number, V2>
+): Record<K, V2> {
     return Object.fromEntries(
         list.map((item: V, index: number) => {
             const key = keySupplier(item, index);

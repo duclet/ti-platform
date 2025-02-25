@@ -1,6 +1,13 @@
 import type { Awaitable } from '@src/types';
 
 /**
+ * Returns a promise which will resolve after the provided time.
+ */
+export function waitFor(timeMs: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, timeMs));
+}
+
+/**
  * Extracting out a `Promise`'s `resolve` and `reject` method to allow one to more easily pass around those methods.
  *
  * @typeParam T The type to resolve with.

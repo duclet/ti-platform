@@ -1,5 +1,6 @@
+import { Consumer, Mapper, Predicate } from '@src/function';
 import { createOptional, Optional } from '@src/optional';
-import type { ConsumerFn, MapperFn, PredicateFn } from '@src/types';
+import { Simplify, SimplifyOmit } from '@src/types';
 
 /**
  * @typeParam K The type of the key in the map.
@@ -19,14 +20,19 @@ export function getOrDefault<K, V>(map: Map<K, V>, key: K, defaultValue: V): V {
 export type MapPlusKey = string | number | symbol;
 
 /**
- * Predicate used by {@link MapPlus}.
+ * Type for a data used by various handlers of {@link MapPlus} which contains a value that can be null.
  */
-export type MapPlusPredicate<K extends MapPlusKey, V> = PredicateFn<{ key: K; value: V; map: MapPlus<K, V> }>;
+type MapPlusData<K extends MapPlusKey, V> = { key: K; value: V | undefined; map: MapPlus<K, V> };
+
+/**
+ * Type for a data used by various handlers of {@link MapPlus} which contains a non-nullable value.
+ */
+type MapPlusPresentData<K extends MapPlusKey, V> = { key: K; value: NonNullable<V>; map: MapPlus<K, V> };
 
 /**
  * Ensure the given is a {@link MapPlus}.
  */
-export function toMapPlus<K extends MapPlusKey, V>(from: Map<K, V> | Array<[K, V]>): MapPlus<K, V> {
+export function toMapPlus<K extends MapPlusKey, V>(from: Map<K, V> | Record<K, V> | Array<[K, V]>): MapPlus<K, V> {
     if (from instanceof MapPlus) {
         return from as MapPlus<K, V>;
     }
@@ -63,10 +69,7 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
      *
      * @returns An optional containing the value associated with the provided key.
      */
-    public compute(
-        key: K,
-        remapper: MapperFn<{ key: K; value: V | undefined; map: MapPlus<K, V> }, Optional<V>>
-    ): Optional<V> {
+    public compute(key: K, remapper: Mapper<Simplify<MapPlusData<K, V>>, Optional<V>>): Optional<V> {
         remapper({ key, value: this.get(key), map: this })
             .ifPresent((v) => this.set(key, v))
             .ifAbsent(() => this.delete(key));
@@ -80,7 +83,10 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
      *
      * @returns An optional containing the value associated with the provided key.
      */
-    public computeIfAbsent(key: K, mapper: MapperFn<{ key: K; map: MapPlus<K, V> }, Optional<V>>): Optional<V> {
+    public computeIfAbsent(
+        key: K,
+        mapper: Mapper<SimplifyOmit<MapPlusPresentData<K, V>, 'value'>, Optional<V>>
+    ): Optional<V> {
         if (!this.has(key)) {
             mapper({ key, map: this }).ifPresent((v) => this.set(key, v));
         }
@@ -94,10 +100,7 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
      *
      * @returns An optional containing the value associated with the provided key.
      */
-    public computeIfPresent(
-        key: K,
-        remapper: MapperFn<{ key: K; value: V; map: MapPlus<K, V> }, Optional<V>>
-    ): Optional<V> {
+    public computeIfPresent(key: K, remapper: Mapper<Simplify<MapPlusPresentData<K, V>>, Optional<V>>): Optional<V> {
         if (this.has(key)) {
             remapper({ key, value: this.getOrThrow(key), map: this }).ifPresent((v) => this.set(key, v));
         }
@@ -115,8 +118,8 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
     /**
      * Similar to Map#forEach except return this at the end and the consumer retrieves the data differently.
      */
-    public each(consumer: ConsumerFn<{ key: K; value: V; map: MapPlus<K, V> }>): this {
-        this.forEach((value, key) => consumer({ key, value, map: this }));
+    public each(consumer: Consumer<Simplify<MapPlusPresentData<K, V>>>): this {
+        this.forEach((value, key) => consumer({ key, value: value as NonNullable<V>, map: this }));
         return this;
     }
 
@@ -130,24 +133,30 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
     /**
      * Returns true if every entry in this map satisfies the given predicate.
      */
-    public every(predicate: MapPlusPredicate<K, V>): boolean {
-        return this.entriesAsArray().every(([key, value]) => predicate({ key, value, map: this }));
+    public every(predicate: Predicate<Simplify<MapPlusPresentData<K, V>>>): boolean {
+        return this.entriesAsArray().every(([key, value]) =>
+            predicate({ key, value: value as NonNullable<V>, map: this })
+        );
     }
 
     /**
      * Create a new map by only keeping the entries that satisfies the provided predicate.
      */
-    public filter(predicate: MapPlusPredicate<K, V>): MapPlus<K, V> {
-        return new MapPlus<K, V>(this.entriesAsArray().filter(([key, value]) => predicate({ key, value, map: this })));
+    public filter(predicate: Predicate<Simplify<MapPlusPresentData<K, V>>>): MapPlus<K, V> {
+        return new MapPlus<K, V>(
+            this.entriesAsArray().filter(([key, value]) =>
+                predicate({ key, value: value as NonNullable<V>, map: this })
+            )
+        );
     }
 
     /**
      * Get an optional for the first value that matches the given predicate.
      */
-    public find(predicate: MapPlusPredicate<K, V>): Optional<V> {
-        return createOptional(this.entriesAsArray().find(([key, value]) => predicate({ key, value, map: this }))).map(
-            ([key, value]) => value
-        );
+    public find(predicate: Predicate<Simplify<MapPlusPresentData<K, V>>>): Optional<V> {
+        return createOptional(
+            this.entriesAsArray().find(([key, value]) => predicate({ key, value: value as NonNullable<V>, map: this }))
+        ).map(([key, value]) => value);
     }
 
     /**
@@ -161,7 +170,7 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
     /**
      * Similar to Map#get but will throw an Error if the key does not exist.
      */
-    public getOrThrow(key: K): V {
+    public getOrThrow(key: K): NonNullable<V> {
         if (!this.has(key)) {
             throw new Error('Key does not exists');
         }
@@ -188,28 +197,38 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
      * that no consideration will be made in validate the keys are not duplicated meaning if the mapper function
      * generates the same key multiple times, the later will override the previous value.
      */
-    public mapKeys<R extends MapPlusKey>(mapper: MapperFn<{ key: K; value: V; map: MapPlus<K, V> }, R>): MapPlus<R, V> {
+    public mapKeys<R extends MapPlusKey>(mapper: Mapper<Simplify<MapPlusPresentData<K, V>>, R>): MapPlus<R, V> {
         return new MapPlus<R, V>(
-            this.entriesAsArray().map(([key, value]) => [mapper({ key, value, map: this }), value])
+            this.entriesAsArray().map(([key, value]) => [
+                mapper({ key, value: value as NonNullable<V>, map: this }),
+                value,
+            ])
         );
     }
 
     /**
      * Create a new version of this map with the values mapped to a different value with the provided mapper.
      */
-    public mapValues<R>(mapper: MapperFn<{ key: K; value: V; map: MapPlus<K, V> }, R>): MapPlus<K, R> {
-        return new MapPlus<K, R>(this.entriesAsArray().map(([key, value]) => [key, mapper({ key, value, map: this })]));
+    public mapValues<R>(mapper: Mapper<Simplify<MapPlusPresentData<K, V>>, R>): MapPlus<K, R> {
+        return new MapPlus<K, R>(
+            this.entriesAsArray().map(([key, value]) => [
+                key,
+                mapper({ key, value: value as NonNullable<V>, map: this }),
+            ])
+        );
     }
 
     /**
      * Set all key/value pair in the given map to this map.
      */
-    public setAll(map: Map<K, V> | Array<[K, V]>): this {
-        if (map instanceof Map) {
-            map.forEach((value, key) => this.set(key, value));
-        } else if (Array.isArray(map)) {
-            map.forEach(([key, value]) => this.set(key, value));
-        }
+    public setAll(map: Map<K, V> | Record<K, V> | Array<[K, V]>): this {
+        const asEntries = Array.isArray(map)
+            ? map
+            : map instanceof Map
+              ? Array.from(map.entries())
+              : (Object.entries(map) as Array<[K, V]>);
+
+        asEntries.forEach(([key, value]) => this.set(key, value));
 
         return this;
     }
@@ -229,15 +248,31 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
     /**
      * Returns true if at least one entry in this map satisfies the provided predicate.
      */
-    public some(predicate: MapPlusPredicate<K, V>): boolean {
-        return this.entriesAsArray().some(([key, value]) => predicate({ key, value, map: this }));
+    public some(predicate: Predicate<Simplify<MapPlusPresentData<K, V>>>): boolean {
+        return this.entriesAsArray().some(([key, value]) =>
+            predicate({ key, value: value as NonNullable<V>, map: this })
+        );
     }
 
     /**
-     * Convert this to an object of key/value pair.
+     * Convert this to an object of key/value pair with possibility of mapping the key and value.
      */
-    public toObject(): Record<K, V> {
-        return Object.fromEntries(this.entries()) as Record<K, V>;
+    public toObject<K2 extends MapPlusKey, V2>({
+        keyMapper,
+        valueMapper,
+    }: {
+        keyMapper?: Mapper<Simplify<MapPlusPresentData<K, V>>, K2>;
+        valueMapper?: Mapper<Simplify<MapPlusPresentData<K, V>>, V2>;
+    } = {}): Record<K2, V2> {
+        const realKeyMapper = keyMapper ?? (({ key }: { key: K }) => key as unknown as K2);
+        const realValueMapper = valueMapper ?? (({ value }: { value: V }) => value as unknown as V2);
+
+        return Object.fromEntries(
+            this.entriesAsArray().map(([key, value]) => [
+                realKeyMapper({ key, value: value as NonNullable<V>, map: this }),
+                realValueMapper({ key, value: value as NonNullable<V>, map: this }),
+            ])
+        ) as Record<K2, V2>;
     }
 
     /**

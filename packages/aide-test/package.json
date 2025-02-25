@@ -1,14 +1,11 @@
 {
-    "name": "@ti-platform/aide-env",
-    "version": "1.0.9",
-    "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide-env",
+    "name": "@ti-platform/aide-test",
+    "version": "0.0.0",
+    "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide-test",
     "repository": "https://github.com/duclet/ti-platform",
     "type": "module",
     "types": "./dist/index.d.ts",
-    "exports": {
-        "import": "./dist/index.js",
-        "require": "./dist/index.cjs"
-    },
+    "main": "./dist/index.js",
     "files": [
         "dist/",
         "src/",
@@ -20,13 +17,12 @@
         "build:src": "tsup",
         "clean": "rm -rf ./dist",
         "lint": "run-linter -d ./src -e .ts -g -k -c 'npx tsc --noEmit'",
-        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify 2>&1 && pnpm build:docs",
+        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify && pnpm build:docs",
         "dev": "pnpm clean && pnpm lint -w -c 'pnpm build:src'",
         "build": "pnpm prod"
     },
     "dependencies": {
-        "dotenv": "^16.4.5",
-        "dotenv-expand": "^11.0.6"
+        "vitest": "^2.1.5"
     },
     "devDependencies": {
         "@ti-platform/aide-build-tools": "workspace:*",

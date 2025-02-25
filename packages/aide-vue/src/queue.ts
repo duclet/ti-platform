@@ -1,7 +1,6 @@
-import { asComputed } from '@src/reactivity';
+import { asComputed, asRef } from '@src/reactivity';
 import { executeTasks } from '@ti-platform/aide';
-import type { ComputedRef, Ref } from 'vue';
-import { computed, ref } from 'vue';
+import { computed, ComputedRef } from 'vue';
 
 /**
  * The return value for the function {@link reactiveExecuteTasks}.
@@ -47,11 +46,11 @@ export function reactiveExecuteTasks<T>(
     tasks: ReadonlyArray<() => Promise<T>>,
     maxNumOfWorkers = 10
 ): ReactiveExecuteTasksRet<T> {
-    const activeWorkers = ref(0);
-    const totalTasks = ref(tasks.length);
-    const completedTasks = ref(0);
+    const activeWorkers = asRef(0);
+    const totalTasks = asRef(tasks.length);
+    const completedTasks = asRef(0);
     const isAllTasksCompleted = computed(() => completedTasks.value === tasks.length);
-    const results = ref([]) as Ref<Array<T>>;
+    const results = asRef<Array<T>>([]);
 
     void executeTasks(
         tasks.map((fn, index) => async () => {

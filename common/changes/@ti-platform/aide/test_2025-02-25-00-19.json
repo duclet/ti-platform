@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Add a bunch of new methods and adding tests",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}

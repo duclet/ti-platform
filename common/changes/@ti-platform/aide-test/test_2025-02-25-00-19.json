@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-test",
+      "comment": "Initial release",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-test"
+}

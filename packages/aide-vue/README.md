@@ -10,6 +10,7 @@ This package contains utility functions that can be used with Vue to enhance the
     * [ValueTypes](#valuetypes)
   * [Functions](#functions)
     * [asComputed()](#ascomputed)
+    * [asRef()](#asref)
     * [injectRefs()](#injectrefs)
     * [isRequiredField()](#isrequiredfield)
     * [isRequiredFieldWhen()](#isrequiredfieldwhen)
@@ -45,7 +46,7 @@ The return value for the function [reactiveExecuteTasks](README.md#reactiveexecu
 
 #### Defined in
 
-queue.ts:11
+queue.ts:10
 
 ***
 
@@ -85,7 +86,37 @@ The ComputedRef that simply returns the value of the given Ref.
 
 #### Defined in
 
-reactivity.ts:10
+reactivity.ts:9
+
+***
+
+### asRef()
+
+> **asRef**<`T`>(`value`): `Ref`<`T`>
+
+Basically remove the "UnwrapSimpleRef" from the inner type so things work better with arrays and objects.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type | Description            |
+| --------- | ---- | ---------------------- |
+| `value`   | `T`  | The value for the ref. |
+
+#### Returns
+
+`Ref`<`T`>
+
+The ref.
+
+#### Defined in
+
+reactivity.ts:19
 
 ***
 
@@ -113,7 +144,7 @@ Inject the data from the provided key (we are assuming the data exists) but retu
 
 #### Defined in
 
-reactivity.ts:20
+reactivity.ts:29
 
 ***
 
@@ -242,7 +273,7 @@ Provide the given data to child components and return the data as refs.
 
 #### Defined in
 
-reactivity.ts:32
+reactivity.ts:41
 
 ***
 
@@ -271,4 +302,4 @@ Reactive version of `@ti-platform/aide#xecuteTasks`.
 
 #### Defined in
 
-queue.ts:46
+queue.ts:45

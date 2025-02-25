@@ -1,5 +1,4 @@
-import type { ComputedRef, InjectionKey, Ref } from 'vue';
-import { computed, inject, provide, reactive, toRefs } from 'vue';
+import { computed, ComputedRef, inject, InjectionKey, provide, reactive, Ref, toRef, toRefs } from 'vue';
 
 /**
  * Shorthand method to simply convert a Ref to a ComputedRef.
@@ -9,6 +8,16 @@ import { computed, inject, provide, reactive, toRefs } from 'vue';
  */
 export function asComputed<T>(ref: Ref<T>): ComputedRef<T> {
     return computed(() => ref.value);
+}
+
+/**
+ * Basically remove the "UnwrapSimpleRef" from the inner type so things work better with arrays and objects.
+ *
+ * @param value The value for the ref.
+ * @returns The ref.
+ */
+export function asRef<T>(value: T): Ref<T> {
+    return toRef(value) as Ref<T>;
 }
 
 /**

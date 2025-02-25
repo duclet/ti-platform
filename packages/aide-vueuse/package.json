@@ -17,9 +17,10 @@
         "build:src": "tsup",
         "clean": "rm -rf ./dist",
         "lint": "run-linter -d ./src -e .ts -g -k -c 'npx tsc --noEmit'",
-        "prod": "pnpm clean && pnpm lint && pnpm build:src --minify && pnpm build:docs",
+        "prod": "pnpm clean && pnpm lint && pnpm test -- run --coverage && pnpm build:src --minify 2>&1 && pnpm build:docs",
         "dev": "pnpm clean && pnpm lint -w -c 'pnpm build:src'",
-        "build": "pnpm prod"
+        "build": "pnpm prod",
+        "test": "vitest"
     },
     "dependencies": {
         "@ti-platform/aide": "workspace:*",
@@ -29,12 +30,15 @@
     },
     "devDependencies": {
         "@ti-platform/aide-build-tools": "workspace:*",
+        "@ti-platform/aide-test": "workspace:*",
         "@types/node": "^20.12.2",
+        "@vitest/coverage-v8": "^2.1.5",
         "eslint": "^8.57.0",
         "prettier": "^3.3.3",
         "tsup": "^8.3.5",
         "typedoc": "^0.26.11",
         "typedoc-plugin-markdown": "^4.2.10",
-        "typescript": "^5.6.3"
+        "typescript": "^5.6.3",
+        "vitest": "^2.1.5"
     }
 }
