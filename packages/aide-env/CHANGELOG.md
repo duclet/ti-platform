@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-env
 
-This log was last generated on Thu, 07 Nov 2024 20:48:29 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Apr 2025 14:47:35 GMT and should not be manually modified.
+
+## 1.0.10
+Mon, 07 Apr 2025 14:47:35 GMT
+
+### Patches
+
+- Added tests; Upgrade dependencies
 
 ## 1.0.9
 Thu, 07 Nov 2024 20:48:29 GMT

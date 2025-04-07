@@ -2,6 +2,26 @@
   "name": "@ti-platform/aide",
   "entries": [
     {
+      "version": "3.6.0",
+      "tag": "@ti-platform/aide_v3.6.0",
+      "date": "Mon, 07 Apr 2025 14:47:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrade dependencies; Add more tests; Add function to verify array is non-empty"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `4.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-test\" to `0.2.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.5.0",
       "tag": "@ti-platform/aide_v3.5.0",
       "date": "Tue, 25 Feb 2025 01:27:07 GMT",

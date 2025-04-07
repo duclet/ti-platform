@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "@ti-platform/aide-build-tools_v4.0.0",
+      "date": "Mon, 07 Apr 2025 14:47:35 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Switch to be an ESM package (will still export CommonJS however); Upgrade dependencies; Change to using FlatConfig for ESLint; Modify some ESLint rules; Change moduleResolution to bundler for TSConfig"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.3.0",
       "tag": "@ti-platform/aide-build-tools_v3.3.0",
       "date": "Thu, 07 Nov 2024 20:48:29 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Thu, 07 Nov 2024 20:48:29 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Apr 2025 14:47:35 GMT and should not be manually modified.
+
+## 4.0.0
+Mon, 07 Apr 2025 14:47:35 GMT
+
+### Breaking changes
+
+- Switch to be an ESM package (will still export CommonJS however); Upgrade dependencies; Change to using FlatConfig for ESLint; Modify some ESLint rules; Change moduleResolution to bundler for TSConfig
 
 ## 3.3.0
 Thu, 07 Nov 2024 20:48:29 GMT
