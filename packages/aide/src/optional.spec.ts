@@ -1,4 +1,5 @@
-import { createOptional, Optional } from '@src/optional';
+import type { Optional } from '@src/optional';
+import { createOptional } from '@src/optional';
 import { expect } from '@ti-platform/aide-test';
 import { describe, test, vi } from 'vitest';
 

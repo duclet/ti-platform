@@ -39,6 +39,7 @@ Docs for more information.
     * [UnaryOperator()\<T>](#unaryoperatort)
     * [UndefinedFallback\<T, Fallback>](#undefinedfallbackt-fallback)
   * [Functions](#functions)
+    * [asNonEmptyArray()](#asnonemptyarray)
     * [createOptional()](#createoptional)
     * [ensureType()](#ensuretype)
     * [executeTasks()](#executetasks)
@@ -58,6 +59,8 @@ Docs for more information.
 
 ### Deferred\<T>
 
+Defined in: packages/aide/src/promises.ts:15
+
 Extracting out a `Promise`'s `resolve` and `reject` method to allow one to more easily pass around those methods.
 
 #### Type Parameters
@@ -68,31 +71,31 @@ Extracting out a `Promise`'s `resolve` and `reject` method to allow one to more 
 
 #### Constructors
 
-##### new Deferred()
+##### Constructor
 
-> **new Deferred**<`T`>(): [`Deferred`](README.md#deferredt)<`T`>
+> **new Deferred**<`T`>(): [`Deferred`](#deferred)<`T`>
+
+Defined in: packages/aide/src/promises.ts:37
 
 Create a new instance.
 
 ###### Returns
 
-[`Deferred`](README.md#deferredt)<`T`>
-
-###### Defined in
-
-packages/aide/src/promises.ts:37
+[`Deferred`](#deferred)<`T`>
 
 #### Properties
 
-| Property  | Modifier   | Type                                                          | Description                    |
-| --------- | ---------- | ------------------------------------------------------------- | ------------------------------ |
-| `promise` | `readonly` | `Promise`<`T`>                                                | The underlying promise.        |
-| `reject`  | `public`   | (`reason`?: `any`) => `void`                                  | Reject the internal promise.   |
-| `resolve` | `public`   | (`value`: [`Awaitable`](README.md#awaitablet)<`T`>) => `void` | Resolves the internal promise. |
+| Property                       | Modifier   | Type                  | Description                    |
+| ------------------------------ | ---------- | --------------------- | ------------------------------ |
+| <a id="promise"></a> `promise` | `readonly` | `Promise`<`T`>        | The underlying promise.        |
+| <a id="reject"></a> `reject`   | `public`   | (`reason`?) => `void` | Reject the internal promise.   |
+| <a id="resolve"></a> `resolve` | `public`   | (`value`) => `void`   | Resolves the internal promise. |
 
 ***
 
 ### MapPlus\<K, V>
+
+Defined in: packages/aide/src/map.ts:50
 
 Extension to a Map with some new methods.
 
@@ -102,16 +105,18 @@ Extension to a Map with some new methods.
 
 #### Type Parameters
 
-| Type Parameter                                     |
-| -------------------------------------------------- |
-| `K` *extends* [`MapPlusKey`](README.md#mappluskey) |
-| `V`                                                |
+| Type Parameter                            |
+| ----------------------------------------- |
+| `K` *extends* [`MapPlusKey`](#mappluskey) |
+| `V`                                       |
 
 #### Constructors
 
-##### new MapPlus()
+##### Constructor
 
-> **new MapPlus**<`K`, `V`>(`entries`?): [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>
+> **new MapPlus**<`K`, `V`>(`entries`?): [`MapPlus`](#mapplus)<`K`, `V`>
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:50
 
 ###### Parameters
 
@@ -121,19 +126,17 @@ Extension to a Map with some new methods.
 
 ###### Returns
 
-[`MapPlus`](README.md#mapplusk-v)<`K`, `V`>
+[`MapPlus`](#mapplus)<`K`, `V`>
 
 ###### Inherited from
 
 `Map<K, V>.constructor`
 
-###### Defined in
+##### Constructor
 
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:50
+> **new MapPlus**<`K`, `V`>(`iterable`?): [`MapPlus`](#mapplus)<`K`, `V`>
 
-##### new MapPlus()
-
-> **new MapPlus**<`K`, `V`>(`iterable`?): [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:49
 
 ###### Parameters
 
@@ -143,29 +146,27 @@ common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/l
 
 ###### Returns
 
-[`MapPlus`](README.md#mapplusk-v)<`K`, `V`>
+[`MapPlus`](#mapplus)<`K`, `V`>
 
 ###### Inherited from
 
 `Map<K, V>.constructor`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:49
-
 #### Properties
 
-| Property        | Modifier   | Type             | Description | Inherited from      |
-| --------------- | ---------- | ---------------- | ----------- | ------------------- |
-| `[toStringTag]` | `readonly` | `string`         | -           | `Map.[toStringTag]` |
-| `size`          | `readonly` | `number`         |             | `Map.size`          |
-| `[species]`     | `readonly` | `MapConstructor` | -           | `Map.[species]`     |
+| Property                                 | Modifier   | Type             | Inherited from      |
+| ---------------------------------------- | ---------- | ---------------- | ------------------- |
+| <a id="tostringtag"></a> `[toStringTag]` | `readonly` | `string`         | `Map.[toStringTag]` |
+| <a id="size"></a> `size`                 | `readonly` | `number`         | `Map.size`          |
+| <a id="species"></a> `[species]`         | `readonly` | `MapConstructor` | `Map.[species]`     |
 
 #### Methods
 
 ##### \[iterator]\()
 
 > **\[iterator]**(): `MapIterator`<\[`K`, `V`]>
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:143
 
 Returns an iterable of entries in the map.
 
@@ -177,15 +178,13 @@ Returns an iterable of entries in the map.
 
 `Map.[iterator]`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:143
-
 ##### asOptional()
 
-> **asOptional**(`key`): [`Optional`](README.md#optionalt)<`V`>
+> **asOptional**(`key`): [`Optional`](#optional)<`V`>
 
-Retrieve the value for the provided key as an [Optional](README.md#optionalt).
+Defined in: packages/aide/src/map.ts:54
+
+Retrieve the value for the provided key as an [Optional](#optional).
 
 ###### Parameters
 
@@ -195,15 +194,13 @@ Retrieve the value for the provided key as an [Optional](README.md#optionalt).
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`V`>
-
-###### Defined in
-
-packages/aide/src/map.ts:53
+[`Optional`](#optional)<`V`>
 
 ##### clear()
 
 > **clear**(): `void`
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:20
 
 ###### Returns
 
@@ -213,13 +210,11 @@ packages/aide/src/map.ts:53
 
 `Map.clear`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:20
-
 ##### clearAndReturn()
 
 > **clearAndReturn**(): `this`
+
+Defined in: packages/aide/src/map.ts:61
 
 Same as Map#clear but returns this instance after clearing.
 
@@ -227,13 +222,11 @@ Same as Map#clear but returns this instance after clearing.
 
 `this`
 
-###### Defined in
-
-packages/aide/src/map.ts:60
-
 ##### compute()
 
-> **compute**(`key`, `remapper`): [`Optional`](README.md#optionalt)<`V`>
+> **compute**(`key`, `remapper`): [`Optional`](#optional)<`V`>
+
+Defined in: packages/aide/src/map.ts:73
 
 Attempts to compute a mapping for the specified key and its current mapped value, or undefined if there is no
 current mapping. If the remapping function returns undefined or null, the mapping is removed (or remains absent
@@ -241,72 +234,66 @@ if initially absent).
 
 ###### Parameters
 
-| Parameter  | Type                                                                                                                                                                   |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `key`      | `K`                                                                                                                                                                    |
-| `remapper` | [`Mapper`](README.md#mappert-r)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `undefined` \| `V`; }, [`Optional`](README.md#optionalt)<`V`>> |
+| Parameter  | Type                                                                                                                                    |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`      | `K`                                                                                                                                     |
+| `remapper` | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `undefined` \| `V`; }, [`Optional`](#optional)<`V`>> |
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`V`>
+[`Optional`](#optional)<`V`>
 
 An optional containing the value associated with the provided key.
 
-###### Defined in
-
-packages/aide/src/map.ts:72
-
 ##### computeIfAbsent()
 
-> **computeIfAbsent**(`key`, `mapper`): [`Optional`](README.md#optionalt)<`V`>
+> **computeIfAbsent**(`key`, `mapper`): [`Optional`](#optional)<`V`>
+
+Defined in: packages/aide/src/map.ts:87
 
 If the value for the specified key is absent, attempts to compute its value using the given mapping function and
 enters it into this map unless undefined or null.
 
 ###### Parameters
 
-| Parameter | Type                                                                                                                                       |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `key`     | `K`                                                                                                                                        |
-| `mapper`  | [`Mapper`](README.md#mappert-r)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>; }, [`Optional`](README.md#optionalt)<`V`>> |
+| Parameter | Type                                                                                                       |
+| --------- | ---------------------------------------------------------------------------------------------------------- |
+| `key`     | `K`                                                                                                        |
+| `mapper`  | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; }, [`Optional`](#optional)<`V`>> |
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`V`>
+[`Optional`](#optional)<`V`>
 
 An optional containing the value associated with the provided key.
 
-###### Defined in
-
-packages/aide/src/map.ts:86
-
 ##### computeIfPresent()
 
-> **computeIfPresent**(`key`, `remapper`): [`Optional`](README.md#optionalt)<`V`>
+> **computeIfPresent**(`key`, `remapper`): [`Optional`](#optional)<`V`>
+
+Defined in: packages/aide/src/map.ts:104
 
 If the value for the specified key is present, attempts to compute a new mapping given the key and its current
 mapped value. If the remapping function returns undefined or null, the mapping is removed.
 
 ###### Parameters
 
-| Parameter  | Type                                                                                                                                                                   |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `key`      | `K`                                                                                                                                                                    |
-| `remapper` | [`Mapper`](README.md#mappert-r)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }, [`Optional`](README.md#optionalt)<`V`>> |
+| Parameter  | Type                                                                                                                                    |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`      | `K`                                                                                                                                     |
+| `remapper` | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, [`Optional`](#optional)<`V`>> |
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`V`>
+[`Optional`](#optional)<`V`>
 
 An optional containing the value associated with the provided key.
-
-###### Defined in
-
-packages/aide/src/map.ts:103
 
 ##### contains()
 
 > **contains**(`item`): `boolean`
+
+Defined in: packages/aide/src/map.ts:115
 
 Returns true if this map maps one or more keys to the specified value.
 
@@ -320,13 +307,11 @@ Returns true if this map maps one or more keys to the specified value.
 
 `boolean`
 
-###### Defined in
-
-packages/aide/src/map.ts:114
-
 ##### delete()
 
 > **delete**(`key`): `boolean`
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:24
 
 ###### Parameters
 
@@ -344,33 +329,29 @@ true if an element in the Map existed and has been removed, or false if the elem
 
 `Map.delete`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:24
-
 ##### each()
 
 > **each**(`consumer`): `this`
+
+Defined in: packages/aide/src/map.ts:122
 
 Similar to Map#forEach except return this at the end and the consumer retrieves the data differently.
 
 ###### Parameters
 
-| Parameter  | Type                                                                                                                             |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `consumer` | [`Consumer`](README.md#consumert)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }> |
+| Parameter  | Type                                                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------------------------- |
+| `consumer` | [`Consumer`](#consumer)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }> |
 
 ###### Returns
 
 `this`
 
-###### Defined in
-
-packages/aide/src/map.ts:121
-
 ##### entries()
 
 > **entries**(): `MapIterator`<\[`K`, `V`]>
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:148
 
 Returns an iterable of key, value pairs for every entry in the map.
 
@@ -382,13 +363,11 @@ Returns an iterable of key, value pairs for every entry in the map.
 
 `Map.entries`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:148
-
 ##### entriesAsArray()
 
 > **entriesAsArray**(): \[`K`, `V`]\[]
+
+Defined in: packages/aide/src/map.ts:130
 
 Get the entries as an array.
 
@@ -396,73 +375,65 @@ Get the entries as an array.
 
 \[`K`, `V`]\[]
 
-###### Defined in
-
-packages/aide/src/map.ts:129
-
 ##### every()
 
 > **every**(`predicate`): `boolean`
+
+Defined in: packages/aide/src/map.ts:137
 
 Returns true if every entry in this map satisfies the given predicate.
 
 ###### Parameters
 
-| Parameter   | Type                                                                                                                               |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `predicate` | [`Predicate`](README.md#predicatet)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }> |
+| Parameter   | Type                                                                                                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------- |
+| `predicate` | [`Predicate`](#predicate)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }> |
 
 ###### Returns
 
 `boolean`
 
-###### Defined in
-
-packages/aide/src/map.ts:136
-
 ##### filter()
 
-> **filter**(`predicate`): [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>
+> **filter**(`predicate`): [`MapPlus`](#mapplus)<`K`, `V`>
+
+Defined in: packages/aide/src/map.ts:146
 
 Create a new map by only keeping the entries that satisfies the provided predicate.
 
 ###### Parameters
 
-| Parameter   | Type                                                                                                                               |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `predicate` | [`Predicate`](README.md#predicatet)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }> |
+| Parameter   | Type                                                                                                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------- |
+| `predicate` | [`Predicate`](#predicate)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }> |
 
 ###### Returns
 
-[`MapPlus`](README.md#mapplusk-v)<`K`, `V`>
-
-###### Defined in
-
-packages/aide/src/map.ts:145
+[`MapPlus`](#mapplus)<`K`, `V`>
 
 ##### find()
 
-> **find**(`predicate`): [`Optional`](README.md#optionalt)<`V`>
+> **find**(`predicate`): [`Optional`](#optional)<`V`>
+
+Defined in: packages/aide/src/map.ts:157
 
 Get an optional for the first value that matches the given predicate.
 
 ###### Parameters
 
-| Parameter   | Type                                                                                                                               |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `predicate` | [`Predicate`](README.md#predicatet)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }> |
+| Parameter   | Type                                                                                                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------- |
+| `predicate` | [`Predicate`](#predicate)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }> |
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`V`>
-
-###### Defined in
-
-packages/aide/src/map.ts:156
+[`Optional`](#optional)<`V`>
 
 ##### forEach()
 
 > **forEach**(`callbackfn`, `thisArg`?): `void`
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:28
 
 Executes a provided function once per each key/value pair in the Map, in insertion order.
 
@@ -481,13 +452,11 @@ Executes a provided function once per each key/value pair in the Map, in inserti
 
 `Map.forEach`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:28
-
 ##### get()
 
 > **get**(`key`): `undefined` | `V`
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:33
 
 Returns a specified element from the Map object. If the value that is associated to the provided key is an object, then you will get a reference to that object and any change made to that object will effectively modify it inside the Map.
 
@@ -507,13 +476,11 @@ Returns the element associated with the specified key. If no element is associat
 
 `Map.get`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:33
-
 ##### getOrDefault()
 
 > **getOrDefault**(`key`, `defaultValue`): `V`
+
+Defined in: packages/aide/src/map.ts:167
 
 If this map has the provided key, return the value associated with that key, otherwise return the provided
 default value.
@@ -529,13 +496,11 @@ default value.
 
 `V`
 
-###### Defined in
-
-packages/aide/src/map.ts:166
-
 ##### getOrThrow()
 
 > **getOrThrow**(`key`): `NonNullable`<`V`>
+
+Defined in: packages/aide/src/map.ts:174
 
 Similar to Map#get but will throw an Error if the key does not exist.
 
@@ -549,13 +514,11 @@ Similar to Map#get but will throw an Error if the key does not exist.
 
 `NonNullable`<`V`>
 
-###### Defined in
-
-packages/aide/src/map.ts:173
-
 ##### has()
 
 > **has**(`key`): `boolean`
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:37
 
 ###### Parameters
 
@@ -573,13 +536,11 @@ boolean indicating whether an element with the specified key exists or not.
 
 `Map.has`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:37
-
 ##### isEmpty()
 
 > **isEmpty**(): `boolean`
+
+Defined in: packages/aide/src/map.ts:185
 
 Returns true if this map contains no key-value mappings.
 
@@ -587,13 +548,11 @@ Returns true if this map contains no key-value mappings.
 
 `boolean`
 
-###### Defined in
-
-packages/aide/src/map.ts:184
-
 ##### keys()
 
 > **keys**(): `MapIterator`<`K`>
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:153
 
 Returns an iterable of keys in the map
 
@@ -605,13 +564,11 @@ Returns an iterable of keys in the map
 
 `Map.keys`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:153
-
 ##### keysArray()
 
 > **keysArray**(): `K`\[]
+
+Defined in: packages/aide/src/map.ts:192
 
 Retrieve the keys as an array.
 
@@ -619,13 +576,11 @@ Retrieve the keys as an array.
 
 `K`\[]
 
-###### Defined in
-
-packages/aide/src/map.ts:191
-
 ##### mapKeys()
 
-> **mapKeys**<`R`>(`mapper`): [`MapPlus`](README.md#mapplusk-v)<`R`, `V`>
+> **mapKeys**<`R`>(`mapper`): [`MapPlus`](#mapplus)<`R`, `V`>
+
+Defined in: packages/aide/src/map.ts:201
 
 Create a new version of this map with the keys mapped to a different value with the provided mapper. Please note
 that no consideration will be made in validate the keys are not duplicated meaning if the mapper function
@@ -633,27 +588,25 @@ generates the same key multiple times, the later will override the previous valu
 
 ###### Type Parameters
 
-| Type Parameter                                     |
-| -------------------------------------------------- |
-| `R` *extends* [`MapPlusKey`](README.md#mappluskey) |
+| Type Parameter                            |
+| ----------------------------------------- |
+| `R` *extends* [`MapPlusKey`](#mappluskey) |
 
 ###### Parameters
 
-| Parameter | Type                                                                                                                                |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `mapper`  | [`Mapper`](README.md#mappert-r)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }, `R`> |
+| Parameter | Type                                                                                                           |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| `mapper`  | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `R`> |
 
 ###### Returns
 
-[`MapPlus`](README.md#mapplusk-v)<`R`, `V`>
-
-###### Defined in
-
-packages/aide/src/map.ts:200
+[`MapPlus`](#mapplus)<`R`, `V`>
 
 ##### mapValues()
 
-> **mapValues**<`R`>(`mapper`): [`MapPlus`](README.md#mapplusk-v)<`K`, `R`>
+> **mapValues**<`R`>(`mapper`): [`MapPlus`](#mapplus)<`K`, `R`>
+
+Defined in: packages/aide/src/map.ts:213
 
 Create a new version of this map with the values mapped to a different value with the provided mapper.
 
@@ -665,21 +618,19 @@ Create a new version of this map with the values mapped to a different value wit
 
 ###### Parameters
 
-| Parameter | Type                                                                                                                                |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `mapper`  | [`Mapper`](README.md#mappert-r)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }, `R`> |
+| Parameter | Type                                                                                                           |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| `mapper`  | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `R`> |
 
 ###### Returns
 
-[`MapPlus`](README.md#mapplusk-v)<`K`, `R`>
-
-###### Defined in
-
-packages/aide/src/map.ts:212
+[`MapPlus`](#mapplus)<`K`, `R`>
 
 ##### set()
 
 > **set**(`key`, `value`): `this`
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:41
 
 Adds a new element with a specified key and value to the Map. If an element with the same key already exists, the element will be updated.
 
@@ -698,13 +649,11 @@ Adds a new element with a specified key and value to the Map. If an element with
 
 `Map.set`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:41
-
 ##### setAll()
 
 > **setAll**(`map`): `this`
+
+Defined in: packages/aide/src/map.ts:225
 
 Set all key/value pair in the given map to this map.
 
@@ -718,13 +667,11 @@ Set all key/value pair in the given map to this map.
 
 `this`
 
-###### Defined in
-
-packages/aide/src/map.ts:224
-
 ##### setIfAbsent()
 
 > **setIfAbsent**(`key`, `value`): `V`
+
+Defined in: packages/aide/src/map.ts:240
 
 Set the provided value to the provided key if it doesn't exists, returning the new current value.
 
@@ -739,62 +686,56 @@ Set the provided value to the provided key if it doesn't exists, returning the n
 
 `V`
 
-###### Defined in
-
-packages/aide/src/map.ts:239
-
 ##### some()
 
 > **some**(`predicate`): `boolean`
+
+Defined in: packages/aide/src/map.ts:252
 
 Returns true if at least one entry in this map satisfies the provided predicate.
 
 ###### Parameters
 
-| Parameter   | Type                                                                                                                               |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `predicate` | [`Predicate`](README.md#predicatet)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }> |
+| Parameter   | Type                                                                                                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------- |
+| `predicate` | [`Predicate`](#predicate)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }> |
 
 ###### Returns
 
 `boolean`
 
-###### Defined in
-
-packages/aide/src/map.ts:251
-
 ##### toObject()
 
 > **toObject**<`K2`, `V2`>(`__namedParameters`): `Record`<`K2`, `V2`>
+
+Defined in: packages/aide/src/map.ts:261
 
 Convert this to an object of key/value pair with possibility of mapping the key and value.
 
 ###### Type Parameters
 
-| Type Parameter                                      |
-| --------------------------------------------------- |
-| `K2` *extends* [`MapPlusKey`](README.md#mappluskey) |
-| `V2`                                                |
+| Type Parameter                             |
+| ------------------------------------------ |
+| `K2` *extends* [`MapPlusKey`](#mappluskey) |
+| `V2`                                       |
 
 ###### Parameters
 
-| Parameter                        | Type                                                                                                                                 |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `__namedParameters`              | `object`                                                                                                                             |
-| `__namedParameters.keyMapper`?   | [`Mapper`](README.md#mappert-r)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }, `K2`> |
-| `__namedParameters.valueMapper`? | [`Mapper`](README.md#mappert-r)<{`key`: `K`;`map`: [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>;`value`: `NonNullable`<`V`>; }, `V2`> |
+| Parameter                        | Type                                                                                                                                                                                                                                                              |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`              | { `keyMapper`: [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `K2`>; `valueMapper`: [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `V2`>; } |
+| `__namedParameters.keyMapper`?   | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `K2`>                                                                                                                                                   |
+| `__namedParameters.valueMapper`? | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `V2`>                                                                                                                                                   |
 
 ###### Returns
 
 `Record`<`K2`, `V2`>
 
-###### Defined in
-
-packages/aide/src/map.ts:260
-
 ##### values()
 
 > **values**(): `MapIterator`<`V`>
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:158
 
 Returns an iterable of values in the map
 
@@ -806,13 +747,11 @@ Returns an iterable of values in the map
 
 `Map.values`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:158
-
 ##### valuesArray()
 
 > **valuesArray**(): `V`\[]
+
+Defined in: packages/aide/src/map.ts:282
 
 Retrieves all values as an array.
 
@@ -820,13 +759,11 @@ Retrieves all values as an array.
 
 `V`\[]
 
-###### Defined in
-
-packages/aide/src/map.ts:281
-
 ##### groupBy()
 
 > `static` **groupBy**<`K`, `T`>(`items`, `keySelector`): `Map`<`K`, `T`\[]>
+
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2024.collection.d.ts:25
 
 Groups members of an iterable according to the return value of the passed callback.
 
@@ -839,10 +776,10 @@ Groups members of an iterable according to the return value of the passed callba
 
 ###### Parameters
 
-| Parameter     | Type                          | Description                                              |
-| ------------- | ----------------------------- | -------------------------------------------------------- |
-| `items`       | `Iterable`<`T`, `any`, `any`> | An iterable.                                             |
-| `keySelector` | (`item`, `index`) => `K`      | A callback which will be invoked for each item in items. |
+| Parameter     | Type                     | Description                                              |
+| ------------- | ------------------------ | -------------------------------------------------------- |
+| `items`       | `Iterable`<`T`>          | An iterable.                                             |
+| `keySelector` | (`item`, `index`) => `K` | A callback which will be invoked for each item in items. |
 
 ###### Returns
 
@@ -852,13 +789,11 @@ Groups members of an iterable according to the return value of the passed callba
 
 `Map.groupBy`
 
-###### Defined in
-
-common/temp/node\_modules/.pnpm/typescript\@5.6.3/node\_modules/typescript/lib/lib.esnext.collection.d.ts:25
-
 ***
 
 ### Queue\<T>
+
+Defined in: packages/aide/src/queue.ts:76
 
 Queue that execute handlers as per the configured concurrency limit. It also has the ability to rate limit how much
 execution happens within an interval.
@@ -871,54 +806,54 @@ execution happens within an interval.
 
 #### Constructors
 
-##### new Queue()
+##### Constructor
 
-> **new Queue**<`T`>(`__namedParameters`): [`Queue`](README.md#queuet)<`T`>
+> **new Queue**<`T`>(`__namedParameters`): [`Queue`](#queue)<`T`>
+
+Defined in: packages/aide/src/queue.ts:146
 
 Create a new instance.
 
 ###### Parameters
 
-| Parameter                           | Type     | Description                                                                                                                                                                                             |
-| ----------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__namedParameters`                 | `object` | -                                                                                                                                                                                                       |
-| `__namedParameters.intervalMs`?     | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
-| `__namedParameters.maxConcurrent`   | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
-| `__namedParameters.maxPerInterval`? | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
+| Parameter                           | Type                                                                               | Description                                                                                                                                                                                             |
+| ----------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`                 | { `intervalMs`: `number`; `maxConcurrent`: `number`; `maxPerInterval`: `number`; } | -                                                                                                                                                                                                       |
+| `__namedParameters.intervalMs`?     | `number`                                                                           | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| `__namedParameters.maxConcurrent`   | `number`                                                                           | Maximum number of concurrent executions.                                                                                                                                                                |
+| `__namedParameters.maxPerInterval`? | `number`                                                                           | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
 
 ###### Returns
 
-[`Queue`](README.md#queuet)<`T`>
-
-###### Defined in
-
-packages/aide/src/queue.ts:146
+[`Queue`](#queue)<`T`>
 
 #### Properties
 
-| Property         | Modifier   | Type     | Description                                                                                                                                                                                             |
-| ---------------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `intervalMs`     | `readonly` | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
-| `maxConcurrent`  | `readonly` | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
-| `maxPerInterval` | `readonly` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
+| Property                                     | Modifier   | Type     | Description                                                                                                                                                                                             |
+| -------------------------------------------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="intervalms"></a> `intervalMs`         | `readonly` | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| <a id="maxconcurrent"></a> `maxConcurrent`   | `readonly` | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
+| <a id="maxperinterval"></a> `maxPerInterval` | `readonly` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
 
 #### Methods
 
 ##### add()
 
-> **add**(`item`): {`onAfterStart`: `Promise`<`void`>;`onBeforeStart`: `Promise`<`void`>;`onEnd`: `Promise`<`T`>; }
+> **add**(`item`): { `onAfterStart`: `Promise`<`void`>; `onBeforeStart`: `Promise`<`void`>; `onEnd`: `Promise`<`T`>; }
+
+Defined in: packages/aide/src/queue.ts:157
 
 Add a new item to the queue for execution.
 
 ###### Parameters
 
-| Parameter | Type                                     |
-| --------- | ---------------------------------------- |
-| `item`    | [`QueueItem`](README.md#queueitemt)<`T`> |
+| Parameter | Type                           |
+| --------- | ------------------------------ |
+| `item`    | [`QueueItem`](#queueitem)<`T`> |
 
 ###### Returns
 
-{`onAfterStart`: `Promise`<`void`>;`onBeforeStart`: `Promise`<`void`>;`onEnd`: `Promise`<`T`>; }
+{ `onAfterStart`: `Promise`<`void`>; `onBeforeStart`: `Promise`<`void`>; `onEnd`: `Promise`<`T`>; }
 
 | Name            | Type              | Description                                                                                                        |
 | --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -930,13 +865,11 @@ Add a new item to the queue for execution.
 
 Error if items can no longer be added.
 
-###### Defined in
-
-packages/aide/src/queue.ts:157
-
 ##### lockQueue()
 
 > **lockQueue**(): `Promise`<`void`>
+
+Defined in: packages/aide/src/queue.ts:181
 
 Lock the queue and return a promise that will resolve when all the handlers finished execution.
 
@@ -944,13 +877,11 @@ Lock the queue and return a promise that will resolve when all the handlers fini
 
 `Promise`<`void`>
 
-###### Defined in
-
-packages/aide/src/queue.ts:181
-
 ## Interfaces
 
 ### Optional\<T>
+
+Defined in: packages/aide/src/optional.ts:6
 
 Wrapper around values that are either present or absent (null or undefined).
 
@@ -964,31 +895,31 @@ Wrapper around values that are either present or absent (null or undefined).
 
 ##### filter()
 
-> **filter**(`predicate`): [`Optional`](README.md#optionalt)<`T`>
+> **filter**(`predicate`): [`Optional`](#optional)<`T`>
+
+Defined in: packages/aide/src/optional.ts:11
 
 If a value is present and the value matches the given predicate, return an Optional describing the value,
 otherwise return an empty Optional.
 
 ###### Parameters
 
-| Parameter   | Type                                                    |
-| ----------- | ------------------------------------------------------- |
-| `predicate` | [`Predicate`](README.md#predicatet)<`NonNullable`<`T`>> |
+| Parameter   | Type                                          |
+| ----------- | --------------------------------------------- |
+| `predicate` | [`Predicate`](#predicate)<`NonNullable`<`T`>> |
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`T`>
-
-###### Defined in
-
-packages/aide/src/optional.ts:11
+[`Optional`](#optional)<`T`>
 
 ##### flatMap()
 
-> **flatMap**<`R`>(`mapper`): [`Optional`](README.md#optionalt)<`R`>
+> **flatMap**<`R`>(`mapper`): [`Optional`](#optional)<`R`>
+
+Defined in: packages/aide/src/optional.ts:18
 
 If a value is present, apply the provided Optional-bearing mapping function to it, return that result, otherwise
-return an empty Optional. This method is similar to [map](README.md#map), but the provided mapper is one whose result is
+return an empty Optional. This method is similar to [map](#map), but the provided mapper is one whose result is
 already an Optional, and if invoked, flatMap does not wrap it with an additional Optional.
 
 ###### Type Parameters
@@ -999,21 +930,19 @@ already an Optional, and if invoked, flatMap does not wrap it with an additional
 
 ###### Parameters
 
-| Parameter | Type                                                                                        |
-| --------- | ------------------------------------------------------------------------------------------- |
-| `mapper`  | [`Mapper`](README.md#mappert-r)<`NonNullable`<`T`>, [`Optional`](README.md#optionalt)<`R`>> |
+| Parameter | Type                                                                  |
+| --------- | --------------------------------------------------------------------- |
+| `mapper`  | [`Mapper`](#mapper)<`NonNullable`<`T`>, [`Optional`](#optional)<`R`>> |
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`R`>
-
-###### Defined in
-
-packages/aide/src/optional.ts:18
+[`Optional`](#optional)<`R`>
 
 ##### getOrThrow()
 
 > **getOrThrow**(): `NonNullable`<`T`>
+
+Defined in: packages/aide/src/optional.ts:23
 
 If the value is present, returns the value, otherwise throws an Error.
 
@@ -1021,53 +950,47 @@ If the value is present, returns the value, otherwise throws an Error.
 
 `NonNullable`<`T`>
 
-###### Defined in
-
-packages/aide/src/optional.ts:23
-
 ##### ifAbsent()
 
 > **ifAbsent**(`handler`): `this`
+
+Defined in: packages/aide/src/optional.ts:28
 
 If the value is absent, invoke the specified handler, otherwise do nothing.
 
 ###### Parameters
 
-| Parameter | Type                             |
-| --------- | -------------------------------- |
-| `handler` | [`Runnable`](README.md#runnable) |
+| Parameter | Type                    |
+| --------- | ----------------------- |
+| `handler` | [`Runnable`](#runnable) |
 
 ###### Returns
 
 `this`
-
-###### Defined in
-
-packages/aide/src/optional.ts:28
 
 ##### ifPresent()
 
 > **ifPresent**(`consumer`): `this`
 
+Defined in: packages/aide/src/optional.ts:33
+
 If a value is present, invoke the specified consumer with the value, otherwise do nothing.
 
 ###### Parameters
 
-| Parameter  | Type                                                  |
-| ---------- | ----------------------------------------------------- |
-| `consumer` | [`Consumer`](README.md#consumert)<`NonNullable`<`T`>> |
+| Parameter  | Type                                        |
+| ---------- | ------------------------------------------- |
+| `consumer` | [`Consumer`](#consumer)<`NonNullable`<`T`>> |
 
 ###### Returns
 
 `this`
 
-###### Defined in
-
-packages/aide/src/optional.ts:33
-
 ##### isAbsent()
 
 > **isAbsent**(): `boolean`
+
+Defined in: packages/aide/src/optional.ts:38
 
 If a value is absent (null or undefined), returns true, otherwise false.
 
@@ -1075,13 +998,11 @@ If a value is absent (null or undefined), returns true, otherwise false.
 
 `boolean`
 
-###### Defined in
-
-packages/aide/src/optional.ts:38
-
 ##### isPresent()
 
 > **isPresent**(): `boolean`
+
+Defined in: packages/aide/src/optional.ts:43
 
 If a value is present, returns true, otherwise false.
 
@@ -1089,13 +1010,11 @@ If a value is present, returns true, otherwise false.
 
 `boolean`
 
-###### Defined in
-
-packages/aide/src/optional.ts:43
-
 ##### map()
 
-> **map**<`R`>(`mapper`): [`Optional`](README.md#optionalt)<`R`>
+> **map**<`R`>(`mapper`): [`Optional`](#optional)<`R`>
+
+Defined in: packages/aide/src/optional.ts:49
 
 If a value is present, apply the provided mapping function to it, and if the result is present, return an
 Optional describing the result, otherwise, return an empty Optional.
@@ -1108,42 +1027,38 @@ Optional describing the result, otherwise, return an empty Optional.
 
 ###### Parameters
 
-| Parameter | Type                                                     |
-| --------- | -------------------------------------------------------- |
-| `mapper`  | [`Mapper`](README.md#mappert-r)<`NonNullable`<`T`>, `R`> |
+| Parameter | Type                                         |
+| --------- | -------------------------------------------- |
+| `mapper`  | [`Mapper`](#mapper)<`NonNullable`<`T`>, `R`> |
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`R`>
-
-###### Defined in
-
-packages/aide/src/optional.ts:49
+[`Optional`](#optional)<`R`>
 
 ##### or()
 
-> **or**(`other`): [`Optional`](README.md#optionalt)<`T`>
+> **or**(`other`): [`Optional`](#optional)<`T`>
+
+Defined in: packages/aide/src/optional.ts:55
 
 If a value is present, returns an Optional describing the value, otherwise returns an Optional produced by the
 supplying function.
 
 ###### Parameters
 
-| Parameter | Type                                                                      |
-| --------- | ------------------------------------------------------------------------- |
-| `other`   | [`Supplier`](README.md#suppliert)<[`Optional`](README.md#optionalt)<`T`>> |
+| Parameter | Type                                                  |
+| --------- | ----------------------------------------------------- |
+| `other`   | [`Supplier`](#supplier)<[`Optional`](#optional)<`T`>> |
 
 ###### Returns
 
-[`Optional`](README.md#optionalt)<`T`>
-
-###### Defined in
-
-packages/aide/src/optional.ts:55
+[`Optional`](#optional)<`T`>
 
 ##### orElse()
 
 > **orElse**(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:60
 
 If a value is present, returns the value, otherwise returns other.
 
@@ -1157,33 +1072,29 @@ If a value is present, returns the value, otherwise returns other.
 
 `T`
 
-###### Defined in
-
-packages/aide/src/optional.ts:60
-
 ##### orElseGet()
 
 > **orElseGet**(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:65
 
 If a value is present, returns the value, otherwise returns the result produced by the supplying function.
 
 ###### Parameters
 
-| Parameter | Type                                   |
-| --------- | -------------------------------------- |
-| `other`   | [`Supplier`](README.md#suppliert)<`T`> |
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `other`   | [`Supplier`](#supplier)<`T`> |
 
 ###### Returns
 
 `T`
 
-###### Defined in
-
-packages/aide/src/optional.ts:65
-
 ##### orElseThrow()
 
 > **orElseThrow**<`X`>(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:70
 
 If a value is present, returns the value, otherwise throws an exception to be created by the provided supplier.
 
@@ -1195,21 +1106,19 @@ If a value is present, returns the value, otherwise throws an exception to be cr
 
 ###### Parameters
 
-| Parameter | Type                                   |
-| --------- | -------------------------------------- |
-| `other`   | [`Supplier`](README.md#suppliert)<`X`> |
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `other`   | [`Supplier`](#supplier)<`X`> |
 
 ###### Returns
 
 `T`
 
-###### Defined in
-
-packages/aide/src/optional.ts:70
-
 ##### orUndefined()
 
 > **orUndefined**(): `undefined` | `NonNullable`<`T`>
+
+Defined in: packages/aide/src/optional.ts:75
 
 If a value is present, returns the value, otherwise return undefined.
 
@@ -1217,29 +1126,29 @@ If a value is present, returns the value, otherwise return undefined.
 
 `undefined` | `NonNullable`<`T`>
 
-###### Defined in
-
-packages/aide/src/optional.ts:75
-
 ***
 
 ### QueueConstructorOptions
 
-Arguments for constructing a [Queue](README.md#queuet).
+Defined in: packages/aide/src/queue.ts:35
+
+Arguments for constructing a [Queue](#queue).
 
 #### Properties
 
-| Property          | Type     | Description                                                                                                                                                                                             |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `intervalMs?`     | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
-| `maxConcurrent`   | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
-| `maxPerInterval?` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
+| Property                                        | Type     | Description                                                                                                                                                                                             |
+| ----------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="intervalms-1"></a> `intervalMs?`         | `number` | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| <a id="maxconcurrent-1"></a> `maxConcurrent`    | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
+| <a id="maxperinterval-1"></a> `maxPerInterval?` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
 
 ## Type Aliases
 
 ### AnyArray\<V>
 
-> **AnyArray**<`V`>: `V`\[] | `ReadonlyArray`<`V`>
+> **AnyArray**<`V`> = `V`\[] | `ReadonlyArray`<`V`>
+
+Defined in: packages/aide/src/types.ts:11
 
 Type matching against both a writable array and a readonly array.
 
@@ -1249,15 +1158,13 @@ Type matching against both a writable array and a readonly array.
 | -------------- | ----------------------------------- |
 | `V`            | The type of each item in the array. |
 
-#### Defined in
-
-packages/aide/src/types.ts:11
-
 ***
 
 ### Awaitable\<T>
 
-> **Awaitable**<`T`>: `T` | `Promise`<`T`>
+> **Awaitable**<`T`> = `T` | `Promise`<`T`>
+
+Defined in: packages/aide/src/types.ts:4
 
 The type is simply `T` or a promise which, when resolved, is given `T`.
 
@@ -1267,15 +1174,13 @@ The type is simply `T` or a promise which, when resolved, is given `T`.
 | -------------- |
 | `T`            |
 
-#### Defined in
-
-packages/aide/src/types.ts:4
-
 ***
 
 ### BiConsumer()\<T, U>
 
-> **BiConsumer**<`T`, `U`>: (`t`, `u`) => `void`
+> **BiConsumer**<`T`, `U`> = (`t`, `u`) => `void`
+
+Defined in: packages/aide/src/function.ts:4
 
 Represents an operation that accepts two input arguments and returns no result.
 
@@ -1297,15 +1202,13 @@ Represents an operation that accepts two input arguments and returns no result.
 
 `void`
 
-#### Defined in
-
-packages/aide/src/function.ts:4
-
 ***
 
 ### BiMapper()\<T, U, R>
 
-> **BiMapper**<`T`, `U`, `R`>: (`t`, `u`) => `R`
+> **BiMapper**<`T`, `U`, `R`> = (`t`, `u`) => `R`
+
+Defined in: packages/aide/src/function.ts:9
 
 Represents a function that accepts two arguments and produces a result.
 
@@ -1328,15 +1231,13 @@ Represents a function that accepts two arguments and produces a result.
 
 `R`
 
-#### Defined in
-
-packages/aide/src/function.ts:9
-
 ***
 
 ### BinaryOperator()\<T>
 
-> **BinaryOperator**<`T`>: (`left`, `right`) => `T`
+> **BinaryOperator**<`T`> = (`left`, `right`) => `T`
+
+Defined in: packages/aide/src/function.ts:14
 
 Represents an operation upon two operands of the same type, producing a result of the same type as the operands.
 
@@ -1357,15 +1258,13 @@ Represents an operation upon two operands of the same type, producing a result o
 
 `T`
 
-#### Defined in
-
-packages/aide/src/function.ts:14
-
 ***
 
 ### BiPredicate()\<T, U>
 
-> **BiPredicate**<`T`, `U`>: (`t`, `u`) => `boolean`
+> **BiPredicate**<`T`, `U`> = (`t`, `u`) => `boolean`
+
+Defined in: packages/aide/src/function.ts:19
 
 Represents a predicate (boolean-valued function) of two arguments.
 
@@ -1387,15 +1286,13 @@ Represents a predicate (boolean-valued function) of two arguments.
 
 `boolean`
 
-#### Defined in
-
-packages/aide/src/function.ts:19
-
 ***
 
 ### Consumer()\<T>
 
-> **Consumer**<`T`>: (`t`) => `void`
+> **Consumer**<`T`> = (`t`) => `void`
+
+Defined in: packages/aide/src/function.ts:24
 
 Represents an operation that accepts a single input argument and returns no result.
 
@@ -1415,15 +1312,13 @@ Represents an operation that accepts a single input argument and returns no resu
 
 `void`
 
-#### Defined in
-
-packages/aide/src/function.ts:24
-
 ***
 
 ### Mapper()\<T, R>
 
-> **Mapper**<`T`, `R`>: (`t`) => `R`
+> **Mapper**<`T`, `R`> = (`t`) => `R`
+
+Defined in: packages/aide/src/function.ts:29
 
 Represents a function that accepts one argument and produces a result.
 
@@ -1444,27 +1339,23 @@ Represents a function that accepts one argument and produces a result.
 
 `R`
 
-#### Defined in
-
-packages/aide/src/function.ts:29
-
 ***
 
 ### MapPlusKey
 
-> **MapPlusKey**: `string` | `number` | `symbol`
+> **MapPlusKey** = `string` | `number` | `symbol`
+
+Defined in: packages/aide/src/map.ts:21
 
 The possible type for a key.
-
-#### Defined in
-
-packages/aide/src/map.ts:20
 
 ***
 
 ### MarkReadonly\<T, K>
 
-> **MarkReadonly**<`T`, `K`>: `Omit`<`T`, `K`> & `Readonly`<`Pick`<`T`, `K`>>
+> **MarkReadonly**<`T`, `K`> = `Omit`<`T`, `K`> & `Readonly`<`Pick`<`T`, `K`>>
+
+Defined in: packages/aide/src/types.ts:16
 
 For a given object, T, mark the keys given as being readonly.
 
@@ -1475,15 +1366,13 @@ For a given object, T, mark the keys given as being readonly.
 | `T`                     |
 | `K` *extends* keyof `T` |
 
-#### Defined in
-
-packages/aide/src/types.ts:16
-
 ***
 
 ### Merge\<T, U>
 
-> **Merge**<`T`, `U`>: [`Simplify`](README.md#simplifyt)<`Omit`<`T`, keyof `U`> & `U`>
+> **Merge**<`T`, `U`> = [`Simplify`](#simplify)<`Omit`<`T`, keyof `U`> & `U`>
+
+Defined in: packages/aide/src/types.ts:21
 
 Merge the two types together with the properties from second type overwriting the first.
 
@@ -1494,15 +1383,13 @@ Merge the two types together with the properties from second type overwriting th
 | `T`            |
 | `U`            |
 
-#### Defined in
-
-packages/aide/src/types.ts:21
-
 ***
 
 ### NonEmptyArray\<T>
 
-> **NonEmptyArray**<`T`>: \[`T`, `...T[]`]
+> **NonEmptyArray**<`T`> = \[`T`, `...T[]`]
+
+Defined in: packages/aide/src/types.ts:26
 
 For a non-empty array.
 
@@ -1512,15 +1399,13 @@ For a non-empty array.
 | -------------- |
 | `T`            |
 
-#### Defined in
-
-packages/aide/src/types.ts:26
-
 ***
 
 ### Predicate()\<T>
 
-> **Predicate**<`T`>: (`t`) => `boolean`
+> **Predicate**<`T`> = (`t`) => `boolean`
+
+Defined in: packages/aide/src/function.ts:39
 
 Represents a predicate (boolean-valued function) of one argument.
 
@@ -1540,15 +1425,13 @@ Represents a predicate (boolean-valued function) of one argument.
 
 `boolean`
 
-#### Defined in
-
-packages/aide/src/function.ts:39
-
 ***
 
 ### QueueItem()\<T>
 
-> **QueueItem**<`T`>: () => [`Awaitable`](README.md#awaitablet)<`T`>
+> **QueueItem**<`T`> = () => [`Awaitable`](#awaitable)<`T`>
+
+Defined in: packages/aide/src/queue.ts:28
 
 An item in the queue.
 
@@ -1560,17 +1443,15 @@ An item in the queue.
 
 #### Returns
 
-[`Awaitable`](README.md#awaitablet)<`T`>
-
-#### Defined in
-
-packages/aide/src/queue.ts:28
+[`Awaitable`](#awaitable)<`T`>
 
 ***
 
 ### Runnable()
 
-> **Runnable**: () => `void`
+> **Runnable** = () => `void`
+
+Defined in: packages/aide/src/function.ts:34
 
 Represents a runnable task that takes no arguments and returns no result.
 
@@ -1578,15 +1459,13 @@ Represents a runnable task that takes no arguments and returns no result.
 
 `void`
 
-#### Defined in
-
-packages/aide/src/function.ts:34
-
 ***
 
 ### Simplify\<T>
 
-> **Simplify**<`T`>: `{ [KeyType in keyof T]: T[KeyType] }` & `NonNullable`<`unknown`>
+> **Simplify**<`T`> = `{ [KeyType in keyof T]: T[KeyType] }` & `NonNullable`<`unknown`>
+
+Defined in: packages/aide/src/types.ts:31
 
 Refer to <https://github.com/sindresorhus/type-fest/blob/main/source/simplify.d.ts>.
 
@@ -1596,15 +1475,13 @@ Refer to <https://github.com/sindresorhus/type-fest/blob/main/source/simplify.d.
 | -------------- |
 | `T`            |
 
-#### Defined in
-
-packages/aide/src/types.ts:31
-
 ***
 
 ### SimplifyOmit\<T, K>
 
-> **SimplifyOmit**<`T`, `K`>: [`Simplify`](README.md#simplifyt)<`Omit`<`T`, `K`>>
+> **SimplifyOmit**<`T`, `K`> = [`Simplify`](#simplify)<`Omit`<`T`, `K`>>
+
+Defined in: packages/aide/src/types.ts:36
 
 Wrapping Simplify over Omit.
 
@@ -1615,15 +1492,13 @@ Wrapping Simplify over Omit.
 | `T`                     |
 | `K` *extends* keyof `T` |
 
-#### Defined in
-
-packages/aide/src/types.ts:36
-
 ***
 
 ### Supplier()\<T>
 
-> **Supplier**<`T`>: () => `T`
+> **Supplier**<`T`> = () => `T`
+
+Defined in: packages/aide/src/function.ts:44
 
 Represents a supplier of results.
 
@@ -1637,15 +1512,13 @@ Represents a supplier of results.
 
 `T`
 
-#### Defined in
-
-packages/aide/src/function.ts:44
-
 ***
 
 ### TernaryOperator()\<T>
 
-> **TernaryOperator**<`T`>: (`first`, `second`, `third`) => `T`
+> **TernaryOperator**<`T`> = (`first`, `second`, `third`) => `T`
+
+Defined in: packages/aide/src/function.ts:49
 
 Represents an operation upon three operands of the same type, producing a result of the same type as the operands.
 
@@ -1667,15 +1540,13 @@ Represents an operation upon three operands of the same type, producing a result
 
 `T`
 
-#### Defined in
-
-packages/aide/src/function.ts:49
-
 ***
 
 ### TriConsumer()\<T, U, V>
 
-> **TriConsumer**<`T`, `U`, `V`>: (`t`, `u`, `v`) => `void`
+> **TriConsumer**<`T`, `U`, `V`> = (`t`, `u`, `v`) => `void`
+
+Defined in: packages/aide/src/function.ts:54
 
 Represents an operation that accepts three input arguments and returns no result.
 
@@ -1699,15 +1570,13 @@ Represents an operation that accepts three input arguments and returns no result
 
 `void`
 
-#### Defined in
-
-packages/aide/src/function.ts:54
-
 ***
 
 ### TriMapper()\<T, U, V, R>
 
-> **TriMapper**<`T`, `U`, `V`, `R`>: (`t`, `u`, `v`) => `R`
+> **TriMapper**<`T`, `U`, `V`, `R`> = (`t`, `u`, `v`) => `R`
+
+Defined in: packages/aide/src/function.ts:59
 
 Represents a function that accepts three arguments and produces a result.
 
@@ -1732,15 +1601,13 @@ Represents a function that accepts three arguments and produces a result.
 
 `R`
 
-#### Defined in
-
-packages/aide/src/function.ts:59
-
 ***
 
 ### TriPredicate()\<T, U, V>
 
-> **TriPredicate**<`T`, `U`, `V`>: (`t`, `u`, `v`) => `boolean`
+> **TriPredicate**<`T`, `U`, `V`> = (`t`, `u`, `v`) => `boolean`
+
+Defined in: packages/aide/src/function.ts:64
 
 Represents a predicate (boolean-valued function) of three arguments.
 
@@ -1764,15 +1631,13 @@ Represents a predicate (boolean-valued function) of three arguments.
 
 `boolean`
 
-#### Defined in
-
-packages/aide/src/function.ts:64
-
 ***
 
 ### UnaryOperator()\<T>
 
-> **UnaryOperator**<`T`>: (`t`) => `T`
+> **UnaryOperator**<`T`> = (`t`) => `T`
+
+Defined in: packages/aide/src/function.ts:69
 
 Represents an operation on a single operand that produces a result of the same type as its operand.
 
@@ -1792,15 +1657,13 @@ Represents an operation on a single operand that produces a result of the same t
 
 `T`
 
-#### Defined in
-
-packages/aide/src/function.ts:69
-
 ***
 
 ### UndefinedFallback\<T, Fallback>
 
-> **UndefinedFallback**<`T`, `Fallback`>: \[`T`] *extends* \[`undefined`] ? `Fallback` : `T`
+> **UndefinedFallback**<`T`, `Fallback`> = \[`T`] *extends* \[`undefined`] ? `Fallback` : `T`
+
+Defined in: packages/aide/src/types.ts:40
 
 If the given type, `T` is undefined, return `Fallback`, otherwise just return \`T.
 
@@ -1811,15 +1674,41 @@ If the given type, `T` is undefined, return `Fallback`, otherwise just return \`
 | `T`            |
 | `Fallback`     |
 
-#### Defined in
-
-packages/aide/src/types.ts:40
-
 ## Functions
+
+### asNonEmptyArray()
+
+> **asNonEmptyArray**<`V`>(`list`): \[`V`, `...V[]`]
+
+Defined in: packages/aide/src/arrays.ts:13
+
+Ensure that the given list is not empty.
+
+#### Type Parameters
+
+| Type Parameter | Description                         |
+| -------------- | ----------------------------------- |
+| `V`            | The type of each item in the array. |
+
+#### Parameters
+
+| Parameter | Type                         | Description                      |
+| --------- | ---------------------------- | -------------------------------- |
+| `list`    | [`AnyArray`](#anyarray)<`V`> | The list to ensure is not empty. |
+
+#### Returns
+
+\[`V`, `...V[]`]
+
+The same list.
+
+***
 
 ### createOptional()
 
-> **createOptional**<`T`>(`value`): [`Optional`](README.md#optionalt)<`T`>
+> **createOptional**<`T`>(`value`): [`Optional`](#optional)<`T`>
+
+Defined in: packages/aide/src/optional.ts:195
 
 Create an optional from the provided value.
 
@@ -1837,17 +1726,15 @@ Create an optional from the provided value.
 
 #### Returns
 
-[`Optional`](README.md#optionalt)<`T`>
-
-#### Defined in
-
-packages/aide/src/optional.ts:195
+[`Optional`](#optional)<`T`>
 
 ***
 
 ### ensureType()
 
 > **ensureType**<`V`>(): <`T`>(`list`) => readonly `T`\[]
+
+Defined in: packages/aide/src/arrays.ts:37
 
 This function is primarily here to help with stricter typing. When Typescript allows for partial inference of
 arguments to functions, this function would likely not be needed anymore.
@@ -1860,9 +1747,9 @@ arguments to functions, this function would likely not be needed anymore.
 
 #### Returns
 
-`Function`
-
 An identity function that accepts a list and simply returns it.
+
+> <`T`>(`list`): readonly `T`\[]
 
 ##### Type Parameters
 
@@ -1892,15 +1779,13 @@ type MyItem = { name: string, displayName: string };
  type Name = typeof list[number]['name'];    // == "one" | "two" vs string if not using this
 ```
 
-#### Defined in
-
-packages/aide/src/arrays.ts:21
-
 ***
 
 ### executeTasks()
 
 > **executeTasks**<`T`>(`tasks`, `maxNumOfWorkers`): `Promise`<`T`\[]>
+
+Defined in: packages/aide/src/queue.ts:13
 
 Given a list of tasks to execute, execute them, ensuring there is a maximum number of tasks actively running at the
 same time. The returning array of responses should match the order of the task that was given.
@@ -1924,15 +1809,13 @@ same time. The returning array of responses should match the order of the task t
 
 A promise that will resolve when all the tasks are completed.
 
-#### Defined in
-
-packages/aide/src/queue.ts:13
-
 ***
 
 ### first()
 
-> **first**<`V`>(`list`): `V` | `undefined`
+> **first**<`V`>(`list`): `undefined` | `V`
+
+Defined in: packages/aide/src/arrays.ts:46
 
 Retrieve the first value in the given list or undefined if it is empty.
 
@@ -1944,23 +1827,21 @@ Retrieve the first value in the given list or undefined if it is empty.
 
 #### Parameters
 
-| Parameter | Type                                   |
-| --------- | -------------------------------------- |
-| `list`    | [`AnyArray`](README.md#anyarrayv)<`V`> |
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `list`    | [`AnyArray`](#anyarray)<`V`> |
 
 #### Returns
 
-`V` | `undefined`
-
-#### Defined in
-
-packages/aide/src/arrays.ts:30
+`undefined` | `V`
 
 ***
 
 ### firstDefined()
 
-> **firstDefined**<`V`>(`list`): `V` | `undefined`
+> **firstDefined**<`V`>(`list`): `undefined` | `V`
+
+Defined in: packages/aide/src/arrays.ts:60
 
 Execute the functions in the list and return the value of the first supplier that return a defined value.
 
@@ -1972,25 +1853,23 @@ Execute the functions in the list and return the value of the first supplier tha
 
 #### Parameters
 
-| Parameter | Type                                                                                     |
-| --------- | ---------------------------------------------------------------------------------------- |
-| `list`    | [`AnyArray`](README.md#anyarrayv)<[`Supplier`](README.md#suppliert)<`undefined` \| `V`>> |
+| Parameter | Type                                                                 |
+| --------- | -------------------------------------------------------------------- |
+| `list`    | [`AnyArray`](#anyarray)<[`Supplier`](#supplier)<`undefined` \| `V`>> |
 
 #### Returns
 
-`V` | `undefined`
-
-#### Defined in
-
-packages/aide/src/arrays.ts:44
+`undefined` | `V`
 
 ***
 
 ### firstDefinedOpt()
 
-> **firstDefinedOpt**<`V`>(`list`): [`Optional`](README.md#optionalt)<`V`>
+> **firstDefinedOpt**<`V`>(`list`): [`Optional`](#optional)<`V`>
 
-Same as [firstDefined](README.md#firstdefined) except both the supplier and the return value of this should be an [Optional](README.md#optionalt).
+Defined in: packages/aide/src/arrays.ts:67
+
+Same as [firstDefined](#firstdefined) except both the supplier and the return value of this should be an [Optional](#optional).
 
 #### Type Parameters
 
@@ -2000,25 +1879,23 @@ Same as [firstDefined](README.md#firstdefined) except both the supplier and the 
 
 #### Parameters
 
-| Parameter | Type                                                                                                         |
-| --------- | ------------------------------------------------------------------------------------------------------------ |
-| `list`    | [`AnyArray`](README.md#anyarrayv)<[`Supplier`](README.md#suppliert)<[`Optional`](README.md#optionalt)<`V`>>> |
+| Parameter | Type                                                                           |
+| --------- | ------------------------------------------------------------------------------ |
+| `list`    | [`AnyArray`](#anyarray)<[`Supplier`](#supplier)<[`Optional`](#optional)<`V`>>> |
 
 #### Returns
 
-[`Optional`](README.md#optionalt)<`V`>
-
-#### Defined in
-
-packages/aide/src/arrays.ts:51
+[`Optional`](#optional)<`V`>
 
 ***
 
 ### firstOpt()
 
-> **firstOpt**<`V`>(`list`): [`Optional`](README.md#optionalt)<`V`>
+> **firstOpt**<`V`>(`list`): [`Optional`](#optional)<`V`>
 
-Same as [first](README.md#first) except this returns an [Optional](README.md#optionalt).
+Defined in: packages/aide/src/arrays.ts:53
+
+Same as [first](#first) except this returns an [Optional](#optional).
 
 #### Type Parameters
 
@@ -2028,23 +1905,21 @@ Same as [first](README.md#first) except this returns an [Optional](README.md#opt
 
 #### Parameters
 
-| Parameter | Type                                   |
-| --------- | -------------------------------------- |
-| `list`    | [`AnyArray`](README.md#anyarrayv)<`V`> |
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `list`    | [`AnyArray`](#anyarray)<`V`> |
 
 #### Returns
 
-[`Optional`](README.md#optionalt)<`V`>
-
-#### Defined in
-
-packages/aide/src/arrays.ts:37
+[`Optional`](#optional)<`V`>
 
 ***
 
 ### getOrDefault()
 
 > **getOrDefault**<`K`, `V`>(`map`, `key`, `defaultValue`): `V`
+
+Defined in: packages/aide/src/map.ts:14
 
 #### Type Parameters
 
@@ -2067,15 +1942,13 @@ packages/aide/src/arrays.ts:37
 
 The value in the map with the given key or if the key does not exist, the provided default value.
 
-#### Defined in
-
-packages/aide/src/map.ts:13
-
 ***
 
 ### keepOnlyDefined()
 
 > **keepOnlyDefined**<`V`>(`list`): `NonNullable`<`V`>\[]
+
+Defined in: packages/aide/src/arrays.ts:80
 
 Given a list of items, remove null and undefined from the list.
 
@@ -2087,23 +1960,21 @@ Given a list of items, remove null and undefined from the list.
 
 #### Parameters
 
-| Parameter | Type                                   |
-| --------- | -------------------------------------- |
-| `list`    | [`AnyArray`](README.md#anyarrayv)<`V`> |
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `list`    | [`AnyArray`](#anyarray)<`V`> |
 
 #### Returns
 
 `NonNullable`<`V`>\[]
-
-#### Defined in
-
-packages/aide/src/arrays.ts:64
 
 ***
 
 ### toMap()
 
 > **toMap**<`K`, `V`, `V2`>(`list`, `keySupplier`, `valueSupplier`): `Record`<`K`, `V2`>
+
+Defined in: packages/aide/src/arrays.ts:95
 
 Given a list, convert it to an object where the key will be provided using the given supplier.
 
@@ -2117,11 +1988,11 @@ Given a list, convert it to an object where the key will be provided using the g
 
 #### Parameters
 
-| Parameter       | Type                                                                | Description                                           |
-| --------------- | ------------------------------------------------------------------- | ----------------------------------------------------- |
-| `list`          | [`AnyArray`](README.md#anyarrayv)<`V`>                              | The list of items to convert.                         |
-| `keySupplier`   | [`BiMapper`](README.md#bimappert-u-r)<`V`, `number`, `K`>           | Function to use to generate the key for each entry.   |
-| `valueSupplier` | [`TriMapper`](README.md#trimappert-u-v-r)<`V`, `K`, `number`, `V2`> | Function to use to generate the value for each entry. |
+| Parameter       | Type                                                | Description                                           |
+| --------------- | --------------------------------------------------- | ----------------------------------------------------- |
+| `list`          | [`AnyArray`](#anyarray)<`V`>                        | The list of items to convert.                         |
+| `keySupplier`   | [`BiMapper`](#bimapper)<`V`, `number`, `K`>         | Function to use to generate the key for each entry.   |
+| `valueSupplier` | [`TriMapper`](#trimapper)<`V`, `K`, `number`, `V2`> | Function to use to generate the value for each entry. |
 
 #### Returns
 
@@ -2129,24 +2000,22 @@ Given a list, convert it to an object where the key will be provided using the g
 
 An object representation of the given list using the provided suppliers to generate the keys and values.
 
-#### Defined in
-
-packages/aide/src/arrays.ts:79
-
 ***
 
 ### toMapPlus()
 
-> **toMapPlus**<`K`, `V`>(`from`): [`MapPlus`](README.md#mapplusk-v)<`K`, `V`>
+> **toMapPlus**<`K`, `V`>(`from`): [`MapPlus`](#mapplus)<`K`, `V`>
 
-Ensure the given is a [MapPlus](README.md#mapplusk-v).
+Defined in: packages/aide/src/map.ts:36
+
+Ensure the given is a [MapPlus](#mapplus).
 
 #### Type Parameters
 
-| Type Parameter                                     |
-| -------------------------------------------------- |
-| `K` *extends* [`MapPlusKey`](README.md#mappluskey) |
-| `V`                                                |
+| Type Parameter                            |
+| ----------------------------------------- |
+| `K` *extends* [`MapPlusKey`](#mappluskey) |
+| `V`                                       |
 
 #### Parameters
 
@@ -2156,17 +2025,15 @@ Ensure the given is a [MapPlus](README.md#mapplusk-v).
 
 #### Returns
 
-[`MapPlus`](README.md#mapplusk-v)<`K`, `V`>
-
-#### Defined in
-
-packages/aide/src/map.ts:35
+[`MapPlus`](#mapplus)<`K`, `V`>
 
 ***
 
 ### waitFor()
 
 > **waitFor**(`timeMs`): `Promise`<`void`>
+
+Defined in: packages/aide/src/promises.ts:6
 
 Returns a promise which will resolve after the provided time.
 
@@ -2179,7 +2046,3 @@ Returns a promise which will resolve after the provided time.
 #### Returns
 
 `Promise`<`void`>
-
-#### Defined in
-
-packages/aide/src/promises.ts:6

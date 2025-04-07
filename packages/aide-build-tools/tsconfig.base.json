@@ -9,7 +9,7 @@
         "lib": ["ESNext", "DOM"],
         "listEmittedFiles": true,
         "module": "ESNext",
-        "moduleResolution": "Node",
+        "moduleResolution": "bundler",
         "noImplicitAny": false,
         "outDir": "dist",
         "resolveJsonModule": true,

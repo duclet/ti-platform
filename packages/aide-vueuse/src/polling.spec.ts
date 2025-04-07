@@ -1,7 +1,9 @@
-import { PollingState, usePolling, UsePollingRetVal } from '@src/polling';
-import { Awaitable } from '@ti-platform/aide';
+import type { UsePollingRetVal } from '@src/polling';
+import { isPollingFailure, PollingState, usePolling } from '@src/polling';
+import type { Awaitable } from '@ti-platform/aide';
 import { expect } from '@ti-platform/aide-test';
-import { afterEach, beforeEach, describe, Mock, test, vi } from 'vitest';
+import type { Mock } from 'vitest';
+import { afterEach, beforeEach, describe, test, vi } from 'vitest';
 
 const it = test.extend<{
     handler: Mock<() => Awaitable<PollingState>>;
@@ -14,6 +16,22 @@ const it = test.extend<{
     usePollingRet: async ({ task, handler }, use) => {
         await use(usePolling(handler, 1, 5));
     },
+});
+
+describe('isPollingFailure', () => {
+    it('should return true for FAILURE state', () => {
+        expect(isPollingFailure(PollingState.FAILURE)).toBe(true);
+    });
+
+    it('should return true for TIMEOUT state', () => {
+        expect(isPollingFailure(PollingState.TIMEOUT)).toBe(true);
+    });
+
+    it('should return false for other states', () => {
+        expect(isPollingFailure(PollingState.NOT_STARTED)).toBe(false);
+        expect(isPollingFailure(PollingState.POLLING)).toBe(false);
+        expect(isPollingFailure(PollingState.SUCCESS)).toBe(false);
+    });
 });
 
 describe('usePolling', () => {
@@ -42,6 +60,8 @@ describe('usePolling', () => {
 
         usePollingRet.startPolling();
 
+        await vi.advanceTimersToNextTimerAsync();
+
         expect(handler).toHaveBeenCalledOnce();
         expect(usePollingRet.state.value).toBe(PollingState.POLLING);
 
@@ -68,7 +88,7 @@ describe('usePolling', () => {
 
         await vi.advanceTimersByTimeAsync(10);
 
-        expect(handler).toHaveBeenCalledTimes(5);
+        expect(handler).toHaveBeenCalledTimes(4);
         expect(usePollingRet.state.value).toBe(PollingState.TIMEOUT);
     });
 });

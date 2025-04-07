@@ -49,7 +49,9 @@ export const replaceAliasWithTsconfigPaths: ModifySourceContentsChainHandlerCrea
             const relativePath = relative(dirname(path), aliasedPath);
             const normalizedRelativePath = relativePath.startsWith('.') ? relativePath : `./${relativePath}`;
 
-            debug && console.log(`${path}: ${match.groups!.import} => ${normalizedRelativePath}`);
+            if (debug) {
+                console.log(`${path}: ${match.groups!.import} => ${normalizedRelativePath}`);
+            }
 
             return result.replaceAll(match[0], match.groups!.before + normalizedRelativePath + match.groups!.after);
         }, contents),

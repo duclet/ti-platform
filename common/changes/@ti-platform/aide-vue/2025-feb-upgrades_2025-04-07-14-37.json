@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vue",
+      "comment": "Upgrade dependencies; Added tests; Exporting CommonJS as well",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vue"
+}

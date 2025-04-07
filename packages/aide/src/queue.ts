@@ -227,14 +227,12 @@ export class Queue<T = void> {
 
         this.startedInInterval++;
 
-        if (!this.intervalId) {
-            this.intervalId = setTimeout(() => {
-                this.startedInInterval = 0;
-                this.intervalId = undefined;
+        this.intervalId ??= setTimeout(() => {
+            this.startedInInterval = 0;
+            this.intervalId = undefined;
 
-                void this.next();
-            }, this.intervalMs);
-        }
+            void this.next();
+        }, this.intervalMs);
     }
 
     /**

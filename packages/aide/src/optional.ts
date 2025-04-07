@@ -1,4 +1,4 @@
-import { Consumer, Mapper, Predicate, Runnable, Supplier } from '@src/function';
+import type { Consumer, Mapper, Predicate, Runnable, Supplier } from '@src/function';
 
 /**
  * Wrapper around values that are either present or absent (null or undefined).

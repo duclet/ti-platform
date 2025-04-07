@@ -24,9 +24,11 @@ This package contains utility functions that can be used with Vue to enhance the
 
 ### ReactiveExecuteTasksRet\<T>
 
-> **ReactiveExecuteTasksRet**<`T`>: {`activeWorkers`: `ComputedRef`<`number`>;`completedTasks`: `ComputedRef`<`number`>;`isAllTasksCompleted`: `ComputedRef`<`boolean`>;`results`: `ComputedRef`<`T`\[]>;`totalTasks`: `ComputedRef`<`number`>; }
+> **ReactiveExecuteTasksRet**<`T`> = { `activeWorkers`: `ComputedRef`<`number`>; `completedTasks`: `ComputedRef`<`number`>; `isAllTasksCompleted`: `ComputedRef`<`boolean`>; `results`: `ComputedRef`<`T`\[]>; `totalTasks`: `ComputedRef`<`number`>; }
 
-The return value for the function [reactiveExecuteTasks](README.md#reactiveexecutetasks).
+Defined in: queue.ts:11
+
+The return value for the function [reactiveExecuteTasks](#reactiveexecutetasks).
 
 #### Type Parameters
 
@@ -34,35 +36,31 @@ The return value for the function [reactiveExecuteTasks](README.md#reactiveexecu
 | -------------- | ----------------------- |
 | `T`            | The type of the result. |
 
-#### Type declaration
+#### Properties
 
-| Name                  | Type                     | Description                                                                                                                                                                                                             |
-| --------------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeWorkers`       | `ComputedRef`<`number`>  | The current active number of workers.                                                                                                                                                                                   |
-| `completedTasks`      | `ComputedRef`<`number`>  | The current number of completed tasks.                                                                                                                                                                                  |
-| `isAllTasksCompleted` | `ComputedRef`<`boolean`> | True if all the tasks have completed running, false otherwise.                                                                                                                                                          |
-| `results`             | `ComputedRef`<`T`\[]>    | The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it is filled with the results only when it is available. You should check for undefined before using it. |
-| `totalTasks`          | `ComputedRef`<`number`>  | The total number of tasks that was queued.                                                                                                                                                                              |
-
-#### Defined in
-
-queue.ts:10
+| Property                                               | Type                     | Description                                                                                                                                                                                                             |
+| ------------------------------------------------------ | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="activeworkers"></a> `activeWorkers`             | `ComputedRef`<`number`>  | The current active number of workers.                                                                                                                                                                                   |
+| <a id="completedtasks"></a> `completedTasks`           | `ComputedRef`<`number`>  | The current number of completed tasks.                                                                                                                                                                                  |
+| <a id="isalltaskscompleted"></a> `isAllTasksCompleted` | `ComputedRef`<`boolean`> | True if all the tasks have completed running, false otherwise.                                                                                                                                                          |
+| <a id="results"></a> `results`                         | `ComputedRef`<`T`\[]>    | The array storing the results as it is returned. Note that this can be a sparsed array with missing indexes as it is filled with the results only when it is available. You should check for undefined before using it. |
+| <a id="totaltasks"></a> `totalTasks`                   | `ComputedRef`<`number`>  | The total number of tasks that was queued.                                                                                                                                                                              |
 
 ***
 
 ### ValueTypes
 
-> **ValueTypes**: `string` | `number` | `string`\[] | `number`\[]
+> **ValueTypes** = `string` | `number` | `string`\[] | `number`\[]
 
-#### Defined in
-
-validators.ts:3
+Defined in: validators.ts:3
 
 ## Functions
 
 ### asComputed()
 
 > **asComputed**<`T`>(`ref`): `ComputedRef`<`T`>
+
+Defined in: reactivity.ts:10
 
 Shorthand method to simply convert a Ref to a ComputedRef.
 
@@ -74,9 +72,9 @@ Shorthand method to simply convert a Ref to a ComputedRef.
 
 #### Parameters
 
-| Parameter | Type            | Description         |
-| --------- | --------------- | ------------------- |
-| `ref`     | `Ref`<`T`, `T`> | The Ref to convert. |
+| Parameter | Type       | Description         |
+| --------- | ---------- | ------------------- |
+| `ref`     | `Ref`<`T`> | The Ref to convert. |
 
 #### Returns
 
@@ -84,15 +82,13 @@ Shorthand method to simply convert a Ref to a ComputedRef.
 
 The ComputedRef that simply returns the value of the given Ref.
 
-#### Defined in
-
-reactivity.ts:9
-
 ***
 
 ### asRef()
 
 > **asRef**<`T`>(`value`): `Ref`<`T`>
+
+Defined in: reactivity.ts:20
 
 Basically remove the "UnwrapSimpleRef" from the inner type so things work better with arrays and objects.
 
@@ -114,15 +110,13 @@ Basically remove the "UnwrapSimpleRef" from the inner type so things work better
 
 The ref.
 
-#### Defined in
-
-reactivity.ts:19
-
 ***
 
 ### injectRefs()
 
 > **injectRefs**<`T`>(`key`): `ToRefs`<`NonNullable`<`T`>>
+
+Defined in: reactivity.ts:30
 
 Inject the data from the provided key (we are assuming the data exists) but return the results as refs.
 
@@ -142,15 +136,13 @@ Inject the data from the provided key (we are assuming the data exists) but retu
 
 `ToRefs`<`NonNullable`<`T`>>
 
-#### Defined in
-
-reactivity.ts:29
-
 ***
 
 ### isRequiredField()
 
 > **isRequiredField**(`invalidMessage`): (`value`) => `string` | `true`
+
+Defined in: validators.ts:14
 
 Given a field, make sure it is not empty. If it is, return a proper error message. This validator is meant to be used
 with QForm.
@@ -163,27 +155,25 @@ with QForm.
 
 #### Returns
 
-`Function`
+> (`value`): `string` | `true`
 
 ##### Parameters
 
-| Parameter | Type                                 |
-| --------- | ------------------------------------ |
-| `value`   | [`ValueTypes`](README.md#valuetypes) |
+| Parameter | Type                        |
+| --------- | --------------------------- |
+| `value`   | [`ValueTypes`](#valuetypes) |
 
 ##### Returns
 
 `string` | `true`
-
-#### Defined in
-
-validators.ts:14
 
 ***
 
 ### isRequiredFieldWhen()
 
 > **isRequiredFieldWhen**(`when`, `invalidMessage`): (`value`) => `string` | `true`
+
+Defined in: validators.ts:26
 
 Returns a function that before checking to see if a required field is filled out, validate against some other
 condition.
@@ -197,21 +187,17 @@ condition.
 
 #### Returns
 
-`Function`
+> (`value`): `string` | `true`
 
 ##### Parameters
 
-| Parameter | Type                                 |
-| --------- | ------------------------------------ |
-| `value`   | [`ValueTypes`](README.md#valuetypes) |
+| Parameter | Type                        |
+| --------- | --------------------------- |
+| `value`   | [`ValueTypes`](#valuetypes) |
 
 ##### Returns
 
 `string` | `true`
-
-#### Defined in
-
-validators.ts:26
 
 ***
 
@@ -219,18 +205,20 @@ validators.ts:26
 
 > **isUniqueField**(`existingValues`, `invalidMessage`): (`value`) => `string` | `true`
 
+Defined in: validators.ts:38
+
 Given a reference to a list of values, check when a value is given that it isn't in the list twice.
 
 #### Parameters
 
-| Parameter        | Type                                                        | Default value                    | Description                                                                                   |
-| ---------------- | ----------------------------------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------- |
-| `existingValues` | `Ref`<(`string` \| `number`)\[], (`string` \| `number`)\[]> | `undefined`                      | A reference to the list of existing values. The list should update when new values are added. |
-| `invalidMessage` | `string`                                                    | `DEFAULT_UNIQUE_INVALID_MESSAGE` | The message to show when validation failed.                                                   |
+| Parameter        | Type                             | Default value                    | Description                                                                                   |
+| ---------------- | -------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------- |
+| `existingValues` | `Ref`<(`string` \| `number`)\[]> | `undefined`                      | A reference to the list of existing values. The list should update when new values are added. |
+| `invalidMessage` | `string`                         | `DEFAULT_UNIQUE_INVALID_MESSAGE` | The message to show when validation failed.                                                   |
 
 #### Returns
 
-`Function`
+> (`value`): `string` | `true`
 
 ##### Parameters
 
@@ -242,15 +230,13 @@ Given a reference to a list of values, check when a value is given that it isn't
 
 `string` | `true`
 
-#### Defined in
-
-validators.ts:38
-
 ***
 
 ### provideAndReturnRefs()
 
 > **provideAndReturnRefs**<`T`>(`key`, `data`): `ToRefs`<`Reactive`<`T`>>
+
+Defined in: reactivity.ts:42
 
 Provide the given data to child components and return the data as refs.
 
@@ -271,15 +257,13 @@ Provide the given data to child components and return the data as refs.
 
 `ToRefs`<`Reactive`<`T`>>
 
-#### Defined in
-
-reactivity.ts:41
-
 ***
 
 ### reactiveExecuteTasks()
 
-> **reactiveExecuteTasks**<`T`>(`tasks`, `maxNumOfWorkers`): [`ReactiveExecuteTasksRet`](README.md#reactiveexecutetasksrett)<`T`>
+> **reactiveExecuteTasks**<`T`>(`tasks`, `maxNumOfWorkers`): [`ReactiveExecuteTasksRet`](#reactiveexecutetasksret)<`T`>
+
+Defined in: queue.ts:46
 
 Reactive version of `@ti-platform/aide#xecuteTasks`.
 
@@ -298,8 +282,4 @@ Reactive version of `@ti-platform/aide#xecuteTasks`.
 
 #### Returns
 
-[`ReactiveExecuteTasksRet`](README.md#reactiveexecutetasksrett)<`T`>
-
-#### Defined in
-
-queue.ts:45
+[`ReactiveExecuteTasksRet`](#reactiveexecutetasksret)<`T`>

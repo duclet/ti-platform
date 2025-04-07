@@ -50,7 +50,7 @@ export async function generateViteMultiFileLibConfigs(
                             return true;
                         }
 
-                        if (source.match(new RegExp(`^${externalDep}/.+`))) {
+                        if (new RegExp(`^${externalDep}/.+`).exec(source)) {
                             return true;
                         }
 

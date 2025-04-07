@@ -1,6 +1,7 @@
 import { asComputed, asRef } from '@src/reactivity';
 import { executeTasks } from '@ti-platform/aide';
-import { computed, ComputedRef } from 'vue';
+import type { ComputedRef } from 'vue';
+import { computed } from 'vue';
 
 /**
  * The return value for the function {@link reactiveExecuteTasks}.

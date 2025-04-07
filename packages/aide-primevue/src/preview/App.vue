@@ -67,17 +67,8 @@
     ];
 </script>
 
-<style lang="postcss">
+<style lang="css">
     @import 'primeicons/primeicons.css';
-
-    @layer tailwind-base, primevue, tailwind-utilities;
-
-    @layer tailwind-base {
-        @tailwind base;
-    }
-
-    @layer tailwind-utilities {
-        @tailwind components;
-        @tailwind utilities;
-    }
+    @import 'tailwindcss';
+    @import 'tailwindcss-primeui';
 </style>

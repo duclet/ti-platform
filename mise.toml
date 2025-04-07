@@ -1,0 +1,4 @@
+[tools]
+node = "22.14.0"
+"npm:@microsoft/rush" = "5.100.1"
+pnpm = "8.10.2"

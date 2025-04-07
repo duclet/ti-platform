@@ -23,6 +23,8 @@ You can of course configure it to change the order and pattern that best fit you
 
 > **loadEnv**(`filesOrder`): `void`
 
+Defined in: index.ts:10
+
 Load the environment variables.
 
 #### Parameters
@@ -34,7 +36,3 @@ Load the environment variables.
 #### Returns
 
 `void`
-
-#### Defined in
-
-index.ts:10

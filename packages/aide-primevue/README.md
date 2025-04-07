@@ -240,101 +240,99 @@ In following with PrimeVue's passthrough functionality, the following are availa
 
 ### ColorOption
 
+Defined in: utils.ts:7
+
 PrimeVue doesn't have a consistent level of severity/color scheme for their components so we are going to assume one.
 
 #### Enumeration Members
 
-| Enumeration Member | Value |
-| ------------------ | ----- |
-| `CONTRAST`         | `6`   |
-| `ERROR`            | `5`   |
-| `HELP`             | `7`   |
-| `INFO`             | `3`   |
-| `PRIMARY`          | `0`   |
-| `SECONDARY`        | `1`   |
-| `SUCCESS`          | `2`   |
-| `WARN`             | `4`   |
+| Enumeration Member                 | Value |
+| ---------------------------------- | ----- |
+| <a id="contrast"></a> `CONTRAST`   | `6`   |
+| <a id="error"></a> `ERROR`         | `5`   |
+| <a id="help"></a> `HELP`           | `7`   |
+| <a id="info"></a> `INFO`           | `3`   |
+| <a id="primary"></a> `PRIMARY`     | `0`   |
+| <a id="secondary"></a> `SECONDARY` | `1`   |
+| <a id="success"></a> `SUCCESS`     | `2`   |
+| <a id="warn"></a> `WARN`           | `4`   |
 
 ## Type Aliases
 
 ### ProgressIndicatorTask
 
-> **ProgressIndicatorTask**: {`description`: `string`;`errorMessage`: `string`;`isInProgress`: `boolean`;`key`: `string`; }
+> **ProgressIndicatorTask** = { `description`: `string`; `errorMessage`: `string`; `isInProgress`: `boolean`; `key`: `string`; }
+
+Defined in: components/multi-progress-indicator/api.ts:4
 
 Information for a task to show in the MultiProgressIndicator component.
 
-#### Type declaration
+#### Properties
 
-| Name            | Type      | Description                                                                                                           |
-| --------------- | --------- | --------------------------------------------------------------------------------------------------------------------- |
-| `description`   | `string`  | A description for what progress we are waiting for.                                                                   |
-| `errorMessage`? | `string`  | When no longer in progress, error message to show. If value is null, it assumes that task was completed successfully. |
-| `isInProgress`  | `boolean` | True to show a progress bar, indicating that it is in progress or false other.                                        |
-| `key`           | `string`  | Unique identifier for the task.                                                                                       |
-
-#### Defined in
-
-components/multi-progress-indicator/api.ts:4
+| Property                                  | Type      | Description                                                                                                           |
+| ----------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------- |
+| <a id="description"></a> `description`    | `string`  | A description for what progress we are waiting for.                                                                   |
+| <a id="errormessage"></a> `errorMessage?` | `string`  | When no longer in progress, error message to show. If value is null, it assumes that task was completed successfully. |
+| <a id="isinprogress"></a> `isInProgress`  | `boolean` | True to show a progress bar, indicating that it is in progress or false other.                                        |
+| <a id="key"></a> `key`                    | `string`  | Unique identifier for the task.                                                                                       |
 
 ***
 
 ### TimelineStep
 
-> **TimelineStep**: {`body`: `string`;`isInitiallyHidden`: `boolean`;`name`: [`TimelineStepName`](README.md#timelinestepname);`task`: (`step`) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)>;`title`: `string`; }
+> **TimelineStep** = { `body`: `string`; `isInitiallyHidden`: `boolean`; `name`: [`TimelineStepName`](#timelinestepname-1); `task`: (`step`) => `Promise`<[`TimelineStepTaskResult`](#timelinesteptaskresult)>; `title`: `string`; }
+
+Defined in: components/timeline-stepper/api.ts:13
 
 Representing a step in the timeline.
 
-#### Type declaration
+#### Properties
 
-| Name                 | Type                                                                                | Description                                                                                                                                                                                                                                                                                              |
-| -------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `body`?              | `string`                                                                            | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined` and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also be given the following props: - status: The current status of the step. |
-| `isInitiallyHidden`? | `boolean`                                                                           | Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it initially or to false to keep it visible.                                                                                                                                                  |
-| `name`               | [`TimelineStepName`](README.md#timelinestepname)                                    | Unique name for the step.                                                                                                                                                                                                                                                                                |
-| `task`               | (`step`) => `Promise`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)> | Task to run when the step starts.                                                                                                                                                                                                                                                                        |
-| `title`              | `string`                                                                            | The title for the step.                                                                                                                                                                                                                                                                                  |
-
-#### Defined in
-
-components/timeline-stepper/api.ts:13
+| Property                                            | Type                                                                       | Description                                                                                                                                                                                                                                                                                              |
+| --------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="body"></a> `body?`                           | `string`                                                                   | The content for the body of the timeline step. Note that for more complex bodies, you can leave this `undefined` and use the slot instead. The slot name will be following the pattern `[TimelineStep.name]--body`. It will also be given the following props: - status: The current status of the step. |
+| <a id="isinitiallyhidden"></a> `isInitiallyHidden?` | `boolean`                                                                  | Flag to determine if the step is initially hidden on the timeline until it is started. Set to true to hide it initially or to false to keep it visible.                                                                                                                                                  |
+| <a id="name"></a> `name`                            | [`TimelineStepName`](#timelinestepname-1)                                  | Unique name for the step.                                                                                                                                                                                                                                                                                |
+| <a id="task"></a> `task`                            | (`step`) => `Promise`<[`TimelineStepTaskResult`](#timelinesteptaskresult)> | Task to run when the step starts.                                                                                                                                                                                                                                                                        |
+| <a id="title"></a> `title`                          | `string`                                                                   | The title for the step.                                                                                                                                                                                                                                                                                  |
 
 ***
 
 ### TimelineStepColorSupplier()
 
-> **TimelineStepColorSupplier**: (`status`) => [`ColorOption`](README.md#coloroption)
+> **TimelineStepColorSupplier** = (`status`) => [`ColorOption`](#coloroption)
+
+Defined in: components/timeline-stepper/api.ts:90
 
 Function to use to get the color for a step.
 
 #### Parameters
 
-| Parameter | Type                                                 | Description                     |
-| --------- | ---------------------------------------------------- | ------------------------------- |
-| `status`  | [`TimelineStepStatus`](README.md#timelinestepstatus) | The current status of the step. |
+| Parameter | Type                                        | Description                     |
+| --------- | ------------------------------------------- | ------------------------------- |
+| `status`  | [`TimelineStepStatus`](#timelinestepstatus) | The current status of the step. |
 
 #### Returns
 
-[`ColorOption`](README.md#coloroption)
+[`ColorOption`](#coloroption)
 
 The color for the step. Refer to PrimeVue's Button `severity` prop.
-
-#### Defined in
-
-components/timeline-stepper/api.ts:90
 
 ***
 
 ### TimelineStepIconSupplier()
 
-> **TimelineStepIconSupplier**: (`status`) => `string`
+> **TimelineStepIconSupplier** = (`status`) => `string`
+
+Defined in: components/timeline-stepper/api.ts:100
 
 Function to use to get the icon for a step.
 
 #### Parameters
 
-| Parameter | Type                                                 | Description                     |
-| --------- | ---------------------------------------------------- | ------------------------------- |
-| `status`  | [`TimelineStepStatus`](README.md#timelinestepstatus) | The current status of the step. |
+| Parameter | Type                                        | Description                     |
+| --------- | ------------------------------------------- | ------------------------------- |
+| `status`  | [`TimelineStepStatus`](#timelinestepstatus) | The current status of the step. |
 
 #### Returns
 
@@ -342,100 +340,88 @@ Function to use to get the icon for a step.
 
 The icon for the step. Refer to PrimeVue's Button `icon` prop.
 
-#### Defined in
-
-components/timeline-stepper/api.ts:100
-
 ***
 
 ### TimelineStepName
 
-> **TimelineStepName**: `string`
+> **TimelineStepName** = `string`
+
+Defined in: components/timeline-stepper/api.ts:7
 
 Unique name for a step.
-
-#### Defined in
-
-components/timeline-stepper/api.ts:7
 
 ***
 
 ### TimelineStepStatus
 
-> **TimelineStepStatus**: {`isCompletedStep`: `boolean`;`name`: `string`; }
+> **TimelineStepStatus** = { `isCompletedStep`: `boolean`; `name`: `string`; }
+
+Defined in: components/timeline-stepper/api.ts:70
 
 Represents the status of a step.
 
-#### Type declaration
+#### Properties
 
-| Name              | Type      | Description                                                             |
-| ----------------- | --------- | ----------------------------------------------------------------------- |
-| `isCompletedStep` | `boolean` | True if the step is considered to be a completed step, false otherwise. |
-| `name`            | `string`  | The name of the status.                                                 |
-
-#### Defined in
-
-components/timeline-stepper/api.ts:70
+| Property                                       | Type      | Description                                                             |
+| ---------------------------------------------- | --------- | ----------------------------------------------------------------------- |
+| <a id="iscompletedstep"></a> `isCompletedStep` | `boolean` | True if the step is considered to be a completed step, false otherwise. |
+| <a id="name-1"></a> `name`                     | `string`  | The name of the status.                                                 |
 
 ***
 
 ### TimelineStepTaskResult
 
-> **TimelineStepTaskResult**: {`failed`: `boolean`;`nextSteps`: [`TimelineStepName`](README.md#timelinestepname)\[];`skipSteps`: [`TimelineStepName`](README.md#timelinestepname)\[]; }
+> **TimelineStepTaskResult** = { `failed`: `boolean`; `nextSteps`: [`TimelineStepName`](#timelinestepname-1)\[]; `skipSteps`: [`TimelineStepName`](#timelinestepname-1)\[]; }
+
+Defined in: components/timeline-stepper/api.ts:50
 
 Represents the result of executing a step and what is expected to happen next.
 
-#### Type declaration
+#### Properties
 
-| Name        | Type                                                | Description                             |
-| ----------- | --------------------------------------------------- | --------------------------------------- |
-| `failed`    | `boolean`                                           | True to mark the step as having failed. |
-| `nextSteps` | [`TimelineStepName`](README.md#timelinestepname)\[] | List of timelineSteps to execute next.  |
-| `skipSteps` | [`TimelineStepName`](README.md#timelinestepname)\[] | List of timelineSteps to skip.          |
-
-#### Defined in
-
-components/timeline-stepper/api.ts:50
+| Property                           | Type                                         | Description                             |
+| ---------------------------------- | -------------------------------------------- | --------------------------------------- |
+| <a id="failed"></a> `failed`       | `boolean`                                    | True to mark the step as having failed. |
+| <a id="nextsteps"></a> `nextSteps` | [`TimelineStepName`](#timelinestepname-1)\[] | List of timelineSteps to execute next.  |
+| <a id="skipsteps"></a> `skipSteps` | [`TimelineStepName`](#timelinestepname-1)\[] | List of timelineSteps to skip.          |
 
 ## Variables
 
 ### TimelineStepStatuses
 
-> `const` **TimelineStepStatuses**: `Record`<`"FAILED"` | `"IN_PROGRESS"` | `"NOT_STARTED"` | `"SKIPPED"` | `"SUCCEED"`, {`isCompletedStep`: `true`;`name`: `'FAILED'`; } | {`isCompletedStep`: `false`;`name`: `'IN_PROGRESS'`; } | {`isCompletedStep`: `false`;`name`: `'NOT_STARTED'`; } | {`isCompletedStep`: `true`;`name`: `'SKIPPED'`; } | {`isCompletedStep`: `true`;`name`: `'SUCCEED'`; }>
+> `const` **TimelineStepStatuses**: `Record`<`"FAILED"` | `"IN_PROGRESS"` | `"NOT_STARTED"` | `"SKIPPED"` | `"SUCCEED"`, { `isCompletedStep`: `true`; `name`: `"FAILED"`; } | { `isCompletedStep`: `false`; `name`: `"IN_PROGRESS"`; } | { `isCompletedStep`: `false`; `name`: `"NOT_STARTED"`; } | { `isCompletedStep`: `true`; `name`: `"SKIPPED"`; } | { `isCompletedStep`: `true`; `name`: `"SUCCEED"`; }>
 
-Map of [TimelineStepStatus](README.md#timelinestepstatus)'s name to its definition.
+Defined in: components/timeline-stepper/api.ts:105
 
-#### Defined in
-
-components/timeline-stepper/api.ts:105
+Map of [TimelineStepStatus](#timelinestepstatus)'s name to its definition.
 
 ## Functions
 
 ### createTimelineStepTaskResult()
 
-> **createTimelineStepTaskResult**(`__namedParameters`): [`TimelineStepTaskResult`](README.md#timelinesteptaskresult)
+> **createTimelineStepTaskResult**(`__namedParameters`): [`TimelineStepTaskResult`](#timelinesteptaskresult)
+
+Defined in: components/timeline-stepper/api.ts:120
 
 Create the result for the execution of a task.
 
 #### Parameters
 
-| Parameter           | Type                                                                    |
-| ------------------- | ----------------------------------------------------------------------- |
-| `__namedParameters` | `Partial`<[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)> |
+| Parameter           | Type                                                           |
+| ------------------- | -------------------------------------------------------------- |
+| `__namedParameters` | `Partial`<[`TimelineStepTaskResult`](#timelinesteptaskresult)> |
 
 #### Returns
 
-[`TimelineStepTaskResult`](README.md#timelinesteptaskresult)
-
-#### Defined in
-
-components/timeline-stepper/api.ts:120
+[`TimelineStepTaskResult`](#timelinesteptaskresult)
 
 ***
 
 ### defineTheme()
 
 > **defineTheme**(`generator`): `ThemeGenerator`
+
+Defined in: utils.ts:140
 
 Add some type support for defining themes.
 
@@ -449,37 +435,33 @@ Add some type support for defining themes.
 
 `ThemeGenerator`
 
-#### Defined in
-
-utils.ts:140
-
 ***
 
 ### exposePrimeVueHelpers()
 
-> **exposePrimeVueHelpers**(): {`cx`: (`key`, `params`?) => `string` | `object`;`ptm`: (`key`, `params`?) => `object`;`ptmi`: (`key`, `params`?) => `object`; }
+> **exposePrimeVueHelpers**(): { `cx`: (`key`, `params`?) => `string` | `object`; `ptm`: (`key`, `params`?) => `object`; `ptmi`: (`key`, `params`?) => `object`; }
+
+Defined in: utils.ts:173
 
 Get the helper methods that PrimeVue defines for its components to allow passthrough support.
 
 #### Returns
 
-{`cx`: (`key`, `params`?) => `string` | `object`;`ptm`: (`key`, `params`?) => `object`;`ptmi`: (`key`, `params`?) => `object`; }
+{ `cx`: (`key`, `params`?) => `string` | `object`; `ptm`: (`key`, `params`?) => `object`; `ptmi`: (`key`, `params`?) => `object`; }
 
-| Name   | Type                                       |
-| ------ | ------------------------------------------ |
-| `cx`   | (`key`, `params`?) => `string` \| `object` |
-| `ptm`  | (`key`, `params`?) => `object`             |
-| `ptmi` | (`key`, `params`?) => `object`             |
-
-#### Defined in
-
-utils.ts:173
+| Name     | Type                                       |
+| -------- | ------------------------------------------ |
+| `cx()`   | (`key`, `params`?) => `string` \| `object` |
+| `ptm()`  | (`key`, `params`?) => `object`             |
+| `ptmi()` | (`key`, `params`?) => `object`             |
 
 ***
 
 ### extendStyle()
 
 > **extendStyle**(`parentStyle`, `childStyle`): `__module`
+
+Defined in: utils.ts:154
 
 Allows extending the BaseStyle for a PrimeVue component.
 
@@ -496,33 +478,27 @@ Allows extending the BaseStyle for a PrimeVue component.
 
 The new class after it has been extended.
 
-#### Defined in
-
-utils.ts:154
-
 ***
 
 ### getSeverityForBadge()
 
 > **getSeverityForBadge**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
+Defined in: utils.ts:26
+
 Map the given color option to a Badge's severity level.
 
 #### Parameters
 
-| Parameter     | Type                                   | Description              |
-| ------------- | -------------------------------------- | ------------------------ |
-| `colorOption` | [`ColorOption`](README.md#coloroption) | The color option to map. |
+| Parameter     | Type                          | Description              |
+| ------------- | ----------------------------- | ------------------------ |
+| `colorOption` | [`ColorOption`](#coloroption) | The color option to map. |
 
 #### Returns
 
 `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
 The severity for the given color option.
-
-#### Defined in
-
-utils.ts:26
 
 ***
 
@@ -530,23 +506,21 @@ utils.ts:26
 
 > **getSeverityForButton**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
+Defined in: utils.ts:43
+
 Map the given color option to a Button's severity level.
 
 #### Parameters
 
-| Parameter     | Type                                   | Description              |
-| ------------- | -------------------------------------- | ------------------------ |
-| `colorOption` | [`ColorOption`](README.md#coloroption) | The color option to map. |
+| Parameter     | Type                          | Description              |
+| ------------- | ----------------------------- | ------------------------ |
+| `colorOption` | [`ColorOption`](#coloroption) | The color option to map. |
 
 #### Returns
 
 `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
 The severity for the given color option.
-
-#### Defined in
-
-utils.ts:43
 
 ***
 
@@ -554,13 +528,15 @@ utils.ts:43
 
 > **getSeverityForMessage**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `"error"`
 
+Defined in: utils.ts:73
+
 Map the given color option to a Message's severity level.
 
 #### Parameters
 
-| Parameter     | Type                                   | Description              |
-| ------------- | -------------------------------------- | ------------------------ |
-| `colorOption` | [`ColorOption`](README.md#coloroption) | The color option to map. |
+| Parameter     | Type                          | Description              |
+| ------------- | ----------------------------- | ------------------------ |
+| `colorOption` | [`ColorOption`](#coloroption) | The color option to map. |
 
 #### Returns
 
@@ -568,33 +544,27 @@ Map the given color option to a Message's severity level.
 
 The severity for the given color option.
 
-#### Defined in
-
-utils.ts:73
-
 ***
 
 ### getSeverityForOverlayBadge()
 
 > **getSeverityForOverlayBadge**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
+Defined in: utils.ts:90
+
 Map the given color option to an OverlayBadge's severity level.
 
 #### Parameters
 
-| Parameter     | Type                                   | Description              |
-| ------------- | -------------------------------------- | ------------------------ |
-| `colorOption` | [`ColorOption`](README.md#coloroption) | The color option to map. |
+| Parameter     | Type                          | Description              |
+| ------------- | ----------------------------- | ------------------------ |
+| `colorOption` | [`ColorOption`](#coloroption) | The color option to map. |
 
 #### Returns
 
 `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
 The severity for the given color option.
-
-#### Defined in
-
-utils.ts:90
 
 ***
 
@@ -602,23 +572,21 @@ utils.ts:90
 
 > **getSeverityForSplitButton**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
+Defined in: utils.ts:114
+
 Map the given color option to a SplitButton's severity level.
 
 #### Parameters
 
-| Parameter     | Type                                   | Description              |
-| ------------- | -------------------------------------- | ------------------------ |
-| `colorOption` | [`ColorOption`](README.md#coloroption) | The color option to map. |
+| Parameter     | Type                          | Description              |
+| ------------- | ----------------------------- | ------------------------ |
+| `colorOption` | [`ColorOption`](#coloroption) | The color option to map. |
 
 #### Returns
 
 `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
 The severity for the given color option.
-
-#### Defined in
-
-utils.ts:114
 
 ***
 
@@ -626,23 +594,21 @@ utils.ts:114
 
 > **getSeverityForTag**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
+Defined in: utils.ts:102
+
 Map the given color option to a Tag's severity level.
 
 #### Parameters
 
-| Parameter     | Type                                   | Description              |
-| ------------- | -------------------------------------- | ------------------------ |
-| `colorOption` | [`ColorOption`](README.md#coloroption) | The color option to map. |
+| Parameter     | Type                          | Description              |
+| ------------- | ----------------------------- | ------------------------ |
+| `colorOption` | [`ColorOption`](#coloroption) | The color option to map. |
 
 #### Returns
 
 `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
 The severity for the given color option.
-
-#### Defined in
-
-utils.ts:102
 
 ***
 
@@ -650,13 +616,15 @@ utils.ts:102
 
 > **getSeverityForToast**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
 
+Defined in: utils.ts:126
+
 Map the given color option to a Toast's severity level.
 
 #### Parameters
 
-| Parameter     | Type                                   | Description              |
-| ------------- | -------------------------------------- | ------------------------ |
-| `colorOption` | [`ColorOption`](README.md#coloroption) | The color option to map. |
+| Parameter     | Type                          | Description              |
+| ------------- | ----------------------------- | ------------------------ |
+| `colorOption` | [`ColorOption`](#coloroption) | The color option to map. |
 
 #### Returns
 
@@ -664,29 +632,23 @@ Map the given color option to a Toast's severity level.
 
 The severity for the given color option.
 
-#### Defined in
-
-utils.ts:126
-
 ***
 
 ### isSameTimelineStepStatus()
 
 > **isSameTimelineStepStatus**(`status1`, `status2`): `boolean`
 
-Determine if the two [TimelineStepStatus](README.md#timelinestepstatus) is the same.
+Defined in: components/timeline-stepper/api.ts:140
+
+Determine if the two [TimelineStepStatus](#timelinestepstatus) is the same.
 
 #### Parameters
 
-| Parameter | Type                                                 | Description                 |
-| --------- | ---------------------------------------------------- | --------------------------- |
-| `status1` | [`TimelineStepStatus`](README.md#timelinestepstatus) | The first status to check.  |
-| `status2` | [`TimelineStepStatus`](README.md#timelinestepstatus) | The second status to check. |
+| Parameter | Type                                        | Description                 |
+| --------- | ------------------------------------------- | --------------------------- |
+| `status1` | [`TimelineStepStatus`](#timelinestepstatus) | The first status to check.  |
+| `status2` | [`TimelineStepStatus`](#timelinestepstatus) | The second status to check. |
 
 #### Returns
 
 `boolean`
-
-#### Defined in
-
-components/timeline-stepper/api.ts:140

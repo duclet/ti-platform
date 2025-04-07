@@ -1,4 +1,10 @@
+import eslint from '@eslint/js';
 import type { Linter } from 'eslint';
+import prettier from 'eslint-config-prettier/flat';
+import { flatConfigs } from 'eslint-plugin-import-x';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import globals from 'globals';
+import type { ConfigWithExtends } from 'typescript-eslint';
 
 /**
  * Shared rules for `.cjs` and `.js` files.
@@ -9,16 +15,20 @@ export const BASE_JAVASCRIPT_RULES: Partial<Linter.RulesRecord> = {
 };
 
 /**
- * Get the default configurations for `.cjs` files.
+ * ESLint configurations for CommonJS files.
  */
-export function getCjsConfigs(): Linter.ConfigOverride {
+export function getCjsConfigs(): ConfigWithExtends {
     return {
-        files: '*.cjs',
-        extends: ['eslint:recommended', 'prettier'],
-        env: {
-            commonjs: true,
-            es6: true,
-            node: true,
+        name: '@ti-platform/cjs',
+        files: ['**/*.cjs'],
+        extends: [eslint.configs.recommended, prettier],
+        languageOptions: {
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+            globals: {
+                ...globals.node,
+                ...globals.commonjs,
+            },
         },
         rules: {
             ...BASE_JAVASCRIPT_RULES,
@@ -28,15 +38,18 @@ export function getCjsConfigs(): Linter.ConfigOverride {
 }
 
 /**
- * Get the default configurations for `.js` files.
+ * ESLint confgurations for JavaScript files.
  */
-export function getJsConfigs(): Linter.ConfigOverride {
+export function getJsConfigs(): ConfigWithExtends {
     return {
-        files: '*.js',
-        extends: ['eslint:recommended', 'prettier'],
-        plugins: ['simple-import-sort'],
+        name: '@ti-platform/js',
+        files: ['**/*.mjs', '**/*.js'],
+        extends: [eslint.configs.recommended, flatConfigs.recommended, prettier],
+        plugins: { 'simple-import-sort': simpleImportSort },
         rules: {
             ...BASE_JAVASCRIPT_RULES,
+            'import-x/no-duplicates': 'error',
+            'import-x/no-named-as-default': 'off',
             'simple-import-sort/imports': 'error',
             'simple-import-sort/exports': 'error',
         },

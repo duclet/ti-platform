@@ -6,7 +6,10 @@ export default defineConfig({
             '@src': new URL('./src/', import.meta.url).pathname
         },
         coverage: {
+            include: ['src/**/*.ts'],
+            exclude: ['src/index.ts'],
             provider: 'v8',
         },
+        environment: 'jsdom',
     }
 })

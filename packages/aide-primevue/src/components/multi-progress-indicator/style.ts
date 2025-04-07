@@ -21,4 +21,4 @@ const classes = {
     progressBarReverse: 'p-multiprogressindicator-progressbar p-multiprogressindicator-progressbar-reverse',
 };
 
-export default extendStyle(BaseStyle, { name: 'multiprogressindicator', theme, classes });
+export default extendStyle(BaseStyle, { name: 'multiprogressindicator', style: theme, classes });

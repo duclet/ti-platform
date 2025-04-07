@@ -1,4 +1,5 @@
-import { reactiveExecuteTasks, ReactiveExecuteTasksRet } from '@src/queue';
+import type { ReactiveExecuteTasksRet } from '@src/queue';
+import { reactiveExecuteTasks } from '@src/queue';
 import { waitFor } from '@ti-platform/aide';
 import { expect } from '@ti-platform/aide-test';
 import { afterEach, beforeEach, describe, test, vi } from 'vitest';

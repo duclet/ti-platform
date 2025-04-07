@@ -1,4 +1,5 @@
-import { computed, ComputedRef, inject, InjectionKey, provide, reactive, Ref, toRef, toRefs } from 'vue';
+import type { ComputedRef, InjectionKey, Ref } from 'vue';
+import { computed, inject, provide, reactive, toRef, toRefs } from 'vue';
 
 /**
  * Shorthand method to simply convert a Ref to a ComputedRef.

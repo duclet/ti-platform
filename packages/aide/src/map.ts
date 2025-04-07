@@ -1,6 +1,7 @@
-import { Consumer, Mapper, Predicate } from '@src/function';
-import { createOptional, Optional } from '@src/optional';
-import { Simplify, SimplifyOmit } from '@src/types';
+import type { Consumer, Mapper, Predicate } from '@src/function';
+import type { Optional } from '@src/optional';
+import { createOptional } from '@src/optional';
+import type { Simplify, SimplifyOmit } from '@src/types';
 
 /**
  * @typeParam K The type of the key in the map.

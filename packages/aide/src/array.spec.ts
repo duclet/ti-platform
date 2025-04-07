@@ -1,5 +1,15 @@
-import { ensureType, first, firstDefined, firstDefinedOpt, firstOpt, keepOnlyDefined, toMap } from '@src/arrays';
+import {
+    asNonEmptyArray,
+    ensureType,
+    first,
+    firstDefined,
+    firstDefinedOpt,
+    firstOpt,
+    keepOnlyDefined,
+    toMap,
+} from '@src/arrays';
 import { createOptional } from '@src/optional';
+import type { NonEmptyArray } from '@src/types';
 import { expect } from '@ti-platform/aide-test';
 import { describe, test, vi } from 'vitest';
 
@@ -14,6 +24,16 @@ const it = test.extend<{
     sampleArray: async ({ task }, use) => {
         await use([1, 2, 3]);
     },
+});
+
+describe('asNonEmptyArray', () => {
+    it('should throw an error when the array is empty', ({ emptyArray }) => {
+        expect(() => asNonEmptyArray(emptyArray)).toThrowError('List is empty');
+    });
+
+    it('should return the array when it is not empty', ({ sampleArray }) => {
+        expect(asNonEmptyArray(sampleArray)).toBe(sampleArray as NonEmptyArray<number>);
+    });
 });
 
 describe('ensureType', () => {

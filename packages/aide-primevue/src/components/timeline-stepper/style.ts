@@ -16,4 +16,4 @@ const classes = {
     content: 'p-timelinestepper-content',
 };
 
-export default extendStyle(BaseStyle, { name: 'timelinestepper', theme, classes });
+export default extendStyle(BaseStyle, { name: 'timelinestepper', style: theme, classes });

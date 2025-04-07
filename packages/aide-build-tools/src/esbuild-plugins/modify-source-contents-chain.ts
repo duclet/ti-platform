@@ -74,7 +74,7 @@ export function modifySourceContentsChain({
 
             build.onLoad(
                 {
-                    filter: new RegExp(`.+(${extensions.join('|').replaceAll('.', '\\.')})`, 'g'),
+                    filter: new RegExp(`.+(${extensions.join('|').replaceAll('.', '\\.')})`),
                     namespace: 'file',
                 },
                 ({ path }) => {

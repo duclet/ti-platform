@@ -1,7 +1,7 @@
+import { PATH_AIDE_BUILD_TOOLS } from '@src/misc';
+import { spawnCommand } from '@src/spawn';
 import { cli } from 'cleye';
 import { readFileSync, writeFileSync } from 'fs';
-
-import { spawnCommand } from './spawn';
 
 function getArgv(commandName: string) {
     return cli({
@@ -48,7 +48,7 @@ export async function runTypedoc() {
     const argv = getArgv('run-typedoc');
 
     spawnCommand(
-        `npx typedoc --options ${__dirname}/../typedoc.json --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} ${argv.flags.inputFile}`
+        `npx typedoc --options ${PATH_AIDE_BUILD_TOOLS}/typedoc.json --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} ${argv.flags.inputFile}`
     );
     // spawnCommand(`sed -i 's/# /## /g' ${argv.flags.outDir}/globals.md`);
     spawnCommand(`sed -i -e "/---Insert API Docs---/r ${argv.flags.outDir}/globals.md" ${argv.flags.outDir}/README.md`);

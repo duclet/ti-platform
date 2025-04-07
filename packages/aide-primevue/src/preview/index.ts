@@ -1,5 +1,5 @@
-import { definePreset } from '@primevue/themes';
-import Lara from '@primevue/themes/lara';
+import { definePreset } from '@primeuix/themes';
+import Lara from '@primeuix/themes/lara';
 import App from '@src/preview/App.vue';
 import MultiProgressIndicator from '@src/preview/MultiProgressIndicator.vue';
 import MultiSelectExtended from '@src/preview/MultiSelectExtended.vue';
@@ -38,7 +38,7 @@ app.use(PrimeVue, {
             darkModeSelector: '.light-mode-only',
             cssLayer: {
                 name: 'primevue',
-                order: 'tailwind-base, primevue, tailwind-utilities',
+                order: 'theme, base, primevue',
             },
         },
     },

@@ -55,4 +55,4 @@ const classes = {
     navigation: 'p-wizardstepper-navigation',
 };
 
-export default extendStyle(BaseStyle, { name: 'wizardstepper', theme, classes });
+export default extendStyle(BaseStyle, { name: 'wizardstepper', style: theme, classes });

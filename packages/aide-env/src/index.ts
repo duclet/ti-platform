@@ -16,7 +16,7 @@ export function loadEnv(filesOrder = ['.env', '.env.{NODE_ENV}', '.env.local']) 
                 try {
                     accessSync(path, constants.R_OK);
                     return true;
-                } catch (e) {
+                } catch (ignoreError) {
                     return false;
                 }
             })

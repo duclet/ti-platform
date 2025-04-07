@@ -180,7 +180,7 @@ export class Assertion<T, P = undefined> {
      * Used when you want to check that an item is in a list. For testing the items in the list, this uses ===, a strict
      * equality check.
      */
-    public toContain(item: T): this {
+    public toContain<U>(item: U): this {
         this.createExpect().toContain(item);
         return this;
     }
@@ -189,7 +189,7 @@ export class Assertion<T, P = undefined> {
      * Used when you want to check that an item is in a list. For testing the items in the list, this matcher
      * recursively checks the equality of all fields, rather than checking for object identity.
      */
-    public toContainEqual(item: T): this {
+    public toContainEqual<U>(item: U): this {
         this.createExpect().toContainEqual(item);
         return this;
     }
@@ -423,6 +423,7 @@ export class Assertion<T, P = undefined> {
     }
 
     // Snapshots
+    /* c8 ignore start */
 
     /**
      * This ensures that a value matches the most recent snapshot.
@@ -480,6 +481,7 @@ export class Assertion<T, P = undefined> {
         this.createExpect().toThrowErrorMatchingInlineSnapshot(...args);
         return this;
     }
+    /* c8 ignore stop */
 
     // Private
 
@@ -569,4 +571,6 @@ export const matchStringMatching = (expected: string | RegExp) => vitestExpect.s
  * continues running and marks the failure as a test failure. All errors encountered during the test will be displayed
  * until the test is completed.
  */
+/* c8 ignore start */
 export const softExpect = <T>(actual: T): Assertion<T> => new Assertion<T>(actual, undefined, { soft: true });
+/* c8 ignore stop */

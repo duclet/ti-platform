@@ -1,6 +1,22 @@
-import { BiMapper, Supplier, TriMapper } from '@src/function';
-import { createOptional, Optional } from '@src/optional';
-import type { AnyArray } from '@src/types';
+import type { BiMapper, Supplier, TriMapper } from '@src/function';
+import type { Optional } from '@src/optional';
+import { createOptional } from '@src/optional';
+import type { AnyArray, NonEmptyArray } from '@src/types';
+
+/**
+ * Ensure that the given list is not empty.
+ *
+ * @typeParam V The type of each item in the array.
+ * @param list The list to ensure is not empty.
+ * @returns The same list.
+ */
+export function asNonEmptyArray<V>(list: AnyArray<V>): NonEmptyArray<V> {
+    if (list.length < 1) {
+        throw new Error('List is empty');
+    }
+
+    return list as NonEmptyArray<V>;
+}
 
 /**
  * This function is primarily here to help with stricter typing. When Typescript allows for partial inference of

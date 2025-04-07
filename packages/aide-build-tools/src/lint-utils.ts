@@ -2,8 +2,9 @@ import type { runEslint } from '@src/eslint';
 import { GENERAL_FILES } from '@src/misc';
 import type { runPrettier } from '@src/prettier';
 import { spawnCommand } from '@src/spawn';
-import chokidar from 'chokidar';
+import { watch } from 'chokidar';
 import { cli } from 'cleye';
+import { globSync } from 'glob';
 import { cwd, exit } from 'process';
 
 function getArgv(commandName: string) {
@@ -105,7 +106,9 @@ export function runLinter(name: string, linter: typeof runEslint | typeof runPre
     }
 
     if (argv.flags.watch) {
-        const watcher = chokidar.watch(getWatchPatterns(argv.flags.dir, argv.flags.extension, files), {
+        const patterns = getWatchPatterns(argv.flags.dir, argv.flags.extension, files);
+        const resolvedPaths = patterns.flatMap((pattern) => globSync(pattern));
+        const watcher = watch(resolvedPaths, {
             cwd: cwd(),
             ignoreInitial: true,
         });

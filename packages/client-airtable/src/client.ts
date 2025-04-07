@@ -18,9 +18,9 @@ import type {
 } from '@src/records/update-records';
 import { updateRecords } from '@src/records/update-records';
 import { createOptional, MapPlus, Queue } from '@ti-platform/aide';
-import defu from 'defu';
-import type { $Fetch } from 'ofetch';
-import { FetchOptions, ofetch } from 'ofetch';
+import { defu } from 'defu';
+import type { $Fetch, FetchOptions } from 'ofetch';
+import { ofetch } from 'ofetch';
 import type { Simplify, StringKeyOf } from 'type-fest';
 
 /**

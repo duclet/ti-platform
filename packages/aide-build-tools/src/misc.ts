@@ -23,15 +23,20 @@ export type RunEsLintPrettierParams = {
  * General list of files that most packages should have that we want to lint and format.
  */
 export const GENERAL_FILES = [
-    './.eslintrc.cjs',
+    './eslint.config.cjs',
+    './eslint.config.js',
+    './eslint.config.ts',
     './package.json',
     './prettier.config.cjs',
+    './prettier.config.js',
     './tsconfig.json',
     './tsup.config.ts',
     './vite.config.ts',
     './vite-base.config.ts',
     './vite-preview.config.ts',
 ];
+
+export const PATH_AIDE_BUILD_TOOLS = new URL('..', import.meta.url).pathname;
 
 /**
  * Given a list of paths, remove files that doesn't exist.

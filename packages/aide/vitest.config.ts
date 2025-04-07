@@ -6,6 +6,8 @@ export default defineConfig({
             '@src': new URL('./src/', import.meta.url).pathname
         },
         coverage: {
+            include: ['src/**/*.ts'],
+            exclude: ['src/function.ts', 'src/index.ts', 'src/types.ts'],
             provider: 'v8',
         },
     }

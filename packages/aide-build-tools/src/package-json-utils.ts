@@ -157,7 +157,7 @@ export function createCombinedPackageJsonDependencies(): void {
             console.log('No updates were found against target file');
             return;
         }
-    } catch (error) {
+    } catch (ignoreError) {
         // Only error here is that the target file doesn't exist which is fine
     }
 

@@ -49,4 +49,4 @@ const classes = {
     sidebarToggle: 'p-topbarwithsidebarlayout-sidebar-toggle',
 };
 
-export default extendStyle(BaseStyle, { name: 'topbarwithsidebarlayout', theme, classes });
+export default extendStyle(BaseStyle, { name: 'topbarwithsidebarlayout', style: theme, classes });

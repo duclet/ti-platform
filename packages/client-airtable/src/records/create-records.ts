@@ -25,7 +25,7 @@ const SCHEMA_CREATE_RECORDS_BODY_PARAMS = object({
  */
 export type CreateRecordsRequest<Fields extends RecordFields> = {
     /** Records to create. Maximum of 10. */
-    records: NonEmptyArray<Fields>;
+    records: NonEmptyArray<{ fields: Fields }>;
 } & BaseAndTablePathParams &
     Pick<CommonRequestParams, 'returnFieldsByFieldId' | 'typecast'>;
 

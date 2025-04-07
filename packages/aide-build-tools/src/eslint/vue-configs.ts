@@ -1,29 +1,38 @@
-import type { Linter } from 'eslint';
+import { defu } from 'defu';
+import prettier from 'eslint-config-prettier';
+import vue from 'eslint-plugin-vue';
+import type { ConfigWithExtends } from 'typescript-eslint';
+import { parser } from 'typescript-eslint';
 
 /**
  * Get default configurations for `.vue` files.
  */
-export function getVueConfigs(tsConfigs: Linter.ConfigOverride): Linter.ConfigOverride {
+export function getVueConfigs(tsConfigs: ConfigWithExtends): ConfigWithExtends {
     return {
-        files: '*.vue',
+        name: '@ti-platform/vue',
+        files: ['**/*.vue'],
         extends: [
             // Note that we need to ensure "prettier" is last
-            ...(tsConfigs.extends! as Array<string>).filter((v) => v !== 'prettier'),
-            ...tsConfigs.extends!.slice(0, -1),
-            'plugin:vue/vue3-recommended',
-            'prettier',
+            ...tsConfigs.extends!.filter((v) => v !== prettier),
+            vue.configs['flat/recommended'],
+            prettier,
         ],
-        plugins: [...tsConfigs.plugins!, 'vue'],
-        parserOptions: {
-            ...tsConfigs.parserOptions,
-            extraFileExtensions: ['.vue'],
-        },
-        globals: {
-            defineProps: 'readonly',
-            defineEmits: 'readonly',
-            defineExpose: 'readonly',
-            withDefaults: 'readonly',
-        },
+        plugins: tsConfigs.plugins,
+        languageOptions: defu(
+            {
+                parserOptions: {
+                    parser,
+                    extraFileExtensions: ['.vue'],
+                },
+                globals: {
+                    defineProps: true,
+                    defineEmits: true,
+                    defineExpose: true,
+                    withDefaults: true,
+                },
+            },
+            tsConfigs.languageOptions
+        ),
         rules: {
             ...tsConfigs.rules,
             'vue/multi-word-component-names': 'off',

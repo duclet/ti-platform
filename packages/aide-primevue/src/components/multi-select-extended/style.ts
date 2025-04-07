@@ -21,4 +21,4 @@ export const classes = {
     headerCheckboxLabel: 'tip p-multiselectextended-headercheckboxlabel',
 };
 
-export default extendStyle(BaseStyle, { name: 'multiselectextended', theme, classes });
+export default extendStyle(BaseStyle, { name: 'multiselectextended', style: theme, classes });

@@ -73,7 +73,7 @@
         },
     ];
 
-    let filteredTasks = ref<Array<ProgressIndicatorTask>>([]);
+    const filteredTasks = ref<Array<ProgressIndicatorTask>>([]);
 
     function executeTasks(tasks: Array<ProgressIndicatorTask>, toAddTask: ProgressIndicatorTask) {
         void promiseTimeout(1000).then(() => {

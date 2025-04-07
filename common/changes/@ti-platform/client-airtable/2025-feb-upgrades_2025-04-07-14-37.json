@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/client-airtable",
+      "comment": "Upgrade dependencies; Added tests; Fix bug with createRecords typings",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/client-airtable"
+}

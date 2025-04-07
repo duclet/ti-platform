@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-test",
+      "comment": "Upgrade dependencies; Added tests; Fixed typings for toContain and toContainEqual; Exporting CommonJS as well",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide-test"
+}
