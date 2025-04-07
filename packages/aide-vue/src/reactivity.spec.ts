@@ -1,7 +1,7 @@
 import { asComputed, asRef, injectRefs, provideAndReturnRefs } from '@src/reactivity';
 import { expect, matchAny } from '@ti-platform/aide-test';
 import { describe, it, vi } from 'vitest';
-import { inject, type InjectionKey, provide, ref } from 'vue';
+import { inject, type InjectionKey, provide, reactive, ref } from 'vue';
 
 vi.mock('vue', async () => {
     const actual = await vi.importActual('vue');
@@ -57,7 +57,7 @@ describe('reactivity', () => {
             const key = Symbol('test') as InjectionKey<{ count: number }>;
             const mockData = { count: 42 };
 
-            vi.mocked(inject).mockReturnValue(mockData);
+            vi.mocked(inject).mockReturnValue(reactive(mockData));
 
             const result = injectRefs(key);
 
