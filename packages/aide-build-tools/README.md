@@ -452,7 +452,7 @@ Note the following unique features while the configurations are generated:
 
 > **generatePrettierConfigs**(): `Config`
 
-Defined in: prettier.ts:9
+Defined in: prettier.ts:11
 
 Get the default configurations for Prettier.
 
@@ -715,7 +715,7 @@ Execute the command to run ESLint.
 
 > **runPrettier**(`params`): `SpawnSyncReturns`<`Buffer`<`ArrayBufferLike`>>
 
-Defined in: prettier.ts:27
+Defined in: prettier.ts:29
 
 Execute the command to run Prettier.
 
