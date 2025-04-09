@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Mon, 07 Apr 2025 14:47:35 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Apr 2025 20:07:33 GMT and should not be manually modified.
+
+## 4.1.0
+Wed, 09 Apr 2025 20:07:33 GMT
+
+### Minor changes
+
+- Remove glob patterns where it does not match any files for prettier
 
 ## 4.0.0
 Mon, 07 Apr 2025 14:47:35 GMT
