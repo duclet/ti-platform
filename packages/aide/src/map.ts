@@ -180,6 +180,25 @@ export class MapPlus<K extends MapPlusKey, V> extends Map<K, V> {
     }
 
     /**
+     * Groups the entries of this map by the result of the classifier function.
+     */
+    public groupBy<K2 extends MapPlusKey>(
+        classifier: Mapper<Simplify<MapPlusPresentData<K, V>>, K2>
+    ): MapPlus<K2, MapPlus<K, V>> {
+        const result = new MapPlus<K2, MapPlus<K, V>>();
+
+        this.entriesAsArray().forEach(([key, value]) => {
+            const groupKey = classifier({ key, value: value as NonNullable<V>, map: this });
+
+            result
+                .computeIfAbsent(groupKey, () => createOptional(new MapPlus<K, V>()))
+                .ifPresent((group) => group.set(key, value));
+        });
+
+        return result;
+    }
+
+    /**
      * Returns true if this map contains no key-value mappings.
      */
     public isEmpty(): boolean {

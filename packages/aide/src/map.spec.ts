@@ -291,6 +291,38 @@ describe('MapPlus', () => {
         });
     });
 
+    describe('groupBy', () => {
+        it('should group items by the key returned by the grouper function', ({ stringMap }) => {
+            const result = stringMap.groupBy(({ value }) => value.length);
+            expect(result).toBeInstanceOf(MapPlus);
+            expect(result.get(3)).toEqual(
+                new MapPlus([
+                    ['one', 'ONE'],
+                    ['two', 'TWO'],
+                ])
+            );
+        });
+
+        it('should return an empty MapPlus when the original map is empty', () => {
+            const emptyMap = new MapPlus<string, string>();
+            const result = emptyMap.groupBy(() => 'group');
+            expect(result).toBeInstanceOf(MapPlus);
+            expect(result.size).toBe(0);
+        });
+
+        it('should handle multiple groups', ({ stringMap }) => {
+            stringMap.set('three', 'THREE');
+            const result = stringMap.groupBy(({ value }) => value.length);
+            expect(result.get(3)).toEqual(
+                new MapPlus([
+                    ['one', 'ONE'],
+                    ['two', 'TWO'],
+                ])
+            );
+            expect(result.get(5)).toEqual(new MapPlus([['three', 'THREE']]));
+        });
+    });
+
     describe('isEmpty', () => {
         it('should returns false when the map is not empty', ({ stringMap }) => {
             expect(stringMap.isEmpty()).toBeFalse();

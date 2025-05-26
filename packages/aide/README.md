@@ -845,6 +845,30 @@ Similar to Map#get but will throw an Error if the key does not exist.
 
 `NonNullable`<`V`>
 
+##### groupBy()
+
+> **groupBy**<`K2`>(`classifier`): [`MapPlus`](#mapplus)<`K2`, [`MapPlus`](#mapplus)<`K`, `V`>>
+
+Defined in: packages/aide/src/map.ts:185
+
+Groups the entries of this map by the result of the classifier function.
+
+###### Type Parameters
+
+| Type Parameter                             |
+| ------------------------------------------ |
+| `K2` *extends* [`MapPlusKey`](#mappluskey) |
+
+###### Parameters
+
+| Parameter    | Type                                                                                                            |
+| ------------ | --------------------------------------------------------------------------------------------------------------- |
+| `classifier` | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `K2`> |
+
+###### Returns
+
+[`MapPlus`](#mapplus)<`K2`, [`MapPlus`](#mapplus)<`K`, `V`>>
+
 ##### has()
 
 > **has**(`key`): `boolean`
@@ -871,7 +895,7 @@ boolean indicating whether an element with the specified key exists or not.
 
 > **isEmpty**(): `boolean`
 
-Defined in: packages/aide/src/map.ts:185
+Defined in: packages/aide/src/map.ts:204
 
 Returns true if this map contains no key-value mappings.
 
@@ -899,7 +923,7 @@ Returns an iterable of keys in the map
 
 > **keysArray**(): `K`\[]
 
-Defined in: packages/aide/src/map.ts:192
+Defined in: packages/aide/src/map.ts:211
 
 Retrieve the keys as an array.
 
@@ -911,7 +935,7 @@ Retrieve the keys as an array.
 
 > **mapKeys**<`R`>(`mapper`): [`MapPlus`](#mapplus)<`R`, `V`>
 
-Defined in: packages/aide/src/map.ts:201
+Defined in: packages/aide/src/map.ts:220
 
 Create a new version of this map with the keys mapped to a different value with the provided mapper. Please note
 that no consideration will be made in validate the keys are not duplicated meaning if the mapper function
@@ -937,7 +961,7 @@ generates the same key multiple times, the later will override the previous valu
 
 > **mapValues**<`R`>(`mapper`): [`MapPlus`](#mapplus)<`K`, `R`>
 
-Defined in: packages/aide/src/map.ts:213
+Defined in: packages/aide/src/map.ts:232
 
 Create a new version of this map with the values mapped to a different value with the provided mapper.
 
@@ -984,7 +1008,7 @@ Adds a new element with a specified key and value to the Map. If an element with
 
 > **setAll**(`map`): `this`
 
-Defined in: packages/aide/src/map.ts:225
+Defined in: packages/aide/src/map.ts:244
 
 Set all key/value pair in the given map to this map.
 
@@ -1002,7 +1026,7 @@ Set all key/value pair in the given map to this map.
 
 > **setIfAbsent**(`key`, `value`): `V`
 
-Defined in: packages/aide/src/map.ts:240
+Defined in: packages/aide/src/map.ts:259
 
 Set the provided value to the provided key if it doesn't exists, returning the new current value.
 
@@ -1021,7 +1045,7 @@ Set the provided value to the provided key if it doesn't exists, returning the n
 
 > **some**(`predicate`): `boolean`
 
-Defined in: packages/aide/src/map.ts:252
+Defined in: packages/aide/src/map.ts:271
 
 Returns true if at least one entry in this map satisfies the provided predicate.
 
@@ -1039,7 +1063,7 @@ Returns true if at least one entry in this map satisfies the provided predicate.
 
 > **toObject**<`K2`, `V2`>(`__namedParameters`): `Record`<`K2`, `V2`>
 
-Defined in: packages/aide/src/map.ts:261
+Defined in: packages/aide/src/map.ts:280
 
 Convert this to an object of key/value pair with possibility of mapping the key and value.
 
@@ -1082,7 +1106,7 @@ Returns an iterable of values in the map
 
 > **valuesArray**(): `V`\[]
 
-Defined in: packages/aide/src/map.ts:282
+Defined in: packages/aide/src/map.ts:301
 
 Retrieves all values as an array.
 
