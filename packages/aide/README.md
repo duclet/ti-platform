@@ -7,8 +7,10 @@ Docs for more information.
 
 * [API Docs](#api-docs)
   * [Classes](#classes)
+    * [AbsentOptional\<T>](#absentoptionalt)
     * [Deferred\<T>](#deferredt)
     * [MapPlus\<K, V>](#mapplusk-v)
+    * [PresentOptional\<T>](#presentoptionalt)
     * [Queue\<T>](#queuet)
   * [Interfaces](#interfaces)
     * [Optional\<T>](#optionalt)
@@ -16,6 +18,20 @@ Docs for more information.
   * [Type Aliases](#type-aliases)
     * [AnyArray\<V>](#anyarrayv)
     * [Awaitable\<T>](#awaitablet)
+    * [AwaitableBiConsumer()\<T, U>](#awaitablebiconsumert-u)
+    * [AwaitableBiMapper()\<T, U, R>](#awaitablebimappert-u-r)
+    * [AwaitableBinaryOperator()\<T>](#awaitablebinaryoperatort)
+    * [AwaitableBiPredicate()\<T, U>](#awaitablebipredicatet-u)
+    * [AwaitableConsumer()\<T>](#awaitableconsumert)
+    * [AwaitableMapper()\<T, R>](#awaitablemappert-r)
+    * [AwaitablePredicate()\<T>](#awaitablepredicatet)
+    * [AwaitableRunnable()](#awaitablerunnable)
+    * [AwaitableSupplier()\<T>](#awaitablesuppliert)
+    * [AwaitableTernaryOperator()\<T>](#awaitableternaryoperatort)
+    * [AwaitableTriConsumer()\<T, U, V>](#awaitabletriconsumert-u-v)
+    * [AwaitableTriMapper()\<T, U, V, R>](#awaitabletrimappert-u-v-r)
+    * [AwaitableTriPredicate()\<T, U, V>](#awaitabletripredicatet-u-v)
+    * [AwaitableUnaryOperator()\<T>](#awaitableunaryoperatort)
     * [BiConsumer()\<T, U>](#biconsumert-u)
     * [BiMapper()\<T, U, R>](#bimappert-u-r)
     * [BinaryOperator()\<T>](#binaryoperatort)
@@ -56,6 +72,321 @@ Docs for more information.
 # API Docs
 
 ## Classes
+
+### AbsentOptional\<T>
+
+Defined in: packages/aide/src/optional.ts:78
+
+Wrapper around values that are either present or absent (null or undefined).
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Implements
+
+* [`Optional`](#optional)<`T`>
+
+#### Constructors
+
+##### Constructor
+
+> **new AbsentOptional**<`T`>(): [`AbsentOptional`](#absentoptional)<`T`>
+
+###### Returns
+
+[`AbsentOptional`](#absentoptional)<`T`>
+
+#### Methods
+
+##### filter()
+
+> **filter**(`predicate`): [`Optional`](#optional)<`T`>
+
+Defined in: packages/aide/src/optional.ts:79
+
+If a value is present and the value matches the given predicate, return an Optional describing the value,
+otherwise return an empty Optional.
+
+###### Parameters
+
+| Parameter   | Type                                          |
+| ----------- | --------------------------------------------- |
+| `predicate` | [`Predicate`](#predicate)<`NonNullable`<`T`>> |
+
+###### Returns
+
+[`Optional`](#optional)<`T`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`filter`](#filter-6)
+
+##### flatMap()
+
+> **flatMap**<`R`>(`mapper`): [`Optional`](#optional)<`R`>
+
+Defined in: packages/aide/src/optional.ts:83
+
+If a value is present, apply the provided Optional-bearing mapping function to it, return that result, otherwise
+return an empty Optional. This method is similar to [map](#map-4), but the provided mapper is one whose result is
+already an Optional, and if invoked, flatMap does not wrap it with an additional Optional.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `R`            |
+
+###### Parameters
+
+| Parameter | Type                                                                  |
+| --------- | --------------------------------------------------------------------- |
+| `mapper`  | [`Mapper`](#mapper)<`NonNullable`<`T`>, [`Optional`](#optional)<`R`>> |
+
+###### Returns
+
+[`Optional`](#optional)<`R`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`flatMap`](#flatmap-4)
+
+##### getOrThrow()
+
+> **getOrThrow**(): `NonNullable`<`T`>
+
+Defined in: packages/aide/src/optional.ts:87
+
+If the value is present, returns the value, otherwise throws an Error.
+
+###### Returns
+
+`NonNullable`<`T`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`getOrThrow`](#getorthrow-6)
+
+##### ifAbsent()
+
+> **ifAbsent**(`handler`): `this`
+
+Defined in: packages/aide/src/optional.ts:91
+
+If the value is absent, invoke the specified handler, otherwise do nothing.
+
+###### Parameters
+
+| Parameter | Type                    |
+| --------- | ----------------------- |
+| `handler` | [`Runnable`](#runnable) |
+
+###### Returns
+
+`this`
+
+###### Implementation of
+
+[`Optional`](#optional).[`ifAbsent`](#ifabsent-4)
+
+##### ifPresent()
+
+> **ifPresent**(`consumer`): `this`
+
+Defined in: packages/aide/src/optional.ts:96
+
+If a value is present, invoke the specified consumer with the value, otherwise do nothing.
+
+###### Parameters
+
+| Parameter  | Type                                        |
+| ---------- | ------------------------------------------- |
+| `consumer` | [`Consumer`](#consumer)<`NonNullable`<`T`>> |
+
+###### Returns
+
+`this`
+
+###### Implementation of
+
+[`Optional`](#optional).[`ifPresent`](#ifpresent-4)
+
+##### isAbsent()
+
+> **isAbsent**(): `this is AbsentOptional<T>`
+
+Defined in: packages/aide/src/optional.ts:100
+
+If a value is absent (null or undefined), returns true, otherwise false.
+
+###### Returns
+
+`this is AbsentOptional<T>`
+
+###### Implementation of
+
+[`Optional`](#optional).[`isAbsent`](#isabsent-4)
+
+##### isPresent()
+
+> **isPresent**(): `this is PresentOptional<T>`
+
+Defined in: packages/aide/src/optional.ts:104
+
+If a value is present, returns true, otherwise false.
+
+###### Returns
+
+`this is PresentOptional<T>`
+
+###### Implementation of
+
+[`Optional`](#optional).[`isPresent`](#ispresent-4)
+
+##### map()
+
+> **map**<`R`>(`mapper`): [`Optional`](#optional)<`R`>
+
+Defined in: packages/aide/src/optional.ts:108
+
+If a value is present, apply the provided mapping function to it, and if the result is present, return an
+Optional describing the result, otherwise, return an empty Optional.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `R`            |
+
+###### Parameters
+
+| Parameter | Type                                         |
+| --------- | -------------------------------------------- |
+| `mapper`  | [`Mapper`](#mapper)<`NonNullable`<`T`>, `R`> |
+
+###### Returns
+
+[`Optional`](#optional)<`R`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`map`](#map-4)
+
+##### or()
+
+> **or**(`other`): [`Optional`](#optional)<`T`>
+
+Defined in: packages/aide/src/optional.ts:112
+
+If a value is present, returns an Optional describing the value, otherwise returns an Optional produced by the
+supplying function.
+
+###### Parameters
+
+| Parameter | Type                                                  |
+| --------- | ----------------------------------------------------- |
+| `other`   | [`Supplier`](#supplier)<[`Optional`](#optional)<`T`>> |
+
+###### Returns
+
+[`Optional`](#optional)<`T`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`or`](#or-4)
+
+##### orElse()
+
+> **orElse**(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:116
+
+If a value is present, returns the value, otherwise returns other.
+
+###### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `other`   | `T`  |
+
+###### Returns
+
+`T`
+
+###### Implementation of
+
+[`Optional`](#optional).[`orElse`](#orelse-4)
+
+##### orElseGet()
+
+> **orElseGet**(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:120
+
+If a value is present, returns the value, otherwise returns the result produced by the supplying function.
+
+###### Parameters
+
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `other`   | [`Supplier`](#supplier)<`T`> |
+
+###### Returns
+
+`T`
+
+###### Implementation of
+
+[`Optional`](#optional).[`orElseGet`](#orelseget-4)
+
+##### orElseThrow()
+
+> **orElseThrow**<`X`>(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:124
+
+If a value is present, returns the value, otherwise throws an exception to be created by the provided supplier.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `X`            |
+
+###### Parameters
+
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `other`   | [`Supplier`](#supplier)<`X`> |
+
+###### Returns
+
+`T`
+
+###### Implementation of
+
+[`Optional`](#optional).[`orElseThrow`](#orelsethrow-4)
+
+##### orUndefined()
+
+> **orUndefined**(): `undefined`
+
+Defined in: packages/aide/src/optional.ts:128
+
+If a value is present, returns the value, otherwise return undefined.
+
+###### Returns
+
+`undefined`
+
+###### Implementation of
+
+[`Optional`](#optional).[`orUndefined`](#orundefined-4)
+
+***
 
 ### Deferred\<T>
 
@@ -791,6 +1122,329 @@ Groups members of an iterable according to the return value of the passed callba
 
 ***
 
+### PresentOptional\<T>
+
+Defined in: packages/aide/src/optional.ts:133
+
+Wrapper around values that are either present or absent (null or undefined).
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Implements
+
+* [`Optional`](#optional)<`T`>
+
+#### Constructors
+
+##### Constructor
+
+> **new PresentOptional**<`T`>(`value`): [`PresentOptional`](#presentoptional)<`T`>
+
+Defined in: packages/aide/src/optional.ts:134
+
+###### Parameters
+
+| Parameter | Type               |
+| --------- | ------------------ |
+| `value`   | `NonNullable`<`T`> |
+
+###### Returns
+
+[`PresentOptional`](#presentoptional)<`T`>
+
+#### Methods
+
+##### filter()
+
+> **filter**(`predicate`): [`Optional`](#optional)<`T`>
+
+Defined in: packages/aide/src/optional.ts:136
+
+If a value is present and the value matches the given predicate, return an Optional describing the value,
+otherwise return an empty Optional.
+
+###### Parameters
+
+| Parameter   | Type                                          |
+| ----------- | --------------------------------------------- |
+| `predicate` | [`Predicate`](#predicate)<`NonNullable`<`T`>> |
+
+###### Returns
+
+[`Optional`](#optional)<`T`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`filter`](#filter-6)
+
+##### flatMap()
+
+> **flatMap**<`R`>(`mapper`): [`Optional`](#optional)<`R`>
+
+Defined in: packages/aide/src/optional.ts:140
+
+If a value is present, apply the provided Optional-bearing mapping function to it, return that result, otherwise
+return an empty Optional. This method is similar to [map](#map-4), but the provided mapper is one whose result is
+already an Optional, and if invoked, flatMap does not wrap it with an additional Optional.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `R`            |
+
+###### Parameters
+
+| Parameter | Type                                                                  |
+| --------- | --------------------------------------------------------------------- |
+| `mapper`  | [`Mapper`](#mapper)<`NonNullable`<`T`>, [`Optional`](#optional)<`R`>> |
+
+###### Returns
+
+[`Optional`](#optional)<`R`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`flatMap`](#flatmap-4)
+
+##### getOrThrow()
+
+> **getOrThrow**(): `NonNullable`<`T`>
+
+Defined in: packages/aide/src/optional.ts:144
+
+If the value is present, returns the value, otherwise throws an Error.
+
+###### Returns
+
+`NonNullable`<`T`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`getOrThrow`](#getorthrow-6)
+
+##### ifAbsent()
+
+> **ifAbsent**(`handler`): `this`
+
+Defined in: packages/aide/src/optional.ts:148
+
+If the value is absent, invoke the specified handler, otherwise do nothing.
+
+###### Parameters
+
+| Parameter | Type                    |
+| --------- | ----------------------- |
+| `handler` | [`Runnable`](#runnable) |
+
+###### Returns
+
+`this`
+
+###### Implementation of
+
+[`Optional`](#optional).[`ifAbsent`](#ifabsent-4)
+
+##### ifPresent()
+
+> **ifPresent**(`consumer`): `this`
+
+Defined in: packages/aide/src/optional.ts:152
+
+If a value is present, invoke the specified consumer with the value, otherwise do nothing.
+
+###### Parameters
+
+| Parameter  | Type                                        |
+| ---------- | ------------------------------------------- |
+| `consumer` | [`Consumer`](#consumer)<`NonNullable`<`T`>> |
+
+###### Returns
+
+`this`
+
+###### Implementation of
+
+[`Optional`](#optional).[`ifPresent`](#ifpresent-4)
+
+##### isAbsent()
+
+> **isAbsent**(): `this is AbsentOptional<T>`
+
+Defined in: packages/aide/src/optional.ts:157
+
+If a value is absent (null or undefined), returns true, otherwise false.
+
+###### Returns
+
+`this is AbsentOptional<T>`
+
+###### Implementation of
+
+[`Optional`](#optional).[`isAbsent`](#isabsent-4)
+
+##### isPresent()
+
+> **isPresent**(): `this is PresentOptional<T>`
+
+Defined in: packages/aide/src/optional.ts:161
+
+If a value is present, returns true, otherwise false.
+
+###### Returns
+
+`this is PresentOptional<T>`
+
+###### Implementation of
+
+[`Optional`](#optional).[`isPresent`](#ispresent-4)
+
+##### map()
+
+> **map**<`R`>(`mapper`): [`Optional`](#optional)<`R`>
+
+Defined in: packages/aide/src/optional.ts:165
+
+If a value is present, apply the provided mapping function to it, and if the result is present, return an
+Optional describing the result, otherwise, return an empty Optional.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `R`            |
+
+###### Parameters
+
+| Parameter | Type                                         |
+| --------- | -------------------------------------------- |
+| `mapper`  | [`Mapper`](#mapper)<`NonNullable`<`T`>, `R`> |
+
+###### Returns
+
+[`Optional`](#optional)<`R`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`map`](#map-4)
+
+##### or()
+
+> **or**(`other`): [`Optional`](#optional)<`T`>
+
+Defined in: packages/aide/src/optional.ts:169
+
+If a value is present, returns an Optional describing the value, otherwise returns an Optional produced by the
+supplying function.
+
+###### Parameters
+
+| Parameter | Type                                                  |
+| --------- | ----------------------------------------------------- |
+| `other`   | [`Supplier`](#supplier)<[`Optional`](#optional)<`T`>> |
+
+###### Returns
+
+[`Optional`](#optional)<`T`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`or`](#or-4)
+
+##### orElse()
+
+> **orElse**(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:173
+
+If a value is present, returns the value, otherwise returns other.
+
+###### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `other`   | `T`  |
+
+###### Returns
+
+`T`
+
+###### Implementation of
+
+[`Optional`](#optional).[`orElse`](#orelse-4)
+
+##### orElseGet()
+
+> **orElseGet**(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:177
+
+If a value is present, returns the value, otherwise returns the result produced by the supplying function.
+
+###### Parameters
+
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `other`   | [`Supplier`](#supplier)<`T`> |
+
+###### Returns
+
+`T`
+
+###### Implementation of
+
+[`Optional`](#optional).[`orElseGet`](#orelseget-4)
+
+##### orElseThrow()
+
+> **orElseThrow**<`X`>(`other`): `T`
+
+Defined in: packages/aide/src/optional.ts:181
+
+If a value is present, returns the value, otherwise throws an exception to be created by the provided supplier.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `X`            |
+
+###### Parameters
+
+| Parameter | Type                         |
+| --------- | ---------------------------- |
+| `other`   | [`Supplier`](#supplier)<`X`> |
+
+###### Returns
+
+`T`
+
+###### Implementation of
+
+[`Optional`](#optional).[`orElseThrow`](#orelsethrow-4)
+
+##### orUndefined()
+
+> **orUndefined**(): `NonNullable`<`T`>
+
+Defined in: packages/aide/src/optional.ts:185
+
+If a value is present, returns the value, otherwise return undefined.
+
+###### Returns
+
+`NonNullable`<`T`>
+
+###### Implementation of
+
+[`Optional`](#optional).[`orUndefined`](#orundefined-4)
+
+***
+
 ### Queue\<T>
 
 Defined in: packages/aide/src/queue.ts:76
@@ -919,7 +1573,7 @@ otherwise return an empty Optional.
 Defined in: packages/aide/src/optional.ts:18
 
 If a value is present, apply the provided Optional-bearing mapping function to it, return that result, otherwise
-return an empty Optional. This method is similar to [map](#map), but the provided mapper is one whose result is
+return an empty Optional. This method is similar to [map](#map-4), but the provided mapper is one whose result is
 already an Optional, and if invoked, flatMap does not wrap it with an additional Optional.
 
 ###### Type Parameters
@@ -988,7 +1642,7 @@ If a value is present, invoke the specified consumer with the value, otherwise d
 
 ##### isAbsent()
 
-> **isAbsent**(): `boolean`
+> **isAbsent**(): `this is AbsentOptional<T>`
 
 Defined in: packages/aide/src/optional.ts:38
 
@@ -996,11 +1650,11 @@ If a value is absent (null or undefined), returns true, otherwise false.
 
 ###### Returns
 
-`boolean`
+`this is AbsentOptional<T>`
 
 ##### isPresent()
 
-> **isPresent**(): `boolean`
+> **isPresent**(): `this is PresentOptional<T>`
 
 Defined in: packages/aide/src/optional.ts:43
 
@@ -1008,7 +1662,7 @@ If a value is present, returns true, otherwise false.
 
 ###### Returns
 
-`boolean`
+`this is PresentOptional<T>`
 
 ##### map()
 
@@ -1176,11 +1830,381 @@ The type is simply `T` or a promise which, when resolved, is given `T`.
 
 ***
 
+### AwaitableBiConsumer()\<T, U>
+
+> **AwaitableBiConsumer**<`T`, `U`> = (`t`, `u`) => [`Awaitable`](#awaitable)<`void`>
+
+Defined in: packages/aide/src/function.ts:6
+
+Represents an operation that accepts two input arguments and returns no result. This operation returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+| `U`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+| `u`       | `U`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`void`>
+
+***
+
+### AwaitableBiMapper()\<T, U, R>
+
+> **AwaitableBiMapper**<`T`, `U`, `R`> = (`t`, `u`) => [`Awaitable`](#awaitable)<`R`>
+
+Defined in: packages/aide/src/function.ts:11
+
+Represents a function that accepts two arguments and produces a result. This function returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+| `U`            |
+| `R`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+| `u`       | `U`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`R`>
+
+***
+
+### AwaitableBinaryOperator()\<T>
+
+> **AwaitableBinaryOperator**<`T`> = (`left`, `right`) => [`Awaitable`](#awaitable)<`T`>
+
+Defined in: packages/aide/src/function.ts:16
+
+Represents an operation upon two operands of the same type, producing a result of the same type as the operands. This operation returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `left`    | `T`  |
+| `right`   | `T`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`T`>
+
+***
+
+### AwaitableBiPredicate()\<T, U>
+
+> **AwaitableBiPredicate**<`T`, `U`> = (`t`, `u`) => [`Awaitable`](#awaitable)<`boolean`>
+
+Defined in: packages/aide/src/function.ts:21
+
+Represents a predicate (boolean-valued function) of two arguments. This predicate returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+| `U`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+| `u`       | `U`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`boolean`>
+
+***
+
+### AwaitableConsumer()\<T>
+
+> **AwaitableConsumer**<`T`> = (`t`) => [`Awaitable`](#awaitable)<`void`>
+
+Defined in: packages/aide/src/function.ts:26
+
+Represents an operation that accepts a single input argument and returns no result. This operation returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`void`>
+
+***
+
+### AwaitableMapper()\<T, R>
+
+> **AwaitableMapper**<`T`, `R`> = (`t`) => [`Awaitable`](#awaitable)<`R`>
+
+Defined in: packages/aide/src/function.ts:31
+
+Represents a function that accepts one argument and produces a result. This function returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+| `R`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`R`>
+
+***
+
+### AwaitablePredicate()\<T>
+
+> **AwaitablePredicate**<`T`> = (`t`) => [`Awaitable`](#awaitable)<`boolean`>
+
+Defined in: packages/aide/src/function.ts:41
+
+Represents a predicate (boolean-valued function) of one argument. This predicate returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`boolean`>
+
+***
+
+### AwaitableRunnable()
+
+> **AwaitableRunnable** = () => [`Awaitable`](#awaitable)<`void`>
+
+Defined in: packages/aide/src/function.ts:36
+
+Represents a runnable task that takes no arguments and returns no result. This task returns an Awaitable.
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`void`>
+
+***
+
+### AwaitableSupplier()\<T>
+
+> **AwaitableSupplier**<`T`> = () => [`Awaitable`](#awaitable)<`T`>
+
+Defined in: packages/aide/src/function.ts:46
+
+Represents a supplier of results. This supplier returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`T`>
+
+***
+
+### AwaitableTernaryOperator()\<T>
+
+> **AwaitableTernaryOperator**<`T`> = (`first`, `second`, `third`) => [`Awaitable`](#awaitable)<`T`>
+
+Defined in: packages/aide/src/function.ts:51
+
+Represents an operation upon three operands of the same type, producing a result of the same type as the operands. This operation returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `first`   | `T`  |
+| `second`  | `T`  |
+| `third`   | `T`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`T`>
+
+***
+
+### AwaitableTriConsumer()\<T, U, V>
+
+> **AwaitableTriConsumer**<`T`, `U`, `V`> = (`t`, `u`, `v`) => [`Awaitable`](#awaitable)<`void`>
+
+Defined in: packages/aide/src/function.ts:56
+
+Represents an operation that accepts three input arguments and returns no result. This operation returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+| `U`            |
+| `V`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+| `u`       | `U`  |
+| `v`       | `V`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`void`>
+
+***
+
+### AwaitableTriMapper()\<T, U, V, R>
+
+> **AwaitableTriMapper**<`T`, `U`, `V`, `R`> = (`t`, `u`, `v`) => [`Awaitable`](#awaitable)<`R`>
+
+Defined in: packages/aide/src/function.ts:61
+
+Represents a function that accepts three arguments and produces a result. This function returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+| `U`            |
+| `V`            |
+| `R`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+| `u`       | `U`  |
+| `v`       | `V`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`R`>
+
+***
+
+### AwaitableTriPredicate()\<T, U, V>
+
+> **AwaitableTriPredicate**<`T`, `U`, `V`> = (`t`, `u`, `v`) => [`Awaitable`](#awaitable)<`boolean`>
+
+Defined in: packages/aide/src/function.ts:66
+
+Represents a predicate (boolean-valued function) of three arguments. This predicate returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+| `U`            |
+| `V`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+| `u`       | `U`  |
+| `v`       | `V`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`boolean`>
+
+***
+
+### AwaitableUnaryOperator()\<T>
+
+> **AwaitableUnaryOperator**<`T`> = (`t`) => [`Awaitable`](#awaitable)<`T`>
+
+Defined in: packages/aide/src/function.ts:71
+
+Represents an operation on a single operand that produces a result of the same type as its operand. This operation returns an Awaitable.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `t`       | `T`  |
+
+#### Returns
+
+[`Awaitable`](#awaitable)<`T`>
+
+***
+
 ### BiConsumer()\<T, U>
 
 > **BiConsumer**<`T`, `U`> = (`t`, `u`) => `void`
 
-Defined in: packages/aide/src/function.ts:4
+Defined in: packages/aide/src/function.ts:76
 
 Represents an operation that accepts two input arguments and returns no result.
 
@@ -1208,7 +2232,7 @@ Represents an operation that accepts two input arguments and returns no result.
 
 > **BiMapper**<`T`, `U`, `R`> = (`t`, `u`) => `R`
 
-Defined in: packages/aide/src/function.ts:9
+Defined in: packages/aide/src/function.ts:81
 
 Represents a function that accepts two arguments and produces a result.
 
@@ -1237,7 +2261,7 @@ Represents a function that accepts two arguments and produces a result.
 
 > **BinaryOperator**<`T`> = (`left`, `right`) => `T`
 
-Defined in: packages/aide/src/function.ts:14
+Defined in: packages/aide/src/function.ts:86
 
 Represents an operation upon two operands of the same type, producing a result of the same type as the operands.
 
@@ -1264,7 +2288,7 @@ Represents an operation upon two operands of the same type, producing a result o
 
 > **BiPredicate**<`T`, `U`> = (`t`, `u`) => `boolean`
 
-Defined in: packages/aide/src/function.ts:19
+Defined in: packages/aide/src/function.ts:91
 
 Represents a predicate (boolean-valued function) of two arguments.
 
@@ -1292,7 +2316,7 @@ Represents a predicate (boolean-valued function) of two arguments.
 
 > **Consumer**<`T`> = (`t`) => `void`
 
-Defined in: packages/aide/src/function.ts:24
+Defined in: packages/aide/src/function.ts:96
 
 Represents an operation that accepts a single input argument and returns no result.
 
@@ -1318,7 +2342,7 @@ Represents an operation that accepts a single input argument and returns no resu
 
 > **Mapper**<`T`, `R`> = (`t`) => `R`
 
-Defined in: packages/aide/src/function.ts:29
+Defined in: packages/aide/src/function.ts:101
 
 Represents a function that accepts one argument and produces a result.
 
@@ -1405,7 +2429,7 @@ For a non-empty array.
 
 > **Predicate**<`T`> = (`t`) => `boolean`
 
-Defined in: packages/aide/src/function.ts:39
+Defined in: packages/aide/src/function.ts:111
 
 Represents a predicate (boolean-valued function) of one argument.
 
@@ -1451,7 +2475,7 @@ An item in the queue.
 
 > **Runnable** = () => `void`
 
-Defined in: packages/aide/src/function.ts:34
+Defined in: packages/aide/src/function.ts:106
 
 Represents a runnable task that takes no arguments and returns no result.
 
@@ -1498,7 +2522,7 @@ Wrapping Simplify over Omit.
 
 > **Supplier**<`T`> = () => `T`
 
-Defined in: packages/aide/src/function.ts:44
+Defined in: packages/aide/src/function.ts:116
 
 Represents a supplier of results.
 
@@ -1518,7 +2542,7 @@ Represents a supplier of results.
 
 > **TernaryOperator**<`T`> = (`first`, `second`, `third`) => `T`
 
-Defined in: packages/aide/src/function.ts:49
+Defined in: packages/aide/src/function.ts:121
 
 Represents an operation upon three operands of the same type, producing a result of the same type as the operands.
 
@@ -1546,7 +2570,7 @@ Represents an operation upon three operands of the same type, producing a result
 
 > **TriConsumer**<`T`, `U`, `V`> = (`t`, `u`, `v`) => `void`
 
-Defined in: packages/aide/src/function.ts:54
+Defined in: packages/aide/src/function.ts:126
 
 Represents an operation that accepts three input arguments and returns no result.
 
@@ -1576,7 +2600,7 @@ Represents an operation that accepts three input arguments and returns no result
 
 > **TriMapper**<`T`, `U`, `V`, `R`> = (`t`, `u`, `v`) => `R`
 
-Defined in: packages/aide/src/function.ts:59
+Defined in: packages/aide/src/function.ts:131
 
 Represents a function that accepts three arguments and produces a result.
 
@@ -1607,7 +2631,7 @@ Represents a function that accepts three arguments and produces a result.
 
 > **TriPredicate**<`T`, `U`, `V`> = (`t`, `u`, `v`) => `boolean`
 
-Defined in: packages/aide/src/function.ts:64
+Defined in: packages/aide/src/function.ts:136
 
 Represents a predicate (boolean-valued function) of three arguments.
 
@@ -1637,7 +2661,7 @@ Represents a predicate (boolean-valued function) of three arguments.
 
 > **UnaryOperator**<`T`> = (`t`) => `T`
 
-Defined in: packages/aide/src/function.ts:69
+Defined in: packages/aide/src/function.ts:141
 
 Represents an operation on a single operand that produces a result of the same type as its operand.
 

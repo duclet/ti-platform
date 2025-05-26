@@ -35,12 +35,12 @@ export interface Optional<T> {
     /**
      * If a value is absent (null or undefined), returns true, otherwise false.
      */
-    isAbsent(): boolean;
+    isAbsent(): this is AbsentOptional<T>;
 
     /**
      * If a value is present, returns true, otherwise false.
      */
-    isPresent(): boolean;
+    isPresent(): this is PresentOptional<T>;
 
     /**
      * If a value is present, apply the provided mapping function to it, and if the result is present, return an
@@ -75,9 +75,9 @@ export interface Optional<T> {
     orUndefined(): NonNullable<T> | undefined;
 }
 
-class AbsentOptional<T> implements Optional<T> {
+export class AbsentOptional<T> implements Optional<T> {
     filter(predicate: Predicate<NonNullable<T>>): Optional<T> {
-        return this;
+        return createOptional();
     }
 
     flatMap<R>(mapper: Mapper<NonNullable<T>, Optional<R>>): Optional<R> {
@@ -97,11 +97,11 @@ class AbsentOptional<T> implements Optional<T> {
         return this;
     }
 
-    isAbsent(): boolean {
+    isAbsent(): this is AbsentOptional<T> {
         return true;
     }
 
-    isPresent(): boolean {
+    isPresent(): this is PresentOptional<T> {
         return false;
     }
 
@@ -130,7 +130,7 @@ class AbsentOptional<T> implements Optional<T> {
     }
 }
 
-class PresentOptional<T> implements Optional<T> {
+export class PresentOptional<T> implements Optional<T> {
     public constructor(private readonly value: NonNullable<T>) {}
 
     filter(predicate: Predicate<NonNullable<T>>): Optional<T> {
@@ -154,11 +154,11 @@ class PresentOptional<T> implements Optional<T> {
         return this;
     }
 
-    isAbsent(): boolean {
+    isAbsent(): this is AbsentOptional<T> {
         return false;
     }
 
-    isPresent(): boolean {
+    isPresent(): this is PresentOptional<T> {
         return true;
     }
 
