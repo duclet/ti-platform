@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Added groupBy method for MapPlus; Added asynchronous version of Optional",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}
