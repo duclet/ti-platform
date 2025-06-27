@@ -1,0 +1,17 @@
+{
+  "name": "@ti-platform/di",
+  "entries": [
+    {
+      "version": "0.0.1",
+      "tag": "@ti-platform/di_v0.0.1",
+      "date": "Fri, 27 Jun 2025 20:34:58 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.8.0`"
+          }
+        ]
+      }
+    }
+  ]
+}
