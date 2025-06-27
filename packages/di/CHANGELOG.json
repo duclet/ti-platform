@@ -2,6 +2,18 @@
   "name": "@ti-platform/di",
   "entries": [
     {
+      "version": "0.0.3",
+      "tag": "@ti-platform/di_v0.0.3",
+      "date": "Fri, 27 Jun 2025 20:48:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dependencies fix"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.1",
       "tag": "@ti-platform/di_v0.0.1",
       "date": "Fri, 27 Jun 2025 20:34:58 GMT",
