@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/di",
+      "comment": "Dependencies fix",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/di"
+}
