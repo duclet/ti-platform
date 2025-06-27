@@ -139,3 +139,61 @@ export type TriPredicate<T, U, V> = (t: T, u: U, v: V) => boolean;
  * Represents an operation on a single operand that produces a result of the same type as its operand.
  */
 export type UnaryOperator<T> = (t: T) => T;
+
+/**
+ * A function wrapper that implements singleton pattern with reset capabilities.
+ * The wrapped function will only execute once and cache its result until reset.
+ */
+export interface SingletonFunction<T> {
+    (): T;
+    reset(): void;
+    resetAndCall(): T;
+}
+
+/**
+ * Creates a singleton wrapper around a factory function that caches the result
+ * of the first call and returns the same cached result on subsequent calls.
+ *
+ * @param factory - The factory function to wrap. Should return the value to be cached.
+ * @returns A wrapper function with reset capabilities that maintains referential equality.
+ *
+ * @example
+ * ```typescript
+ * const useData = single(() => ({ some: 'data' }));
+ *
+ * const d1 = useData(); // Executes factory function
+ * const d2 = useData(); // Returns cached result
+ * console.assert(d1 === d2); // true - same reference
+ *
+ * useData.reset(); // Clears cache
+ * const d3 = useData(); // Executes factory function again
+ * console.assert(d3 === d1); // false - different reference
+ *
+ * const d4 = useData.resetAndCall(); // Reset and immediately call
+ * ```
+ */
+export function single<T>(factory: Supplier<T>): SingletonFunction<T> {
+    let cached: T;
+    let hasValue = false;
+
+    const wrapper = (): T => {
+        if (!hasValue) {
+            cached = factory();
+            hasValue = true;
+        }
+        return cached;
+    };
+
+    wrapper.reset = (): void => {
+        hasValue = false;
+        // Note: We don't clear 'cached' to allow garbage collection
+        // when the reference is no longer held elsewhere
+    };
+
+    wrapper.resetAndCall = (): T => {
+        wrapper.reset();
+        return wrapper();
+    };
+
+    return wrapper;
+}

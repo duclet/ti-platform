@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/client-airtable",
+      "comment": "",
+      "type": "none"
+    }
+  ],
+  "packageName": "@ti-platform/client-airtable"
+}

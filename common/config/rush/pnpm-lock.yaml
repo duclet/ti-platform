@@ -474,6 +474,46 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(@types/node@22.14.0)(jsdom@26.0.0)
 
+  ../../packages/di:
+    dependencies:
+      '@ti-platform/aide':
+        specifier: workspace:*
+        version: link:../aide
+    devDependencies:
+      '@ti-platform/aide-build-tools':
+        specifier: workspace:*
+        version: link:../aide-build-tools
+      '@ti-platform/aide-test':
+        specifier: workspace:*
+        version: link:../aide-test
+      '@types/node':
+        specifier: ^22.14.0
+        version: 22.14.0
+      '@vitest/coverage-v8':
+        specifier: ^3.1.1
+        version: 3.1.1(vitest@3.1.1)
+      eslint:
+        specifier: ^9.23.0
+        version: 9.23.0
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(postcss@8.5.3)(tsx@4.19.3)(typescript@5.8.2)
+      typedoc:
+        specifier: ^0.28.1
+        version: 0.28.1(typescript@5.8.2)
+      typedoc-plugin-markdown:
+        specifier: ^4.6.1
+        version: 4.6.1(typedoc@0.28.1)
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.2
+      vitest:
+        specifier: ^3.1.1
+        version: 3.1.1(@types/node@22.14.0)(jsdom@26.0.0)
+
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:

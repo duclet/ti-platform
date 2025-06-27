@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/di",
+      "comment": "Initial release of dependency injection package",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/di"
+}

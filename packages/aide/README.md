@@ -15,6 +15,7 @@ Docs for more information.
   * [Interfaces](#interfaces)
     * [Optional\<T>](#optionalt)
     * [QueueConstructorOptions](#queueconstructoroptions)
+    * [SingletonFunction()\<T>](#singletonfunctiont)
   * [Type Aliases](#type-aliases)
     * [AnyArray\<V>](#anyarrayv)
     * [Awaitable\<T>](#awaitablet)
@@ -65,6 +66,7 @@ Docs for more information.
     * [firstOpt()](#firstopt)
     * [getOrDefault()](#getordefault-1)
     * [keepOnlyDefined()](#keeponlydefined)
+    * [single()](#single)
     * [toMap()](#tomap)
     * [toMapPlus()](#tomapplus)
     * [waitFor()](#waitfor)
@@ -1820,6 +1822,54 @@ Arguments for constructing a [Queue](#queue).
 | <a id="maxconcurrent-1"></a> `maxConcurrent`    | `number` | Maximum number of concurrent executions.                                                                                                                                                                |
 | <a id="maxperinterval-1"></a> `maxPerInterval?` | `number` | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
 
+***
+
+### SingletonFunction()\<T>
+
+Defined in: packages/aide/src/function.ts:147
+
+A function wrapper that implements singleton pattern with reset capabilities.
+The wrapped function will only execute once and cache its result until reset.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+> **SingletonFunction**(): `T`
+
+Defined in: packages/aide/src/function.ts:148
+
+A function wrapper that implements singleton pattern with reset capabilities.
+The wrapped function will only execute once and cache its result until reset.
+
+#### Returns
+
+`T`
+
+#### Methods
+
+##### reset()
+
+> **reset**(): `void`
+
+Defined in: packages/aide/src/function.ts:149
+
+###### Returns
+
+`void`
+
+##### resetAndCall()
+
+> **resetAndCall**(): `T`
+
+Defined in: packages/aide/src/function.ts:150
+
+###### Returns
+
+`T`
+
 ## Type Aliases
 
 ### AnyArray\<V>
@@ -3015,6 +3065,51 @@ Given a list of items, remove null and undefined from the list.
 #### Returns
 
 `NonNullable`<`V`>\[]
+
+***
+
+### single()
+
+> **single**<`T`>(`factory`): [`SingletonFunction`](#singletonfunction)<`T`>
+
+Defined in: packages/aide/src/function.ts:175
+
+Creates a singleton wrapper around a factory function that caches the result
+of the first call and returns the same cached result on subsequent calls.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type                         | Description                                                         |
+| --------- | ---------------------------- | ------------------------------------------------------------------- |
+| `factory` | [`Supplier`](#supplier)<`T`> | The factory function to wrap. Should return the value to be cached. |
+
+#### Returns
+
+[`SingletonFunction`](#singletonfunction)<`T`>
+
+A wrapper function with reset capabilities that maintains referential equality.
+
+#### Example
+
+```typescript
+const useData = single(() => ({ some: 'data' }));
+
+const d1 = useData(); // Executes factory function
+const d2 = useData(); // Returns cached result
+console.assert(d1 === d2); // true - same reference
+
+useData.reset(); // Clears cache
+const d3 = useData(); // Executes factory function again
+console.assert(d3 === d1); // false - different reference
+
+const d4 = useData.resetAndCall(); // Reset and immediately call
+```
 
 ***
 

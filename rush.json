@@ -449,6 +449,11 @@
       "packageName": "@ti-platform/client-airtable",
       "projectFolder": "packages/client-airtable",
       "shouldPublish":  true
+    },
+    {
+      "packageName": "@ti-platform/di",
+      "projectFolder": "packages/di",
+      "shouldPublish":  true
     }
   ]
 }
