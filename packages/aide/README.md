@@ -13,6 +13,7 @@ Docs for more information.
     * [PresentOptional\<T>](#presentoptionalt)
     * [Queue\<T>](#queuet)
   * [Interfaces](#interfaces)
+    * [AsyncOptional\<T>](#asyncoptionalt)
     * [Optional\<T>](#optionalt)
     * [QueueConstructorOptions](#queueconstructoroptions)
     * [SingletonFunction()\<T>](#singletonfunctiont)
@@ -57,6 +58,7 @@ Docs for more information.
     * [UndefinedFallback\<T, Fallback>](#undefinedfallbackt-fallback)
   * [Functions](#functions)
     * [asNonEmptyArray()](#asnonemptyarray)
+    * [createAsyncOptional()](#createasyncoptional)
     * [createOptional()](#createoptional)
     * [ensureType()](#ensuretype)
     * [executeTasks()](#executetasks)
@@ -65,6 +67,7 @@ Docs for more information.
     * [firstDefinedOpt()](#firstdefinedopt)
     * [firstOpt()](#firstopt)
     * [getOrDefault()](#getordefault-1)
+    * [isAsyncOptional()](#isasyncoptional)
     * [keepOnlyDefined()](#keeponlydefined)
     * [single()](#single)
     * [toMap()](#tomap)
@@ -124,7 +127,7 @@ otherwise return an empty Optional.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`filter`](#filter-6)
+[`Optional`](#optional).[`filter`](#filter-8)
 
 ##### flatMap()
 
@@ -133,7 +136,7 @@ otherwise return an empty Optional.
 Defined in: packages/aide/src/optional.ts:83
 
 If a value is present, apply the provided Optional-bearing mapping function to it, return that result, otherwise
-return an empty Optional. This method is similar to [map](#map-4), but the provided mapper is one whose result is
+return an empty Optional. This method is similar to [map](#map-6), but the provided mapper is one whose result is
 already an Optional, and if invoked, flatMap does not wrap it with an additional Optional.
 
 ###### Type Parameters
@@ -154,7 +157,7 @@ already an Optional, and if invoked, flatMap does not wrap it with an additional
 
 ###### Implementation of
 
-[`Optional`](#optional).[`flatMap`](#flatmap-4)
+[`Optional`](#optional).[`flatMap`](#flatmap-6)
 
 ##### getOrThrow()
 
@@ -170,7 +173,7 @@ If the value is present, returns the value, otherwise throws an Error.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`getOrThrow`](#getorthrow-6)
+[`Optional`](#optional).[`getOrThrow`](#getorthrow-8)
 
 ##### ifAbsent()
 
@@ -192,7 +195,7 @@ If the value is absent, invoke the specified handler, otherwise do nothing.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`ifAbsent`](#ifabsent-4)
+[`Optional`](#optional).[`ifAbsent`](#ifabsent-6)
 
 ##### ifPresent()
 
@@ -214,7 +217,7 @@ If a value is present, invoke the specified consumer with the value, otherwise d
 
 ###### Implementation of
 
-[`Optional`](#optional).[`ifPresent`](#ifpresent-4)
+[`Optional`](#optional).[`ifPresent`](#ifpresent-6)
 
 ##### isAbsent()
 
@@ -230,7 +233,7 @@ If a value is absent (null or undefined), returns true, otherwise false.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`isAbsent`](#isabsent-4)
+[`Optional`](#optional).[`isAbsent`](#isabsent-6)
 
 ##### isPresent()
 
@@ -246,7 +249,7 @@ If a value is present, returns true, otherwise false.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`isPresent`](#ispresent-4)
+[`Optional`](#optional).[`isPresent`](#ispresent-6)
 
 ##### map()
 
@@ -275,7 +278,7 @@ Optional describing the result, otherwise, return an empty Optional.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`map`](#map-4)
+[`Optional`](#optional).[`map`](#map-6)
 
 ##### or()
 
@@ -298,7 +301,7 @@ supplying function.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`or`](#or-4)
+[`Optional`](#optional).[`or`](#or-6)
 
 ##### orElse()
 
@@ -320,7 +323,7 @@ If a value is present, returns the value, otherwise returns other.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`orElse`](#orelse-4)
+[`Optional`](#optional).[`orElse`](#orelse-6)
 
 ##### orElseGet()
 
@@ -342,7 +345,7 @@ If a value is present, returns the value, otherwise returns the result produced 
 
 ###### Implementation of
 
-[`Optional`](#optional).[`orElseGet`](#orelseget-4)
+[`Optional`](#optional).[`orElseGet`](#orelseget-6)
 
 ##### orElseThrow()
 
@@ -370,7 +373,7 @@ If a value is present, returns the value, otherwise throws an exception to be cr
 
 ###### Implementation of
 
-[`Optional`](#optional).[`orElseThrow`](#orelsethrow-4)
+[`Optional`](#optional).[`orElseThrow`](#orelsethrow-6)
 
 ##### orUndefined()
 
@@ -386,7 +389,7 @@ If a value is present, returns the value, otherwise return undefined.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`orUndefined`](#orundefined-4)
+[`Optional`](#optional).[`orUndefined`](#orundefined-6)
 
 ***
 
@@ -1205,7 +1208,7 @@ otherwise return an empty Optional.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`filter`](#filter-6)
+[`Optional`](#optional).[`filter`](#filter-8)
 
 ##### flatMap()
 
@@ -1214,7 +1217,7 @@ otherwise return an empty Optional.
 Defined in: packages/aide/src/optional.ts:140
 
 If a value is present, apply the provided Optional-bearing mapping function to it, return that result, otherwise
-return an empty Optional. This method is similar to [map](#map-4), but the provided mapper is one whose result is
+return an empty Optional. This method is similar to [map](#map-6), but the provided mapper is one whose result is
 already an Optional, and if invoked, flatMap does not wrap it with an additional Optional.
 
 ###### Type Parameters
@@ -1235,7 +1238,7 @@ already an Optional, and if invoked, flatMap does not wrap it with an additional
 
 ###### Implementation of
 
-[`Optional`](#optional).[`flatMap`](#flatmap-4)
+[`Optional`](#optional).[`flatMap`](#flatmap-6)
 
 ##### getOrThrow()
 
@@ -1251,7 +1254,7 @@ If the value is present, returns the value, otherwise throws an Error.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`getOrThrow`](#getorthrow-6)
+[`Optional`](#optional).[`getOrThrow`](#getorthrow-8)
 
 ##### ifAbsent()
 
@@ -1273,7 +1276,7 @@ If the value is absent, invoke the specified handler, otherwise do nothing.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`ifAbsent`](#ifabsent-4)
+[`Optional`](#optional).[`ifAbsent`](#ifabsent-6)
 
 ##### ifPresent()
 
@@ -1295,7 +1298,7 @@ If a value is present, invoke the specified consumer with the value, otherwise d
 
 ###### Implementation of
 
-[`Optional`](#optional).[`ifPresent`](#ifpresent-4)
+[`Optional`](#optional).[`ifPresent`](#ifpresent-6)
 
 ##### isAbsent()
 
@@ -1311,7 +1314,7 @@ If a value is absent (null or undefined), returns true, otherwise false.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`isAbsent`](#isabsent-4)
+[`Optional`](#optional).[`isAbsent`](#isabsent-6)
 
 ##### isPresent()
 
@@ -1327,7 +1330,7 @@ If a value is present, returns true, otherwise false.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`isPresent`](#ispresent-4)
+[`Optional`](#optional).[`isPresent`](#ispresent-6)
 
 ##### map()
 
@@ -1356,7 +1359,7 @@ Optional describing the result, otherwise, return an empty Optional.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`map`](#map-4)
+[`Optional`](#optional).[`map`](#map-6)
 
 ##### or()
 
@@ -1379,7 +1382,7 @@ supplying function.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`or`](#or-4)
+[`Optional`](#optional).[`or`](#or-6)
 
 ##### orElse()
 
@@ -1401,7 +1404,7 @@ If a value is present, returns the value, otherwise returns other.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`orElse`](#orelse-4)
+[`Optional`](#optional).[`orElse`](#orelse-6)
 
 ##### orElseGet()
 
@@ -1423,7 +1426,7 @@ If a value is present, returns the value, otherwise returns the result produced 
 
 ###### Implementation of
 
-[`Optional`](#optional).[`orElseGet`](#orelseget-4)
+[`Optional`](#optional).[`orElseGet`](#orelseget-6)
 
 ##### orElseThrow()
 
@@ -1451,7 +1454,7 @@ If a value is present, returns the value, otherwise throws an exception to be cr
 
 ###### Implementation of
 
-[`Optional`](#optional).[`orElseThrow`](#orelsethrow-4)
+[`Optional`](#optional).[`orElseThrow`](#orelsethrow-6)
 
 ##### orUndefined()
 
@@ -1467,7 +1470,7 @@ If a value is present, returns the value, otherwise return undefined.
 
 ###### Implementation of
 
-[`Optional`](#optional).[`orUndefined`](#orundefined-4)
+[`Optional`](#optional).[`orUndefined`](#orundefined-6)
 
 ***
 
@@ -1559,6 +1562,254 @@ Lock the queue and return a promise that will resolve when all the handlers fini
 
 ## Interfaces
 
+### AsyncOptional\<T>
+
+Defined in: packages/aide/src/async-optional.ts:15
+
+Async version of Optional where handlers can be async functions.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Methods
+
+##### filter()
+
+> **filter**(`predicate`): [`AsyncOptional`](#asyncoptional)<`T`>
+
+Defined in: packages/aide/src/async-optional.ts:20
+
+If a value is present and the value matches the given predicate, return an AsyncOptional describing the value,
+otherwise return an empty AsyncOptional.
+
+###### Parameters
+
+| Parameter   | Type                                                            |
+| ----------- | --------------------------------------------------------------- |
+| `predicate` | [`AwaitablePredicate`](#awaitablepredicate)<`NonNullable`<`T`>> |
+
+###### Returns
+
+[`AsyncOptional`](#asyncoptional)<`T`>
+
+##### flatMap()
+
+> **flatMap**<`R`>(`mapper`): [`AsyncOptional`](#asyncoptional)<`R`>
+
+Defined in: packages/aide/src/async-optional.ts:26
+
+If a value is present, apply the provided AsyncOptional-bearing mapping function to it, return that result, otherwise
+return an empty AsyncOptional.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `R`            |
+
+###### Parameters
+
+| Parameter | Type                                                                                              |
+| --------- | ------------------------------------------------------------------------------------------------- |
+| `mapper`  | [`AwaitableMapper`](#awaitablemapper)<`NonNullable`<`T`>, [`AsyncOptional`](#asyncoptional)<`R`>> |
+
+###### Returns
+
+[`AsyncOptional`](#asyncoptional)<`R`>
+
+##### getOrThrow()
+
+> **getOrThrow**(): `Promise`<`NonNullable`<`T`>>
+
+Defined in: packages/aide/src/async-optional.ts:31
+
+If the value is present, returns the value, otherwise throws an Error.
+
+###### Returns
+
+`Promise`<`NonNullable`<`T`>>
+
+##### ifAbsent()
+
+> **ifAbsent**(`handler`): [`AsyncOptional`](#asyncoptional)<`T`>
+
+Defined in: packages/aide/src/async-optional.ts:36
+
+If the value is absent, invoke the specified handler, otherwise do nothing.
+
+###### Parameters
+
+| Parameter | Type                                      |
+| --------- | ----------------------------------------- |
+| `handler` | [`AwaitableRunnable`](#awaitablerunnable) |
+
+###### Returns
+
+[`AsyncOptional`](#asyncoptional)<`T`>
+
+##### ifPresent()
+
+> **ifPresent**(`consumer`): [`AsyncOptional`](#asyncoptional)<`T`>
+
+Defined in: packages/aide/src/async-optional.ts:41
+
+If a value is present, invoke the specified consumer with the value, otherwise do nothing.
+
+###### Parameters
+
+| Parameter  | Type                                                          |
+| ---------- | ------------------------------------------------------------- |
+| `consumer` | [`AwaitableConsumer`](#awaitableconsumer)<`NonNullable`<`T`>> |
+
+###### Returns
+
+[`AsyncOptional`](#asyncoptional)<`T`>
+
+##### isAbsent()
+
+> **isAbsent**(): `Promise`<`boolean`>
+
+Defined in: packages/aide/src/async-optional.ts:46
+
+If a value is absent (null or undefined), returns true, otherwise false.
+
+###### Returns
+
+`Promise`<`boolean`>
+
+##### isPresent()
+
+> **isPresent**(): `Promise`<`boolean`>
+
+Defined in: packages/aide/src/async-optional.ts:51
+
+If a value is present, returns true, otherwise false.
+
+###### Returns
+
+`Promise`<`boolean`>
+
+##### map()
+
+> **map**<`R`>(`mapper`): [`AsyncOptional`](#asyncoptional)<`R`>
+
+Defined in: packages/aide/src/async-optional.ts:57
+
+If a value is present, apply the provided mapping function to it, and if the result is present, return an
+AsyncOptional describing the result, otherwise, return an empty AsyncOptional.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `R`            |
+
+###### Parameters
+
+| Parameter | Type                                                           |
+| --------- | -------------------------------------------------------------- |
+| `mapper`  | [`AwaitableMapper`](#awaitablemapper)<`NonNullable`<`T`>, `R`> |
+
+###### Returns
+
+[`AsyncOptional`](#asyncoptional)<`R`>
+
+##### or()
+
+> **or**(`other`): [`AsyncOptional`](#asyncoptional)<`T`>
+
+Defined in: packages/aide/src/async-optional.ts:63
+
+If a value is present, returns an AsyncOptional describing the value, otherwise returns an AsyncOptional produced by the
+supplying function.
+
+###### Parameters
+
+| Parameter | Type                                                                    |
+| --------- | ----------------------------------------------------------------------- |
+| `other`   | () => [`Awaitable`](#awaitable)<[`AsyncOptional`](#asyncoptional)<`T`>> |
+
+###### Returns
+
+[`AsyncOptional`](#asyncoptional)<`T`>
+
+##### orElse()
+
+> **orElse**(`other`): `Promise`<`T`>
+
+Defined in: packages/aide/src/async-optional.ts:68
+
+If a value is present, returns the value, otherwise returns other.
+
+###### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `other`   | `T`  |
+
+###### Returns
+
+`Promise`<`T`>
+
+##### orElseGet()
+
+> **orElseGet**(`other`): `Promise`<`T`>
+
+Defined in: packages/aide/src/async-optional.ts:73
+
+If a value is present, returns the value, otherwise returns the result produced by the supplying function.
+
+###### Parameters
+
+| Parameter | Type                                           |
+| --------- | ---------------------------------------------- |
+| `other`   | [`AwaitableSupplier`](#awaitablesupplier)<`T`> |
+
+###### Returns
+
+`Promise`<`T`>
+
+##### orElseThrow()
+
+> **orElseThrow**<`X`>(`other`): `Promise`<`T`>
+
+Defined in: packages/aide/src/async-optional.ts:78
+
+If a value is present, returns the value, otherwise throws an exception to be created by the provided supplier.
+
+###### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `X`            |
+
+###### Parameters
+
+| Parameter | Type                                           |
+| --------- | ---------------------------------------------- |
+| `other`   | [`AwaitableSupplier`](#awaitablesupplier)<`X`> |
+
+###### Returns
+
+`Promise`<`T`>
+
+##### orUndefined()
+
+> **orUndefined**(): `Promise`<`undefined` | `NonNullable`<`T`>>
+
+Defined in: packages/aide/src/async-optional.ts:83
+
+If a value is present, returns the value, otherwise return undefined.
+
+###### Returns
+
+`Promise`<`undefined` | `NonNullable`<`T`>>
+
+***
+
 ### Optional\<T>
 
 Defined in: packages/aide/src/optional.ts:6
@@ -1599,7 +1850,7 @@ otherwise return an empty Optional.
 Defined in: packages/aide/src/optional.ts:18
 
 If a value is present, apply the provided Optional-bearing mapping function to it, return that result, otherwise
-return an empty Optional. This method is similar to [map](#map-4), but the provided mapper is one whose result is
+return an empty Optional. This method is similar to [map](#map-6), but the provided mapper is one whose result is
 already an Optional, and if invoked, flatMap does not wrap it with an additional Optional.
 
 ###### Type Parameters
@@ -2802,6 +3053,32 @@ The same list.
 
 ***
 
+### createAsyncOptional()
+
+> **createAsyncOptional**<`T`>(`value`?): [`AsyncOptional`](#asyncoptional)<`T`>
+
+Defined in: packages/aide/src/async-optional.ts:285
+
+Create an async optional from the provided value.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type                                                                                    |
+| --------- | --------------------------------------------------------------------------------------- |
+| `value`?  | [`Awaitable`](#awaitable)<`undefined` \| `null` \| `T` \| [`Optional`](#optional)<`T`>> |
+
+#### Returns
+
+[`AsyncOptional`](#asyncoptional)<`T`>
+
+***
+
 ### createOptional()
 
 > **createOptional**<`T`>(`value`): [`Optional`](#optional)<`T`>
@@ -3039,6 +3316,32 @@ Defined in: packages/aide/src/map.ts:14
 `V`
 
 The value in the map with the given key or if the key does not exist, the provided default value.
+
+***
+
+### isAsyncOptional()
+
+> **isAsyncOptional**<`T`>(`value`): `value is AsyncOptional<T>`
+
+Defined in: packages/aide/src/async-optional.ts:324
+
+Check if the provided value is an AsyncOptional.
+
+#### Type Parameters
+
+| Type Parameter |
+| -------------- |
+| `T`            |
+
+#### Parameters
+
+| Parameter | Type      |
+| --------- | --------- |
+| `value`   | `unknown` |
+
+#### Returns
+
+`value is AsyncOptional<T>`
 
 ***
 

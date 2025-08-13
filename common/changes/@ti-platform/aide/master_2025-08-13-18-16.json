@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide",
+      "comment": "Actually export AsyncOptional",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ti-platform/aide"
+}
