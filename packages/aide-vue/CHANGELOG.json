@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-vue",
   "entries": [
     {
+      "version": "3.2.4",
+      "tag": "@ti-platform/aide-vue_v3.2.4",
+      "date": "Wed, 13 Aug 2025 18:22:01 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.8.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.2.3",
       "tag": "@ti-platform/aide-vue_v3.2.3",
       "date": "Fri, 27 Jun 2025 20:34:58 GMT",

@@ -2,6 +2,18 @@
   "name": "@ti-platform/client-airtable",
   "entries": [
     {
+      "version": "0.3.4",
+      "tag": "@ti-platform/client-airtable_v0.3.4",
+      "date": "Wed, 13 Aug 2025 18:22:02 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.8.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.3",
       "tag": "@ti-platform/client-airtable_v0.3.3",
       "date": "Fri, 27 Jun 2025 20:34:58 GMT",

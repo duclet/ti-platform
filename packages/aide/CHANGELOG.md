@@ -1,6 +1,13 @@
 # Change Log - @ti-platform/aide
 
-This log was last generated on Fri, 27 Jun 2025 20:34:58 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Aug 2025 18:22:01 GMT and should not be manually modified.
+
+## 3.8.1
+Wed, 13 Aug 2025 18:22:01 GMT
+
+### Patches
+
+- Actually export AsyncOptional
 
 ## 3.8.0
 Fri, 27 Jun 2025 20:34:58 GMT
