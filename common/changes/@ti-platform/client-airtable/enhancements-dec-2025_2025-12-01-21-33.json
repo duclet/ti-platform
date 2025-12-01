@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/client-airtable",
+      "comment": "Updating test command",
+      "type": "none"
+    }
+  ],
+  "packageName": "@ti-platform/client-airtable"
+}

@@ -23,7 +23,7 @@
         "build:src": "tsup",
         "clean": "rm -rf ./dist",
         "lint": "run-linter -d ./src -e .ts -g -k -c 'npx tsc --noEmit'",
-        "prod": "pnpm clean && pnpm lint && pnpm test -- run --coverage && pnpm build:src 2>&1 && pnpm build:docs",
+        "prod": "pnpm clean && pnpm lint && pnpm test --run --coverage && pnpm build:src 2>&1 && pnpm build:docs",
         "dev": "pnpm clean && pnpm lint -w -c 'pnpm build:src'",
         "build": "pnpm prod",
         "test": "vitest"

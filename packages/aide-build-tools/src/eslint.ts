@@ -1,6 +1,7 @@
 import { getHtmlConfigs } from '@src/eslint/html-configs';
 import { getCjsConfigs, getJsConfigs } from '@src/eslint/javascript-configs';
 import { getJsonConfigs } from '@src/eslint/json-configs';
+import { getReactConfigs } from '@src/eslint/react-configs';
 import { getTsConfigs } from '@src/eslint/typescript-configs';
 import { getVueConfigs } from '@src/eslint/vue-configs';
 import type { RunEsLintPrettierParams } from '@src/misc';
@@ -12,13 +13,14 @@ import { config } from 'typescript-eslint';
 export * from '@src/eslint/html-configs';
 export * from '@src/eslint/javascript-configs';
 export * from '@src/eslint/json-configs';
+export * from '@src/eslint/react-configs';
 export * from '@src/eslint/typescript-configs';
 export * from '@src/eslint/vue-configs';
 
 /**
  * The supported configuration types for ESLint.
  */
-export type EslintConfigType = 'cjs' | 'html' | 'js' | 'json' | 'ts' | 'vue';
+export type EslintConfigType = 'cjs' | 'html' | 'js' | 'json' | 'ts' | 'tsx' | 'vue';
 
 export type EslintConfigsParams = {
     /**
@@ -57,6 +59,11 @@ export type EslintConfigsParams = {
     configureTs?: (configs: ConfigWithExtends) => ConfigWithExtends;
 
     /**
+     * If we need to override or extend the configurations for `.tsx` files, this handler can be provided.
+     */
+    configureTsx?: (configs: ConfigWithExtends) => ConfigWithExtends;
+
+    /**
      * If we need to override or extend the configurations for `.vue` files, this handler can be provided.
      */
     configureVue?: (configs: ConfigWithExtends) => ConfigWithExtends;
@@ -78,6 +85,7 @@ export function configureWithPossibleExtension(
  *
  * Note the following unique features while the configurations are generated:
  * - Configurations for *.ts files will inherit the plugins and rules set by the *.js configurations.
+ * - Configurations for *.tsx files will inherit the plugins, and rules set by the *.ts configurations.
  * - Configurations for *.vue files will inherit the plugins, and rules set by the *.ts configurations.
  */
 export function generateEslintConfigs(configs: EslintConfigsParams): ConfigArray {
@@ -87,6 +95,7 @@ export function generateEslintConfigs(configs: EslintConfigsParams): ConfigArray
     const jsonConfigs = configureWithPossibleExtension(getJsonConfigs(), configs.configureJson);
 
     const tsConfigs = configureWithPossibleExtension(getTsConfigs(jsConfigs, configs.baseDir), configs.configureTs);
+    const tsxConfigs = configureWithPossibleExtension(getReactConfigs(tsConfigs), configs.configureTsx);
     const vueConfigs = configureWithPossibleExtension(getVueConfigs(tsConfigs), configs.configureVue);
 
     return [
@@ -95,6 +104,7 @@ export function generateEslintConfigs(configs: EslintConfigsParams): ConfigArray
         configs.enable?.includes('js') ? config(jsConfigs) : null,
         configs.enable?.includes('json') ? config(jsonConfigs) : null,
         configs.enable?.includes('ts') ? config(tsConfigs) : null,
+        configs.enable?.includes('tsx') ? config(tsxConfigs) : null,
         configs.enable?.includes('vue') ? config(vueConfigs) : null,
     ]
         .filter((pConfigs): pConfigs is NonNullable<ConfigArray> => pConfigs !== null)
@@ -107,7 +117,7 @@ export function generateEslintConfigs(configs: EslintConfigsParams): ConfigArray
 export function runEslint(params: RunEsLintPrettierParams) {
     return spawnCommand(
         [
-            'DEBUG=eslint:eslint npx eslint --fix',
+            'DEBUG=eslint:eslint npx eslint --fix --cache --cache-strategy=content',
             ...(params.extensions ?? []).map((extension) => `--ext ${extension}`),
             ...keepOnlyExistentPaths(params.dirs ?? []),
             ...keepOnlyExistentPaths(params.files ?? []),

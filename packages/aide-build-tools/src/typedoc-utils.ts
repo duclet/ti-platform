@@ -50,18 +50,20 @@ export async function runTypedoc() {
     spawnCommand(
         `npx typedoc --options ${PATH_AIDE_BUILD_TOOLS}/typedoc.json --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} ${argv.flags.inputFile}`
     );
-    // spawnCommand(`sed -i 's/# /## /g' ${argv.flags.outDir}/globals.md`);
-    spawnCommand(`sed -i -e "/---Insert API Docs---/r ${argv.flags.outDir}/globals.md" ${argv.flags.outDir}/README.md`);
-    spawnCommand(`sed -i -- "s/globals.md/README.md/g" ${argv.flags.outDir}/README.md`);
-    spawnCommand(`sed -i -- "s/---Insert API Docs---//g" ${argv.flags.outDir}/README.md`);
+    spawnCommand(
+        `sed -i '' -e "/---Insert API Docs---/r ${argv.flags.outDir}/globals.md" ${argv.flags.outDir}/README.md`
+    );
+    spawnCommand(`sed -i '' -- "s/globals.md/README.md/g" ${argv.flags.outDir}/README.md`);
+    spawnCommand(`sed -i '' -- "s/---Insert API Docs---//g" ${argv.flags.outDir}/README.md`);
+    spawnCommand(`sed -i '' -- "s/\\* \\* /\\* /g" ${argv.flags.outDir}/README.md`);
 
     if (argv.flags.includeVueDocGen) {
         spawnCommand(`npx vue-docgen -c ${argv.flags.vueDocGenConfigFile}`);
-        spawnCommand(`sed -i 's/# /### /g' ${argv.flags.outDir}/components.md`);
+        spawnCommand(`sed -i '' 's/# /### /g' ${argv.flags.outDir}/components.md`);
         spawnCommand(
-            `sed -i -e "/---Insert Components---/r ${argv.flags.outDir}/components.md" ${argv.flags.outDir}/README.md`
+            `sed -i '' -e "/---Insert Components---/r ${argv.flags.outDir}/components.md" ${argv.flags.outDir}/README.md`
         );
-        spawnCommand(`sed -i -- "s/---Insert Components---//g" ${argv.flags.outDir}/README.md`);
+        spawnCommand(`sed -i '' -- "s/---Insert Components---//g" ${argv.flags.outDir}/README.md`);
     }
 
     spawnCommand(`cp ${argv.flags.outDir}/README.md ./ && rm -rf ${argv.flags.outDir}`);
@@ -77,6 +79,7 @@ export async function runTypedoc() {
         .use(remarkToc, { maxDepth: 3 })
         .processSync(readFileSync('./README.md').toString());
 
-    writeFileSync('./README.md', result.toString());
+    const content = result.toString();
+    writeFileSync('./README.md', content);
     console.log('Done.');
 }

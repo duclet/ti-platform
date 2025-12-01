@@ -39,6 +39,7 @@ to the API Docs below for the types, variables, and functions that are exposed.
     * [getHtmlConfigs()](#gethtmlconfigs)
     * [getJsConfigs()](#getjsconfigs)
     * [getJsonConfigs()](#getjsonconfigs)
+    * [getReactConfigs()](#getreactconfigs)
     * [getTsConfigs()](#gettsconfigs)
     * [getVueConfigs()](#getvueconfigs)
     * [keepOnlyExistentPaths()](#keeponlyexistentpaths)
@@ -176,9 +177,9 @@ Configurations to compare against the page name and returning its chunk name.
 
 ### EslintConfigsParams
 
-> **EslintConfigsParams** = { `baseDir`: `string`; `configureCjs`: (`configs`) => `ConfigWithExtends`; `configureHtml`: (`configs`) => `ConfigWithExtends`; `configureJs`: (`configs`) => `ConfigWithExtends`; `configureJson`: (`configs`) => `ConfigWithExtends`; `configureTs`: (`configs`) => `ConfigWithExtends`; `configureVue`: (`configs`) => `ConfigWithExtends`; `enable`: [`EslintConfigType`](#eslintconfigtype)\[]; }
+> **EslintConfigsParams** = { `baseDir`: `string`; `configureCjs`: (`configs`) => `ConfigWithExtends`; `configureHtml`: (`configs`) => `ConfigWithExtends`; `configureJs`: (`configs`) => `ConfigWithExtends`; `configureJson`: (`configs`) => `ConfigWithExtends`; `configureTs`: (`configs`) => `ConfigWithExtends`; `configureTsx`: (`configs`) => `ConfigWithExtends`; `configureVue`: (`configs`) => `ConfigWithExtends`; `enable`: [`EslintConfigType`](#eslintconfigtype)\[]; }
 
-Defined in: eslint.ts:23
+Defined in: eslint.ts:25
 
 #### Properties
 
@@ -190,6 +191,7 @@ Defined in: eslint.ts:23
 | <a id="configurejs"></a> `configureJs?`     | (`configs`) => `ConfigWithExtends`         | If we need to override or extend the configurations for `.js` files, this handler can be provided.            |
 | <a id="configurejson"></a> `configureJson?` | (`configs`) => `ConfigWithExtends`         | If we need to override or extend the configurations for `.json` files, this handler can be provided.          |
 | <a id="configurets"></a> `configureTs?`     | (`configs`) => `ConfigWithExtends`         | If we need to override or extend the configurations for `.ts` and `.cts` files, this handler can be provided. |
+| <a id="configuretsx"></a> `configureTsx?`   | (`configs`) => `ConfigWithExtends`         | If we need to override or extend the configurations for `.tsx` files, this handler can be provided.           |
 | <a id="configurevue"></a> `configureVue?`   | (`configs`) => `ConfigWithExtends`         | If we need to override or extend the configurations for `.vue` files, this handler can be provided.           |
 | <a id="enable"></a> `enable?`               | [`EslintConfigType`](#eslintconfigtype)\[] | List of files to enable linting support for.                                                                  |
 
@@ -197,9 +199,9 @@ Defined in: eslint.ts:23
 
 ### EslintConfigType
 
-> **EslintConfigType** = `"cjs"` | `"html"` | `"js"` | `"json"` | `"ts"` | `"vue"`
+> **EslintConfigType** = `"cjs"` | `"html"` | `"js"` | `"json"` | `"ts"` | `"tsx"` | `"vue"`
 
-Defined in: eslint.ts:21
+Defined in: eslint.ts:23
 
 The supported configuration types for ESLint.
 
@@ -376,7 +378,7 @@ Throws a `tsconfig-path#ConfigLoaderFailResult` If we cannot load the `tsconfig.
 
 > **configureWithPossibleExtension**(`baseConfigs`, `extender`): `ConfigWithExtends`
 
-Defined in: eslint.ts:69
+Defined in: eslint.ts:76
 
 Given the base configurations, if an extender function is provided, execute it to retrieve the extended
 configurations.
@@ -427,13 +429,14 @@ This plugin basically removes duplicate charset tags in the final CSS file as we
 
 > **generateEslintConfigs**(`configs`): `ConfigArray`
 
-Defined in: eslint.ts:83
+Defined in: eslint.ts:91
 
 Generate the configurations to use for ESLint.
 
 Note the following unique features while the configurations are generated:
 
 * Configurations for \*.ts files will inherit the plugins and rules set by the \*.js configurations.
+* Configurations for \*.tsx files will inherit the plugins, and rules set by the \*.ts configurations.
 * Configurations for \*.vue files will inherit the plugins, and rules set by the \*.ts configurations.
 
 #### Parameters
@@ -580,6 +583,26 @@ Get the default configurations for `.json` files.
 
 ***
 
+### getReactConfigs()
+
+> **getReactConfigs**(`tsConfigs`): `ConfigWithExtends`
+
+Defined in: eslint/react-configs.ts:8
+
+Get default configurations for `.tsx` files.
+
+#### Parameters
+
+| Parameter   | Type                |
+| ----------- | ------------------- |
+| `tsConfigs` | `ConfigWithExtends` |
+
+#### Returns
+
+`ConfigWithExtends`
+
+***
+
 ### getTsConfigs()
 
 > **getTsConfigs**(`jsConfigs`, `baseDir`): `ConfigWithExtends`
@@ -695,7 +718,7 @@ This plugin allows for the possibility.
 
 > **runEslint**(`params`): `SpawnSyncReturns`<`Buffer`<`ArrayBufferLike`>>
 
-Defined in: eslint.ts:107
+Defined in: eslint.ts:117
 
 Execute the command to run ESLint.
 

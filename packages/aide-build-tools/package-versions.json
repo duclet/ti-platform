@@ -1,7 +1,8 @@
 {
     "name": "@ti-platform/auto-generated-combined-package-json-versions",
-    "lastUpdated": "2025-04-05T23:20:29.102Z",
+    "lastUpdated": "2025-12-01T16:28:08.743Z",
     "dependencies": {
+        "@eslint-react/eslint-plugin": "^2.3.9",
         "@eslint/js": "^9.24.0",
         "@eslint/json": "^0.11.0",
         "@html-eslint/eslint-plugin": "^0.37.0",

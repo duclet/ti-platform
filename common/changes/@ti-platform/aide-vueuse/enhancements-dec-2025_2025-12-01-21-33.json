@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-vueuse",
+      "comment": "Updating test command and build configurations",
+      "type": "none"
+    }
+  ],
+  "packageName": "@ti-platform/aide-vueuse"
+}

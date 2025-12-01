@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-env",
+      "comment": "Updating test command",
+      "type": "none"
+    }
+  ],
+  "packageName": "@ti-platform/aide-env"
+}

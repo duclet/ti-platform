@@ -40,8 +40,10 @@ export function runPrettier(params: RunEsLintPrettierParams) {
         .map((item) => `"${item}"`);
 
     return spawnCommand(
-        ['npx prettier --write', ...existingDirExtensionPatterns, ...keepOnlyExistentPaths(params.files ?? [])].join(
-            ' '
-        )
+        [
+            'npx prettier --cache --cache-strategy content --write',
+            ...existingDirExtensionPatterns,
+            ...keepOnlyExistentPaths(params.files ?? []),
+        ].join(' ')
     );
 }
