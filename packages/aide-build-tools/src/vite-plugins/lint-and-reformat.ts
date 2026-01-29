@@ -9,14 +9,14 @@ import type { Plugin } from 'vite';
  * Execute the command to verify using the Typescript compiler.
  */
 function runVerifyTs() {
-    return spawnCommand('npx tsc --noEmit --listFiles | grep -v node_modules');
+    return spawnCommand('pnpm tsc --noEmit --listFiles | grep -v node_modules');
 }
 
 /**
  * Execute the command to verify using the Vue Typescript compiler.
  */
 function runVerifyVueTs() {
-    return spawnCommand('npx vue-tsc --noEmit --listFiles | grep -v node_modules');
+    return spawnCommand('pnpm vue-tsc --noEmit --listFiles | grep -v node_modules');
 }
 
 /**

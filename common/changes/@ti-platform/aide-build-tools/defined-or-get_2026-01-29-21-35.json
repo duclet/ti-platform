@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/aide-build-tools",
+      "comment": "Using pnpm for running various commands",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ti-platform/aide-build-tools"
+}

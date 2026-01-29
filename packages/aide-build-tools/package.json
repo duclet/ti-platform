@@ -36,7 +36,7 @@
         "build:src": "tsup",
         "build:versions": "tsx ./src/bin/create-combined-package-json-dependencies.ts -s '../*/package.json' -t ./package-versions.json -d=false",
         "clean": "rm -rf ./dist",
-        "lint": "tsx ./src/bin/run-linter.ts -d ./src -e .ts -g -k -c 'npx tsc --noEmit'",
+        "lint": "tsx ./src/bin/run-linter.ts -d ./src -e .ts -g -k -c 'pnpm tsc --noEmit'",
         "prod": "pnpm clean && pnpm lint && pnpm build:src && pnpm build:docs && pnpm build:versions",
         "dev": "pnpm clean && pnpm lint -w -c 'pnpm build:src'",
         "build": "pnpm prod"

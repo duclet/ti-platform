@@ -7,55 +7,55 @@ Docs for more information.
 
 * [API Docs](#api-docs)
   * [Classes](#classes)
-    * [AbsentOptional\<T>](#absentoptionalt)
-    * [Deferred\<T>](#deferredt)
-    * [MapPlus\<K, V>](#mapplusk-v)
-    * [PresentOptional\<T>](#presentoptionalt)
-    * [Queue\<T>](#queuet)
+    * [AbsentOptional](#absentoptional)
+    * [Deferred](#deferred)
+    * [MapPlus](#mapplus)
+    * [PresentOptional](#presentoptional)
+    * [Queue](#queue)
   * [Interfaces](#interfaces)
-    * [AsyncOptional\<T>](#asyncoptionalt)
-    * [Optional\<T>](#optionalt)
+    * [AsyncOptional](#asyncoptional)
+    * [Optional](#optional)
     * [QueueConstructorOptions](#queueconstructoroptions)
-    * [SingletonFunction()\<T>](#singletonfunctiont)
+    * [SingletonFunction()](#singletonfunction)
   * [Type Aliases](#type-aliases)
-    * [AnyArray\<V>](#anyarrayv)
-    * [Awaitable\<T>](#awaitablet)
-    * [AwaitableBiConsumer()\<T, U>](#awaitablebiconsumert-u)
-    * [AwaitableBiMapper()\<T, U, R>](#awaitablebimappert-u-r)
-    * [AwaitableBinaryOperator()\<T>](#awaitablebinaryoperatort)
-    * [AwaitableBiPredicate()\<T, U>](#awaitablebipredicatet-u)
-    * [AwaitableConsumer()\<T>](#awaitableconsumert)
-    * [AwaitableMapper()\<T, R>](#awaitablemappert-r)
-    * [AwaitablePredicate()\<T>](#awaitablepredicatet)
+    * [AnyArray](#anyarray)
+    * [Awaitable](#awaitable)
+    * [AwaitableBiConsumer()](#awaitablebiconsumer)
+    * [AwaitableBiMapper()](#awaitablebimapper)
+    * [AwaitableBinaryOperator()](#awaitablebinaryoperator)
+    * [AwaitableBiPredicate()](#awaitablebipredicate)
+    * [AwaitableConsumer()](#awaitableconsumer)
+    * [AwaitableMapper()](#awaitablemapper)
+    * [AwaitablePredicate()](#awaitablepredicate)
     * [AwaitableRunnable()](#awaitablerunnable)
-    * [AwaitableSupplier()\<T>](#awaitablesuppliert)
-    * [AwaitableTernaryOperator()\<T>](#awaitableternaryoperatort)
-    * [AwaitableTriConsumer()\<T, U, V>](#awaitabletriconsumert-u-v)
-    * [AwaitableTriMapper()\<T, U, V, R>](#awaitabletrimappert-u-v-r)
-    * [AwaitableTriPredicate()\<T, U, V>](#awaitabletripredicatet-u-v)
-    * [AwaitableUnaryOperator()\<T>](#awaitableunaryoperatort)
-    * [BiConsumer()\<T, U>](#biconsumert-u)
-    * [BiMapper()\<T, U, R>](#bimappert-u-r)
-    * [BinaryOperator()\<T>](#binaryoperatort)
-    * [BiPredicate()\<T, U>](#bipredicatet-u)
-    * [Consumer()\<T>](#consumert)
-    * [Mapper()\<T, R>](#mappert-r)
+    * [AwaitableSupplier()](#awaitablesupplier)
+    * [AwaitableTernaryOperator()](#awaitableternaryoperator)
+    * [AwaitableTriConsumer()](#awaitabletriconsumer)
+    * [AwaitableTriMapper()](#awaitabletrimapper)
+    * [AwaitableTriPredicate()](#awaitabletripredicate)
+    * [AwaitableUnaryOperator()](#awaitableunaryoperator)
+    * [BiConsumer()](#biconsumer)
+    * [BiMapper()](#bimapper)
+    * [BinaryOperator()](#binaryoperator)
+    * [BiPredicate()](#bipredicate)
+    * [Consumer()](#consumer)
+    * [Mapper()](#mapper)
     * [MapPlusKey](#mappluskey)
-    * [MarkReadonly\<T, K>](#markreadonlyt-k)
-    * [Merge\<T, U>](#merget-u)
-    * [NonEmptyArray\<T>](#nonemptyarrayt)
-    * [Predicate()\<T>](#predicatet)
-    * [QueueItem()\<T>](#queueitemt)
+    * [MarkReadonly](#markreadonly)
+    * [Merge](#merge)
+    * [NonEmptyArray](#nonemptyarray)
+    * [Predicate()](#predicate)
+    * [QueueItem()](#queueitem)
     * [Runnable()](#runnable)
-    * [Simplify\<T>](#simplifyt)
-    * [SimplifyOmit\<T, K>](#simplifyomitt-k)
-    * [Supplier()\<T>](#suppliert)
-    * [TernaryOperator()\<T>](#ternaryoperatort)
-    * [TriConsumer()\<T, U, V>](#triconsumert-u-v)
-    * [TriMapper()\<T, U, V, R>](#trimappert-u-v-r)
-    * [TriPredicate()\<T, U, V>](#tripredicatet-u-v)
-    * [UnaryOperator()\<T>](#unaryoperatort)
-    * [UndefinedFallback\<T, Fallback>](#undefinedfallbackt-fallback)
+    * [Simplify](#simplify)
+    * [SimplifyOmit](#simplifyomit)
+    * [Supplier()](#supplier)
+    * [TernaryOperator()](#ternaryoperator)
+    * [TriConsumer()](#triconsumer)
+    * [TriMapper()](#trimapper)
+    * [TriPredicate()](#tripredicate)
+    * [UnaryOperator()](#unaryoperator)
+    * [UndefinedFallback](#undefinedfallback)
   * [Functions](#functions)
     * [asNonEmptyArray()](#asnonemptyarray)
     * [createAsyncOptional()](#createasyncoptional)
@@ -78,7 +78,7 @@ Docs for more information.
 
 ## Classes
 
-### AbsentOptional\<T>
+### AbsentOptional
 
 Defined in: packages/aide/src/optional.ts:78
 
@@ -393,7 +393,7 @@ If a value is present, returns the value, otherwise return undefined.
 
 ***
 
-### Deferred\<T>
+### Deferred
 
 Defined in: packages/aide/src/promises.ts:15
 
@@ -424,12 +424,12 @@ Create a new instance.
 | Property                       | Modifier   | Type                  | Description                    |
 | ------------------------------ | ---------- | --------------------- | ------------------------------ |
 | <a id="promise"></a> `promise` | `readonly` | `Promise`<`T`>        | The underlying promise.        |
-| <a id="reject"></a> `reject`   | `public`   | (`reason`?) => `void` | Reject the internal promise.   |
+| <a id="reject"></a> `reject`   | `public`   | (`reason?`) => `void` | Reject the internal promise.   |
 | <a id="resolve"></a> `resolve` | `public`   | (`value`) => `void`   | Resolves the internal promise. |
 
 ***
 
-### MapPlus\<K, V>
+### MapPlus
 
 Defined in: packages/aide/src/map.ts:50
 
@@ -450,15 +450,15 @@ Extension to a Map with some new methods.
 
 ##### Constructor
 
-> **new MapPlus**<`K`, `V`>(`entries`?): [`MapPlus`](#mapplus)<`K`, `V`>
+> **new MapPlus**<`K`, `V`>(`entries?`): [`MapPlus`](#mapplus)<`K`, `V`>
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:50
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:50
 
 ###### Parameters
 
 | Parameter  | Type                                       |
 | ---------- | ------------------------------------------ |
-| `entries`? | `null` \| readonly readonly \[`K`, `V`]\[] |
+| `entries?` | readonly readonly \[`K`, `V`]\[] \| `null` |
 
 ###### Returns
 
@@ -470,15 +470,15 @@ Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/type
 
 ##### Constructor
 
-> **new MapPlus**<`K`, `V`>(`iterable`?): [`MapPlus`](#mapplus)<`K`, `V`>
+> **new MapPlus**<`K`, `V`>(`iterable?`): [`MapPlus`](#mapplus)<`K`, `V`>
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:49
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:49
 
 ###### Parameters
 
 | Parameter   | Type                                                      |
 | ----------- | --------------------------------------------------------- |
-| `iterable`? | `null` \| `Iterable`\<readonly \[`K`, `V`], `any`, `any`> |
+| `iterable?` | `Iterable`\<readonly \[`K`, `V`], `any`, `any`> \| `null` |
 
 ###### Returns
 
@@ -490,11 +490,11 @@ Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/type
 
 #### Properties
 
-| Property                                 | Modifier   | Type             | Inherited from      |
-| ---------------------------------------- | ---------- | ---------------- | ------------------- |
-| <a id="tostringtag"></a> `[toStringTag]` | `readonly` | `string`         | `Map.[toStringTag]` |
-| <a id="size"></a> `size`                 | `readonly` | `number`         | `Map.size`          |
-| <a id="species"></a> `[species]`         | `readonly` | `MapConstructor` | `Map.[species]`     |
+| Property                                 | Modifier   | Type             | Inherited from                                        |
+| ---------------------------------------- | ---------- | ---------------- | ----------------------------------------------------- |
+| <a id="tostringtag"></a> `[toStringTag]` | `readonly` | `string`         | [`MapPlus`](#mapplus).[`[toStringTag]`](#tostringtag) |
+| <a id="size"></a> `size`                 | `readonly` | `number`         | [`MapPlus`](#mapplus).[`size`](#size)                 |
+| <a id="species"></a> `[species]`         | `readonly` | `MapConstructor` | `Map.[species]`                                       |
 
 #### Methods
 
@@ -502,7 +502,7 @@ Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/type
 
 > **\[iterator]**(): `MapIterator`<\[`K`, `V`]>
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:143
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:143
 
 Returns an iterable of entries in the map.
 
@@ -536,7 +536,7 @@ Retrieve the value for the provided key as an [Optional](#optional).
 
 > **clear**(): `void`
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:20
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:20
 
 ###### Returns
 
@@ -573,7 +573,7 @@ if initially absent).
 | Parameter  | Type                                                                                                                                    |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `key`      | `K`                                                                                                                                     |
-| `remapper` | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `undefined` \| `V`; }, [`Optional`](#optional)<`V`>> |
+| `remapper` | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `V` \| `undefined`; }, [`Optional`](#optional)<`V`>> |
 
 ###### Returns
 
@@ -647,7 +647,7 @@ Returns true if this map maps one or more keys to the specified value.
 
 > **delete**(`key`): `boolean`
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:24
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:24
 
 ###### Parameters
 
@@ -687,7 +687,7 @@ Similar to Map#forEach except return this at the end and the consumer retrieves 
 
 > **entries**(): `MapIterator`<\[`K`, `V`]>
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:148
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:148
 
 Returns an iterable of key, value pairs for every entry in the map.
 
@@ -767,9 +767,9 @@ Get an optional for the first value that matches the given predicate.
 
 ##### forEach()
 
-> **forEach**(`callbackfn`, `thisArg`?): `void`
+> **forEach**(`callbackfn`, `thisArg?`): `void`
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:28
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:28
 
 Executes a provided function once per each key/value pair in the Map, in insertion order.
 
@@ -778,7 +778,7 @@ Executes a provided function once per each key/value pair in the Map, in inserti
 | Parameter    | Type                              |
 | ------------ | --------------------------------- |
 | `callbackfn` | (`value`, `key`, `map`) => `void` |
-| `thisArg`?   | `any`                             |
+| `thisArg?`   | `any`                             |
 
 ###### Returns
 
@@ -790,9 +790,9 @@ Executes a provided function once per each key/value pair in the Map, in inserti
 
 ##### get()
 
-> **get**(`key`): `undefined` | `V`
+> **get**(`key`): `V` | `undefined`
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:33
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:33
 
 Returns a specified element from the Map object. If the value that is associated to the provided key is an object, then you will get a reference to that object and any change made to that object will effectively modify it inside the Map.
 
@@ -804,7 +804,7 @@ Returns a specified element from the Map object. If the value that is associated
 
 ###### Returns
 
-`undefined` | `V`
+`V` | `undefined`
 
 Returns the element associated with the specified key. If no element is associated with the specified key, undefined is returned.
 
@@ -878,7 +878,7 @@ Groups the entries of this map by the result of the classifier function.
 
 > **has**(`key`): `boolean`
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:37
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:37
 
 ###### Parameters
 
@@ -912,7 +912,7 @@ Returns true if this map contains no key-value mappings.
 
 > **keys**(): `MapIterator`<`K`>
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:153
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:153
 
 Returns an iterable of keys in the map
 
@@ -990,7 +990,7 @@ Create a new version of this map with the values mapped to a different value wit
 
 > **set**(`key`, `value`): `this`
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.collection.d.ts:41
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.collection.d.ts:41
 
 Adds a new element with a specified key and value to the Map. If an element with the same key already exists, the element will be updated.
 
@@ -1081,11 +1081,11 @@ Convert this to an object of key/value pair with possibility of mapping the key 
 
 ###### Parameters
 
-| Parameter                        | Type                                                                                                                                                                                                                                                              |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__namedParameters`              | { `keyMapper`: [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `K2`>; `valueMapper`: [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `V2`>; } |
-| `__namedParameters.keyMapper`?   | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `K2`>                                                                                                                                                   |
-| `__namedParameters.valueMapper`? | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `V2`>                                                                                                                                                   |
+| Parameter                        | Type                                                                                                                                                                                                                                                                |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`              | { `keyMapper?`: [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `K2`>; `valueMapper?`: [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `V2`>; } |
+| `__namedParameters.keyMapper?`   | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `K2`>                                                                                                                                                     |
+| `__namedParameters.valueMapper?` | [`Mapper`](#mapper)<{ `key`: `K`; `map`: [`MapPlus`](#mapplus)<`K`, `V`>; `value`: `NonNullable`<`V`>; }, `V2`>                                                                                                                                                     |
 
 ###### Returns
 
@@ -1095,7 +1095,7 @@ Convert this to an object of key/value pair with possibility of mapping the key 
 
 > **values**(): `MapIterator`<`V`>
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:158
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2015.iterable.d.ts:158
 
 Returns an iterable of values in the map
 
@@ -1123,7 +1123,7 @@ Retrieves all values as an array.
 
 > `static` **groupBy**<`K`, `T`>(`items`, `keySelector`): `Map`<`K`, `T`\[]>
 
-Defined in: common/temp/node\_modules/.pnpm/typescript\@5.8.2/node\_modules/typescript/lib/lib.es2024.collection.d.ts:25
+Defined in: common/temp/node\_modules/.pnpm/typescript\@5.9.3/node\_modules/typescript/lib/lib.es2024.collection.d.ts:25
 
 Groups members of an iterable according to the return value of the passed callback.
 
@@ -1151,7 +1151,7 @@ Groups members of an iterable according to the return value of the passed callba
 
 ***
 
-### PresentOptional\<T>
+### PresentOptional
 
 Defined in: packages/aide/src/optional.ts:133
 
@@ -1474,7 +1474,7 @@ If a value is present, returns the value, otherwise return undefined.
 
 ***
 
-### Queue\<T>
+### Queue
 
 Defined in: packages/aide/src/queue.ts:76
 
@@ -1499,12 +1499,12 @@ Create a new instance.
 
 ###### Parameters
 
-| Parameter                           | Type                                                                               | Description                                                                                                                                                                                             |
-| ----------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `__namedParameters`                 | { `intervalMs`: `number`; `maxConcurrent`: `number`; `maxPerInterval`: `number`; } | -                                                                                                                                                                                                       |
-| `__namedParameters.intervalMs`?     | `number`                                                                           | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
-| `__namedParameters.maxConcurrent`   | `number`                                                                           | Maximum number of concurrent executions.                                                                                                                                                                |
-| `__namedParameters.maxPerInterval`? | `number`                                                                           | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
+| Parameter                           | Type                                                                                 | Description                                                                                                                                                                                             |
+| ----------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`                 | { `intervalMs?`: `number`; `maxConcurrent`: `number`; `maxPerInterval?`: `number`; } | -                                                                                                                                                                                                       |
+| `__namedParameters.intervalMs?`     | `number`                                                                             | If given in addition with `maxPerInterval`, used to limit how many items can execute within an interval. This is simply the time, in milliseconds, for when to reset the execution counts per interval. |
+| `__namedParameters.maxConcurrent`   | `number`                                                                             | Maximum number of concurrent executions.                                                                                                                                                                |
+| `__namedParameters.maxPerInterval?` | `number`                                                                             | If given in addition with `intervalMs`, used to limit how many items can execute within an interval. This is simply the maximum number of executions within the interval.                               |
 
 ###### Returns
 
@@ -1536,8 +1536,6 @@ Add a new item to the queue for execution.
 
 ###### Returns
 
-{ `onAfterStart`: `Promise`<`void`>; `onBeforeStart`: `Promise`<`void`>; `onEnd`: `Promise`<`T`>; }
-
 | Name            | Type              | Description                                                                                                        |
 | --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `onAfterStart`  | `Promise`<`void`> | Promised that is resolved right after the handler is executed but not necessarily after it has finished execution. |
@@ -1562,7 +1560,7 @@ Lock the queue and return a promise that will resolve when all the handlers fini
 
 ## Interfaces
 
-### AsyncOptional\<T>
+### AsyncOptional
 
 Defined in: packages/aide/src/async-optional.ts:15
 
@@ -1798,7 +1796,7 @@ If a value is present, returns the value, otherwise throws an exception to be cr
 
 ##### orUndefined()
 
-> **orUndefined**(): `Promise`<`undefined` | `NonNullable`<`T`>>
+> **orUndefined**(): `Promise`<`NonNullable`<`T`> | `undefined`>
 
 Defined in: packages/aide/src/async-optional.ts:83
 
@@ -1806,11 +1804,11 @@ If a value is present, returns the value, otherwise return undefined.
 
 ###### Returns
 
-`Promise`<`undefined` | `NonNullable`<`T`>>
+`Promise`<`NonNullable`<`T`> | `undefined`>
 
 ***
 
-### Optional\<T>
+### Optional
 
 Defined in: packages/aide/src/optional.ts:6
 
@@ -2047,7 +2045,7 @@ If a value is present, returns the value, otherwise throws an exception to be cr
 
 ##### orUndefined()
 
-> **orUndefined**(): `undefined` | `NonNullable`<`T`>
+> **orUndefined**(): `NonNullable`<`T`> | `undefined`
 
 Defined in: packages/aide/src/optional.ts:75
 
@@ -2055,7 +2053,7 @@ If a value is present, returns the value, otherwise return undefined.
 
 ###### Returns
 
-`undefined` | `NonNullable`<`T`>
+`NonNullable`<`T`> | `undefined`
 
 ***
 
@@ -2075,7 +2073,7 @@ Arguments for constructing a [Queue](#queue).
 
 ***
 
-### SingletonFunction()\<T>
+### SingletonFunction()
 
 Defined in: packages/aide/src/function.ts:147
 
@@ -2123,7 +2121,7 @@ Defined in: packages/aide/src/function.ts:150
 
 ## Type Aliases
 
-### AnyArray\<V>
+### AnyArray
 
 > **AnyArray**<`V`> = `V`\[] | `ReadonlyArray`<`V`>
 
@@ -2139,7 +2137,7 @@ Type matching against both a writable array and a readonly array.
 
 ***
 
-### Awaitable\<T>
+### Awaitable
 
 > **Awaitable**<`T`> = `T` | `Promise`<`T`>
 
@@ -2155,7 +2153,7 @@ The type is simply `T` or a promise which, when resolved, is given `T`.
 
 ***
 
-### AwaitableBiConsumer()\<T, U>
+### AwaitableBiConsumer()
 
 > **AwaitableBiConsumer**<`T`, `U`> = (`t`, `u`) => [`Awaitable`](#awaitable)<`void`>
 
@@ -2183,7 +2181,7 @@ Represents an operation that accepts two input arguments and returns no result. 
 
 ***
 
-### AwaitableBiMapper()\<T, U, R>
+### AwaitableBiMapper()
 
 > **AwaitableBiMapper**<`T`, `U`, `R`> = (`t`, `u`) => [`Awaitable`](#awaitable)<`R`>
 
@@ -2212,7 +2210,7 @@ Represents a function that accepts two arguments and produces a result. This fun
 
 ***
 
-### AwaitableBinaryOperator()\<T>
+### AwaitableBinaryOperator()
 
 > **AwaitableBinaryOperator**<`T`> = (`left`, `right`) => [`Awaitable`](#awaitable)<`T`>
 
@@ -2239,7 +2237,7 @@ Represents an operation upon two operands of the same type, producing a result o
 
 ***
 
-### AwaitableBiPredicate()\<T, U>
+### AwaitableBiPredicate()
 
 > **AwaitableBiPredicate**<`T`, `U`> = (`t`, `u`) => [`Awaitable`](#awaitable)<`boolean`>
 
@@ -2267,7 +2265,7 @@ Represents a predicate (boolean-valued function) of two arguments. This predicat
 
 ***
 
-### AwaitableConsumer()\<T>
+### AwaitableConsumer()
 
 > **AwaitableConsumer**<`T`> = (`t`) => [`Awaitable`](#awaitable)<`void`>
 
@@ -2293,7 +2291,7 @@ Represents an operation that accepts a single input argument and returns no resu
 
 ***
 
-### AwaitableMapper()\<T, R>
+### AwaitableMapper()
 
 > **AwaitableMapper**<`T`, `R`> = (`t`) => [`Awaitable`](#awaitable)<`R`>
 
@@ -2320,7 +2318,7 @@ Represents a function that accepts one argument and produces a result. This func
 
 ***
 
-### AwaitablePredicate()\<T>
+### AwaitablePredicate()
 
 > **AwaitablePredicate**<`T`> = (`t`) => [`Awaitable`](#awaitable)<`boolean`>
 
@@ -2360,7 +2358,7 @@ Represents a runnable task that takes no arguments and returns no result. This t
 
 ***
 
-### AwaitableSupplier()\<T>
+### AwaitableSupplier()
 
 > **AwaitableSupplier**<`T`> = () => [`Awaitable`](#awaitable)<`T`>
 
@@ -2380,7 +2378,7 @@ Represents a supplier of results. This supplier returns an Awaitable.
 
 ***
 
-### AwaitableTernaryOperator()\<T>
+### AwaitableTernaryOperator()
 
 > **AwaitableTernaryOperator**<`T`> = (`first`, `second`, `third`) => [`Awaitable`](#awaitable)<`T`>
 
@@ -2408,7 +2406,7 @@ Represents an operation upon three operands of the same type, producing a result
 
 ***
 
-### AwaitableTriConsumer()\<T, U, V>
+### AwaitableTriConsumer()
 
 > **AwaitableTriConsumer**<`T`, `U`, `V`> = (`t`, `u`, `v`) => [`Awaitable`](#awaitable)<`void`>
 
@@ -2438,7 +2436,7 @@ Represents an operation that accepts three input arguments and returns no result
 
 ***
 
-### AwaitableTriMapper()\<T, U, V, R>
+### AwaitableTriMapper()
 
 > **AwaitableTriMapper**<`T`, `U`, `V`, `R`> = (`t`, `u`, `v`) => [`Awaitable`](#awaitable)<`R`>
 
@@ -2469,7 +2467,7 @@ Represents a function that accepts three arguments and produces a result. This f
 
 ***
 
-### AwaitableTriPredicate()\<T, U, V>
+### AwaitableTriPredicate()
 
 > **AwaitableTriPredicate**<`T`, `U`, `V`> = (`t`, `u`, `v`) => [`Awaitable`](#awaitable)<`boolean`>
 
@@ -2499,7 +2497,7 @@ Represents a predicate (boolean-valued function) of three arguments. This predic
 
 ***
 
-### AwaitableUnaryOperator()\<T>
+### AwaitableUnaryOperator()
 
 > **AwaitableUnaryOperator**<`T`> = (`t`) => [`Awaitable`](#awaitable)<`T`>
 
@@ -2525,7 +2523,7 @@ Represents an operation on a single operand that produces a result of the same t
 
 ***
 
-### BiConsumer()\<T, U>
+### BiConsumer()
 
 > **BiConsumer**<`T`, `U`> = (`t`, `u`) => `void`
 
@@ -2553,7 +2551,7 @@ Represents an operation that accepts two input arguments and returns no result.
 
 ***
 
-### BiMapper()\<T, U, R>
+### BiMapper()
 
 > **BiMapper**<`T`, `U`, `R`> = (`t`, `u`) => `R`
 
@@ -2582,7 +2580,7 @@ Represents a function that accepts two arguments and produces a result.
 
 ***
 
-### BinaryOperator()\<T>
+### BinaryOperator()
 
 > **BinaryOperator**<`T`> = (`left`, `right`) => `T`
 
@@ -2609,7 +2607,7 @@ Represents an operation upon two operands of the same type, producing a result o
 
 ***
 
-### BiPredicate()\<T, U>
+### BiPredicate()
 
 > **BiPredicate**<`T`, `U`> = (`t`, `u`) => `boolean`
 
@@ -2637,7 +2635,7 @@ Represents a predicate (boolean-valued function) of two arguments.
 
 ***
 
-### Consumer()\<T>
+### Consumer()
 
 > **Consumer**<`T`> = (`t`) => `void`
 
@@ -2663,7 +2661,7 @@ Represents an operation that accepts a single input argument and returns no resu
 
 ***
 
-### Mapper()\<T, R>
+### Mapper()
 
 > **Mapper**<`T`, `R`> = (`t`) => `R`
 
@@ -2700,7 +2698,7 @@ The possible type for a key.
 
 ***
 
-### MarkReadonly\<T, K>
+### MarkReadonly
 
 > **MarkReadonly**<`T`, `K`> = `Omit`<`T`, `K`> & `Readonly`<`Pick`<`T`, `K`>>
 
@@ -2717,7 +2715,7 @@ For a given object, T, mark the keys given as being readonly.
 
 ***
 
-### Merge\<T, U>
+### Merge
 
 > **Merge**<`T`, `U`> = [`Simplify`](#simplify)<`Omit`<`T`, keyof `U`> & `U`>
 
@@ -2734,7 +2732,7 @@ Merge the two types together with the properties from second type overwriting th
 
 ***
 
-### NonEmptyArray\<T>
+### NonEmptyArray
 
 > **NonEmptyArray**<`T`> = \[`T`, `...T[]`]
 
@@ -2750,7 +2748,7 @@ For a non-empty array.
 
 ***
 
-### Predicate()\<T>
+### Predicate()
 
 > **Predicate**<`T`> = (`t`) => `boolean`
 
@@ -2776,7 +2774,7 @@ Represents a predicate (boolean-valued function) of one argument.
 
 ***
 
-### QueueItem()\<T>
+### QueueItem()
 
 > **QueueItem**<`T`> = () => [`Awaitable`](#awaitable)<`T`>
 
@@ -2810,7 +2808,7 @@ Represents a runnable task that takes no arguments and returns no result.
 
 ***
 
-### Simplify\<T>
+### Simplify
 
 > **Simplify**<`T`> = `{ [KeyType in keyof T]: T[KeyType] }` & `NonNullable`<`unknown`>
 
@@ -2826,7 +2824,7 @@ Refer to <https://github.com/sindresorhus/type-fest/blob/main/source/simplify.d.
 
 ***
 
-### SimplifyOmit\<T, K>
+### SimplifyOmit
 
 > **SimplifyOmit**<`T`, `K`> = [`Simplify`](#simplify)<`Omit`<`T`, `K`>>
 
@@ -2843,7 +2841,7 @@ Wrapping Simplify over Omit.
 
 ***
 
-### Supplier()\<T>
+### Supplier()
 
 > **Supplier**<`T`> = () => `T`
 
@@ -2863,7 +2861,7 @@ Represents a supplier of results.
 
 ***
 
-### TernaryOperator()\<T>
+### TernaryOperator()
 
 > **TernaryOperator**<`T`> = (`first`, `second`, `third`) => `T`
 
@@ -2891,7 +2889,7 @@ Represents an operation upon three operands of the same type, producing a result
 
 ***
 
-### TriConsumer()\<T, U, V>
+### TriConsumer()
 
 > **TriConsumer**<`T`, `U`, `V`> = (`t`, `u`, `v`) => `void`
 
@@ -2921,7 +2919,7 @@ Represents an operation that accepts three input arguments and returns no result
 
 ***
 
-### TriMapper()\<T, U, V, R>
+### TriMapper()
 
 > **TriMapper**<`T`, `U`, `V`, `R`> = (`t`, `u`, `v`) => `R`
 
@@ -2952,7 +2950,7 @@ Represents a function that accepts three arguments and produces a result.
 
 ***
 
-### TriPredicate()\<T, U, V>
+### TriPredicate()
 
 > **TriPredicate**<`T`, `U`, `V`> = (`t`, `u`, `v`) => `boolean`
 
@@ -2982,7 +2980,7 @@ Represents a predicate (boolean-valued function) of three arguments.
 
 ***
 
-### UnaryOperator()\<T>
+### UnaryOperator()
 
 > **UnaryOperator**<`T`> = (`t`) => `T`
 
@@ -3008,7 +3006,7 @@ Represents an operation on a single operand that produces a result of the same t
 
 ***
 
-### UndefinedFallback\<T, Fallback>
+### UndefinedFallback
 
 > **UndefinedFallback**<`T`, `Fallback`> = \[`T`] *extends* \[`undefined`] ? `Fallback` : `T`
 
@@ -3055,7 +3053,7 @@ The same list.
 
 ### createAsyncOptional()
 
-> **createAsyncOptional**<`T`>(`value`?): [`AsyncOptional`](#asyncoptional)<`T`>
+> **createAsyncOptional**<`T`>(`value?`): [`AsyncOptional`](#asyncoptional)<`T`>
 
 Defined in: packages/aide/src/async-optional.ts:285
 
@@ -3071,7 +3069,7 @@ Create an async optional from the provided value.
 
 | Parameter | Type                                                                                    |
 | --------- | --------------------------------------------------------------------------------------- |
-| `value`?  | [`Awaitable`](#awaitable)<`undefined` \| `null` \| `T` \| [`Optional`](#optional)<`T`>> |
+| `value?`  | [`Awaitable`](#awaitable)<`T` \| [`Optional`](#optional)<`T`> \| `null` \| `undefined`> |
 
 #### Returns
 
@@ -3097,7 +3095,7 @@ Create an optional from the provided value.
 
 | Parameter | Type                         | Default value |
 | --------- | ---------------------------- | ------------- |
-| `value`   | `undefined` \| `null` \| `T` | `undefined`   |
+| `value`   | `T` \| `null` \| `undefined` | `undefined`   |
 
 #### Returns
 
@@ -3188,7 +3186,7 @@ A promise that will resolve when all the tasks are completed.
 
 ### first()
 
-> **first**<`V`>(`list`): `undefined` | `V`
+> **first**<`V`>(`list`): `V` | `undefined`
 
 Defined in: packages/aide/src/arrays.ts:46
 
@@ -3208,13 +3206,13 @@ Retrieve the first value in the given list or undefined if it is empty.
 
 #### Returns
 
-`undefined` | `V`
+`V` | `undefined`
 
 ***
 
 ### firstDefined()
 
-> **firstDefined**<`V`>(`list`): `undefined` | `V`
+> **firstDefined**<`V`>(`list`): `V` | `undefined`
 
 Defined in: packages/aide/src/arrays.ts:60
 
@@ -3230,11 +3228,11 @@ Execute the functions in the list and return the value of the first supplier tha
 
 | Parameter | Type                                                                 |
 | --------- | -------------------------------------------------------------------- |
-| `list`    | [`AnyArray`](#anyarray)<[`Supplier`](#supplier)<`undefined` \| `V`>> |
+| `list`    | [`AnyArray`](#anyarray)<[`Supplier`](#supplier)<`V` \| `undefined`>> |
 
 #### Returns
 
-`undefined` | `V`
+`V` | `undefined`
 
 ***
 

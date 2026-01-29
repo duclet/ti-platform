@@ -48,7 +48,7 @@ export async function runTypedoc() {
     const argv = getArgv('run-typedoc');
 
     spawnCommand(
-        `npx typedoc --options ${PATH_AIDE_BUILD_TOOLS}/typedoc.json --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} ${argv.flags.inputFile}`
+        `pnpm typedoc --options ${PATH_AIDE_BUILD_TOOLS}/typedoc.json --out ${argv.flags.outDir} --readme ${argv.flags.baseReadme} ${argv.flags.inputFile}`
     );
     spawnCommand(
         `sed -i '' -e "/---Insert API Docs---/r ${argv.flags.outDir}/globals.md" ${argv.flags.outDir}/README.md`
@@ -58,7 +58,7 @@ export async function runTypedoc() {
     spawnCommand(`sed -i '' -- "s/\\* \\* /\\* /g" ${argv.flags.outDir}/README.md`);
 
     if (argv.flags.includeVueDocGen) {
-        spawnCommand(`npx vue-docgen -c ${argv.flags.vueDocGenConfigFile}`);
+        spawnCommand(`pnpm vue-docgen -c ${argv.flags.vueDocGenConfigFile}`);
         spawnCommand(`sed -i '' 's/# /### /g' ${argv.flags.outDir}/components.md`);
         spawnCommand(
             `sed -i '' -e "/---Insert Components---/r ${argv.flags.outDir}/components.md" ${argv.flags.outDir}/README.md`

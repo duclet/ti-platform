@@ -41,7 +41,7 @@ export function runPrettier(params: RunEsLintPrettierParams) {
 
     return spawnCommand(
         [
-            'npx prettier --cache --cache-strategy content --write',
+            'pnpm prettier --cache --cache-strategy content --write',
             ...existingDirExtensionPatterns,
             ...keepOnlyExistentPaths(params.files ?? []),
         ].join(' ')

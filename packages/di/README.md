@@ -201,7 +201,7 @@ The resolved bean instance
 
 ## Type Aliases
 
-### BeanDefinition\<T>
+### BeanDefinition
 
 > **BeanDefinition**<`T`> = { `factory`: [`FactoryFunction`](#factoryfunction)<`T`>; `id`: `symbol`; }
 
@@ -225,7 +225,7 @@ Contains the factory function and metadata for creating instances.
 
 ***
 
-### FactoryFunction()\<T>
+### FactoryFunction()
 
 > **FactoryFunction**<`T`> = (`get`) => `T`
 

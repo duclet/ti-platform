@@ -6,7 +6,7 @@ This package contains utility functions that can be used with Vue to enhance the
 
 * [API Docs](#api-docs)
   * [Type Aliases](#type-aliases)
-    * [ReactiveExecuteTasksRet\<T>](#reactiveexecutetasksrett)
+    * [ReactiveExecuteTasksRet](#reactiveexecutetasksret)
     * [ValueTypes](#valuetypes)
   * [Functions](#functions)
     * [asComputed()](#ascomputed)
@@ -22,7 +22,7 @@ This package contains utility functions that can be used with Vue to enhance the
 
 ## Type Aliases
 
-### ReactiveExecuteTasksRet\<T>
+### ReactiveExecuteTasksRet
 
 > **ReactiveExecuteTasksRet**<`T`> = { `activeWorkers`: `ComputedRef`<`number`>; `completedTasks`: `ComputedRef`<`number`>; `isAllTasksCompleted`: `ComputedRef`<`boolean`>; `results`: `ComputedRef`<`T`\[]>; `totalTasks`: `ComputedRef`<`number`>; }
 

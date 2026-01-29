@@ -177,7 +177,7 @@ Configurations to compare against the page name and returning its chunk name.
 
 ### EslintConfigsParams
 
-> **EslintConfigsParams** = { `baseDir`: `string`; `configureCjs`: (`configs`) => `ConfigWithExtends`; `configureHtml`: (`configs`) => `ConfigWithExtends`; `configureJs`: (`configs`) => `ConfigWithExtends`; `configureJson`: (`configs`) => `ConfigWithExtends`; `configureTs`: (`configs`) => `ConfigWithExtends`; `configureTsx`: (`configs`) => `ConfigWithExtends`; `configureVue`: (`configs`) => `ConfigWithExtends`; `enable`: [`EslintConfigType`](#eslintconfigtype)\[]; }
+> **EslintConfigsParams** = { `baseDir`: `string`; `configureCjs?`: (`configs`) => `ConfigWithExtends`; `configureHtml?`: (`configs`) => `ConfigWithExtends`; `configureJs?`: (`configs`) => `ConfigWithExtends`; `configureJson?`: (`configs`) => `ConfigWithExtends`; `configureTs?`: (`configs`) => `ConfigWithExtends`; `configureTsx?`: (`configs`) => `ConfigWithExtends`; `configureVue?`: (`configs`) => `ConfigWithExtends`; `enable?`: [`EslintConfigType`](#eslintconfigtype)\[]; }
 
 Defined in: eslint.ts:25
 
@@ -215,7 +215,7 @@ Defined in: esbuild-plugins/modify-source-contents-chain.ts:41
 
 Arguments for the function [modifySourceContentsChain](#modifysourcecontentschain).
 
-#### Type declaration
+#### Type Declaration
 
 | Name              | Type                                                                                     | Description                    |
 | ----------------- | ---------------------------------------------------------------------------------------- | ------------------------------ |
@@ -272,7 +272,7 @@ Use to create the handler as part of the build step.
 
 ### ModifySourceContentsChainHandlerCreatorBuildArgs
 
-> **ModifySourceContentsChainHandlerCreatorBuildArgs** = { `cwd`: `string`; `debug`: `boolean`; `extensions`: `string`\[]; }
+> **ModifySourceContentsChainHandlerCreatorBuildArgs** = { `cwd?`: `string`; `debug?`: `boolean`; `extensions?`: `string`\[]; }
 
 Defined in: esbuild-plugins/modify-source-contents-chain.ts:8
 
@@ -290,7 +290,7 @@ Arguments passed to the [ModifySourceContentsChainHandlerCreator](#modifysourcec
 
 ### RunEsLintPrettierParams
 
-> **RunEsLintPrettierParams** = { `dirs`: `string`\[]; `extensions`: `string`\[]; `files`: `string`\[]; }
+> **RunEsLintPrettierParams** = { `dirs?`: `string`\[]; `extensions?`: `string`\[]; `files?`: `string`\[]; }
 
 Defined in: misc.ts:5
 
@@ -504,7 +504,7 @@ extracted CSS from the Vue files, it will also place them in the same folder as 
 
 ### getChunkName()
 
-> **getChunkName**(`configs`, `moduleId`): `undefined` | `string`
+> **getChunkName**(`configs`, `moduleId`): `string` | `undefined`
 
 Defined in: misc.ts:85
 
@@ -521,7 +521,7 @@ Rollup.
 
 #### Returns
 
-`undefined` | `string`
+`string` | `undefined`
 
 The name of the chunk to use or undefined to let Rollup decides for itself.
 
@@ -677,14 +677,14 @@ Note that this contains an escape hatch to linting so you can still "build" by i
 
 #### Parameters
 
-| Parameter              | Type                                                 | Default value   |
-| ---------------------- | ---------------------------------------------------- | --------------- |
-| `dirs`                 | `string`\[]                                          | `undefined`     |
-| `extensions`           | `string`\[]                                          | `undefined`     |
-| `files`                | `string`\[]                                          | `GENERAL_FILES` |
-| `options`              | { `verifyTs`: `boolean`; `verifyVueTs`: `boolean`; } | `{}`            |
-| `options.verifyTs`?    | `boolean`                                            | `undefined`     |
-| `options.verifyVueTs`? | `boolean`                                            | `undefined`     |
+| Parameter              | Type                                                   | Default value   |
+| ---------------------- | ------------------------------------------------------ | --------------- |
+| `dirs`                 | `string`\[]                                            | `undefined`     |
+| `extensions`           | `string`\[]                                            | `undefined`     |
+| `files`                | `string`\[]                                            | `GENERAL_FILES` |
+| `options`              | { `verifyTs?`: `boolean`; `verifyVueTs?`: `boolean`; } | `{}`            |
+| `options.verifyTs?`    | `boolean`                                              | `undefined`     |
+| `options.verifyVueTs?` | `boolean`                                              | `undefined`     |
 
 #### Returns
 
@@ -716,7 +716,7 @@ This plugin allows for the possibility.
 
 ### runEslint()
 
-> **runEslint**(`params`): `SpawnSyncReturns`<`Buffer`<`ArrayBufferLike`>>
+> **runEslint**(`params`): `SpawnSyncReturns`<`NonSharedBuffer`>
 
 Defined in: eslint.ts:117
 
@@ -730,13 +730,13 @@ Execute the command to run ESLint.
 
 #### Returns
 
-`SpawnSyncReturns`<`Buffer`<`ArrayBufferLike`>>
+`SpawnSyncReturns`<`NonSharedBuffer`>
 
 ***
 
 ### runPrettier()
 
-> **runPrettier**(`params`): `SpawnSyncReturns`<`Buffer`<`ArrayBufferLike`>>
+> **runPrettier**(`params`): `SpawnSyncReturns`<`NonSharedBuffer`>
 
 Defined in: prettier.ts:29
 
@@ -750,13 +750,13 @@ Execute the command to run Prettier.
 
 #### Returns
 
-`SpawnSyncReturns`<`Buffer`<`ArrayBufferLike`>>
+`SpawnSyncReturns`<`NonSharedBuffer`>
 
 ***
 
 ### spawnCommand()
 
-> **spawnCommand**(`command`): `SpawnSyncReturns`<`Buffer`<`ArrayBufferLike`>>
+> **spawnCommand**(`command`): `SpawnSyncReturns`<`NonSharedBuffer`>
 
 Defined in: spawn.ts:6
 
@@ -770,7 +770,7 @@ Spawn the given command synchronously and passing along the current environment 
 
 #### Returns
 
-`SpawnSyncReturns`<`Buffer`<`ArrayBufferLike`>>
+`SpawnSyncReturns`<`NonSharedBuffer`>
 
 ***
 

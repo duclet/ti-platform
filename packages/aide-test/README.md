@@ -6,7 +6,7 @@ Aide in writing tests with Vitest.
 
 * [API Docs](#api-docs)
   * [Classes](#classes)
-    * [Assertion\<T, P>](#assertiont-p)
+    * [Assertion](#assertion)
   * [Functions](#functions)
     * [expect()](#expect)
     * [expectToFail()](#expecttofail)
@@ -25,7 +25,7 @@ Aide in writing tests with Vitest.
 
 ## Classes
 
-### Assertion\<T, P>
+### Assertion
 
 Defined in: index.ts:6
 
@@ -42,19 +42,19 @@ Wrapper around Vitest's expect to allow a fluent API and some more extension.
 
 ##### Constructor
 
-> **new Assertion**<`T`, `P`>(`value`, `parentAssertion`?, `options`?): [`Assertion`](#assertion)<`T`, `P`>
+> **new Assertion**<`T`, `P`>(`value`, `parentAssertion?`, `options?`): [`Assertion`](#assertion)<`T`, `P`>
 
 Defined in: index.ts:7
 
 ###### Parameters
 
-| Parameter          | Type                                        |
-| ------------------ | ------------------------------------------- |
-| `value`            | `T`                                         |
-| `parentAssertion`? | `P`                                         |
-| `options`?         | { `invert`: `boolean`; `soft`: `boolean`; } |
-| `options.invert`?  | `boolean`                                   |
-| `options.soft`?    | `boolean`                                   |
+| Parameter          | Type                                          |
+| ------------------ | --------------------------------------------- |
+| `value`            | `T`                                           |
+| `parentAssertion?` | `P`                                           |
+| `options?`         | { `invert?`: `boolean`; `soft?`: `boolean`; } |
+| `options.invert?`  | `boolean`                                     |
+| `options.soft?`    | `boolean`                                     |
 
 ###### Returns
 
@@ -137,7 +137,7 @@ floating-point numbers.
 
 ##### toBeCloseTo()
 
-> **toBeCloseTo**(`num`, `numDigits`?): `this`
+> **toBeCloseTo**(`num`, `numDigits?`): `this`
 
 Defined in: index.ts:56
 
@@ -149,7 +149,7 @@ default for precision is 2.
 | Parameter    | Type     |
 | ------------ | -------- |
 | `num`        | `number` |
-| `numDigits`? | `number` |
+| `numDigits?` | `number` |
 
 ###### Returns
 
@@ -632,7 +632,7 @@ value.
 
 ##### toHaveProperty()
 
-> **toHaveProperty**(`property`, `value`?): `this`
+> **toHaveProperty**(`property`, `value?`): `this`
 
 Defined in: index.ts:305
 
@@ -647,7 +647,7 @@ This matcher uses 'deep equality' (like [toEqual](#toequal)) and recursively che
 | Parameter  | Type                                  |
 | ---------- | ------------------------------------- |
 | `property` | `string` \| (`string` \| `number`)\[] |
-| `value`?   | `unknown`                             |
+| `value?`   | `unknown`                             |
 
 ###### Returns
 
@@ -791,7 +791,7 @@ Check that a string matches a regular expression.
 
 ##### toMatchFileSnapshot()
 
-> **toMatchFileSnapshot**(`filepath`, `message`?): `Promise`<[`Assertion`](#assertion)<`T`, `P`>>
+> **toMatchFileSnapshot**(`filepath`, `message?`): `Promise`<[`Assertion`](#assertion)<`T`, `P`>>
 
 Defined in: index.ts:447
 
@@ -803,7 +803,7 @@ large or needs to be shared across tests.
 | Parameter  | Type     |
 | ---------- | -------- |
 | `filepath` | `string` |
-| `message`? | `string` |
+| `message?` | `string` |
 
 ###### Returns
 
@@ -813,7 +813,7 @@ large or needs to be shared across tests.
 
 ###### Call Signature
 
-> **toMatchInlineSnapshot**(`message`?): `this`
+> **toMatchInlineSnapshot**(`message?`): `this`
 
 Defined in: index.ts:459
 
@@ -826,7 +826,7 @@ external .snap file).
 
 | Parameter  | Type     |
 | ---------- | -------- |
-| `message`? | `string` |
+| `message?` | `string` |
 
 ###### Returns
 
@@ -834,7 +834,7 @@ external .snap file).
 
 ###### Call Signature
 
-> **toMatchInlineSnapshot**(`properties`, `snapshot`?, `message`?): `this`
+> **toMatchInlineSnapshot**(`properties`, `snapshot?`, `message?`): `this`
 
 Defined in: index.ts:460
 
@@ -848,8 +848,8 @@ external .snap file).
 | Parameter    | Type           |
 | ------------ | -------------- |
 | `properties` | `Partial`<`T`> |
-| `snapshot`?  | `string`       |
-| `message`?   | `string`       |
+| `snapshot?`  | `string`       |
+| `message?`   | `string`       |
 
 ###### Returns
 
@@ -877,7 +877,7 @@ Used to check that a JavaScript object matches a subset of the properties of an 
 
 ###### Call Signature
 
-> **toMatchSnapshot**(`message`?): `this`
+> **toMatchSnapshot**(`message?`): `this`
 
 Defined in: index.ts:436
 
@@ -892,7 +892,7 @@ corresponding .snap file.
 
 | Parameter  | Type     |
 | ---------- | -------- |
-| `message`? | `string` |
+| `message?` | `string` |
 
 ###### Returns
 
@@ -900,7 +900,7 @@ corresponding .snap file.
 
 ###### Call Signature
 
-> **toMatchSnapshot**(`shape`, `message`?): `this`
+> **toMatchSnapshot**(`shape`, `message?`): `this`
 
 Defined in: index.ts:437
 
@@ -916,7 +916,7 @@ corresponding .snap file.
 | Parameter  | Type           |
 | ---------- | -------------- |
 | `shape`    | `Partial`<`T`> |
-| `message`? | `string`       |
+| `message?` | `string`       |
 
 ###### Returns
 
@@ -924,7 +924,7 @@ corresponding .snap file.
 
 ##### toSatisfy()
 
-> **toSatisfy**(`predicate`, `message`?): `this`
+> **toSatisfy**(`predicate`, `message?`): `this`
 
 Defined in: index.ts:390
 
@@ -935,7 +935,7 @@ Checks that a value satisfies a custom matcher function.
 | Parameter   | Type                    |
 | ----------- | ----------------------- |
 | `predicate` | (`actual`) => `boolean` |
-| `message`?  | `string`                |
+| `message?`  | `string`                |
 
 ###### Returns
 
@@ -970,7 +970,7 @@ Differences from [toEqual](#toequal):
 
 ##### toThrowError()
 
-> **toThrowError**(`expected`?): `this`
+> **toThrowError**(`expected?`): `this`
 
 Defined in: index.ts:419
 
@@ -985,7 +985,7 @@ You can provide an optional argument to test that a specific error is thrown:
 
 | Parameter   | Type      |
 | ----------- | --------- |
-| `expected`? | `unknown` |
+| `expected?` | `unknown` |
 
 ###### Returns
 
@@ -993,7 +993,7 @@ You can provide an optional argument to test that a specific error is thrown:
 
 ##### toThrowErrorMatchingInlineSnapshot()
 
-> **toThrowErrorMatchingInlineSnapshot**(`snapshot`?, `message`?): `this`
+> **toThrowErrorMatchingInlineSnapshot**(`snapshot?`, `message?`): `this`
 
 Defined in: index.ts:479
 
@@ -1004,8 +1004,8 @@ snapshots close to the test code.
 
 | Parameter   | Type     |
 | ----------- | -------- |
-| `snapshot`? | `string` |
-| `message`?  | `string` |
+| `snapshot?` | `string` |
+| `message?`  | `string` |
 
 ###### Returns
 
@@ -1013,7 +1013,7 @@ snapshots close to the test code.
 
 ##### toThrowErrorMatchingSnapshot()
 
-> **toThrowErrorMatchingSnapshot**(`message`?): `this`
+> **toThrowErrorMatchingSnapshot**(`message?`): `this`
 
 Defined in: index.ts:469
 
@@ -1023,7 +1023,7 @@ Checks that an error thrown by a function matches a previously recorded snapshot
 
 | Parameter  | Type     |
 | ---------- | -------- |
-| `message`? | `string` |
+| `message?` | `string` |
 
 ###### Returns
 
@@ -1059,7 +1059,7 @@ Create a new assertion.
 
 ### expectToFail()
 
-> **expectToFail**(`message`?): `never`
+> **expectToFail**(`message?`): `never`
 
 Defined in: index.ts:511
 
@@ -1069,7 +1069,7 @@ This method is used to assert that a line should never be reached.
 
 | Parameter  | Type     |
 | ---------- | -------- |
-| `message`? | `string` |
+| `message?` | `string` |
 
 #### Returns
 
@@ -1178,7 +1178,7 @@ Matches if the received array contains all elements in the expected array.
 
 ### matchCloseTo()
 
-> **matchCloseTo**(`expected`, `precision`?): `any`
+> **matchCloseTo**(`expected`, `precision?`): `any`
 
 Defined in: index.ts:552
 
@@ -1189,7 +1189,7 @@ Matches if the received number is within a certain precision of the expected num
 | Parameter    | Type     |
 | ------------ | -------- |
 | `expected`   | `number` |
-| `precision`? | `number` |
+| `precision?` | `number` |
 
 #### Returns
 

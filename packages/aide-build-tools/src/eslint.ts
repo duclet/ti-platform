@@ -117,7 +117,7 @@ export function generateEslintConfigs(configs: EslintConfigsParams): ConfigArray
 export function runEslint(params: RunEsLintPrettierParams) {
     return spawnCommand(
         [
-            'DEBUG=eslint:eslint npx eslint --fix --cache --cache-strategy=content',
+            'DEBUG=eslint:eslint pnpm eslint --fix --cache --cache-strategy=content',
             ...(params.extensions ?? []).map((extension) => `--ext ${extension}`),
             ...keepOnlyExistentPaths(params.dirs ?? []),
             ...keepOnlyExistentPaths(params.files ?? []),

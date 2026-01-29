@@ -261,7 +261,7 @@ PrimeVue doesn't have a consistent level of severity/color scheme for their comp
 
 ### ProgressIndicatorTask
 
-> **ProgressIndicatorTask** = { `description`: `string`; `errorMessage`: `string`; `isInProgress`: `boolean`; `key`: `string`; }
+> **ProgressIndicatorTask** = { `description`: `string`; `errorMessage?`: `string`; `isInProgress`: `boolean`; `key`: `string`; }
 
 Defined in: components/multi-progress-indicator/api.ts:4
 
@@ -280,7 +280,7 @@ Information for a task to show in the MultiProgressIndicator component.
 
 ### TimelineStep
 
-> **TimelineStep** = { `body`: `string`; `isInitiallyHidden`: `boolean`; `name`: [`TimelineStepName`](#timelinestepname-1); `task`: (`step`) => `Promise`<[`TimelineStepTaskResult`](#timelinesteptaskresult)>; `title`: `string`; }
+> **TimelineStep** = { `body?`: `string`; `isInitiallyHidden?`: `boolean`; `name`: [`TimelineStepName`](#timelinestepname-1); `task`: (`step`) => `Promise`<[`TimelineStepTaskResult`](#timelinesteptaskresult)>; `title`: `string`; }
 
 Defined in: components/timeline-stepper/api.ts:13
 
@@ -439,7 +439,7 @@ Add some type support for defining themes.
 
 ### exposePrimeVueHelpers()
 
-> **exposePrimeVueHelpers**(): { `cx`: (`key`, `params`?) => `string` | `object`; `ptm`: (`key`, `params`?) => `object`; `ptmi`: (`key`, `params`?) => `object`; }
+> **exposePrimeVueHelpers**(): { `cx`: (`key`, `params?`) => `string` | `object`; `ptm`: (`key`, `params?`) => `object`; `ptmi`: (`key`, `params?`) => `object`; }
 
 Defined in: utils.ts:173
 
@@ -447,13 +447,13 @@ Get the helper methods that PrimeVue defines for its components to allow passthr
 
 #### Returns
 
-{ `cx`: (`key`, `params`?) => `string` | `object`; `ptm`: (`key`, `params`?) => `object`; `ptmi`: (`key`, `params`?) => `object`; }
+{ `cx`: (`key`, `params?`) => `string` | `object`; `ptm`: (`key`, `params?`) => `object`; `ptmi`: (`key`, `params?`) => `object`; }
 
 | Name     | Type                                       |
 | -------- | ------------------------------------------ |
-| `cx()`   | (`key`, `params`?) => `string` \| `object` |
-| `ptm()`  | (`key`, `params`?) => `object`             |
-| `ptmi()` | (`key`, `params`?) => `object`             |
+| `cx()`   | (`key`, `params?`) => `string` \| `object` |
+| `ptm()`  | (`key`, `params?`) => `object`             |
+| `ptmi()` | (`key`, `params?`) => `object`             |
 
 ***
 
@@ -482,7 +482,7 @@ The new class after it has been extended.
 
 ### getSeverityForBadge()
 
-> **getSeverityForBadge**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+> **getSeverityForBadge**(`colorOption`): `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 Defined in: utils.ts:26
 
@@ -496,7 +496,7 @@ Map the given color option to a Badge's severity level.
 
 #### Returns
 
-`undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+`"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 The severity for the given color option.
 
@@ -504,7 +504,7 @@ The severity for the given color option.
 
 ### getSeverityForButton()
 
-> **getSeverityForButton**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+> **getSeverityForButton**(`colorOption`): `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 Defined in: utils.ts:43
 
@@ -518,7 +518,7 @@ Map the given color option to a Button's severity level.
 
 #### Returns
 
-`undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+`"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 The severity for the given color option.
 
@@ -526,7 +526,7 @@ The severity for the given color option.
 
 ### getSeverityForMessage()
 
-> **getSeverityForMessage**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `"error"`
+> **getSeverityForMessage**(`colorOption`): `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `"error"` | `undefined`
 
 Defined in: utils.ts:73
 
@@ -540,7 +540,7 @@ Map the given color option to a Message's severity level.
 
 #### Returns
 
-`undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `"error"`
+`"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `"error"` | `undefined`
 
 The severity for the given color option.
 
@@ -548,7 +548,7 @@ The severity for the given color option.
 
 ### getSeverityForOverlayBadge()
 
-> **getSeverityForOverlayBadge**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+> **getSeverityForOverlayBadge**(`colorOption`): `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 Defined in: utils.ts:90
 
@@ -562,7 +562,7 @@ Map the given color option to an OverlayBadge's severity level.
 
 #### Returns
 
-`undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+`"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 The severity for the given color option.
 
@@ -570,7 +570,7 @@ The severity for the given color option.
 
 ### getSeverityForSplitButton()
 
-> **getSeverityForSplitButton**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+> **getSeverityForSplitButton**(`colorOption`): `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 Defined in: utils.ts:114
 
@@ -584,7 +584,7 @@ Map the given color option to a SplitButton's severity level.
 
 #### Returns
 
-`undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+`"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 The severity for the given color option.
 
@@ -592,7 +592,7 @@ The severity for the given color option.
 
 ### getSeverityForTag()
 
-> **getSeverityForTag**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+> **getSeverityForTag**(`colorOption`): `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 Defined in: utils.ts:102
 
@@ -606,7 +606,7 @@ Map the given color option to a Tag's severity level.
 
 #### Returns
 
-`undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+`"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 The severity for the given color option.
 
@@ -614,7 +614,7 @@ The severity for the given color option.
 
 ### getSeverityForToast()
 
-> **getSeverityForToast**(`colorOption`): `undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+> **getSeverityForToast**(`colorOption`): `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 Defined in: utils.ts:126
 
@@ -628,7 +628,7 @@ Map the given color option to a Toast's severity level.
 
 #### Returns
 
-`undefined` | `"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"`
+`"secondary"` | `"success"` | `"info"` | `"warn"` | `"danger"` | `"contrast"` | `"help"` | `undefined`
 
 The severity for the given color option.
 

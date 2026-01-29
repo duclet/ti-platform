@@ -1,5 +1,5 @@
 [tools]
 node = "22"
-"asdf:pnpm" = "10"
+"npm:pnpm" = "10"
 "npm:@microsoft/rush" = "5.100.1"
 
