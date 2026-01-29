@@ -2,6 +2,29 @@
   "name": "@ti-platform/di",
   "entries": [
     {
+      "version": "0.0.5",
+      "tag": "@ti-platform/di_v0.0.5",
+      "date": "Thu, 29 Jan 2026 22:06:37 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating test command"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.8.2`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-test\" to `0.2.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.4",
       "tag": "@ti-platform/di_v0.0.4",
       "date": "Wed, 13 Aug 2025 18:22:02 GMT",

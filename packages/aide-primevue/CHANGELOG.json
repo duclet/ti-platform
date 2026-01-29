@@ -2,6 +2,24 @@
   "name": "@ti-platform/aide-primevue",
   "entries": [
     {
+      "version": "1.0.8",
+      "tag": "@ti-platform/aide-primevue_v1.0.8",
+      "date": "Thu, 29 Jan 2026 22:06:37 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.8.2`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-vue\" to `3.2.5`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.7",
       "tag": "@ti-platform/aide-primevue_v1.0.7",
       "date": "Wed, 13 Aug 2025 18:22:01 GMT",

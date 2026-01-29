@@ -1,6 +1,17 @@
 # Change Log - @ti-platform/aide-build-tools
 
-This log was last generated on Wed, 09 Apr 2025 20:07:33 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jan 2026 22:06:37 GMT and should not be manually modified.
+
+## 5.0.0
+Thu, 29 Jan 2026 22:06:37 GMT
+
+### Breaking changes
+
+- Using pnpm for running various commands
+
+### Minor changes
+
+- Adding support for caching eslint and prettier as well as being able to lint tsx files
 
 ## 4.1.0
 Wed, 09 Apr 2025 20:07:33 GMT

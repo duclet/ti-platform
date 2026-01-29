@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/client-airtable",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/client-airtable",
     "repository": "https://github.com/duclet/ti-platform",
     "type": "module",

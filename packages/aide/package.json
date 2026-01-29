@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide",
-    "version": "3.8.1",
+    "version": "3.8.2",
     "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide",
     "repository": "https://github.com/duclet/ti-platform",
     "type": "module",
