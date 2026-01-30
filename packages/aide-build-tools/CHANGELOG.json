@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-build-tools",
   "entries": [
     {
+      "version": "5.1.0",
+      "tag": "@ti-platform/aide-build-tools_v5.1.0",
+      "date": "Fri, 30 Jan 2026 20:25:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Supporting wildcard for files"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.0",
       "tag": "@ti-platform/aide-build-tools_v5.0.0",
       "date": "Thu, 29 Jan 2026 22:06:37 GMT",

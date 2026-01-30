@@ -1,6 +1,6 @@
 {
     "name": "@ti-platform/aide-env",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "homepage": "https://github.com/duclet/ti-platform/tree/master/packages/aide-env",
     "repository": "https://github.com/duclet/ti-platform",
     "type": "module",
