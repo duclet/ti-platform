@@ -115,12 +115,15 @@ export function generateEslintConfigs(configs: EslintConfigsParams): ConfigArray
  * Execute the command to run ESLint.
  */
 export function runEslint(params: RunEsLintPrettierParams) {
+    const existingDirs = keepOnlyExistentPaths(params.dirs ?? []).map((item) => `"${item}"`);
+    const existingFiles = keepOnlyExistentPaths(params.files ?? []).map((item) => `"${item}"`);
+
     return spawnCommand(
         [
             'DEBUG=eslint:eslint pnpm eslint --fix --cache --cache-strategy=content',
             ...(params.extensions ?? []).map((extension) => `--ext ${extension}`),
-            ...keepOnlyExistentPaths(params.dirs ?? []),
-            ...keepOnlyExistentPaths(params.files ?? []),
+            ...existingDirs,
+            ...existingFiles,
             ' 2>&1',
         ].join(' ')
     );

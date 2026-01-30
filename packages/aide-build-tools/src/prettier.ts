@@ -39,11 +39,13 @@ export function runPrettier(params: RunEsLintPrettierParams) {
         .filter((pattern) => globSync(pattern, { nodir: true, cwd: cwd() }).length > 0)
         .map((item) => `"${item}"`);
 
+    const existingFiles = keepOnlyExistentPaths(params.files ?? []).map((item) => `"${item}"`);
+
     return spawnCommand(
         [
             'pnpm prettier --cache --cache-strategy content --write',
             ...existingDirExtensionPatterns,
-            ...keepOnlyExistentPaths(params.files ?? []),
+            ...existingFiles,
         ].join(' ')
     );
 }

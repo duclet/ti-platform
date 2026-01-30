@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ti-platform/di",
+      "comment": "",
+      "type": "none"
+    }
+  ],
+  "packageName": "@ti-platform/di"
+}

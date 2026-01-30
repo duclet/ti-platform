@@ -8,17 +8,25 @@ module.exports = {
             function (
                 documentation,
                 componentDefinition,
-                astPath,
-                opt
+                astPath
+                // opt
             ) {
-                const componentDoc = astPath.tokens.filter(token => token.type === 'CommentBlock' && token.value.includes('@component')).find(() => true);
+                const componentDoc = astPath.tokens
+                    .filter((token) => token.type === 'CommentBlock' && token.value.includes('@component'))
+                    .find(() => true);
                 if (componentDoc) {
                     const lines = componentDoc.value.split('\n');
 
-                    documentation.set('description', lines.filter(line => !line.includes('@component')).map(line => line.substring(componentDoc.loc.indent)).join('\n'));
+                    documentation.set(
+                        'description',
+                        lines
+                            .filter((line) => !line.includes('@component'))
+                            .map((line) => line.substring(componentDoc.loc.indent))
+                            .join('\n')
+                    );
                 }
-            }
-        ]
+            },
+        ],
     },
     templates: {
         props: (props) => {
@@ -26,13 +34,23 @@ module.exports = {
 ## Props
 | Prop name     | Description | Type      | Default     |
 | ------------- | ----------- | --------- | ----------- |
-${props.map(prop => '|' + [
+${props
+    .map(
+        (prop) =>
+            '|' +
+            [
                 prop.name,
                 prop.description?.replaceAll('\n', ' '),
-                '`' + prop.type.name + (!!prop.type.elements?.length ? `&lt;${prop.type.elements[0].name}&gt;` : '') + '`',
+                '`' +
+                    prop.type.name +
+                    (prop.type.elements?.length ? `&lt;${prop.type.elements[0].name}&gt;` : '') +
+                    '`',
                 prop.defaultValue?.value ?? '',
-            ].join(' | ') + '|').join('\n')}
+            ].join(' | ') +
+            '|'
+    )
+    .join('\n')}
             `;
-        }
-    }
+        },
+    },
 };

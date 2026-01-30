@@ -1,4 +1,5 @@
 import { existsSync } from 'fs';
+import { sync as globSync } from 'glob';
 import { join } from 'path';
 import { cwd } from 'process';
 
@@ -22,28 +23,24 @@ export type RunEsLintPrettierParams = {
 /**
  * General list of files that most packages should have that we want to lint and format.
  */
-export const GENERAL_FILES = [
-    './eslint.config.cjs',
-    './eslint.config.js',
-    './eslint.config.ts',
-    './package.json',
-    './prettier.config.cjs',
-    './prettier.config.js',
-    './tsconfig.json',
-    './tsup.config.ts',
-    './vite.config.ts',
-    './vite-base.config.ts',
-    './vite-preview.config.ts',
-];
+export const GENERAL_FILES = ['./*.config.cjs', './*.config.js', './*.config.ts', './package.json', './tsconfig.json'];
 
 export const PATH_AIDE_BUILD_TOOLS = new URL('..', import.meta.url).pathname;
 
 /**
- * Given a list of paths, remove files that doesn't exist.
+ * Given a list of paths (including glob patterns), expand wildcards and return only files that exist.
  */
 export function keepOnlyExistentPaths(paths: Array<string>) {
     const workingDir = cwd();
-    return paths.filter((file) => existsSync(join(workingDir, file)));
+    return paths.flatMap((path) => {
+        // Check if the path contains glob patterns (wildcards)
+        if (path.includes('*') || path.includes('?') || path.includes('[')) {
+            // Expand the glob pattern and return matching files
+            return globSync(path, { nodir: true, cwd: workingDir });
+        }
+        // For non-glob paths, check if the file exists
+        return existsSync(join(workingDir, path)) ? [path] : [];
+    });
 }
 
 /**

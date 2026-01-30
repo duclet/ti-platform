@@ -162,7 +162,7 @@ Note that if you a providing a glob for the pattern, be sure to wrap it in quote
 
 > **ChunkNameConfig** = { `handler`: `string` | (`moduleId`, `actualPackage`) => `string` | [`ChunkNameConfig`](#chunknameconfig)\[]; `matcher`: `true` | `string` | `RegExp` | (`moduleId`, `actualPackage`) => `boolean`; }
 
-Defined in: misc.ts:52
+Defined in: misc.ts:49
 
 Configurations to compare against the page name and returning its chunk name.
 
@@ -292,7 +292,7 @@ Arguments passed to the [ModifySourceContentsChainHandlerCreator](#modifysourcec
 
 > **RunEsLintPrettierParams** = { `dirs?`: `string`\[]; `extensions?`: `string`\[]; `files?`: `string`\[]; }
 
-Defined in: misc.ts:5
+Defined in: misc.ts:6
 
 #### Properties
 
@@ -343,7 +343,7 @@ Shared rules for `.cjs` and `.js` files.
 
 > `const` **GENERAL\_FILES**: `string`\[]
 
-Defined in: misc.ts:25
+Defined in: misc.ts:26
 
 General list of files that most packages should have that we want to lint and format.
 
@@ -353,7 +353,7 @@ General list of files that most packages should have that we want to lint and fo
 
 > `const` **PATH\_AIDE\_BUILD\_TOOLS**: `string`
 
-Defined in: misc.ts:39
+Defined in: misc.ts:28
 
 ***
 
@@ -506,7 +506,7 @@ extracted CSS from the Vue files, it will also place them in the same folder as 
 
 > **getChunkName**(`configs`, `moduleId`): `string` | `undefined`
 
-Defined in: misc.ts:85
+Defined in: misc.ts:82
 
 For the given configs and full module ID, return the name for the chunk or undefined if it is not supported. This
 will only match against imports for packages under node\_modules. Should be used by the "manualChunks" function for
@@ -648,9 +648,9 @@ Get default configurations for `.vue` files.
 
 > **keepOnlyExistentPaths**(`paths`): `string`\[]
 
-Defined in: misc.ts:44
+Defined in: misc.ts:33
 
-Given a list of paths, remove files that doesn't exist.
+Given a list of paths (including glob patterns), expand wildcards and return only files that exist.
 
 #### Parameters
 
