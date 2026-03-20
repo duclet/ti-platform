@@ -52,6 +52,9 @@ function filePathToLoader(path: string): Loader {
     if (path.endsWith('.ts')) {
         return 'ts';
     }
+    if (path.endsWith('.tsx')) {
+        return 'tsx';
+    }
 
     return 'text';
 }

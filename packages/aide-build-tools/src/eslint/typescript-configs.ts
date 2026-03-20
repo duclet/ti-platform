@@ -43,6 +43,7 @@ export function getTsConfigs(jsConfigs: ConfigWithExtends, baseDir: string): Con
                     fixMixedExportsWithInlineTypeSpecifier: true,
                 },
             ],
+            'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
             '@typescript-eslint/consistent-type-imports': [
                 'error',
                 {
