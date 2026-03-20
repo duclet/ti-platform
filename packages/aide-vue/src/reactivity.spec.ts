@@ -1,7 +1,8 @@
 import { asComputed, asRef, injectRefs, provideAndReturnRefs } from '@src/reactivity';
 import { expect, matchAny } from '@ti-platform/aide-test';
 import { describe, it, vi } from 'vitest';
-import { inject, type InjectionKey, provide, reactive, ref } from 'vue';
+import type { InjectionKey } from 'vue';
+import { inject, provide, reactive, ref } from 'vue';
 
 vi.mock('vue', async () => {
     const actual = await vi.importActual('vue');

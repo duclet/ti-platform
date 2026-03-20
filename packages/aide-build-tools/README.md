@@ -696,7 +696,7 @@ Note that this contains an escape hatch to linting so you can still "build" by i
 
 > **modifySourceContentsChain**(`__namedParameters`): `Plugin`
 
-Defined in: esbuild-plugins/modify-source-contents-chain.ts:64
+Defined in: esbuild-plugins/modify-source-contents-chain.ts:67
 
 While esbuild allows you to add multiple handlers for its onLoad event, once one of the handler returns something,
 the subsequent handlers will not run. That means we can't have multiple handlers that updates the source content.
