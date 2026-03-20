@@ -2,6 +2,18 @@
   "name": "@ti-platform/aide-test",
   "entries": [
     {
+      "version": "0.2.4",
+      "tag": "@ti-platform/aide-test_v0.2.4",
+      "date": "Fri, 20 Mar 2026 19:24:55 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `5.2.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.3",
       "tag": "@ti-platform/aide-test_v0.2.3",
       "date": "Fri, 30 Jan 2026 20:25:44 GMT",

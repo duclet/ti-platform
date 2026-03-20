@@ -2,6 +2,24 @@
   "name": "@ti-platform/client-airtable",
   "entries": [
     {
+      "version": "0.3.7",
+      "tag": "@ti-platform/client-airtable_v0.3.7",
+      "date": "Fri, 20 Mar 2026 19:24:55 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ti-platform/aide\" to `3.8.4`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-build-tools\" to `5.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ti-platform/aide-test\" to `0.2.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.6",
       "tag": "@ti-platform/client-airtable_v0.3.6",
       "date": "Fri, 30 Jan 2026 20:25:44 GMT",
